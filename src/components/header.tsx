@@ -1,38 +1,51 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Avatar } from "@mui/material";
+import { Search } from "@mui/icons-material";
+import Button from "./button";
 import AddIcon from "@mui/icons-material/Add";
+import LogoImage from "./logo-image";
 
 const Header = () => {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: "#ffffff", boxShadow: "none" }}
+      sx={{ boxShadow: "none", borderBottom: "1px solid #EAEEF4" }}
     >
       <Toolbar>
-        {/* Title */}
+        <LogoImage />
+
         <Typography
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1, color: "#000000" }}
+          fontSize={24}
+          fontWeight={700}
+          sx={{
+            flexGrow: 1,
+            marginLeft: "21px",
+            color: "#092C4C",
+          }}
         >
           Dashboard
         </Typography>
 
-        {/* Add New Button */}
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
+        <Button title="Add New" icon={<AddIcon />} />
+
+        <Search
           sx={{
-            backgroundColor: "#1976d2", // MUI primary color
-            color: "#ffffff",
-            textTransform: "none", // Prevents uppercase transformation
+            width: 23,
+            height: 23,
+            color: "#7E92A2",
+            backgroundColor: "#ffffff",
+            borderRadius: "50px",
+            border: "1px solid #EAEEF4",
+            padding: "15px",
+            margin: "0 20px",
             "&:hover": {
-              backgroundColor: "#1565c0", // Darker shade for hover
+              backgroundColor: "#f0f0f0",
             },
           }}
-        >
-          Add New
-        </Button>
+        />
+        <Avatar src="/profile.jpg" alt="User" />
       </Toolbar>
     </AppBar>
   );
