@@ -27,6 +27,7 @@ const CustomButton = ({ title, icon }: CustomButtonProps) => {
         fontWeight: "normal",
         "&:hover": {
           backgroundColor: "#4c49df",
+          boxShadow: "none",
         },
       }}
     >
