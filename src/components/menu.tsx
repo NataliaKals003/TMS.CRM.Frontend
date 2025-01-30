@@ -54,7 +54,7 @@ const Menu: React.FC = () => {
             <a
               //   href={`/${name.toLowerCase()}`}
               onClick={(e) => {
-                e.preventDefault(); // Prevent page refresh
+                e.preventDefault();
                 setSelected(name);
               }}
               style={{

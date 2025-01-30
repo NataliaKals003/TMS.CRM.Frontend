@@ -3,10 +3,17 @@ import { Button } from "@mui/material";
 
 interface CustomButtonProps {
   title: string;
-  icon?: React.ReactElement<{ style?: React.CSSProperties }>; // Allow `style` prop
+  icon?: React.ReactElement<{ style?: React.CSSProperties }>;
+  backgroundColor?: string;
+  color?: string;
 }
 
-const CustomButton = ({ title, icon }: CustomButtonProps) => {
+const CustomButton = ({
+  title,
+  icon,
+  backgroundColor,
+  color,
+}: CustomButtonProps) => {
   return (
     <Button
       variant="contained"
@@ -18,17 +25,14 @@ const CustomButton = ({ title, icon }: CustomButtonProps) => {
           : null
       }
       sx={{
-        backgroundColor: "#514EF3",
-        color: "#ffffff",
+        color: color || "#ffffff",
+        backgroundColor: backgroundColor || "#514EF3",
         padding: "10px 16px 10px 20px",
         textTransform: "none",
         borderRadius: 20,
         boxShadow: "none",
         fontWeight: "normal",
-        "&:hover": {
-          backgroundColor: "#4c49df",
-          boxShadow: "none",
-        },
+        zIndex: 1, // Add zIndex
       }}
     >
       {title}

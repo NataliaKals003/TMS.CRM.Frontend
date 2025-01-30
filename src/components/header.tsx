@@ -9,7 +9,11 @@ const Header = () => {
   return (
     <AppBar
       position="static"
-      sx={{ boxShadow: "none", borderBottom: "1px solid #EAEEF4" }}
+      sx={{
+        boxShadow: "none",
+        borderBottom: "1px solid #EAEEF4",
+        zIndex: 1201,
+      }}
     >
       <Toolbar>
         <LogoImage />
@@ -28,7 +32,7 @@ const Header = () => {
           Dashboard
         </Typography>
 
-        <Button title="Add New" icon={<AddIcon />} />
+        <Button title="Add New" icon={<AddIcon />} backgroundColor="#514EF3" />
 
         <Search
           sx={{
