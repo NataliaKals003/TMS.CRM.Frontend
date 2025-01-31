@@ -1,25 +1,25 @@
-import React from "react";
+import React from 'react'
 
 interface TextButtonProps {
-  text: string;
+  text: string
 }
 
 const TextButton: React.FC<TextButtonProps> = ({ text }) => {
   return (
     <button
       style={{
-        background: "none",
-        border: "none",
-        color: "#514EF3",
-        fontSize: "14px",
+        background: 'none',
+        border: 'none',
+        color: '#514EF3',
+        fontSize: '14px',
         fontWeight: 500,
         padding: 0,
-        cursor: "pointer",
+        cursor: 'pointer',
       }}
     >
       {text}
     </button>
-  );
-};
+  )
+}
 
-export default TextButton;
+export default TextButton

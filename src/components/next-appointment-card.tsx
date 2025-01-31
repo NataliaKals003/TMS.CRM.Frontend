@@ -1,18 +1,18 @@
-import React from "react";
-import Image from "next/image";
-import Badge from "../../public/Badge.png";
-import Background from "../../public/Background.png";
-import ProfileImage from "../../public/profile.jpg";
-import CustomButton from "./button";
-import { Card, CardContent, Typography, Box } from "@mui/material";
+import React from 'react'
+import Image from 'next/image'
+import Badge from '../../public/Badge.png'
+import Background from '../../public/Background.png'
+import ProfileImage from '../../public/profile.jpg'
+import CustomButton from './button'
+import { Card, CardContent, Typography, Box } from '@mui/material'
 
 interface NextAppointmentCardProps {
-  street: string;
-  city: string;
-  date: string;
-  roomArea: number;
-  people: number;
-  price: string;
+  street: string
+  city: string
+  date: string
+  roomArea: number
+  people: number
+  price: string
 }
 
 const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
@@ -29,14 +29,14 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
         maxWidth: 345,
         margin: 3,
         padding: 2,
-        backgroundColor: "#514EF3",
-        color: "white",
-        position: "relative",
-        borderRadius: "12px",
+        backgroundColor: '#514EF3',
+        color: 'white',
+        position: 'relative',
+        borderRadius: '12px',
       }}
     >
       <CardContent>
-        <Box display="flex" gap={5.5} alignItems={"center"} marginBottom={3}>
+        <Box display="flex" gap={5.5} alignItems={'center'} marginBottom={3}>
           <Typography component="div" style={{ fontSize: 18, fontWeight: 700 }}>
             Next Appointment
           </Typography>
@@ -50,7 +50,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
             alt="Profile"
             width={44}
             height={44}
-            style={{ borderRadius: "50%" }}
+            style={{ borderRadius: '50%' }}
           />
           <Box marginLeft={1.5} fontSize={14}>
             <Typography
@@ -96,7 +96,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
             </Typography>
 
             <Typography variant="body1" fontWeight={700}>
-              {roomArea} M<sup style={{ fontSize: "0.6em" }}>2</sup>
+              {roomArea} M<sup style={{ fontSize: '0.6em' }}>2</sup>
             </Typography>
           </Box>
 
@@ -109,8 +109,8 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
         </Box>
 
         <Box
-          display={"flex"}
-          justifyContent={"space-between"}
+          display={'flex'}
+          justifyContent={'space-between'}
           marginTop={3.5}
           fontSize={14}
         >
@@ -137,15 +137,15 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
           width={300}
           height={300}
           style={{
-            position: "absolute",
-            right: "-101.13px",
-            top: "200px",
-            borderRadius: "50%",
+            position: 'absolute',
+            right: '-101.13px',
+            top: '200px',
+            borderRadius: '50%',
           }}
         />
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default NextAppointmentCard;
+export default NextAppointmentCard

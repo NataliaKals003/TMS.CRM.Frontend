@@ -1,11 +1,11 @@
 // LogoImage.tsx
-import React from "react";
-import Image from "next/image";
-import logo from "../../public/Logo.jpg";
+import React from 'react'
+import Image from 'next/image'
+import logo from '../../public/Logo.jpg'
 
 const LogoImage: React.FC = () => {
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
       <Image
         src={logo}
         alt="Logo"
@@ -17,13 +17,13 @@ const LogoImage: React.FC = () => {
       />
       <div
         style={{
-          borderRight: "1px solid #EAEEF4",
-          height: "12vh",
-          position: "static",
+          borderRight: '1px solid #EAEEF4',
+          height: '12vh',
+          position: 'static',
         }}
       ></div>
     </div>
-  );
-};
+  )
+}
 
-export default LogoImage;
+export default LogoImage
