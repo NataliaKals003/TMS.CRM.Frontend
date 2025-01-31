@@ -3,8 +3,7 @@ import Image from 'next/image';
 import Badge from '../../public/Badge.png';
 import Background from '../../public/Background.png';
 import ProfileImage from '../../public/profile.jpg';
-import CustomButton from './button';
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 
 interface NextAppointmentCardProps {
   street: string;
@@ -90,7 +89,9 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({ street, city,
             </Typography>
           </Box>
 
-          <CustomButton title="See Details" backgroundColor="white" color="#092C4C" />
+          <Button variant="contained" color="secondary">
+            See Detail
+          </Button>
         </Box>
 
         <Image

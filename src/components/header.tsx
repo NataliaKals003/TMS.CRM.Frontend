@@ -1,23 +1,14 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Avatar } from '@mui/material';
+import { AppBar, Toolbar, Typography, Avatar, Button } from '@mui/material';
 import { Search } from '@mui/icons-material';
-import Button from './button';
-import AddIcon from '@mui/icons-material/Add';
 import LogoImage from './logo-image';
+import AddIcon from '@mui/icons-material/Add';
 
 const Header = () => {
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        boxShadow: 'none',
-        borderBottom: '1px solid #EAEEF4',
-        zIndex: 1201,
-      }}
-    >
+    <AppBar position="fixed">
       <Toolbar>
         <LogoImage />
-
         <Typography
           variant="h6"
           component="div"
@@ -32,7 +23,9 @@ const Header = () => {
           Dashboard
         </Typography>
 
-        <Button title="Add New" icon={<AddIcon />} backgroundColor="#514EF3" />
+        <Button variant="contained" endIcon={<AddIcon />}>
+          Add New
+        </Button>
 
         <Search
           sx={{

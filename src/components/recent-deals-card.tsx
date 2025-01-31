@@ -1,7 +1,6 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
-import TextButton from './text-button';
 
 const RecentDealsCard = () => {
   const deals = [
@@ -62,7 +61,9 @@ const RecentDealsCard = () => {
           <Typography variant="h5" component="div" style={{ fontWeight: 700, fontSize: 18 }}>
             Recent Deals
           </Typography>
-          <TextButton text="View All" />
+          <Button variant="text" color="primary" style={{ borderRadius: 20 }}>
+            View All
+          </Button>
         </Box>
 
         {deals.map((deal, index) => (

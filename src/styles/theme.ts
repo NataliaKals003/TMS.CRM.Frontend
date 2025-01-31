@@ -14,27 +14,73 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#F6FAFD',
+      main: '#514EF3',
     },
     secondary: {
-      main: '#19857b',
+      main: '#ECECFE',
     },
   },
   components: {
-    MuiAlert: {
+    MuiAppBar: {
       styleOverrides: {
         root: {
+          boxShadow: 'none',
+          borderBottom: '1px solid #EAEEF4',
+          zIndex: 1201,
+          backgroundColor: '#F6FAFD',
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          padding: '10px 16px 10px 20px',
+          textTransform: 'none',
+          borderRadius: 20,
+          boxShadow: 'none',
+          fontWeight: 'normal',
+          zIndex: 1,
+          '&:hover': {
+            backgroundColor: 'none',
+            boxShadow: 'none',
+          },
           variants: [
             {
-              props: { severity: 'info' },
+              props: { variant: 'contained', color: 'primary' },
               style: {
-                backgroundColor: '#60a5fa',
+                color: '#ffffff',
+              },
+            },
+            {
+              props: { variant: 'contained', color: 'secondary' },
+              style: {
+                color: '#092C4C',
+              },
+            },
+            {
+              props: { variant: 'text', color: 'primary' },
+              style: {
+                color: 'primary',
               },
             },
           ],
         },
       },
     },
+    // MuiAlert: {
+    //   styleOverrides: {
+    //     root: {
+    //       variants: [
+    //         {
+    //           props: { severity: 'info' },
+    //           style: {
+    //             backgroundColor: '#60a5fa',
+    //           },
+    //         },
+    //       ],
+    //     },
+    //   },
+    // },
   },
 });
 
