@@ -11,6 +11,8 @@ interface NextAppointmentCardProps {
   city: string;
   date: string;
   roomArea: number;
+  people: number;
+  price: string;
 }
 
 const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
@@ -18,6 +20,8 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
   city,
   date,
   roomArea,
+  people,
+  price,
 }) => {
   return (
     <Card
@@ -100,7 +104,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
             <Typography variant="body2" color="#D6E1E6">
               People
             </Typography>
-            <Typography variant="body1">10</Typography>
+            <Typography variant="body1">{people}</Typography>
           </Box>
         </Box>
 
@@ -116,7 +120,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
             </Typography>
 
             <Typography variant="body1" fontWeight={700}>
-              $5750
+              {price}
             </Typography>
           </Box>
 
