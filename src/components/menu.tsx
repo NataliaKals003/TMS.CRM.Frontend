@@ -67,6 +67,7 @@ const Menu: React.FC = () => {
                   minWidth: 0,
                   justifyContent: 'center',
                   color: selected === name ? '#ffffff' : '#7E92A2',
+                  padding: '8px',
                 }}
               >
                 {selected === name ? activeIcon : icon}

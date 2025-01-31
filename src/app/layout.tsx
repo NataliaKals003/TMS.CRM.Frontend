@@ -23,7 +23,7 @@ export default function RootLayout({
             <Box
               sx={{
                 marginTop: '90px',
-                marginLeft: '90px',
+                marginLeft: '80px',
                 position: 'relative',
               }}
             >

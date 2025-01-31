@@ -7,7 +7,15 @@ import AddIcon from '@mui/icons-material/Add';
 const Header = () => {
   return (
     <AppBar>
-      <Toolbar>
+      <Toolbar
+        sx={{
+          padding: 0,
+          '@media (min-width: 600px)': {
+            paddingLeft: '23px',
+            paddingRight: '24px',
+          },
+        }}
+      >
         <LogoImage />
         <Typography
           variant="h6"

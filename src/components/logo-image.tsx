@@ -18,7 +18,7 @@ const LogoImage: React.FC = () => {
       <div
         style={{
           borderRight: '1px solid #EAEEF4',
-          height: '12vh',
+          height: '46vh',
           position: 'static',
         }}
       ></div>
