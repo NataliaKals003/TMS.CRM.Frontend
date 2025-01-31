@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider, Box } from '@mui/material';
 import type { Metadata } from 'next';
 import theme from '../styles/theme';
 import Header from '@/components/header';
@@ -15,25 +15,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <ThemeProvider theme={theme}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              height: '100vh',
-              backgroundColor: '#F5F5F5',
-            }}
-          >
+    <ThemeProvider theme={theme}>
+      <html lang="en">
+        <body>
+          <Box>
             <Header />
-            <div style={{ display: 'flex', flex: 1 }}>
+            <Box
+              sx={{
+                marginTop: '90px',
+                marginLeft: '90px',
+                position: 'relative',
+              }}
+            >
               <Menu />
-              <main style={{ flex: 1 }}>{children}</main>
-            </div>
-          </div>
-        </ThemeProvider>
-      </body>
-    </html>
+              <Box sx={{ backgroundColor: '#F6FAFD' }}>{children}</Box>
+            </Box>
+          </Box>
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }

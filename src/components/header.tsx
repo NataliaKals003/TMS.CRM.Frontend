@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 const Header = () => {
   return (
-    <AppBar position="fixed">
+    <AppBar>
       <Toolbar>
         <LogoImage />
         <Typography

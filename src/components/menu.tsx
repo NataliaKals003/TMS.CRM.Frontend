@@ -1,5 +1,10 @@
 'use client';
 
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import {
   Dashboard,
   DashboardOutlined,
@@ -39,45 +44,38 @@ const Menu: React.FC = () => {
   ];
 
   return (
-    <div
-      style={{
-        width: 'fit-content',
-        backgroundColor: '#f5f5f5',
-        height: '100vh',
-        padding: '20px',
-        borderRight: '1px solid #EAEEF4', // Added right border
-      }}
-    >
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+    <Drawer variant="permanent">
+      <List>
         {menuItems.map(({ name, icon, activeIcon }) => (
-          <li key={name} style={{ marginBottom: '15px' }}>
-            <a
-              //   href={`/${name.toLowerCase()}`}
-              onClick={(e) => {
-                e.preventDefault();
-                setSelected(name);
-              }}
-              style={{
-                textDecoration: 'none',
-                backgroundColor: selected === name ? '#514EF3' : '#ffffff', // Change background color when selected
-                color: selected === name ? '#ffffff' : '#7E92A2', // Change background color when selected
-                borderRadius: '50px',
-                border: '1px solid #EAEEF4',
-                width: '30px',
-                height: '30px',
-                display: 'flex',
-                alignItems: 'center',
+          <ListItem key={name} sx={{ mb: 1, px: 2 }}>
+            <ListItemButton
+              onClick={() => setSelected(name)}
+              sx={{
+                minHeight: 48,
                 justifyContent: 'center',
-                padding: '10px',
-                transition: 'background-color 0.3s',
+                px: 2.5,
+                borderRadius: '50px',
+                backgroundColor: selected === name ? '#514EF3' : '#ffffff',
+                border: '1px solid #EAEEF4',
+                '&:hover': {
+                  backgroundColor: selected === name ? '#514EF3' : '#ffffff',
+                },
               }}
             >
-              <span>{selected === name ? activeIcon : icon}</span>
-            </a>
-          </li>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  justifyContent: 'center',
+                  color: selected === name ? '#ffffff' : '#7E92A2',
+                }}
+              >
+                {selected === name ? activeIcon : icon}
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Drawer>
   );
 };
 

@@ -19,15 +19,39 @@ const theme = createTheme({
     secondary: {
       main: '#ECECFE',
     },
+    background: {
+      default: '#F6FAFD',
+    },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          margin: '0',
+          minHeight: '100vh',
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {
           boxShadow: 'none',
           borderBottom: '1px solid #EAEEF4',
-          zIndex: 1201,
           backgroundColor: '#F6FAFD',
+          position: 'fixed',
+          zIndex: 1201,
+          height: '90px',
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: '#F6FAFD',
+          marginTop: '90px',
+          borderRight: '1px solid #EAEEF4',
+          width: '90px',
+          position: 'fixed',
         },
       },
     },
@@ -67,20 +91,6 @@ const theme = createTheme({
         },
       },
     },
-    // MuiAlert: {
-    //   styleOverrides: {
-    //     root: {
-    //       variants: [
-    //         {
-    //           props: { severity: 'info' },
-    //           style: {
-    //             backgroundColor: '#60a5fa',
-    //           },
-    //         },
-    //       ],
-    //     },
-    //   },
-    // },
   },
 });
 
