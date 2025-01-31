@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 interface TextButtonProps {
-  text: string
+  text: string;
 }
 
 const TextButton: React.FC<TextButtonProps> = ({ text }) => {
@@ -19,7 +19,7 @@ const TextButton: React.FC<TextButtonProps> = ({ text }) => {
     >
       {text}
     </button>
-  )
-}
+  );
+};
 
-export default TextButton
+export default TextButton;

@@ -1,28 +1,21 @@
-import React from 'react'
-import Image from 'next/image'
-import Badge from '../../public/Badge.png'
-import Background from '../../public/Background.png'
-import ProfileImage from '../../public/profile.jpg'
-import CustomButton from './button'
-import { Card, CardContent, Typography, Box } from '@mui/material'
+import React from 'react';
+import Image from 'next/image';
+import Badge from '../../public/Badge.png';
+import Background from '../../public/Background.png';
+import ProfileImage from '../../public/profile.jpg';
+import CustomButton from './button';
+import { Card, CardContent, Typography, Box } from '@mui/material';
 
 interface NextAppointmentCardProps {
-  street: string
-  city: string
-  date: string
-  roomArea: number
-  people: number
-  price: string
+  street: string;
+  city: string;
+  date: string;
+  roomArea: number;
+  people: number;
+  price: string;
 }
 
-const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
-  street,
-  city,
-  date,
-  roomArea,
-  people,
-  price,
-}) => {
+const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({ street, city, date, roomArea, people, price }) => {
   return (
     <Card
       sx={{
@@ -45,26 +38,12 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
         </Box>
 
         <Box display="flex" alignItems="center" marginTop={2}>
-          <Image
-            src={ProfileImage}
-            alt="Profile"
-            width={44}
-            height={44}
-            style={{ borderRadius: '50%' }}
-          />
+          <Image src={ProfileImage} alt="Profile" width={44} height={44} style={{ borderRadius: '50%' }} />
           <Box marginLeft={1.5} fontSize={14}>
-            <Typography
-              variant="body2"
-              color="white"
-              style={{ fontWeight: 700 }}
-            >
+            <Typography variant="body2" color="white" style={{ fontWeight: 700 }}>
               {street}
             </Typography>
-            <Typography
-              variant="body2"
-              color="#D6E1E6"
-              style={{ fontWeight: 400 }}
-            >
+            <Typography variant="body2" color="#D6E1E6" style={{ fontWeight: 400 }}>
               {city}
             </Typography>
           </Box>
@@ -72,11 +51,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
 
         <Box display="flex" justifyContent="space-between" marginTop={3}>
           <Box fontSize={14}>
-            <Typography
-              variant="body2"
-              color="#D6E1E6"
-              style={{ fontWeight: 400 }}
-            >
+            <Typography variant="body2" color="#D6E1E6" style={{ fontWeight: 400 }}>
               Appointment Date
             </Typography>
             <Typography variant="body1" lineHeight={2} fontWeight={700}>
@@ -87,11 +62,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
 
         <Box display="flex" marginTop={3} fontSize={14} gap={5.5}>
           <Box>
-            <Typography
-              variant="body2"
-              color="#D6E1E6"
-              style={{ fontWeight: 400 }}
-            >
+            <Typography variant="body2" color="#D6E1E6" style={{ fontWeight: 400 }}>
               Room Area
             </Typography>
 
@@ -108,12 +79,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
           </Box>
         </Box>
 
-        <Box
-          display={'flex'}
-          justifyContent={'space-between'}
-          marginTop={3.5}
-          fontSize={14}
-        >
+        <Box display={'flex'} justifyContent={'space-between'} marginTop={3.5} fontSize={14}>
           <Box>
             <Typography variant="body2" color="white">
               Price
@@ -124,11 +90,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
             </Typography>
           </Box>
 
-          <CustomButton
-            title="See Details"
-            backgroundColor="white"
-            color="#092C4C"
-          />
+          <CustomButton title="See Details" backgroundColor="white" color="#092C4C" />
         </Box>
 
         <Image
@@ -145,7 +107,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({
         />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default NextAppointmentCard
+export default NextAppointmentCard;

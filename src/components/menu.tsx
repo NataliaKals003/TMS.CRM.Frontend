@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   Dashboard,
@@ -9,11 +9,11 @@ import {
   PeopleAltOutlined,
   Checklist,
   ChecklistOutlined,
-} from '@mui/icons-material'
-import React, { useState } from 'react'
+} from '@mui/icons-material';
+import React, { useState } from 'react';
 
 const Menu: React.FC = () => {
-  const [selected, setSelected] = useState<string | null>('Home')
+  const [selected, setSelected] = useState<string | null>('Home');
 
   const menuItems = [
     {
@@ -36,7 +36,7 @@ const Menu: React.FC = () => {
       icon: <ChecklistOutlined />,
       activeIcon: <Checklist />,
     },
-  ]
+  ];
 
   return (
     <div
@@ -54,8 +54,8 @@ const Menu: React.FC = () => {
             <a
               //   href={`/${name.toLowerCase()}`}
               onClick={(e) => {
-                e.preventDefault()
-                setSelected(name)
+                e.preventDefault();
+                setSelected(name);
               }}
               style={{
                 textDecoration: 'none',
@@ -78,7 +78,7 @@ const Menu: React.FC = () => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

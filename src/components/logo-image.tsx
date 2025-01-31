@@ -1,7 +1,7 @@
 // LogoImage.tsx
-import React from 'react'
-import Image from 'next/image'
-import logo from '../../public/Logo.jpg'
+import React from 'react';
+import Image from 'next/image';
+import logo from '../../public/Logo.jpg';
 
 const LogoImage: React.FC = () => {
   return (
@@ -23,7 +23,7 @@ const LogoImage: React.FC = () => {
         }}
       ></div>
     </div>
-  )
-}
+  );
+};
 
-export default LogoImage
+export default LogoImage;

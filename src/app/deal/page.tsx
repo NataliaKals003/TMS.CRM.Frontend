@@ -3,5 +3,5 @@ export default function HomePage() {
     <div>
       <h1>Deal Page</h1>
     </div>
-  )
+  );
 }

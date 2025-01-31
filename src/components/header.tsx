@@ -1,14 +1,14 @@
-import React from 'react'
-import { AppBar, Toolbar, Typography, Avatar } from '@mui/material'
-import { Search } from '@mui/icons-material'
-import Button from './button'
-import AddIcon from '@mui/icons-material/Add'
-import LogoImage from './logo-image'
+import React from 'react';
+import { AppBar, Toolbar, Typography, Avatar } from '@mui/material';
+import { Search } from '@mui/icons-material';
+import Button from './button';
+import AddIcon from '@mui/icons-material/Add';
+import LogoImage from './logo-image';
 
 const Header = () => {
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{
         boxShadow: 'none',
         borderBottom: '1px solid #EAEEF4',
@@ -52,7 +52,7 @@ const Header = () => {
         <Avatar src="/profile.jpg" alt="User" />
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -1,19 +1,14 @@
-import React from 'react'
-import { Button } from '@mui/material'
+import React from 'react';
+import { Button } from '@mui/material';
 
 interface CustomButtonProps {
-  title: string
-  icon?: React.ReactElement<{ style?: React.CSSProperties }>
-  backgroundColor?: string
-  color?: string
+  title: string;
+  icon?: React.ReactElement<{ style?: React.CSSProperties }>;
+  backgroundColor?: string;
+  color?: string;
 }
 
-const CustomButton = ({
-  title,
-  icon,
-  backgroundColor,
-  color,
-}: CustomButtonProps) => {
+const CustomButton = ({ title, icon, backgroundColor, color }: CustomButtonProps) => {
   return (
     <Button
       variant="contained"
@@ -37,7 +32,7 @@ const CustomButton = ({
     >
       {title}
     </Button>
-  )
-}
+  );
+};
 
-export default CustomButton
+export default CustomButton;
