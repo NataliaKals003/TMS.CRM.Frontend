@@ -12,7 +12,7 @@ const Header = () => {
           padding: 0,
           '@media (min-width: 600px)': {
             paddingLeft: '23px',
-            paddingRight: '24px',
+            paddingRight: '0px',
           },
         }}
       >
@@ -31,26 +31,38 @@ const Header = () => {
           Dashboard
         </Typography>
 
-        <Button variant="contained" endIcon={<AddIcon />}>
-          Add New
-        </Button>
-
-        <Search
-          sx={{
-            width: 23,
-            height: 23,
-            color: '#7E92A2',
-            backgroundColor: '#ffffff',
-            borderRadius: '50px',
-            border: '1px solid #EAEEF4',
-            padding: '15px',
-            margin: '0 20px',
-            '&:hover': {
-              backgroundColor: '#f0f0f0',
-            },
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            backgroundColor: '#EEF6FB',
+            paddingRight: '24px',
+            height: '90px',
+            width: '393px',
+            justifyContent: 'end',
           }}
-        />
-        <Avatar src="/profile.jpg" alt="User" />
+        >
+          <Button variant="contained" endIcon={<AddIcon />}>
+            Add New
+          </Button>
+
+          <Search
+            sx={{
+              width: 23,
+              height: 23,
+              color: '#7E92A2',
+              backgroundColor: '#ffffff',
+              borderRadius: '50px',
+              border: '1px solid #EAEEF4',
+              padding: '15px',
+              margin: '0 20px',
+              '&:hover': {
+                backgroundColor: '#f0f0f0',
+              },
+            }}
+          />
+          <Avatar src="/profile.jpg" alt="User" />
+        </div>
       </Toolbar>
     </AppBar>
   );
