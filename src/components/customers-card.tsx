@@ -34,6 +34,9 @@ const CustomersCard = () => {
         backgroundColor: '#EEF6FB',
         color: '#092C4C',
         boxShadow: 'none',
+        borderRadius: 'none',
+        border: 'none',
+        margin: '0',
       }}
     >
       <CardContent>

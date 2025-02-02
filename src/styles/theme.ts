@@ -55,6 +55,18 @@ const theme = createTheme({
         },
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          margin: 3,
+          padding: 2,
+          backgroundColor: '#FFFFFF',
+          border: '1px solid #EAEEF4',
+          color: 'white',
+          position: 'relative',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
