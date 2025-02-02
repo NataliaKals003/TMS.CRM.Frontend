@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Avatar, Button } from '@mui/material';
+import { AppBar, Toolbar, Typography, Avatar, Button, Box } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import LogoImage from './logo-image';
 import AddIcon from '@mui/icons-material/Add';
@@ -31,18 +31,18 @@ const Header = () => {
           Dashboard
         </Typography>
 
-        <div
+        <Box
           style={{
             display: 'flex',
             alignItems: 'center',
             backgroundColor: '#EEF6FB',
             paddingRight: '24px',
-            height: '90px',
+            height: '89px',
             width: '393px',
             justifyContent: 'end',
           }}
         >
-          <Button variant="contained" endIcon={<AddIcon />}>
+          <Button variant="contained" style={{ padding: '10px 16px 10px 16px' }} endIcon={<AddIcon />}>
             Add New
           </Button>
 
@@ -62,7 +62,7 @@ const Header = () => {
             }}
           />
           <Avatar src="/profile.jpg" alt="User" />
-        </div>
+        </Box>
       </Toolbar>
     </AppBar>
   );

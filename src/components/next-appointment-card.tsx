@@ -89,7 +89,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({ street, city,
             </Typography>
           </Box>
 
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" style={{ padding: '10px 16px 10px 16px' }}>
             See Detail
           </Button>
         </Box>

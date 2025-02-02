@@ -24,6 +24,7 @@ export default function RootLayout({
               sx={{
                 marginTop: '90px',
                 marginLeft: '80px',
+                marginRight: '-8px',
                 position: 'relative',
               }}
             >

@@ -32,19 +32,12 @@ const RecentDealsCard = () => {
       city: 'Quantico, VA',
       date: 'Nov 15, 08:00 AM',
     },
-    {
-      profilePicture: 'https://randomuser.me/api/portraits/men/5.jpg',
-      street: '47 Spruce Drive',
-      price: '$5750',
-      city: 'Quantico, VA',
-      date: 'Nov 15, 08:00 AM',
-    },
   ];
 
   return (
     <Card
       sx={{
-        maxWidth: 500,
+        maxWidth: 519,
         width: '100%',
         margin: 3,
         padding: 2,
@@ -61,7 +54,16 @@ const RecentDealsCard = () => {
           <Typography variant="h5" component="div" style={{ fontWeight: 700, fontSize: 18 }}>
             Recent Deals
           </Typography>
-          <Button variant="text" color="primary" style={{ borderRadius: 20 }}>
+          <Button
+            variant="text"
+            color="primary"
+            sx={{
+              '&:hover': {
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+              },
+            }}
+          >
             View All
           </Button>
         </Box>
