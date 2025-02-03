@@ -6,6 +6,7 @@ import { Box } from '@mui/material';
 import CounterCard from '@/components/counter-card';
 import IconCustomers from '../../public/IconCustomers.png';
 import IconDeals from '../../public/IconDeals.png';
+import DealProgressCard from '@/components/deal-progress-card';
 
 const Home: React.FC = () => {
   return (
@@ -21,9 +22,13 @@ const Home: React.FC = () => {
         <RecentDealsCard />
         <CustomersCard />
       </Box>
-      <Box>
-        <CounterCard title={'Customers'} count={'78'} iconCounter={IconCustomers} />
-        <CounterCard title={'Deals'} count={'136'} iconCounter={IconDeals} />
+      <Box display={'flex'} justifyContent={'space-between'}>
+        <Box>
+          <CounterCard title={'Customers'} count={'78'} iconCounter={IconCustomers} />
+          <CounterCard title={'Deals'} count={'136'} iconCounter={IconDeals} />
+        </Box>
+        <DealProgressCard />
+        <CustomersCard />
       </Box>
     </main>
   );

@@ -13,6 +13,7 @@ const CounterCard: React.FC<CounterCardProps> = ({ title, count, iconCounter }) 
     <Card
       sx={{
         maxWidth: 268,
+        width: '100%',
         margin: 2,
         padding: 3,
         color: '#7E92A2',
