@@ -30,7 +30,7 @@ const DealProgressCard = () => {
         maxWidth: 519,
         width: '100%',
         margin: 3,
-        padding: 2,
+        padding: '0 8px',
         backgroundColor: '#FFFFFF',
         color: '#092C4C',
         position: 'relative',

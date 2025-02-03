@@ -1,12 +1,33 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Avatar, Button, Box } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import LogoImage from './logo-image';
 import AddIcon from '@mui/icons-material/Add';
 
 const Header = () => {
+  const [opacity, setOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setOpacity(scrollY > 50 ? 0.8 : 1); // Reduce opacity when scrolling past 50px
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <AppBar>
+    <AppBar
+      sx={{
+        backgroundColor: 'rgba(255, 255, 255, 0.9)', // White background with slight transparency
+        boxShadow: 'none',
+        transition: 'opacity 0.3s ease-in-out',
+        opacity: opacity,
+      }}
+    >
       <Toolbar
         sx={{
           padding: 0,
@@ -32,7 +53,7 @@ const Header = () => {
         </Typography>
 
         <Box
-          style={{
+          sx={{
             display: 'flex',
             alignItems: 'center',
             backgroundColor: '#EEF6FB',
@@ -42,7 +63,7 @@ const Header = () => {
             justifyContent: 'end',
           }}
         >
-          <Button variant="contained" style={{ padding: '10px 16px 10px 16px' }} endIcon={<AddIcon />}>
+          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />}>
             Add New
           </Button>
 
