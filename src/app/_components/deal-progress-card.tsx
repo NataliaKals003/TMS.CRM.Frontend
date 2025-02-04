@@ -15,7 +15,6 @@ const DealProgressCard = () => {
   const initialActivities = [
     { date: '17 Nov 2021', details: 'Installation of the new air conditioning system', completed: false },
     { date: '17 Nov 2021', details: 'Installation of the new air conditioning system', completed: false },
-    // Add more activities as needed
   ];
 
   const [activities, setActivities] = useState(initialActivities);
@@ -67,18 +66,6 @@ const DealProgressCard = () => {
 
         {activities.map((activity, index) => (
           <Box key={index} display="flex" alignItems="center" marginBottom={2.5}>
-            {/* Vertical Line */}
-            {/* {index !== 0 && (
-              <Box
-                sx={{
-                  position: 'absolute',
-                  left: 45,
-                  height: 207,
-                  borderLeft: '1px solid #EAEEF4',
-                  top: 0,
-                }}
-              />
-            )} */}
             <Box display="flex" alignItems="center" gap={1}>
               <IconButton onClick={() => toggleActivity(index)} sx={{ padding: 0 }}>
                 <Box
@@ -103,7 +90,6 @@ const DealProgressCard = () => {
                   />
                 </Box>
               </IconButton>
-              {/* Activity Details */}
               <Box>
                 <Typography variant="body2" color="#7E92A2" fontWeight={400}>
                   {activity.date}

@@ -5,7 +5,7 @@ import { AppBar, Toolbar, Typography, Avatar, Button, Box } from '@mui/material'
 import { Search } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
-import logo from '../../public/Logo.jpg'; // Direct import of logo image
+import logo from '../assets/logo.jpg';
 
 const Header = () => {
   const [opacity, setOpacity] = useState(1);
@@ -32,19 +32,17 @@ const Header = () => {
         sx={{
           padding: 0,
           display: 'flex',
-          alignItems: 'center', // Align all elements in the header
+          alignItems: 'center',
           '@media (min-width: 600px)': {
             paddingLeft: '23px',
             paddingRight: '0px',
           },
         }}
       >
-        {/* Logo on the left side */}
         <Box sx={{ display: 'flex', alignItems: 'center', borderRight: '1px solid #EAEEF4', height: '89px' }}>
           <Image src={logo} alt="Logo" width={46} height={46} style={{ marginRight: 21 }} />
         </Box>
 
-        {/* Main title */}
         <Typography
           variant="h6"
           component="div"
@@ -58,8 +56,6 @@ const Header = () => {
         >
           Dashboard
         </Typography>
-
-        {/* Right section with buttons and avatar */}
 
         <Box
           sx={{

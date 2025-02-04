@@ -1,12 +1,12 @@
 import React from 'react';
-import NextAppointmentCard from '../components/next-appointment-card';
-import RecentDealsCard from '../components/recent-deals-card';
-import CustomersCard from '../components/customers-card';
+import NextAppointmentCard from './_components/next-appointment-card';
+import RecentDealsCard from './_components/recent-deals-card';
+import CustomersCard from './_components/customers-card';
 import { Box } from '@mui/material';
-import CounterCard from '@/components/counter-card';
-import IconCustomers from '../../public/IconCustomers.png';
-import IconDeals from '../../public/IconDeals.png';
-import DealProgressCard from '@/components/deal-progress-card';
+import CounterCard from '@/app/_components/counter-card';
+import IconCustomers from '../assets/icon-customer.png';
+import IconDeals from '../assets/icon-deals.png';
+import DealProgressCard from '@/app/_components/deal-progress-card';
 import TaskCard from '@/components/task-card';
 
 const Home: React.FC = () => {

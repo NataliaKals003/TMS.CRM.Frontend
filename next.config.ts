@@ -1,14 +1,16 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'randomuser.me',
-        pathname: '/api/portraits/**', // Assuming the images are under this path
+        pathname: '/api/portraits/**',
       },
     ],
+  },
+  compiler: {
+    styledComponents: true,
   },
 };
 

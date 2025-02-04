@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Badge from '../../public/Badge.png';
-import Background from '../../public/Background.png';
-import ProfileImage from '../../public/profile.jpg';
+import Dote from '../../assets/dote.png';
+import Background from '../../assets/background.png';
+import ProfileImage from '../../assets/profile.jpg';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 
 interface NextAppointmentCardProps {
@@ -33,7 +33,7 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({ street, city,
             Next Appointment
           </Typography>
 
-          <Image src={Badge} alt="Badge" width={10} height={10} />
+          <Image src={Dote} alt="dote" width={10} height={10} />
         </Box>
 
         <Box display="flex" alignItems="center" marginTop={2}>
