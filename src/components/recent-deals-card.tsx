@@ -37,16 +37,13 @@ const RecentDealsCard = () => {
   return (
     <Card
       sx={{
-        maxWidth: 519,
-        width: '100%',
-        margin: 3,
-        padding: 2,
         backgroundColor: '#FFFFFF',
         color: '#092C4C',
         position: 'relative',
         border: '1px solid #EAEEF4',
         boxShadow: 'none',
         borderRadius: '12px',
+        flex: 1,
       }}
     >
       <CardContent>
@@ -69,15 +66,15 @@ const RecentDealsCard = () => {
         </Box>
 
         {deals.map((deal, index) => (
-          <Box key={index} display={'flex'} sx={{ marginBottom: 2 }}>
-            <Image src={deal.profilePicture} alt="Profile" width={33} height={33} style={{ borderRadius: '50%' }} />
+          <Box key={index} display={'flex'} sx={{ marginBottom: index === deals.length - 1 ? 0 : 4 }}>
+            <Image src={deal.profilePicture} alt="Profile" width={44} height={44} style={{ borderRadius: '50%' }} />
 
             <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
               <Box marginLeft={1.5} fontSize={14}>
                 <Typography variant="body2" color="092C4C" style={{ fontWeight: 700, fontSize: 16 }}>
                   {deal.street}
                 </Typography>
-                <Typography variant="body2" color="#7E92A2" style={{ fontWeight: 400 }}>
+                <Typography variant="body2" color="#7E92A2" style={{ fontWeight: 400, lineHeight: '27px' }}>
                   {deal.city}
                 </Typography>
               </Box>
@@ -86,7 +83,7 @@ const RecentDealsCard = () => {
                 <Typography variant="body2" color="092C4C" style={{ fontWeight: 700, fontSize: 16, textAlign: 'right' }}>
                   {deal.price}
                 </Typography>
-                <Typography variant="body2" color="#7E92A2" width={'max-content'} textAlign={'right'} style={{ fontWeight: 400 }}>
+                <Typography variant="body2" color="#7E92A2" width={'max-content'} textAlign={'right'} style={{ fontWeight: 400, lineHeight: '27px' }}>
                   {deal.date}
                 </Typography>
               </Box>

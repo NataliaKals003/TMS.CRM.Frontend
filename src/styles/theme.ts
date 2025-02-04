@@ -58,8 +58,7 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          margin: 3,
-          padding: 2,
+          padding: 0,
           backgroundColor: '#FFFFFF',
           border: '1px solid #EAEEF4',
           color: 'white',
@@ -67,6 +66,15 @@ const theme = createTheme({
         },
       },
     },
+
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          padding: '24px',
+        },
+      },
+    },
+
     MuiButton: {
       styleOverrides: {
         root: {
@@ -102,6 +110,17 @@ const theme = createTheme({
               },
             },
           ],
+        },
+      },
+    },
+
+    MuiModal: {
+      styleOverrides: {
+        root: {
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          border: '1px solid #EAEEF4',
         },
       },
     },

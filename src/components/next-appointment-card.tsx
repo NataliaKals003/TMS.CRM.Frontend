@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Badge from '../../public/Badge.png';
@@ -18,13 +20,11 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({ street, city,
   return (
     <Card
       sx={{
-        maxWidth: 345,
-        margin: 3,
-        padding: 2,
         backgroundColor: '#514EF3',
         color: 'white',
         position: 'relative',
         borderRadius: '12px',
+        border: 'none',
       }}
     >
       <CardContent>
@@ -89,7 +89,12 @@ const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({ street, city,
             </Typography>
           </Box>
 
-          <Button variant="contained" color="secondary" style={{ padding: '10px 16px 10px 16px', backgroundColor: '#ffff' }}>
+          <Button
+            variant="contained"
+            color="secondary"
+            style={{ padding: '10px 16px 10px 16px', backgroundColor: '#ffff' }}
+            onClick={() => (window.location.href = '/deal')}
+          >
             See Detail
           </Button>
         </Box>

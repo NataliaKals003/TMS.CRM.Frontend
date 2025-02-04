@@ -27,10 +27,7 @@ const DealProgressCard = () => {
   return (
     <Card
       sx={{
-        maxWidth: 519,
-        width: '100%',
-        margin: 3,
-        padding: '0 8px',
+        flex: 1,
         backgroundColor: '#FFFFFF',
         color: '#092C4C',
         position: 'relative',

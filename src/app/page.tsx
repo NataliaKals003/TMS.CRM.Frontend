@@ -13,38 +13,29 @@ const Home: React.FC = () => {
   return (
     <main>
       <Box
-        style={{
+        sx={{
           display: 'flex',
           justifyContent: 'space-between',
-          overflowX: 'auto',
+          gap: '24px',
         }}
       >
-        <Box style={{ flex: 2, marginRight: '16px' }}>
-          <Box
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              marginBottom: '16px',
-            }}
-          >
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '24px', paddingLeft: '24px', paddingTop: '24px' }}>
+          <Box sx={{ display: 'flex', gap: '24px' }}>
             <NextAppointmentCard date="Nov 18 2021, 17:00" roomArea={100} street={'319 Haul Road'} city={'WY 1234'} price={'$5750'} people={10} />
             <RecentDealsCard />
           </Box>
-          <Box
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Box>
+
+          <Box sx={{ display: 'flex', gap: '24px' }}>
+            <Box display={'flex'} flexDirection={'column'} gap={'24px'}>
               <CounterCard title={'Customers'} count={'78'} iconCounter={IconCustomers} />
               <CounterCard title={'Deals'} count={'136'} iconCounter={IconDeals} />
             </Box>
+
             <DealProgressCard />
           </Box>
         </Box>
 
-        <Box>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <CustomersCard />
           <TaskCard />
         </Box>

@@ -16,20 +16,25 @@ export default function RootLayout({
 }>) {
   return (
     <ThemeProvider theme={theme}>
-      <html lang="en">
+      <html
+        lang="en"
+        style={{
+          height: '100vh',
+          width: '100%',
+        }}
+      >
         <body>
           <Box>
             <Header />
             <Box
               sx={{
-                marginTop: '90px',
-                marginLeft: '80px',
-                marginRight: '-8px',
+                margin: '80px -8px 24px 80px',
                 position: 'relative',
+                backgroundColor: '#F6FAFD',
               }}
             >
               <Menu />
-              <Box sx={{ backgroundColor: '#F6FAFD' }}>{children}</Box>
+              <Box>{children}</Box>
             </Box>
           </Box>
         </body>

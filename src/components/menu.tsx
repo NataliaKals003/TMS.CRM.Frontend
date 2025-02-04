@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -15,66 +16,56 @@ import {
   Checklist,
   ChecklistOutlined,
 } from '@mui/icons-material';
-import React, { useState } from 'react';
+import React from 'react';
 
 const Menu: React.FC = () => {
-  const [selected, setSelected] = useState<string | null>('Home');
+  const pathname = usePathname();
+  const router = useRouter();
 
   const menuItems = [
-    {
-      name: 'Home',
-      icon: <DashboardOutlined />,
-      activeIcon: <Dashboard />,
-    },
-    {
-      name: 'Deals',
-      icon: <BusinessCenterOutlined />,
-      activeIcon: <BusinessCenter />,
-    },
-    {
-      name: 'Customers',
-      icon: <PeopleAltOutlined />,
-      activeIcon: <PeopleAlt />,
-    },
-    {
-      name: 'Tasks',
-      icon: <ChecklistOutlined />,
-      activeIcon: <Checklist />,
-    },
+    { name: 'Home', path: '/', icon: <DashboardOutlined />, activeIcon: <Dashboard /> },
+    { name: 'Deals', path: '/deal', icon: <BusinessCenterOutlined />, activeIcon: <BusinessCenter /> },
+    { name: 'Customers', path: '/customer', icon: <PeopleAltOutlined />, activeIcon: <PeopleAlt /> },
+    { name: 'Tasks', path: '/task', icon: <ChecklistOutlined />, activeIcon: <Checklist /> },
   ];
 
   return (
     <Drawer variant="permanent">
       <List>
-        {menuItems.map(({ name, icon, activeIcon }) => (
-          <ListItem key={name} sx={{ mb: 1, px: 2 }}>
-            <ListItemButton
-              onClick={() => setSelected(name)}
-              sx={{
-                minHeight: 48,
-                justifyContent: 'center',
-                px: 2.5,
-                borderRadius: '50px',
-                backgroundColor: selected === name ? '#514EF3' : '#ffffff',
-                border: '1px solid #EAEEF4',
-                '&:hover': {
-                  backgroundColor: selected === name ? '#514EF3' : '#ffffff',
-                },
-              }}
-            >
-              <ListItemIcon
+        {menuItems.map(({ name, path, icon, activeIcon }) => {
+          const isSelected = pathname === path;
+
+          return (
+            <ListItem key={name} sx={{ mb: 1, px: 2 }}>
+              <ListItemButton
+                onClick={() => router.push(path)}
                 sx={{
-                  minWidth: 0,
+                  minHeight: 48,
                   justifyContent: 'center',
-                  color: selected === name ? '#ffffff' : '#7E92A2',
-                  padding: '8px',
+                  px: 2.5,
+                  borderRadius: '50px',
+                  backgroundColor: isSelected ? '#514EF3' : '#ffffff',
+                  border: '1px solid #EAEEF4',
+                  '&:hover': {
+                    backgroundColor: isSelected ? '#514EF3' : '#ffffff',
+                  },
                 }}
+                aria-current={isSelected ? 'page' : undefined}
               >
-                {selected === name ? activeIcon : icon}
-              </ListItemIcon>
-            </ListItemButton>
-          </ListItem>
-        ))}
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                    color: isSelected ? '#ffffff' : '#7E92A2',
+                    padding: '8px',
+                  }}
+                >
+                  {isSelected ? activeIcon : icon}
+                </ListItemIcon>
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Drawer>
   );

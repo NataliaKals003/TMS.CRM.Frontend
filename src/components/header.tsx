@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Avatar, Button, Box } from '@mui/material';
 import { Search } from '@mui/icons-material';
-import LogoImage from './logo-image';
 import AddIcon from '@mui/icons-material/Add';
+import Image from 'next/image';
+import logo from '../../public/Logo.jpg'; // Direct import of logo image
 
 const Header = () => {
   const [opacity, setOpacity] = useState(1);
@@ -12,7 +13,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setOpacity(scrollY > 50 ? 0.8 : 1); // Reduce opacity when scrolling past 50px
+      setOpacity(scrollY > 50 ? 0.7 : 1);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -22,22 +23,28 @@ const Header = () => {
   return (
     <AppBar
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, 0.9)', // White background with slight transparency
+        backgroundColor: `rgba(255, 255, 255, ${opacity})`,
         boxShadow: 'none',
-        transition: 'opacity 0.3s ease-in-out',
-        opacity: opacity,
+        transition: 'background-color 0.3s ease-in-out',
       }}
     >
       <Toolbar
         sx={{
           padding: 0,
+          display: 'flex',
+          alignItems: 'center', // Align all elements in the header
           '@media (min-width: 600px)': {
             paddingLeft: '23px',
             paddingRight: '0px',
           },
         }}
       >
-        <LogoImage />
+        {/* Logo on the left side */}
+        <Box sx={{ display: 'flex', alignItems: 'center', borderRight: '1px solid #EAEEF4', height: '89px' }}>
+          <Image src={logo} alt="Logo" width={46} height={46} style={{ marginRight: 21 }} />
+        </Box>
+
+        {/* Main title */}
         <Typography
           variant="h6"
           component="div"
@@ -52,15 +59,18 @@ const Header = () => {
           Dashboard
         </Typography>
 
+        {/* Right section with buttons and avatar */}
+
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
-            backgroundColor: '#EEF6FB',
+            backgroundColor: `rgba(238, 246, 251, ${opacity})`,
             paddingRight: '24px',
             height: '89px',
             width: '393px',
             justifyContent: 'end',
+            transition: 'background-color 0.3s ease-in-out',
           }}
         >
           <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />}>

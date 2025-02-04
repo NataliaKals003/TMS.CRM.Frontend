@@ -12,26 +12,29 @@ const CounterCard: React.FC<CounterCardProps> = ({ title, count, iconCounter }) 
   return (
     <Card
       sx={{
-        maxWidth: 268,
-        width: '100%',
-        margin: 2,
-        padding: 3,
         color: '#7E92A2',
         boxShadow: 'none',
         borderRadius: '12px',
         display: 'flex',
         alignContent: 'center',
         justifyContent: 'space-between',
+        padding: '24px',
       }}
     >
       <Box>
-        <Typography variant="h5" component="div" style={{ fontWeight: 500, fontSize: 18, marginBottom: 10 }}>
+        <Typography variant="h5" component="div" style={{ fontWeight: 500, fontSize: 18, marginBottom: 10, marginRight: 45 }}>
           {title}
         </Typography>
         <Typography
           variant="h5"
           component="div"
-          style={{ color: '#092C4C', fontWeight: 600, fontSize: 48, fontFamily: 'sans-serif', fontStyle: 'normal' }}
+          style={{
+            color: '#092C4C',
+            fontWeight: 600,
+            fontSize: 48,
+            fontFamily: 'sans-serif',
+            fontStyle: 'normal',
+          }}
         >
           {count}
         </Typography>
