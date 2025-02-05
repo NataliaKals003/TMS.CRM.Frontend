@@ -33,6 +33,7 @@ const DealProgressCard = () => {
         border: '1px solid #EAEEF4',
         boxShadow: 'none',
         borderRadius: '12px',
+        marginTop: '24px',
       }}
     >
       <CardContent>

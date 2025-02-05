@@ -19,10 +19,11 @@ const CounterCard: React.FC<CounterCardProps> = ({ title, count, iconCounter }) 
         alignContent: 'center',
         justifyContent: 'space-between',
         padding: '24px',
+        marginTop: 2,
       }}
     >
       <Box>
-        <Typography variant="h5" component="div" style={{ fontWeight: 500, fontSize: 18, marginBottom: 10, marginRight: 45 }}>
+        <Typography variant="h5" component="div" style={{ fontWeight: 500, fontSize: 18, marginBottom: 10 }}>
           {title}
         </Typography>
         <Typography

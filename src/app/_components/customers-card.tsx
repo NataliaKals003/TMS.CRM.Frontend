@@ -30,7 +30,6 @@ const CustomersCard = () => {
     <Card
       sx={{
         padding: 2,
-        width: 385,
         backgroundColor: '#EEF6FB',
         color: '#092C4C',
         boxShadow: 'none',
