@@ -1,5 +1,11 @@
-"use client";
+'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import {
   Dashboard,
   DashboardOutlined,
@@ -9,75 +15,59 @@ import {
   PeopleAltOutlined,
   Checklist,
   ChecklistOutlined,
-} from "@mui/icons-material";
-import React, { useState } from "react";
+} from '@mui/icons-material';
+import React from 'react';
 
 const Menu: React.FC = () => {
-  const [selected, setSelected] = useState<string | null>("Home");
+  const pathname = usePathname();
+  const router = useRouter();
 
   const menuItems = [
-    {
-      name: "Home",
-      icon: <DashboardOutlined />,
-      activeIcon: <Dashboard />,
-    },
-    {
-      name: "Deals",
-      icon: <BusinessCenterOutlined />,
-      activeIcon: <BusinessCenter />,
-    },
-    {
-      name: "Customers",
-      icon: <PeopleAltOutlined />,
-      activeIcon: <PeopleAlt />,
-    },
-    {
-      name: "Tasks",
-      icon: <ChecklistOutlined />,
-      activeIcon: <Checklist />,
-    },
+    { name: 'Home', path: '/', icon: <DashboardOutlined />, activeIcon: <Dashboard /> },
+    { name: 'Deals', path: '/deal', icon: <BusinessCenterOutlined />, activeIcon: <BusinessCenter /> },
+    { name: 'Customers', path: '/customer', icon: <PeopleAltOutlined />, activeIcon: <PeopleAlt /> },
+    { name: 'Tasks', path: '/task', icon: <ChecklistOutlined />, activeIcon: <Checklist /> },
   ];
 
   return (
-    <div
-      style={{
-        width: "fit-content",
-        backgroundColor: "#f5f5f5",
-        height: "100vh",
-        padding: "20px",
-        borderRight: "1px solid #EAEEF4", // Added right border
-      }}
-    >
-      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-        {menuItems.map(({ name, icon, activeIcon }) => (
-          <li key={name} style={{ marginBottom: "15px" }}>
-            <a
-              //   href={`/${name.toLowerCase()}`}
-              onClick={(e) => {
-                e.preventDefault(); // Prevent page refresh
-                setSelected(name);
-              }}
-              style={{
-                textDecoration: "none",
-                backgroundColor: selected === name ? "#514EF3" : "#ffffff", // Change background color when selected
-                color: selected === name ? "#ffffff" : "#7E92A2", // Change background color when selected
-                borderRadius: "50px",
-                border: "1px solid #EAEEF4",
-                width: "30px",
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "10px",
-                transition: "background-color 0.3s",
-              }}
-            >
-              <span>{selected === name ? activeIcon : icon}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Drawer variant="permanent">
+      <List>
+        {menuItems.map(({ name, path, icon, activeIcon }) => {
+          const isSelected = pathname === path;
+
+          return (
+            <ListItem key={name} sx={{ mb: 1, px: 2 }}>
+              <ListItemButton
+                onClick={() => router.push(path)}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: 'center',
+                  px: 2.5,
+                  borderRadius: '50px',
+                  backgroundColor: isSelected ? '#514EF3' : '#ffffff',
+                  border: '1px solid #EAEEF4',
+                  '&:hover': {
+                    backgroundColor: isSelected ? '#514EF3' : '#ffffff',
+                  },
+                }}
+                aria-current={isSelected ? 'page' : undefined}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                    color: isSelected ? '#ffffff' : '#7E92A2',
+                    padding: '8px',
+                  }}
+                >
+                  {isSelected ? activeIcon : icon}
+                </ListItemIcon>
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
+    </Drawer>
   );
 };
 

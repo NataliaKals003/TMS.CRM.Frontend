@@ -1,7 +1,18 @@
-export default function HomePage() {
+import React from 'react';
+import Box from '@mui/material/Box';
+
+const Deal: React.FC = () => {
   return (
-    <div>
-      <h1>Deal Page</h1>
-    </div>
+    <main>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          gap: '24px',
+        }}
+      ></Box>
+    </main>
   );
-}
+};
+
+export default Deal;
