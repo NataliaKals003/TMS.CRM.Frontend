@@ -17,10 +17,7 @@ interface FormModalProps {
   onDone?: () => void;
   onCancel?: () => void;
   onSave?: () => void;
-  save?: string;
-  color?: string;
-  fontWeight?: number;
-  fontSize?: number;
+  saveText?: string;
 }
 
 const FormModal: React.FC<FormModalProps> = ({
@@ -34,10 +31,7 @@ const FormModal: React.FC<FormModalProps> = ({
   onDone,
   onCancel,
   onSave,
-  save,
-  color,
-  fontWeight,
-  fontSize,
+  saveText,
 }) => {
   return (
     <Modal open={open}>
@@ -53,7 +47,7 @@ const FormModal: React.FC<FormModalProps> = ({
         }}
       >
         <Box sx={{ padding: '24px 14px 24px 32px', display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="h5" marginBottom={0} fontWeight={fontWeight || 700} fontSize={fontSize || 18} color={color || '#092C4C'}>
+          <Typography variant="h5" marginBottom={0} fontWeight={700} fontSize={18} color={'#092C4C'}>
             {title}
           </Typography>
           <Button endIcon={<CancelIcon sx={{ color: '#7E92A2' }} />} onClick={onClose} />
@@ -88,7 +82,7 @@ const FormModal: React.FC<FormModalProps> = ({
             )}
             {onSave && (
               <Button variant="contained" color="primary" sx={{ padding: '10px 24px', fontWeight: 500 }} onClick={onSave}>
-                {save}
+                {saveText}
               </Button>
             )}
             {onDone && (

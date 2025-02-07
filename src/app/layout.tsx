@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import theme from '../styles/theme';
 import Header from '@/components/header';
 import Menu from '@/components/menu';
-import ModalAddNew from '../components/add-new-form';
+import ModalAddNew from '../components/modal-add-new';
 
 export default function RootLayout({
   children,
@@ -28,7 +28,6 @@ export default function RootLayout({
       >
         <body>
           <Box>
-            {/* Pass handleOpen to Header */}
             <Header onAddNewClick={handleOpen} />
             <Box
               sx={{

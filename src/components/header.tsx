@@ -47,6 +47,7 @@ const Header: React.FC<HeaderProps> = ({ onAddNewClick }) => {
               borderRadius: '50px',
               border: '1px solid #EAEEF4',
               padding: '15px',
+              cursor: 'pointer',
             }}
           />
           <Avatar src="/profile.jpg" alt="User" />

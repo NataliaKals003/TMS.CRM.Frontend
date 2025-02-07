@@ -106,7 +106,7 @@ const DealProgressCard = () => {
           <Button
             variant="text"
             color="primary"
-            style={{ fontSize: '16px', fontWeight: 700 }}
+            style={{ fontSize: '14px', fontWeight: 500 }}
             sx={{
               '&:hover': {
                 backgroundColor: 'transparent',
