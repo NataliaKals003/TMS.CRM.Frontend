@@ -8,7 +8,11 @@ import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
 import logo from '../assets/logo.jpg';
 
-const Header = () => {
+interface HeaderProps {
+  onAddNewClick: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onAddNewClick }) => {
   const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
@@ -31,7 +35,7 @@ const Header = () => {
         </Grid>
 
         <Grid size={3.7} sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}>
-          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />}>
+          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={onAddNewClick}>
             Add New
           </Button>
           <Search
