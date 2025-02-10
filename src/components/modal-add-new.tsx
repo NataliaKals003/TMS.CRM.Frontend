@@ -4,6 +4,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { BusinessCenterOutlined, PeopleAltOutlined } from '@mui/icons-material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import ModalSelectCustomer from './modal-select-customer';
+import AddNewCustomer from './add-new-customer-form';
 
 interface AddNewFormProps {
   open: boolean;
@@ -12,6 +13,7 @@ interface AddNewFormProps {
 
 const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
   const [selectedCustomersOpen, setSelectedCustomersOpen] = useState(false);
+  const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
 
   const handleOpenSelectedCustomers = () => {
     setSelectedCustomersOpen(true);
@@ -19,6 +21,14 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
 
   const handleCloseSelectedCustomers = () => {
     setSelectedCustomersOpen(false);
+  };
+
+  const handleOpenAddNewCustomer = () => {
+    setAddNewCustomerOpen(true);
+  };
+
+  const handleCloseAddNewCustomer = () => {
+    setAddNewCustomerOpen(false);
   };
 
   return (
@@ -48,7 +58,6 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
               flexDirection: 'column',
               alignItems: 'flex-start',
               cursor: 'pointer',
-              // gap: 2,
               padding: '10px 15px',
               paddingTop: 0,
               borderTop: '1px solid #EAEEF4',
@@ -74,7 +83,14 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
               <ArrowForwardOutlinedIcon sx={{ color: '#514EF3', width: 20, height: 20, justifyContent: 'end' }} />
             </Box>
 
-            <Box display="flex" alignItems="center" width={'100%'} justifyContent={'space-between'} paddingTop={'11px'}>
+            <Box
+              onClick={handleOpenAddNewCustomer}
+              display="flex"
+              alignItems="center"
+              width={'100%'}
+              justifyContent={'space-between'}
+              paddingTop={'11px'}
+            >
               <Button
                 variant="text"
                 sx={{ color: '#092C4C', justifyContent: 'space-between' }}
@@ -88,6 +104,7 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
         </Box>
       </Modal>
 
+      <AddNewCustomer open={addNewCustomerOpen} onClose={handleCloseAddNewCustomer} />
       <ModalSelectCustomer open={selectedCustomersOpen} onClose={handleCloseSelectedCustomers} />
     </Box>
   );
