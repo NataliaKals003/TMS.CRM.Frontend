@@ -66,7 +66,6 @@ const theme = createTheme({
         },
       },
     },
-
     MuiCardContent: {
       styleOverrides: {
         root: {
@@ -74,7 +73,6 @@ const theme = createTheme({
         },
       },
     },
-
     MuiButton: {
       styleOverrides: {
         root: {
@@ -110,6 +108,46 @@ const theme = createTheme({
               },
             },
           ],
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          background: '#F6FAFD',
+          borderRadius: '8px',
+          '& fieldset': {
+            border: '1px solid #EAEEF4',
+          },
+          '& .MuiInputLabel-root': {
+            color: '#7E92A2',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#7E92A2',
+          },
+          fontWeight: 400,
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#F6FAFD',
+          color: '#333',
+          padding: '15px 20px',
+
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#EAEEF4',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#7E92A2',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#7E92A2',
+          },
+        },
+        select: {
+          padding: '0px 12px 0 0 !important',
         },
       },
     },

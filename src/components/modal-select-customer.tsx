@@ -4,6 +4,7 @@ import { customers, Customer } from '../app/utils/customers';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import CancelIcon from '@mui/icons-material/Cancel';
 import AddNewCustomer from './add-new-customer-form';
+import AddNewDeal from './add-new-deal-form';
 
 interface ModalSelectCustomerProps {
   open: boolean;
@@ -12,6 +13,7 @@ interface ModalSelectCustomerProps {
 
 const ModalSelectCustomer: React.FC<ModalSelectCustomerProps> = ({ open, onClose }) => {
   const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
+  const [addNewDealOpen, setAddNewDealOpen] = useState(false);
 
   const handleOpenAddNewCustomer = () => {
     setAddNewCustomerOpen(true);
@@ -19,6 +21,14 @@ const ModalSelectCustomer: React.FC<ModalSelectCustomerProps> = ({ open, onClose
 
   const handleCloseAddNewCustomer = () => {
     setAddNewCustomerOpen(false);
+  };
+
+  const handleOpenAddNewDeal = () => {
+    setAddNewDealOpen(true);
+  };
+
+  const handleCloseAddNewDeal = () => {
+    setAddNewDealOpen(false);
   };
 
   return (
@@ -69,7 +79,15 @@ const ModalSelectCustomer: React.FC<ModalSelectCustomerProps> = ({ open, onClose
           >
             <List>
               {customers.map((customer: Customer) => (
-                <Box key={customer.id} display="flex" alignItems="center" gap={2} marginBottom={2}>
+                <Box
+                  key={customer.id}
+                  onClick={handleOpenAddNewDeal}
+                  sx={{ cursor: 'pointer' }}
+                  display="flex"
+                  alignItems="center"
+                  gap={2}
+                  marginBottom={2}
+                >
                   <Avatar src={customer.avatar} alt={customer.name} />
                   <Box width="100%">
                     <Typography variant="body1" fontWeight={700} fontSize={16}>
@@ -91,6 +109,7 @@ const ModalSelectCustomer: React.FC<ModalSelectCustomerProps> = ({ open, onClose
         </Box>
       </Modal>
       <AddNewCustomer open={addNewCustomerOpen} onClose={handleCloseAddNewCustomer} />
+      <AddNewDeal open={addNewDealOpen} onClose={handleCloseAddNewDeal} />
     </Box>
   );
 };
