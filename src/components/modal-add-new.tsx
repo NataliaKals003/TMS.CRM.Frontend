@@ -32,7 +32,7 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
   };
 
   return (
-    <Box>
+    <>
       <Modal open={open}>
         <Box
           sx={{
@@ -106,7 +106,7 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
 
       <AddNewCustomer open={addNewCustomerOpen} onClose={handleCloseAddNewCustomer} />
       <ModalSelectCustomer open={selectedCustomersOpen} onClose={handleCloseSelectedCustomers} />
-    </Box>
+    </>
   );
 };
 

@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ onAddNewClick }) => {
               cursor: 'pointer',
             }}
           />
-          <Avatar src="/profile.jpg" alt="User" />
+          <Avatar src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
         </Grid>
       </Grid>
     </AppBar>
