@@ -6,13 +6,14 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { TextField } from '@mui/material';
+import '../styles/modal-style.css';
 
-interface FormAddNewCustomerProps {
+interface NewCustomerModalProps {
   open: boolean;
   onClose: () => void;
 }
 
-const AddNewCustomer: React.FC<FormAddNewCustomerProps> = ({ open, onClose }) => {
+const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) => {
   const [fileName, setFileName] = useState('');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,25 +29,14 @@ const AddNewCustomer: React.FC<FormAddNewCustomerProps> = ({ open, onClose }) =>
       onClose();
     }
   };
+
   return (
     <Modal open={open}>
       <Box
+        className="box"
         sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          bgcolor: 'background.paper',
-          maxWidth: '620px',
-          boxShadow: 24,
-          borderRadius: 2,
           width: 620,
           maxHeight: 700,
-          overflowY: 'auto',
-          scrollbarWidth: 'none',
-          '&::-webkit-scrollbar': {
-            display: 'none',
-          },
         }}
       >
         <Box sx={{ padding: '24px 29px 24px 32px', display: 'flex', justifyContent: 'space-between' }}>
@@ -138,4 +128,4 @@ const AddNewCustomer: React.FC<FormAddNewCustomerProps> = ({ open, onClose }) =>
   );
 };
 
-export default AddNewCustomer;
+export default NewCustomerModal;

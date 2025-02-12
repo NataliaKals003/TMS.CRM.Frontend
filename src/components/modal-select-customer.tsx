@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button, List, Modal, Avatar } from '@mui/material';
-import { customers, Customer } from '../app/utils/customers';
+import { customer, Customer } from '../app/types/customer';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import CancelIcon from '@mui/icons-material/Cancel';
-import AddNewCustomer from './add-new-customer-form';
+import AddNewCustomer from './new-customer-modal';
+import '../styles/modal-style.css';
 
 interface ModalSelectCustomerProps {
   open: boolean;
@@ -23,14 +24,8 @@ const ModalSelectCustomer: React.FC<ModalSelectCustomerProps> = ({ open, onClose
         }}
       >
         <Box
+          className="box"
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
-            boxShadow: 24,
-            borderRadius: 2,
             width: 400,
             maxHeight: '80vh',
             display: 'flex',
@@ -72,7 +67,7 @@ const ModalSelectCustomer: React.FC<ModalSelectCustomerProps> = ({ open, onClose
             }}
           >
             <List>
-              {customers.map((customer: Customer) => (
+              {customer.map((customer: Customer) => (
                 <Box
                   key={customer.id}
                   onClick={() => {

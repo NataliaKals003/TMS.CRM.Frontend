@@ -5,7 +5,7 @@ export type Customer = {
   avatar: string;
 };
 
-export const customers: Customer[] = [
+export const customer: Customer[] = [
   {
     id: 1,
     name: 'Deanna Annis',

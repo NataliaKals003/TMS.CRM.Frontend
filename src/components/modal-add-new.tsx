@@ -4,8 +4,9 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { BusinessCenterOutlined, PeopleAltOutlined } from '@mui/icons-material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import ModalSelectCustomer from './modal-select-customer';
-import AddNewCustomer from './add-new-customer-form';
+import AddNewCustomer from './new-customer-modal';
 import AddNewDeal from './add-new-deal-form';
+import '../styles/modal-style.css';
 
 interface AddNewFormProps {
   open: boolean;
@@ -17,39 +18,12 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
   const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
   const [addNewDealOpen, setAddNewDealOpen] = useState(false);
 
-  const handleOpenSelectedCustomers = () => {
-    setSelectedCustomersOpen(true);
-  };
-
-  const handleCloseSelectedCustomers = () => {
-    setSelectedCustomersOpen(false);
-  };
-
-  const handleOpenAddNewCustomer = () => {
-    setAddNewCustomerOpen(true);
-  };
-
-  const handleCloseAddNewCustomer = () => {
-    setAddNewCustomerOpen(false);
-  };
-
-  const handleCustomerSelected = (customerId: string) => {
-    console.log('customerId', customerId);
-    setAddNewDealOpen(true);
-  };
-
   return (
     <>
       <Modal open={open}>
         <Box
+          className="box"
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
-            boxShadow: 24,
-            borderRadius: 2,
             width: 240,
           }}
         >
@@ -71,7 +45,7 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
             }}
           >
             <Box
-              onClick={handleOpenSelectedCustomers}
+              onClick={() => setSelectedCustomersOpen(true)}
               display="flex"
               alignItems="center"
               width="100%"
@@ -91,7 +65,7 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
             </Box>
 
             <Box
-              onClick={handleOpenAddNewCustomer}
+              onClick={() => setAddNewCustomerOpen(true)}
               display="flex"
               alignItems="center"
               width={'100%'}
@@ -111,12 +85,13 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
         </Box>
       </Modal>
 
-      <AddNewCustomer open={addNewCustomerOpen} onClose={handleCloseAddNewCustomer} />
+      <AddNewCustomer open={addNewCustomerOpen} onClose={() => setAddNewCustomerOpen(false)} />
       <ModalSelectCustomer
         open={selectedCustomersOpen}
-        onClose={handleCloseSelectedCustomers}
+        onClose={() => setSelectedCustomersOpen(false)}
         onCustomerSelected={(customerId: string) => {
-          handleCustomerSelected(customerId);
+          console.log('customerId', customerId);
+          setAddNewDealOpen(true);
         }}
       />
 

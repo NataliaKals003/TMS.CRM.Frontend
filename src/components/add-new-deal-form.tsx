@@ -4,7 +4,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import SelectButton from './select-button';
 import AddressForm from './address-form';
 import ModalSelectCustomer from './modal-select-customer';
-import TimeStamp from './timestamp';
+import TimeStamp from './date-picker';
+import '../styles/modal-style.css';
 
 interface FormAddNewDealProps {
   open: boolean;
@@ -34,22 +35,10 @@ const AddNewDeal: React.FC<FormAddNewDealProps> = ({ open, onClose }) => {
     <>
       <Modal open={open} onClose={onClose}>
         <Box
+          className="box"
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
-            maxWidth: '620px',
-            boxShadow: 24,
-            borderRadius: 2,
             width: 620,
             maxHeight: 700,
-            overflowY: 'auto',
-            scrollbarWidth: 'none',
-            '&::-webkit-scrollbar': {
-              display: 'none',
-            },
           }}
         >
           <Box sx={{ padding: '24px 29px 24px 32px', display: 'flex', justifyContent: 'space-between' }}>

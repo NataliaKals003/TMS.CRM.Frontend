@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import TimeStamp from './timestamp';
-// import { Inter } from 'next/font/google';
+import TimeStamp from './date-picker';
+import '../styles/modal-style.css';
+
 interface AddNewTaskFormProps {
   open: boolean;
   onClose: () => void;
@@ -13,22 +14,10 @@ const AddNewTaskForm: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
     <>
       <Modal open={open}>
         <Box
+          className="box"
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
             maxWidth: '400px',
-            boxShadow: 24,
-            borderRadius: 2,
-            width: 620,
             maxHeight: 700,
-            overflowY: 'auto',
-            scrollbarWidth: 'none',
-            '&::-webkit-scrollbar': {
-              display: 'none',
-            },
           }}
         >
           <Box sx={{ padding: '24px 29px 24px 32px', display: 'flex', justifyContent: 'space-between' }}>
