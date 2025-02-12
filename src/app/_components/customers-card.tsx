@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box, Avatar, Button } from '@mui/material';
-import { customer, Customer } from '../types/customer';
+import { mockCustomers, Customer } from '../types/customer';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 
 const EditIcon = <BorderColorOutlinedIcon style={{ color: '#7E92A2', height: '23px', width: '23px' }} />;
@@ -39,7 +39,7 @@ const CustomersCard = () => {
         </Box>
 
         <Box>
-          {customer.slice(0, 3).map((customer: Customer) => (
+          {mockCustomers.slice(0, 3).map((customer: Customer) => (
             <Box key={customer.id} display="flex" alignItems="center" gap={2} marginBottom={2} paddingRight="8px">
               <Avatar src={customer.avatar} alt={customer.name} />
               <Box width="100%">

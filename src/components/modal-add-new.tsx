@@ -5,7 +5,7 @@ import { BusinessCenterOutlined, PeopleAltOutlined } from '@mui/icons-material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import ModalSelectCustomer from './modal-select-customer';
 import AddNewCustomer from './new-customer-modal';
-import AddNewDeal from './add-new-deal-form';
+import AddNewDeal from './new-deal-modal';
 import '../styles/modal-style.css';
 
 interface AddNewFormProps {

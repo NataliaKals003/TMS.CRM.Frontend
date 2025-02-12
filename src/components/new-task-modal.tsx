@@ -9,7 +9,7 @@ interface AddNewTaskFormProps {
   onClose: () => void;
 }
 
-const AddNewTaskForm: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
+const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
   return (
     <>
       <Modal open={open}>
@@ -60,4 +60,4 @@ const AddNewTaskForm: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
   );
 };
 
-export default AddNewTaskForm;
+export default NewTaskModal;

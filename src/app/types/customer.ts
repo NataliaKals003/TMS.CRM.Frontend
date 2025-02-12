@@ -5,7 +5,7 @@ export type Customer = {
   avatar: string;
 };
 
-export const customer: Customer[] = [
+export const mockCustomers: Customer[] = [
   {
     id: 1,
     name: 'Deanna Annis',

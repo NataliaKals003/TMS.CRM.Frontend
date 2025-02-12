@@ -7,12 +7,12 @@ import ModalSelectCustomer from './modal-select-customer';
 import TimeStamp from './date-picker';
 import '../styles/modal-style.css';
 
-interface FormAddNewDealProps {
+interface NewDealModalProps {
   open: boolean;
   onClose: () => void;
 }
 
-const AddNewDeal: React.FC<FormAddNewDealProps> = ({ open, onClose }) => {
+const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose }) => {
   const [selectedCustomersOpen, setSelectedCustomersOpen] = useState(false);
 
   const [fileName, setFileName] = useState('');
@@ -194,4 +194,4 @@ const AddNewDeal: React.FC<FormAddNewDealProps> = ({ open, onClose }) => {
   );
 };
 
-export default AddNewDeal;
+export default NewDealModal;
