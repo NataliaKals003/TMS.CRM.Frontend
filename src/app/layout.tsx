@@ -16,9 +16,6 @@ export default function RootLayout({
 }>) {
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -31,7 +28,7 @@ export default function RootLayout({
         >
           <body>
             <Box>
-              <Header onAddNewClick={handleOpen} />
+              <Header onAddNewClick={() => setOpen(true)} />
               <Box
                 sx={{
                   margin: '80px -8px 24px 80px',
@@ -42,7 +39,7 @@ export default function RootLayout({
                 <Menu />
                 <Box>{children}</Box>
               </Box>
-              <ModalAddNew open={open} onClose={handleClose} />
+              <ModalAddNew open={open} onClose={() => setOpen(false)} />
             </Box>
           </body>
         </html>
