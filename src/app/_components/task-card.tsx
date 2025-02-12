@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, Typography, Box, Button, Container } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import AddNewTask from './add-new-task-form';
+import AddNewTask from '../../components/add-new-task-form';
 
 const TaskCard: React.FC = () => {
   const tasks = Array(12).fill({ date: '17 Nov 2021', details: 'Meeting with partners', completed: false });
@@ -32,6 +32,7 @@ const TaskCard: React.FC = () => {
             display: 'flex',
             flexDirection: 'column',
             height: 'auto',
+            cursor: 'pointer',
           }}
         >
           <CardContent

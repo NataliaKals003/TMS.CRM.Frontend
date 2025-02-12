@@ -23,49 +23,51 @@ const Menu: React.FC = () => {
   const router = useRouter();
 
   const menuItems = [
-    { name: 'Home', path: '/', icon: <DashboardOutlined />, activeIcon: <Dashboard /> },
-    { name: 'Deals', path: '/deal', icon: <BusinessCenterOutlined />, activeIcon: <BusinessCenter /> },
-    { name: 'Customers', path: '/customer', icon: <PeopleAltOutlined />, activeIcon: <PeopleAlt /> },
-    { name: 'Tasks', path: '/task', icon: <ChecklistOutlined />, activeIcon: <Checklist /> },
+    { name: 'Home', path: '/', icon: <DashboardOutlined />, activeIcon: <Dashboard />, isActive: pathname === '/' },
+    {
+      name: 'Deals',
+      path: '/deal',
+      icon: <BusinessCenterOutlined />,
+      activeIcon: <BusinessCenter />,
+      isActive: pathname.startsWith('/deal'),
+    },
+    { name: 'Customers', path: '/customer', icon: <PeopleAltOutlined />, activeIcon: <PeopleAlt />, isActive: pathname === '/customer' },
+    { name: 'Tasks', path: '/task', icon: <ChecklistOutlined />, activeIcon: <Checklist />, isActive: pathname === '/task' },
   ];
 
   return (
     <Drawer variant="permanent">
       <List>
-        {menuItems.map(({ name, path, icon, activeIcon }) => {
-          const isSelected = pathname === path;
-
-          return (
-            <ListItem key={name} sx={{ mb: 1, px: 2 }}>
-              <ListItemButton
-                onClick={() => router.push(path)}
+        {menuItems.map(({ name, path, icon, activeIcon, isActive }) => (
+          <ListItem key={name} sx={{ mb: 1, px: 2 }}>
+            <ListItemButton
+              onClick={() => router.push(path)}
+              sx={{
+                minHeight: 48,
+                justifyContent: 'center',
+                px: 2.5,
+                borderRadius: '50px',
+                backgroundColor: isActive ? '#514EF3' : '#ffffff',
+                border: '1px solid #EAEEF4',
+                '&:hover': {
+                  backgroundColor: isActive ? '#514EF3' : '#ffffff',
+                },
+              }}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
+                  minWidth: 0,
                   justifyContent: 'center',
-                  px: 2.5,
-                  borderRadius: '50px',
-                  backgroundColor: isSelected ? '#514EF3' : '#ffffff',
-                  border: '1px solid #EAEEF4',
-                  '&:hover': {
-                    backgroundColor: isSelected ? '#514EF3' : '#ffffff',
-                  },
+                  color: isActive ? '#ffffff' : '#7E92A2',
+                  padding: '8px',
                 }}
-                aria-current={isSelected ? 'page' : undefined}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    justifyContent: 'center',
-                    color: isSelected ? '#ffffff' : '#7E92A2',
-                    padding: '8px',
-                  }}
-                >
-                  {isSelected ? activeIcon : icon}
-                </ListItemIcon>
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
+                {isActive ? activeIcon : icon}
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Drawer>
   );

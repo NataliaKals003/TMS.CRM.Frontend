@@ -20,6 +20,7 @@ const CounterCard: React.FC<CounterCardProps> = ({ title, count, iconCounter }) 
         justifyContent: 'space-between',
         padding: '24px',
         marginTop: 2,
+        cursor: 'pointer',
       }}
     >
       <Box>

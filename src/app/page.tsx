@@ -7,7 +7,7 @@ import CounterCard from '@/app/_components/counter-card';
 import IconCustomers from '../assets/icon-customer.png';
 import IconDeals from '../assets/icon-deals.png';
 import DealProgressCard from '@/app/_components/deal-progress-card';
-import TaskCard from '@/components/task-card';
+import TaskCard from '@/app/_components/task-card';
 
 const Home: React.FC = () => {
   return (

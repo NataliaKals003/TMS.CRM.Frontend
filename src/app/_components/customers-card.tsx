@@ -16,6 +16,7 @@ const CustomersCard = () => {
         borderRadius: 'none',
         border: 'none',
         margin: '0',
+        cursor: 'pointer',
       }}
     >
       <CardContent>
