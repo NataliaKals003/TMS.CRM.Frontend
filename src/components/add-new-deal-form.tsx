@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import { Avatar, Box, Button, Modal, TextField, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import SelectButton from './select-button';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
-import dayjs, { Dayjs } from 'dayjs';
 import AddressForm from './address-form';
 import ModalSelectCustomer from './modal-select-customer';
+import TimeStamp from './timestamp';
 
 interface FormAddNewDealProps {
   open: boolean;
@@ -17,14 +13,6 @@ interface FormAddNewDealProps {
 
 const AddNewDeal: React.FC<FormAddNewDealProps> = ({ open, onClose }) => {
   const [selectedCustomersOpen, setSelectedCustomersOpen] = useState(false);
-
-  const handleOpenSelectedCustomers = () => {
-    setSelectedCustomersOpen(true);
-  };
-
-  const handleCloseSelectedCustomers = () => {
-    setSelectedCustomersOpen(false);
-  };
 
   const [fileName, setFileName] = useState('');
 
@@ -37,16 +25,10 @@ const AddNewDeal: React.FC<FormAddNewDealProps> = ({ open, onClose }) => {
 
   const handleCancel = () => {
     setFileName('');
-    if (onClose) {
+    if (open) {
       onClose();
     }
   };
-
-  const handleChangeCustomer = () => {
-    handleOpenSelectedCustomers();
-  };
-
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
 
   return (
     <>
@@ -88,14 +70,16 @@ const AddNewDeal: React.FC<FormAddNewDealProps> = ({ open, onClose }) => {
               </Typography>
             </Box>
             <Button
-              onClick={handleChangeCustomer}
+              onClick={() => {
+                setSelectedCustomersOpen(true);
+              }}
               variant="outlined"
               sx={{
                 border: '1px solid #EAEEF4',
                 bgcolor: ' #FFFFFF',
                 borderRadius: '70px',
-                whiteSpace: 'nowrap', // Prevents text from breaking
-                display: 'inline-flex', // Ensures the button fits content dynamically
+                whiteSpace: 'nowrap',
+                display: 'inline-flex',
                 justifyContent: 'center',
                 color: '#092C4C',
                 padding: '10px 29px',
@@ -156,22 +140,7 @@ const AddNewDeal: React.FC<FormAddNewDealProps> = ({ open, onClose }) => {
                 </Box>
               </Box>
 
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <Box width="100%">
-                  <DemoContainer components={['DatePicker']}>
-                    <DatePicker
-                      label="Appointment Date"
-                      format="LL"
-                      value={value}
-                      onChange={(newValue) => setValue(newValue)}
-                      slots={{
-                        openPickerIcon: CalendarMonthOutlinedIcon,
-                      }}
-                      sx={{ width: '100%' }}
-                    />
-                  </DemoContainer>
-                </Box>
-              </LocalizationProvider>
+              <TimeStamp />
 
               <Typography margin={'20px 0px 12px'} fontWeight={700} fontSize={16} lineHeight={'30px'} color={'#092C4C'}>
                 Special Instructions
@@ -223,7 +192,15 @@ const AddNewDeal: React.FC<FormAddNewDealProps> = ({ open, onClose }) => {
           </Box>
         </Box>
       </Modal>
-      <ModalSelectCustomer open={selectedCustomersOpen} onClose={handleCloseSelectedCustomers} />
+      <ModalSelectCustomer
+        open={selectedCustomersOpen}
+        onClose={() => {
+          setSelectedCustomersOpen(false);
+        }}
+        onCustomerSelected={(customerId: string) => {
+          console.log(customerId);
+        }}
+      />
     </>
   );
 };

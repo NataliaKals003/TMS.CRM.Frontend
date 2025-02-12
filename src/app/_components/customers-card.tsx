@@ -37,20 +37,22 @@ const CustomersCard = () => {
           </Button>
         </Box>
 
-        {customers.map((customer: Customer) => (
-          <Box key={customer.id} display="flex" alignItems="center" gap={2} marginBottom={2}>
-            <Avatar src={customer.avatar} alt={customer.name} />
-            <Box width="100%">
-              <Typography variant="body1" style={{ fontWeight: 700, fontSize: 16 }}>
-                {customer.name}
-              </Typography>
-              <Typography variant="body2" style={{ color: '#7E92A2', fontWeight: 400, lineHeight: '27px' }}>
-                {customer.email}
-              </Typography>
+        <Box>
+          {customers.slice(0, 3).map((customer: Customer) => (
+            <Box key={customer.id} display="flex" alignItems="center" gap={2} marginBottom={2} paddingRight="8px">
+              <Avatar src={customer.avatar} alt={customer.name} />
+              <Box width="100%">
+                <Typography variant="body1" style={{ fontWeight: 700, fontSize: 16 }}>
+                  {customer.name}
+                </Typography>
+                <Typography variant="body2" style={{ color: '#7E92A2', fontWeight: 400, lineHeight: '27px' }}>
+                  {customer.email}
+                </Typography>
+              </Box>
+              <Box marginLeft={1}>{EditIcon}</Box>
             </Box>
-            <Box marginLeft={1}>{EditIcon}</Box>
-          </Box>
-        ))}
+          ))}
+        </Box>
       </CardContent>
     </Card>
   );

@@ -24,7 +24,7 @@ const AddNewCustomer: React.FC<FormAddNewCustomerProps> = ({ open, onClose }) =>
 
   const handleCancel = () => {
     setFileName('');
-    if (onClose) {
+    if (open) {
       onClose();
     }
   };

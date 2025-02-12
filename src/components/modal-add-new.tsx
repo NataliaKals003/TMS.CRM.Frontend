@@ -5,6 +5,7 @@ import { BusinessCenterOutlined, PeopleAltOutlined } from '@mui/icons-material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import ModalSelectCustomer from './modal-select-customer';
 import AddNewCustomer from './add-new-customer-form';
+import AddNewDeal from './add-new-deal-form';
 
 interface AddNewFormProps {
   open: boolean;
@@ -14,6 +15,7 @@ interface AddNewFormProps {
 const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
   const [selectedCustomersOpen, setSelectedCustomersOpen] = useState(false);
   const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
+  const [addNewDealOpen, setAddNewDealOpen] = useState(false);
 
   const handleOpenSelectedCustomers = () => {
     setSelectedCustomersOpen(true);
@@ -29,6 +31,11 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
 
   const handleCloseAddNewCustomer = () => {
     setAddNewCustomerOpen(false);
+  };
+
+  const handleCustomerSelected = (customerId: string) => {
+    console.log('customerId', customerId);
+    setAddNewDealOpen(true);
   };
 
   return (
@@ -105,7 +112,20 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
       </Modal>
 
       <AddNewCustomer open={addNewCustomerOpen} onClose={handleCloseAddNewCustomer} />
-      <ModalSelectCustomer open={selectedCustomersOpen} onClose={handleCloseSelectedCustomers} />
+      <ModalSelectCustomer
+        open={selectedCustomersOpen}
+        onClose={handleCloseSelectedCustomers}
+        onCustomerSelected={(customerId: string) => {
+          handleCustomerSelected(customerId);
+        }}
+      />
+
+      <AddNewDeal
+        open={addNewDealOpen}
+        onClose={() => {
+          setAddNewDealOpen(false);
+        }}
+      />
     </>
   );
 };
