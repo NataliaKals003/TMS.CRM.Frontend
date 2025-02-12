@@ -6,6 +6,7 @@ import Dote from '../../assets/dote.png';
 import Background from '../../assets/background.png';
 import ProfileImage from '../../assets/profile.jpg';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 interface NextAppointmentCardProps {
   street: string;
@@ -17,14 +18,21 @@ interface NextAppointmentCardProps {
 }
 
 const NextAppointmentCard: React.FC<NextAppointmentCardProps> = ({ street, city, date, roomArea, people, price }) => {
+  const router = useRouter();
+
+  const handleDealIdClick = () => {
+    router.push('/deal/id');
+  };
   return (
     <Card
+      onClick={handleDealIdClick}
       sx={{
         backgroundColor: '#514EF3',
         color: 'white',
         position: 'relative',
         borderRadius: '12px',
         border: 'none',
+        cursor: 'pointer',
       }}
     >
       <CardContent>

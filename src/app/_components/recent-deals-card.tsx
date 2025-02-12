@@ -1,8 +1,17 @@
+'use client';
+
 import React from 'react';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const RecentDealsCard = () => {
+  const router = useRouter();
+
+  const handleDealClick = () => {
+    router.push('/deal');
+  };
+
   const deals = [
     {
       profilePicture: 'https://randomuser.me/api/portraits/men/1.jpg',
@@ -36,6 +45,7 @@ const RecentDealsCard = () => {
 
   return (
     <Card
+      onClick={handleDealClick}
       sx={{
         backgroundColor: '#FFFFFF',
         color: '#092C4C',
@@ -44,6 +54,7 @@ const RecentDealsCard = () => {
         boxShadow: 'none',
         borderRadius: '12px',
         flex: 1,
+        cursor: 'pointer',
       }}
     >
       <CardContent>

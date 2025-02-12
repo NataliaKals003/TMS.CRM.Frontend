@@ -1,0 +1,15 @@
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f6fafd;
+  box-shadow: 24px;
+  border-radius: 2;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.box::-webkit-scrollbar {
+  display: none;
+}

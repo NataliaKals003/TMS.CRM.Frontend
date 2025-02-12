@@ -1,31 +1,11 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box, Avatar, Button } from '@mui/material';
+import { mockCustomers, Customer } from '../types/customer';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 
 const EditIcon = <BorderColorOutlinedIcon style={{ color: '#7E92A2', height: '23px', width: '23px' }} />;
 
 const CustomersCard = () => {
-  const customers = [
-    {
-      name: 'Deanna Annis',
-      email: 'deannannis@gmail.com',
-      avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
-      icon: EditIcon,
-    },
-    {
-      name: 'Andrea Willis',
-      email: 'andreavillis@gmail.com',
-      avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
-      icon: EditIcon,
-    },
-    {
-      name: 'Brent Rodrigues',
-      email: 'brodrigues@gmail.com',
-      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-      icon: EditIcon,
-    },
-  ];
-
   return (
     <Card
       sx={{
@@ -36,6 +16,7 @@ const CustomersCard = () => {
         borderRadius: 'none',
         border: 'none',
         margin: '0',
+        cursor: 'pointer',
       }}
     >
       <CardContent>
@@ -57,20 +38,22 @@ const CustomersCard = () => {
           </Button>
         </Box>
 
-        {customers.map((customer, index) => (
-          <Box key={index} display="flex" alignItems="center" gap={2} marginBottom={2}>
-            <Avatar src={customer.avatar} alt={customer.name} />
-            <Box width="100%">
-              <Typography variant="body1" style={{ fontWeight: 700, fontSize: 16 }}>
-                {customer.name}
-              </Typography>
-              <Typography variant="body2" style={{ color: '#7E92A2', fontWeight: 400 }}>
-                {customer.email}
-              </Typography>
+        <Box>
+          {mockCustomers.slice(0, 3).map((customer: Customer) => (
+            <Box key={customer.id} display="flex" alignItems="center" gap={2} marginBottom={2} paddingRight="8px">
+              <Avatar src={customer.avatar} alt={customer.name} />
+              <Box width="100%">
+                <Typography variant="body1" style={{ fontWeight: 700, fontSize: 16 }}>
+                  {customer.name}
+                </Typography>
+                <Typography variant="body2" style={{ color: '#7E92A2', fontWeight: 400, lineHeight: '27px' }}>
+                  {customer.email}
+                </Typography>
+              </Box>
+              <Box marginLeft={1}>{EditIcon}</Box>
             </Box>
-            <Box marginLeft={1}>{customer.icon}</Box>
-          </Box>
-        ))}
+          ))}
+        </Box>
       </CardContent>
     </Card>
   );
