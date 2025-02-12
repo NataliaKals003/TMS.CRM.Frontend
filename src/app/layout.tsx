@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import theme from '../styles/theme';
 import Header from '@/components/header';
 import Menu from '@/components/menu';
-import ModalAddNew from '../components/modal-add-new';
+import ModalAddNew from '../components/add-new-modal';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 

@@ -3,7 +3,7 @@ import { Avatar, Box, Button, Modal, TextField, Typography } from '@mui/material
 import CancelIcon from '@mui/icons-material/Cancel';
 import SelectButton from './select-button';
 import AddressForm from './address-form';
-import ModalSelectCustomer from './modal-select-customer';
+import ModalSelectCustomer from './select-customer-modal';
 import TimeStamp from './date-picker';
 import '../styles/modal-style.css';
 

@@ -6,13 +6,13 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import AddNewCustomer from './new-customer-modal';
 import '../styles/modal-style.css';
 
-interface ModalSelectCustomerProps {
+interface SelectCustomerModalProps {
   open: boolean;
   onClose: () => void;
   onCustomerSelected: (customerId: string) => void;
 }
 
-const ModalSelectCustomer: React.FC<ModalSelectCustomerProps> = ({ open, onClose, onCustomerSelected }) => {
+const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose, onCustomerSelected }) => {
   const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
 
   return (
@@ -109,4 +109,4 @@ const ModalSelectCustomer: React.FC<ModalSelectCustomerProps> = ({ open, onClose
   );
 };
 
-export default ModalSelectCustomer;
+export default SelectCustomerModal;

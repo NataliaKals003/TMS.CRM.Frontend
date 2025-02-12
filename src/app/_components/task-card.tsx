@@ -11,14 +11,6 @@ const TaskCard: React.FC = () => {
 
   const [addNewTaskOpen, setAddNewTaskOpen] = useState(false);
 
-  const handleOpenAddNewTask = () => {
-    setAddNewTaskOpen(true);
-  };
-
-  const handleCloseAddNewTask = () => {
-    setAddNewTaskOpen(false);
-  };
-
   return (
     <>
       <Container style={{ paddingTop: '24px', backgroundColor: '#EEF6FB', flex: 1 }}>
@@ -92,7 +84,7 @@ const TaskCard: React.FC = () => {
           </CardContent>
 
           <Box
-            onClick={handleOpenAddNewTask}
+            onClick={() => setAddNewTaskOpen(true)}
             display={'flex'}
             alignItems={'center'}
             justifyContent={'space-between'}
@@ -109,7 +101,7 @@ const TaskCard: React.FC = () => {
           </Box>
         </Card>
       </Container>
-      <AddNewTask open={addNewTaskOpen} onClose={handleCloseAddNewTask} />
+      <AddNewTask open={addNewTaskOpen} onClose={() => setAddNewTaskOpen(false)} />
     </>
   );
 };

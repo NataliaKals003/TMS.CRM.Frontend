@@ -3,7 +3,7 @@ import { Box, Button, Modal, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { BusinessCenterOutlined, PeopleAltOutlined } from '@mui/icons-material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import ModalSelectCustomer from './modal-select-customer';
+import ModalSelectCustomer from './select-customer-modal';
 import AddNewCustomer from './new-customer-modal';
 import AddNewDeal from './new-deal-modal';
 import '../styles/modal-style.css';
@@ -13,7 +13,7 @@ interface AddNewFormProps {
   onClose: () => void;
 }
 
-const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
+const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
   const [selectedCustomersOpen, setSelectedCustomersOpen] = useState(false);
   const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
   const [addNewDealOpen, setAddNewDealOpen] = useState(false);
@@ -105,4 +105,4 @@ const ModalAddNew: React.FC<AddNewFormProps> = ({ open, onClose }) => {
   );
 };
 
-export default ModalAddNew;
+export default AddNewModal;
