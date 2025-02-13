@@ -1,0 +1,9 @@
+.tableCell {
+  color: #7e92a2;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.tableRow {
+  border-bottom: 1px solid #eaeef4;
+}

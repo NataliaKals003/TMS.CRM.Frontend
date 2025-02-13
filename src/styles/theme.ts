@@ -133,7 +133,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#F6FAFD',
-          color: '#333',
+          color: '#7E92A2',
           padding: '15px 20px',
 
           '& .MuiOutlinedInput-notchedOutline': {

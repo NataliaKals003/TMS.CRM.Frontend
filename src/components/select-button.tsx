@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 interface SelectButtonProps {
@@ -17,7 +18,14 @@ const SelectButton: React.FC<SelectButtonProps> = ({ value, defaultValue }) => {
 
   return (
     <FormControl sx={{ width: '100%' }}>
-      <Select fullWidth value={selectedValue} onChange={handleChange} displayEmpty inputProps={{ 'aria-label': 'Without label' }}>
+      <Select
+        IconComponent={KeyboardArrowDownIcon}
+        fullWidth
+        value={selectedValue}
+        onChange={handleChange}
+        displayEmpty
+        inputProps={{ 'aria-label': 'Without label' }}
+      >
         {value.map((val, index) => (
           <MenuItem key={index} value={val}>
             {val}

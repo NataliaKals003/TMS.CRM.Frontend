@@ -37,7 +37,7 @@ export default function RootLayout({
                 }}
               >
                 <Menu />
-                <Box>{children}</Box>
+                <Box sx={{ padding: ' 24px' }}>{children}</Box>
               </Box>
               <ModalAddNew open={open} onClose={() => setOpen(false)} />
             </Box>
