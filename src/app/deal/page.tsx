@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { mockDeals, Deal } from '../types/deal';
 import Box from '@mui/material/Box';
@@ -7,8 +9,11 @@ import Image from 'next/image';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import '../../styles/table-style.css';
+import { useRouter } from 'next/navigation';
 
 const Deals: React.FC = () => {
+  const router = useRouter();
+
   const columnHeaders = [
     { label: 'Profile', icon: <InsertPhotoOutlinedIcon /> },
     { label: 'Name' },
@@ -41,7 +46,7 @@ const Deals: React.FC = () => {
             </TableHead>
             <TableBody>
               {mockDeals.map((deal: Deal) => (
-                <TableRow className="tableRow" key={deal.id}>
+                <TableRow className="tableRow" key={deal.id} sx={{ cursor: 'pointer' }} onClick={() => router.push(`deal/${deal.id}`)}>
                   <TableCell>
                     <Image src={deal.dealPicture} alt="Profile" width={44} height={44} style={{ borderRadius: '50%' }} />
                   </TableCell>

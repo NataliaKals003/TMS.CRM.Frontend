@@ -11,7 +11,7 @@ import RecordActivityCard from '../_components/activity-card';
 import ActivityLogCard from '../_components/activity-log-card';
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const dealId = params.id;
+  const { id: dealId } = await params;
   const deal: Deal | undefined = mockDeals.find((d) => d.id.toString() === dealId);
   const customer: Customer | undefined = mockCustomers.find((cust) => cust.id === deal?.customerId);
 

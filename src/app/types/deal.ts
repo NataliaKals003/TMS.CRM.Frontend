@@ -29,7 +29,7 @@ export const mockDeals: Deal[] = [
     appointmentDate: 'Nov 14, 07:00 AM',
     status: 'IN PROGRESS',
     details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
-    customerId: 1,
+    customerId: 3,
     roomAccess: 'Keys with doorman',
   },
   {
