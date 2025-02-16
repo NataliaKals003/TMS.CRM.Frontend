@@ -15,7 +15,6 @@ const RecentDealsCard = () => {
 
   return (
     <Card
-      onClick={handleDealClick}
       sx={{
         backgroundColor: '#FFFFFF',
         color: '#092C4C',
@@ -33,6 +32,7 @@ const RecentDealsCard = () => {
             Recent Deals
           </Typography>
           <Button
+            onClick={handleDealClick}
             variant="text"
             color="primary"
             sx={{
@@ -47,8 +47,8 @@ const RecentDealsCard = () => {
         </Box>
 
         {mockDeals.slice(0, 4).map((deal: Deal) => (
-          <Box key={deal.id} display={'flex'} marginBottom={2}>
-            <Image src={deal.dealPicture} alt="Profile" width={44} height={44} style={{ borderRadius: '50%' }} />
+          <Box onClick={() => router.push(`deal/${deal.id}`)} key={deal.id} display={'flex'} marginBottom={2}>
+            <Image src={deal.dealPicture} alt="Deal" width={44} height={44} style={{ borderRadius: '50%' }} />
 
             <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
               <Box marginLeft={1.5} fontSize={14}>

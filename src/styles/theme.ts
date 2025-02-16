@@ -81,6 +81,7 @@ const theme = createTheme({
           boxShadow: 'none',
           fontWeight: '500',
           fontSize: '14px',
+          lineHeight: '30px',
           padding: '0',
           margin: '0',
           zIndex: 1,
@@ -105,6 +106,11 @@ const theme = createTheme({
               props: { variant: 'text', color: 'primary' },
               style: {
                 color: 'primary',
+
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                  boxShadow: 'none',
+                },
               },
             },
           ],

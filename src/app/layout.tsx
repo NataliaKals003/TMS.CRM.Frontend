@@ -32,7 +32,6 @@ export default function RootLayout({
               <Box
                 sx={{
                   margin: '80px -8px 24px 80px',
-                  position: 'relative',
                   backgroundColor: '#F6FAFD',
                 }}
               >
