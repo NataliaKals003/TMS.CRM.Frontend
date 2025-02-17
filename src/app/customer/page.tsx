@@ -20,13 +20,13 @@ const Customers: React.FC = () => {
     { label: 'Email ' },
     { label: 'Phone' },
     { label: 'Address' },
-    { label: 'Edit' },
+    { label: 'Edit', isRightAligned: true },
   ];
   return (
     <main>
       <Box>
         <SectionHeader
-          title="Total"
+          title="customers"
           counter={23}
           sortByValue={['Date Created', 'Alphabetic']}
           filterOptions={['Name', 'Email', 'Phone', 'Address']}
@@ -37,7 +37,13 @@ const Customers: React.FC = () => {
             <TableHead>
               <TableRow className="tableRow">
                 {columnHeaders.map((header, index) => (
-                  <TableCell key={index} className="tableCell">
+                  <TableCell
+                    key={index}
+                    className="tableHead"
+                    sx={{
+                      textAlign: header.isRightAligned ? 'right' : 'left',
+                    }}
+                  >
                     {header.icon || header.label}
                   </TableCell>
                 ))}
@@ -64,7 +70,7 @@ const Customers: React.FC = () => {
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography variant="body2" color="#092C4C">
+                    <Typography variant="body2" sx={{ textAlign: 'right' }}>
                       <BorderColorOutlinedIcon className="tableCell" sx={{ width: '24px', height: '24px', cursor: 'pointer' }} />
                     </Typography>
                   </TableCell>

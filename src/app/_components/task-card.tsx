@@ -5,9 +5,15 @@ import { Card, CardContent, Typography, Box, Button, Container } from '@mui/mate
 import ReportIcon from '@mui/icons-material/Report';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import AddNewTask from '../../components/new-task-modal';
+import { mockTasks, Task } from '../types/task';
+import { useRouter } from 'next/navigation';
 
 const TaskCard: React.FC = () => {
-  const tasks = Array(12).fill({ date: '17 Nov 2021', details: 'Meeting with partners', completed: false });
+  const router = useRouter();
+
+  const handleTaskClick = () => {
+    router.push('/task');
+  };
 
   const [addNewTaskOpen, setAddNewTaskOpen] = useState(false);
 
@@ -38,6 +44,7 @@ const TaskCard: React.FC = () => {
                 Task To Do
               </Typography>
               <Button
+                onClick={handleTaskClick}
                 variant="text"
                 color="primary"
                 sx={{
@@ -62,12 +69,19 @@ const TaskCard: React.FC = () => {
                 },
               }}
             >
-              {tasks.map((task, index) => {
-                const hasIcon = index < 2;
+              {mockTasks.map((task: Task) => {
+                const hasIcon = task.id < 4;
                 return (
-                  <Box key={index} display="flex" alignItems="center" marginBottom={3} sx={{ gap: '10px' }}>
-                    <Typography variant="body2" color="#FE8084" fontWeight={400} minWidth="80px">
-                      {task.date}
+                  <Box key={task.id} display="flex" alignItems="center" marginBottom={3} sx={{ gap: '10px' }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: hasIcon ? '#FE8084' : '#092C4C',
+                        fontWeight: 400,
+                        minWidth: '80px',
+                      }}
+                    >
+                      {task.dueDate}
                     </Typography>
 
                     <Box width="24px" display="flex" justifyContent="center">
@@ -75,7 +89,7 @@ const TaskCard: React.FC = () => {
                     </Box>
 
                     <Typography variant="body2" color="#092C4C" fontWeight={400} flex={1}>
-                      {task.details}
+                      {task.description}
                     </Typography>
                   </Box>
                 );

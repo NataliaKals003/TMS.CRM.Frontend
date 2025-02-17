@@ -38,7 +38,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, counter, sortByVal
 
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center" padding="10px 0 18px 0" bgcolor="#f8f9fa">
-      <Typography variant="h5" marginBottom={0} fontWeight={700} fontSize={16} color={'#092C4C'}>{`${title}: ${counter} customers`}</Typography>
+      <Typography variant="h5" marginBottom={0} fontWeight={700} fontSize={16} color={'#092C4C'}>{`Total: ${counter} ${title}`}</Typography>
 
       <Box display="flex" alignItems="center" gap="16px">
         <Button
@@ -57,7 +57,6 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, counter, sortByVal
           ))}
         </Menu>
 
-        {/* Filter Button */}
         <Button
           variant="outlined"
           onClick={handleFilterMenuOpen}
