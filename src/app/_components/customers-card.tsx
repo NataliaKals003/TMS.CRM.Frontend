@@ -1,11 +1,20 @@
+'use client';
+
 import React from 'react';
 import { Card, CardContent, Typography, Box, Avatar, Button } from '@mui/material';
 import { mockCustomers, Customer } from '../types/customer';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
+import { useRouter } from 'next/navigation';
 
 const EditIcon = <BorderColorOutlinedIcon style={{ color: '#7E92A2', height: '23px', width: '23px' }} />;
 
 const CustomersCard = () => {
+  const router = useRouter();
+
+  const handleCustomerClick = () => {
+    router.push('/customer');
+  };
+
   return (
     <Card
       sx={{
@@ -25,6 +34,7 @@ const CustomersCard = () => {
             Customers
           </Typography>
           <Button
+            onClick={handleCustomerClick}
             variant="text"
             color="primary"
             sx={{
@@ -40,7 +50,15 @@ const CustomersCard = () => {
 
         <Box>
           {mockCustomers.slice(0, 3).map((customer: Customer) => (
-            <Box key={customer.id} display="flex" alignItems="center" gap={2} marginBottom={2} paddingRight="8px">
+            <Box
+              onClick={() => router.push(`customer/${customer.id}`)}
+              key={customer.id}
+              display="flex"
+              alignItems="center"
+              gap={2}
+              marginBottom={2}
+              paddingRight="8px"
+            >
               <Avatar src={customer.avatar} alt={customer.name} />
               <Box width="100%">
                 <Typography variant="body1" style={{ fontWeight: 700, fontSize: 16 }}>

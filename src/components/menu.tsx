@@ -31,8 +31,8 @@ const Menu: React.FC = () => {
       activeIcon: <BusinessCenter />,
       isActive: pathname.startsWith('/deal'),
     },
-    { name: 'Customers', path: '/customer', icon: <PeopleAltOutlined />, activeIcon: <PeopleAlt />, isActive: pathname === '/customer' },
-    { name: 'Tasks', path: '/task', icon: <ChecklistOutlined />, activeIcon: <Checklist />, isActive: pathname === '/task' },
+    { name: 'Customers', path: '/customer', icon: <PeopleAltOutlined />, activeIcon: <PeopleAlt />, isActive: pathname.startsWith('/customer') },
+    { name: 'Tasks', path: '/task', icon: <ChecklistOutlined />, activeIcon: <Checklist />, isActive: pathname.startsWith('/task') },
   ];
 
   return (

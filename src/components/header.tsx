@@ -22,7 +22,13 @@ const Header: React.FC<HeaderProps> = ({ onAddNewClick }) => {
   }, []);
 
   return (
-    <AppBar sx={{ backgroundColor: `#F6FAFD, ${opacity})`, boxShadow: 'none', transition: '0.3s' }}>
+    <AppBar
+      sx={{
+        backgroundColor: `rgba(246, 250, 253, ${opacity})`,
+        boxShadow: 'none',
+        transition: 'background-color 0.9s',
+      }}
+    >
       <Grid container alignItems={'center'}>
         <Grid size={0.7} sx={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '22px' }}>
           <Image src={logo} alt="Logo" width={46} height={46} />
