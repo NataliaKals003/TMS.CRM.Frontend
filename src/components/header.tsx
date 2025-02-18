@@ -7,14 +7,15 @@ import { Search } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
 import logo from '../assets/logo.jpg';
-import { useHeader } from '@/context/header-context';
+import { HeaderModalType, useHeader } from '@/context/header-context';
+import NewCustomerModal from './new-customer-modal';
+import NewTaskModal from './new-task-modal';
+import NewDealModal from './new-deal-modal';
+import AddNewModal from './add-new-modal';
 
-interface HeaderProps {
-  onOpenModalClick: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ onOpenModalClick }) => {
-  const { title, buttonTitle } = useHeader();
+const Header: React.FC = () => {
+  const { title, buttonTitle, modalType } = useHeader();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [opacity, setOpacity] = useState(1);
 
@@ -23,6 +24,19 @@ const Header: React.FC<HeaderProps> = ({ onOpenModalClick }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const renderModal = () => {
+    switch (modalType) {
+      case HeaderModalType.newCustomer:
+        return <NewCustomerModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+      case HeaderModalType.newTask:
+        return <NewTaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+      case HeaderModalType.newDeal:
+        return <NewDealModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+      case HeaderModalType.generalAddNew:
+        return <AddNewModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+    }
+  };
 
   return (
     <AppBar
@@ -44,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModalClick }) => {
         </Grid>
 
         <Grid size={3.7} sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}>
-          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={onOpenModalClick}>
+          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
             {buttonTitle}
           </Button>
           <Search
@@ -62,6 +76,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModalClick }) => {
           <Avatar src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
         </Grid>
       </Grid>
+      {renderModal()}
     </AppBar>
   );
 };

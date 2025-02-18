@@ -10,15 +10,16 @@ import IconCustomers from '../assets/icon-customer.png';
 import IconDeals from '../assets/icon-deals.png';
 import DealProgressCard from '@/app/_components/deal-progress-card';
 import TaskCard from '@/app/_components/task-card';
-import { useHeader } from '@/context/header-context';
+import { HeaderModalType, useHeader } from '@/context/header-context';
 
 const Home: React.FC = () => {
-  const { setTitle, setButtonTitle } = useHeader();
+  const { setTitle, setButtonTitle, setModalType } = useHeader();
 
   useEffect(() => {
     setTitle('Dashboard');
     setButtonTitle('Add New');
-  }, [setTitle, setButtonTitle]);
+    setModalType(HeaderModalType.generalAddNew);
+  }, [setTitle, setButtonTitle, setModalType]);
 
   return (
     <Grid container>

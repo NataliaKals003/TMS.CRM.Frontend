@@ -7,18 +7,19 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typog
 import SectionHeader from '@/components/section-header';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import ReportIcon from '@mui/icons-material/Report'; // Importando o ReportIcon
+import ReportIcon from '@mui/icons-material/Report';
 import '../../styles/task-page-style.css';
 import '../../styles/table-style.css';
-import { useHeader } from '@/context/header-context';
+import { HeaderModalType, useHeader } from '@/context/header-context';
 
 const Customers: React.FC = () => {
-  const { setTitle, setButtonTitle } = useHeader();
+  const { setTitle, setButtonTitle, setModalType } = useHeader();
 
   useEffect(() => {
     setTitle('Tasks');
     setButtonTitle('Add New Task');
-  }, [setTitle, setButtonTitle]);
+    setModalType(HeaderModalType.newTask);
+  }, [setTitle, setButtonTitle, setModalType]);
 
   const columnHeaders = [
     { label: 'Done', icon: <CheckBoxIcon className="checkBox" /> },

@@ -10,15 +10,16 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import '../../styles/table-style.css';
 import { useRouter } from 'next/navigation';
-import { useHeader } from '@/context/header-context';
+import { HeaderModalType, useHeader } from '@/context/header-context';
 
 const Customers: React.FC = () => {
-  const { setTitle, setButtonTitle } = useHeader();
+  const { setTitle, setButtonTitle, setModalType } = useHeader();
 
   useEffect(() => {
     setTitle('Customers');
     setButtonTitle('Add New Customer');
-  }, [setTitle, setButtonTitle]);
+    setModalType(HeaderModalType.newCustomer);
+  }, [setTitle, setButtonTitle, setModalType]);
 
   const router = useRouter();
 
