@@ -5,9 +5,10 @@
   transform: translate(-50%, -50%);
   background-color: #f6fafd;
   box-shadow: 24px;
-  border-radius: 2;
   overflow-y: auto;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  max-height: 650px;
+  border-radius: 12px;
 }
 
 .box::-webkit-scrollbar {

@@ -26,7 +26,7 @@ export const mockTasks: Task[] = [
   },
   {
     id: 4,
-    dueDate: '24 Nov 2022',
+    dueDate: '19 Fev 2025',
     description: 'Add new services',
     done: true,
   },
@@ -44,7 +44,7 @@ export const mockTasks: Task[] = [
   },
   {
     id: 7,
-    dueDate: '24 Nov 2022',
+    dueDate: '24 Fev 2025',
     description: 'Sales report due',
     done: false,
   },

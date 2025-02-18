@@ -38,7 +38,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose }) => {
           className="box"
           sx={{
             width: 620,
-            maxHeight: 700,
+            paddingBottom: '22px',
           }}
         >
           <Box sx={{ padding: '24px 29px 24px 32px', display: 'flex', justifyContent: 'space-between' }}>
@@ -82,7 +82,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose }) => {
           </Box>
           <Box />
 
-          <Box padding={4} display={'flex'} flexDirection={'column'}>
+          <Box padding={4} paddingBottom={0} display={'flex'} flexDirection={'column'}>
             <div>
               <Typography marginBottom={0} fontWeight={700} fontSize={16} lineHeight={'30px'} color={'#092C4C'}>
                 Room Images

@@ -7,6 +7,7 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import AddNewTask from '../../components/new-task-modal';
 import { mockTasks, Task } from '../types/task';
 import { useRouter } from 'next/navigation';
+import Grid from '@mui/material/Grid2';
 
 const TaskCard: React.FC = () => {
   const router = useRouter();
@@ -62,7 +63,6 @@ const TaskCard: React.FC = () => {
               sx={{
                 maxHeight: '250px',
                 overflowY: 'auto',
-                paddingRight: '8px',
                 scrollbarWidth: 'none',
                 '&::-webkit-scrollbar': {
                   display: 'none',
@@ -72,26 +72,29 @@ const TaskCard: React.FC = () => {
               {mockTasks.map((task: Task) => {
                 const hasIcon = task.id < 4;
                 return (
-                  <Box key={task.id} display="flex" alignItems="center" marginBottom={3} sx={{ gap: '10px' }}>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: hasIcon ? '#FE8084' : '#092C4C',
-                        fontWeight: 400,
-                        minWidth: '80px',
-                      }}
-                    >
-                      {task.dueDate}
-                    </Typography>
+                  <Grid key={task.id} container sx={{ marginBottom: 3, alignContent: 'center' }}>
+                    <Grid size={{ xs: 12, md: 4 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: hasIcon ? '#FE8084' : '#092C4C',
+                          fontWeight: 400,
+                        }}
+                      >
+                        {task.dueDate}
+                      </Typography>
+                    </Grid>
 
-                    <Box width="24px" display="flex" justifyContent="center">
-                      {hasIcon && <ReportIcon sx={{ color: '#FE8084' }} />}
-                    </Box>
+                    <Grid size={{ xs: 12, md: 1 }}>
+                      <Box>{hasIcon && <ReportIcon sx={{ color: '#FE8084', width: '16px', height: '16px' }} />}</Box>
+                    </Grid>
 
-                    <Typography variant="body2" color="#092C4C" fontWeight={400} flex={1}>
-                      {task.description}
-                    </Typography>
-                  </Box>
+                    <Grid size={{ xs: 12, md: 7 }}>
+                      <Typography variant="body2" color="#092C4C" fontWeight={400}>
+                        {task.description}
+                      </Typography>
+                    </Grid>
+                  </Grid>
                 );
               })}
             </Box>
