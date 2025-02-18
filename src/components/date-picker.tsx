@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { useState } from 'react';
 import { DatePicker as MuiDatePicker } from '@mui/x-date-pickers';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import { Box } from '@mui/material';
@@ -8,7 +11,7 @@ interface DatePickerProps {
 }
 
 const DatePicker: React.FC<DatePickerProps> = ({ placeholder }) => {
-  const [value, setValue] = React.useState<Date | null>(null);
+  const [value, setValue] = useState<Date | null>(null);
 
   return (
     <Box width="100%">

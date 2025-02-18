@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { mockDeals, Deal } from '../types/deal';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -12,40 +13,8 @@ const RecentDealsCard = () => {
     router.push('/deal');
   };
 
-  const deals = [
-    {
-      profilePicture: 'https://randomuser.me/api/portraits/men/1.jpg',
-      street: '319 Haul Road',
-      price: '$5750',
-      city: 'Glenrock, WY',
-      date: 'Nov 14, 07:00 AM',
-    },
-    {
-      profilePicture: 'https://randomuser.me/api/portraits/men/2.jpg',
-      street: '47 Spruce Drive',
-      price: '$5750',
-      city: 'Quantico, VA',
-      date: 'Nov 15, 08:00 AM',
-    },
-    {
-      profilePicture: 'https://randomuser.me/api/portraits/men/3.jpg',
-      street: '47 Spruce Drive',
-      price: '$5750',
-      city: 'Quantico, VA',
-      date: 'Nov 15, 08:00 AM',
-    },
-    {
-      profilePicture: 'https://randomuser.me/api/portraits/men/4.jpg',
-      street: '47 Spruce Drive',
-      price: '$5750',
-      city: 'Quantico, VA',
-      date: 'Nov 15, 08:00 AM',
-    },
-  ];
-
   return (
     <Card
-      onClick={handleDealClick}
       sx={{
         backgroundColor: '#FFFFFF',
         color: '#092C4C',
@@ -63,6 +32,7 @@ const RecentDealsCard = () => {
             Recent Deals
           </Typography>
           <Button
+            onClick={handleDealClick}
             variant="text"
             color="primary"
             sx={{
@@ -76,9 +46,9 @@ const RecentDealsCard = () => {
           </Button>
         </Box>
 
-        {deals.map((deal, index) => (
-          <Box key={index} display={'flex'} sx={{ marginBottom: index === deals.length - 1 ? 0 : 4 }}>
-            <Image src={deal.profilePicture} alt="Profile" width={44} height={44} style={{ borderRadius: '50%' }} />
+        {mockDeals.slice(0, 4).map((deal: Deal) => (
+          <Box onClick={() => router.push(`deal/${deal.id}`)} key={deal.id} display={'flex'} marginBottom={2}>
+            <Image src={deal.dealPicture} alt="Deal" width={44} height={44} style={{ borderRadius: '50%' }} />
 
             <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
               <Box marginLeft={1.5} fontSize={14}>
@@ -95,7 +65,7 @@ const RecentDealsCard = () => {
                   {deal.price}
                 </Typography>
                 <Typography variant="body2" color="#7E92A2" width={'max-content'} textAlign={'right'} style={{ fontWeight: 400, lineHeight: '27px' }}>
-                  {deal.date}
+                  {deal.appointmentDate}
                 </Typography>
               </Box>
             </Box>

@@ -6,7 +6,7 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 
 const DealProgressCard = () => {
   const deal = {
-    profilePicture: 'https://randomuser.me/api/portraits/men/1.jpg',
+    dealPicture: 'https://randomuser.me/api/portraits/men/1.jpg',
     street: '319 Haul Road',
     price: '$5750',
     city: 'Glenrock, WY',
@@ -40,7 +40,7 @@ const DealProgressCard = () => {
       <CardContent>
         <Box display="flex" alignItems="center" marginBottom={3} justifyContent="space-between" paddingBottom={2} borderBottom="1px solid #EAEEF4">
           <Box display="flex" alignItems="center" gap={2}>
-            <Avatar src={deal.profilePicture} alt="Profile" />
+            <Avatar src={deal.dealPicture} alt="Profile" />
             <Box>
               <Typography variant="subtitle1" fontWeight={700} fontSize={16}>
                 {deal.street}

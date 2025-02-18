@@ -12,13 +12,13 @@ import TaskCard from '@/app/_components/task-card';
 const Home: React.FC = () => {
   return (
     <Grid container>
-      <Grid size={{ xs: 12, md: 2.5 }} padding={3}>
-        <NextAppointmentCard date="Nov 18 2021, 17:00" roomArea={100} street="319 Haul Road" city="WY 1234" price="$5750" people={10} />
+      <Grid size={{ xs: 12, md: 2.5 }} padding={'0 24px 24px 0'}>
+        <NextAppointmentCard />
         <CounterCard title="Customers" count="78" iconCounter={IconCustomers} />
         <CounterCard title="Deals" count="136" iconCounter={IconDeals} />
       </Grid>
 
-      <Grid size={{ xs: 12, md: 6 }} padding={3} paddingLeft={0}>
+      <Grid size={{ xs: 12, md: 6 }} padding={'0 24px 24px 0'}>
         <RecentDealsCard />
         <DealProgressCard />
       </Grid>

@@ -32,12 +32,11 @@ export default function RootLayout({
               <Box
                 sx={{
                   margin: '80px -8px 24px 80px',
-                  position: 'relative',
                   backgroundColor: '#F6FAFD',
                 }}
               >
                 <Menu />
-                <Box>{children}</Box>
+                <Box sx={{ padding: ' 24px' }}>{children}</Box>
               </Box>
               <ModalAddNew open={open} onClose={() => setOpen(false)} />
             </Box>
