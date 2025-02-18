@@ -35,12 +35,7 @@ const Deals: React.FC = () => {
   return (
     <main>
       <Box>
-        <SectionHeader
-          title="deals"
-          counter={23}
-          sortByValue={['Date Created', 'Area', 'Appointment Date', 'Price', 'Status']}
-          filterOptions={['Area', 'Price', 'Status']}
-        />
+        <SectionHeader title="deals" counter={23} sortByValue={['Date Created', 'Alphabetic']} filterOptions={['Area', 'Price', 'Status']} />
 
         <TableContainer component={Box}>
           <Table>
