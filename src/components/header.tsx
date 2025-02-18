@@ -10,10 +10,10 @@ import logo from '../assets/logo.jpg';
 import { useHeader } from '@/context/header-context';
 
 interface HeaderProps {
-  onAddNewClick: () => void;
+  onOpenModalClick: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onAddNewClick }) => {
+const Header: React.FC<HeaderProps> = ({ onOpenModalClick }) => {
   const { title, buttonTitle } = useHeader();
 
   const [opacity, setOpacity] = useState(1);
@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ onAddNewClick }) => {
         </Grid>
 
         <Grid size={3.7} sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}>
-          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={onAddNewClick}>
+          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={onOpenModalClick}>
             {buttonTitle}
           </Button>
           <Search

@@ -1,3 +1,6 @@
+'use client';
+
+import React, { useEffect } from 'react';
 import NextAppointmentCard from './_components/next-appointment-card';
 import RecentDealsCard from './_components/recent-deals-card';
 import CustomersCard from './_components/customers-card';
@@ -7,8 +10,16 @@ import IconCustomers from '../assets/icon-customer.png';
 import IconDeals from '../assets/icon-deals.png';
 import DealProgressCard from '@/app/_components/deal-progress-card';
 import TaskCard from '@/app/_components/task-card';
+import { useHeader } from '@/context/header-context';
 
 const Home: React.FC = () => {
+  const { setTitle, setButtonTitle } = useHeader();
+
+  useEffect(() => {
+    setTitle('Dashboard');
+    setButtonTitle('Add New');
+  }, [setTitle, setButtonTitle]);
+
   return (
     <Grid container>
       <Grid size={{ xs: 12, md: 2.5 }} padding={'0 24px 24px 0'}>

@@ -7,6 +7,8 @@ interface HeaderContextType {
   buttonTitle: string;
   setTitle: (title: string) => void;
   setButtonTitle: (buttonTitle: string) => void;
+  onOpenModalClick: () => void;
+  isModalOpen: boolean;
 }
 
 const HeaderContext = createContext<HeaderContextType | undefined>(undefined);
@@ -22,6 +24,15 @@ export const useHeader = () => {
 export const HeaderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [title, setTitle] = useState('Dashboard');
   const [buttonTitle, setButtonTitle] = useState('Add New');
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  return <HeaderContext.Provider value={{ title, buttonTitle, setTitle, setButtonTitle }}>{children}</HeaderContext.Provider>;
+  const onOpenModalClick = () => {
+    setModalOpen(!isModalOpen); // Toggle modal state
+  };
+
+  return (
+    <HeaderContext.Provider value={{ title, buttonTitle, setTitle, setButtonTitle, onOpenModalClick, isModalOpen }}>
+      {children}
+    </HeaderContext.Provider>
+  );
 };
