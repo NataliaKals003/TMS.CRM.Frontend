@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { mockCustomers, Customer } from '../types/customer';
 import Box from '@mui/material/Box';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
@@ -10,8 +10,16 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import '../../styles/table-style.css';
 import { useRouter } from 'next/navigation';
+import { useHeader } from '@/context/header-context';
 
 const Customers: React.FC = () => {
+  const { setTitle, setButtonTitle } = useHeader();
+
+  useEffect(() => {
+    setTitle('Customers');
+    setButtonTitle('Add New Customer');
+  }, [setTitle, setButtonTitle]);
+
   const router = useRouter();
 
   const columnHeaders = [

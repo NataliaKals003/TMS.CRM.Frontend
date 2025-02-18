@@ -7,12 +7,15 @@ import { Search } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
 import logo from '../assets/logo.jpg';
+import { useHeader } from '@/context/header-context';
 
 interface HeaderProps {
   onAddNewClick: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onAddNewClick }) => {
+  const { title, buttonTitle } = useHeader();
+
   const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
@@ -36,13 +39,13 @@ const Header: React.FC<HeaderProps> = ({ onAddNewClick }) => {
 
         <Grid size={7.6}>
           <Typography variant="h6" fontSize={24} fontWeight={700} color="#092C4C" sx={{ marginRight: 2, padding: '25px 24px' }}>
-            Dashboard
+            {title}
           </Typography>
         </Grid>
 
         <Grid size={3.7} sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}>
           <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={onAddNewClick}>
-            Add New
+            {buttonTitle}
           </Button>
           <Search
             sx={{

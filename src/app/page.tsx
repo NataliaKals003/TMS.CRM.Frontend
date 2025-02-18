@@ -1,4 +1,3 @@
-import React from 'react';
 import NextAppointmentCard from './_components/next-appointment-card';
 import RecentDealsCard from './_components/recent-deals-card';
 import CustomersCard from './_components/customers-card';

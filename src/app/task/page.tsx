@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { mockTasks, Task } from '../types/task';
 import Box from '@mui/material/Box';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
@@ -10,8 +10,16 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import ReportIcon from '@mui/icons-material/Report'; // Importando o ReportIcon
 import '../../styles/task-page-style.css';
 import '../../styles/table-style.css';
+import { useHeader } from '@/context/header-context';
 
 const Customers: React.FC = () => {
+  const { setTitle, setButtonTitle } = useHeader();
+
+  useEffect(() => {
+    setTitle('Tasks');
+    setButtonTitle('Add New Task');
+  }, [setTitle, setButtonTitle]);
+
   const columnHeaders = [
     { label: 'Done', icon: <CheckBoxIcon className="checkBox" /> },
     { label: 'Due Date ' },

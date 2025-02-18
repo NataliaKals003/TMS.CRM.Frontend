@@ -1,21 +1,29 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { mockDeals, Deal } from '../types/deal';
 import Box from '@mui/material/Box';
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import SectionHeader from '@/components/section-header';
 import Image from 'next/image';
-import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import '../../styles/table-style.css';
 import { useRouter } from 'next/navigation';
+import { useHeader } from '@/context/header-context';
 
 const Deals: React.FC = () => {
+  const { setTitle, setButtonTitle } = useHeader();
+
+  useEffect(() => {
+    setTitle('Deals');
+    setButtonTitle('Add New Deal');
+  }, [setTitle, setButtonTitle]);
+
   const router = useRouter();
 
   const columnHeaders = [
-    { label: 'Profile', icon: <InsertPhotoOutlinedIcon /> },
+    { label: 'Profile', icon: <InsertPhotoIcon /> },
     { label: 'Name' },
     { label: 'Area' },
     { label: 'Appointment Date' },
