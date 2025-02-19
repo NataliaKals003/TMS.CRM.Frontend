@@ -9,7 +9,7 @@ import '../styles/modal-style.css';
 interface SelectCustomerModalProps {
   open: boolean;
   onClose: () => void;
-  onCustomerSelected: (customerId: string) => void;
+  onCustomerSelected: (customerId: number) => void;
 }
 
 const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose, onCustomerSelected }) => {
@@ -71,7 +71,8 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
                 <Box
                   key={customer.id}
                   onClick={() => {
-                    onCustomerSelected('1');
+                    onCustomerSelected(customer.id);
+                    onClose();
                   }}
                   sx={{ cursor: 'pointer' }}
                   display="flex"

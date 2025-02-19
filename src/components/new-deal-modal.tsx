@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
-import { Avatar, Box, Button, Modal, TextField, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import SelectButton from './select-button';
 import AddressForm from './address-form';
 import ModalSelectCustomer from './select-customer-modal';
 import TimeStamp from './date-picker';
 import '../styles/modal-style.css';
+import AlertSnackbar from './alert';
+import { mockCustomers, Customer } from '../app/types/customer';
+import Image from 'next/image';
 
 interface NewDealModalProps {
   open: boolean;
   onClose: () => void;
+  customerId: number | null;
 }
 
-const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose }) => {
-  const [selectedCustomersOpen, setSelectedCustomersOpen] = useState(false);
+const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, customerId: initialCustomerId }) => {
+  const [customerId, setCustomerId] = useState<number | null>(initialCustomerId);
 
+  useEffect(() => {
+    setCustomerId(initialCustomerId);
+  }, [initialCustomerId]);
+
+  const customer: Customer | undefined = mockCustomers.find((cust) => cust.id === customerId);
+
+  const [selectedCustomersOpen, setSelectedCustomersOpen] = useState(false);
   const [fileName, setFileName] = useState('');
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -29,6 +43,18 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose }) => {
     if (open) {
       onClose();
     }
+  };
+
+  const handleSave = () => {
+    onClose();
+
+    setSnackbarMessage('Customer Saved');
+    setSnackbarSeverity('saved');
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   return (
@@ -49,13 +75,19 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose }) => {
           </Box>
 
           <Box bgcolor={'#F6FAFD'} padding={'16px 32px'} display={'flex'} alignItems={'center'} gap={2}>
-            <Avatar src={'https://randomuser.me/api/portraits/women/1.jpg'} alt={'Customer'} />
+            <Image
+              src={customer?.avatar || '/placeholder-avatar.jpg'}
+              alt="Customer picture"
+              width={44}
+              height={44}
+              style={{ objectFit: 'cover', borderRadius: '50%' }}
+            />
             <Box width="100%">
               <Typography variant="body2" color="#7E92A2" fontWeight={400} lineHeight="27px">
                 {'Customer'}
               </Typography>
               <Typography variant="body1" fontWeight={700} fontSize={16} lineHeight="27px">
-                {'Deanna Annis '}
+                {customer?.name}
               </Typography>
             </Box>
             <Button
@@ -172,7 +204,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose }) => {
                   variant="contained"
                   color="primary"
                   sx={{ padding: '10px 24px', fontWeight: 500, fontSize: '14px', lineHeight: '30px', borderRadius: '70px' }}
-                  onClick={() => {}}
+                  onClick={handleSave}
                 >
                   Save Deal
                 </Button>
@@ -186,10 +218,16 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose }) => {
         onClose={() => {
           setSelectedCustomersOpen(false);
         }}
-        onCustomerSelected={(customerId: string) => {
-          console.log(customerId);
+        // onCustomerSelected={(customerId: number) => {
+        //   console.log('id: ', customerId);
+        // }}
+
+        onCustomerSelected={(selectedCustomerId: number) => {
+          console.log('id: ', selectedCustomerId);
+          setCustomerId(selectedCustomerId);
         }}
       />
+      <AlertSnackbar open={snackbarOpen} message={snackbarMessage} severity={snackbarSeverity} onClose={handleSnackbarClose} />
     </>
   );
 };

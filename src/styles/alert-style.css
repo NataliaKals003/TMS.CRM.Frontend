@@ -1,0 +1,23 @@
+.alert {
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  width: 100%;
+  gap: 12px;
+}
+
+.icon-saved {
+  color: yellow;
+}
+
+.icon-deleted {
+  color: orange;
+}
+
+.close-button {
+  color: white;
+  width: 24px;
+  height: 24px;
+}

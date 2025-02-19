@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
 import { mockCustomers, Customer } from '../../types/customer';
@@ -11,10 +11,18 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import '../../../styles/customer-page-style.css';
 import RecentDeals from '../_components/recent-deals';
+import { HeaderModalType, useHeader } from '@/context/header-context';
 
 export default function Page() {
+  const { setTitle, setButtonTitle, setModalType } = useHeader();
   const { id } = useParams();
   const customer: Customer | undefined = mockCustomers.find((cust) => cust.id.toString() === id);
+
+  useEffect(() => {
+    setTitle('Customers');
+    setButtonTitle('Add New Customer');
+    setModalType(HeaderModalType.newCustomer);
+  }, [setTitle, setButtonTitle, setModalType]);
 
   if (!customer) {
     return (

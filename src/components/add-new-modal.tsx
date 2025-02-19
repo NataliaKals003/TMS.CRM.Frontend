@@ -17,6 +17,17 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
   const [selectedCustomersOpen, setSelectedCustomersOpen] = useState(false);
   const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
   const [addNewDealOpen, setAddNewDealOpen] = useState(false);
+  const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null);
+
+  const openSelectCustomerModal = () => {
+    setSelectedCustomersOpen(true);
+    onClose();
+  };
+
+  const openAddNewCustomerModal = () => {
+    setAddNewCustomerOpen(true);
+    onClose();
+  };
 
   return (
     <>
@@ -45,7 +56,7 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
             }}
           >
             <Box
-              onClick={() => setSelectedCustomersOpen(true)}
+              onClick={openSelectCustomerModal}
               display="flex"
               alignItems="center"
               width="100%"
@@ -65,7 +76,7 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
             </Box>
 
             <Box
-              onClick={() => setAddNewCustomerOpen(true)}
+              onClick={openAddNewCustomerModal}
               display="flex"
               alignItems="center"
               width={'100%'}
@@ -89,8 +100,9 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
       <ModalSelectCustomer
         open={selectedCustomersOpen}
         onClose={() => setSelectedCustomersOpen(false)}
-        onCustomerSelected={(customerId: string) => {
-          console.log('customerId', customerId);
+        onCustomerSelected={(customerId: number) => {
+          console.log('customerId: ', customerId);
+          setSelectedCustomerId(customerId);
           setAddNewDealOpen(true);
         }}
       />
@@ -100,6 +112,7 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
         onClose={() => {
           setAddNewDealOpen(false);
         }}
+        customerId={selectedCustomerId}
       />
     </>
   );
