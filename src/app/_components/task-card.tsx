@@ -73,7 +73,7 @@ const TaskCard: React.FC = () => {
                 const hasIcon = task.id < 4;
                 return (
                   <Grid key={task.id} container sx={{ marginBottom: 3, alignContent: 'center' }}>
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid size={{ xs: 3, md: 4 }}>
                       <Typography
                         variant="body2"
                         sx={{
@@ -85,11 +85,11 @@ const TaskCard: React.FC = () => {
                       </Typography>
                     </Grid>
 
-                    <Grid size={{ xs: 12, md: 1 }}>
+                    <Grid size={{ xs: 1, md: 1 }}>
                       <Box>{hasIcon && <ReportIcon sx={{ color: '#FE8084', width: '16px', height: '16px' }} />}</Box>
                     </Grid>
 
-                    <Grid size={{ xs: 12, md: 7 }}>
+                    <Grid size={{ xs: 8, md: 7 }}>
                       <Typography variant="body2" color="#092C4C" fontWeight={400}>
                         {task.description}
                       </Typography>

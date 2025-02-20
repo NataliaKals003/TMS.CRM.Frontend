@@ -12,6 +12,7 @@ import NewCustomerModal from './new-customer-modal';
 import NewTaskModal from './new-task-modal';
 import NewDealModal from './new-deal-modal';
 import AddNewModal from './add-new-modal';
+import '../styles/header-style.css';
 
 const Header: React.FC = () => {
   const { title, buttonTitle, modalType } = useHeader();
@@ -32,7 +33,7 @@ const Header: React.FC = () => {
       case HeaderModalType.newTask:
         return <NewTaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
       case HeaderModalType.newDeal:
-        return <NewDealModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+        return <NewDealModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} customerId={null} />;
       case HeaderModalType.generalAddNew:
         return <AddNewModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
     }
@@ -47,33 +48,23 @@ const Header: React.FC = () => {
       }}
     >
       <Grid container alignItems={'center'}>
-        <Grid size={0.7} sx={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '22px' }}>
-          <Image src={logo} alt="Logo" width={46} height={46} />
+        <Grid size={{ xs: 2, sm: 1, md: 1, lg: 0.5 }} sx={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '22px' }}>
+          <Image src={logo} alt="Logo" className="logoImage" />
         </Grid>
 
-        <Grid size={7.6}>
-          <Typography variant="h6" fontSize={24} fontWeight={700} color="#092C4C" sx={{ marginRight: 2, padding: '25px 24px' }}>
-            {title}
-          </Typography>
+        <Grid size={{ xs: 0, sm: 6, md: 6, lg: 7.5 }}>
+          <Typography className="title">{title}</Typography>
         </Grid>
 
-        <Grid size={3.7} sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}>
-          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
+        <Grid
+          size={{ xs: 10, sm: 5, md: 5, lg: 4 }}
+          sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}
+        >
+          <Button className="addNew" variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
             {buttonTitle}
           </Button>
-          <Search
-            sx={{
-              width: 23,
-              height: 23,
-              color: '#7E92A2',
-              backgroundColor: '#fff',
-              borderRadius: '50px',
-              border: '1px solid #EAEEF4',
-              padding: '15px',
-              cursor: 'pointer',
-            }}
-          />
-          <Avatar src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
+          <Search className="search" />
+          <Avatar className="avatar" src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
         </Grid>
       </Grid>
       {renderModal()}

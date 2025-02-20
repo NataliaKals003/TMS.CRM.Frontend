@@ -41,6 +41,7 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
               <Button
                 onClick={() => {
                   setAddNewCustomerOpen(true);
+                  onClose();
                 }}
                 variant="text"
                 sx={{ marginRight: 1 }}

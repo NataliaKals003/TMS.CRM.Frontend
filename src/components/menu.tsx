@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -16,37 +17,46 @@ import {
   Checklist,
   ChecklistOutlined,
 } from '@mui/icons-material';
-import React from 'react';
+import '../styles/menu-style.css';
 
 const Menu: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
 
   const menuItems = [
-    { name: 'Home', path: '/', icon: <DashboardOutlined />, activeIcon: <Dashboard />, isActive: pathname === '/' },
+    { name: 'Home', path: '/', icon: <DashboardOutlined className="icon" />, activeIcon: <Dashboard className="icon" />, isActive: pathname === '/' },
     {
       name: 'Deals',
       path: '/deal',
-      icon: <BusinessCenterOutlined />,
-      activeIcon: <BusinessCenter />,
+      icon: <BusinessCenterOutlined className="icon" />,
+      activeIcon: <BusinessCenter className="icon" />,
       isActive: pathname.startsWith('/deal'),
     },
-    { name: 'Customers', path: '/customer', icon: <PeopleAltOutlined />, activeIcon: <PeopleAlt />, isActive: pathname.startsWith('/customer') },
-    { name: 'Tasks', path: '/task', icon: <ChecklistOutlined />, activeIcon: <Checklist />, isActive: pathname.startsWith('/task') },
+    {
+      name: 'Customers',
+      path: '/customer',
+      icon: <PeopleAltOutlined className="icon" />,
+      activeIcon: <PeopleAlt className="icon" />,
+      isActive: pathname.startsWith('/customer'),
+    },
+    {
+      name: 'Tasks',
+      path: '/task',
+      icon: <ChecklistOutlined className="icon" />,
+      activeIcon: <Checklist className="icon" />,
+      isActive: pathname.startsWith('/task'),
+    },
   ];
 
   return (
     <Drawer variant="permanent">
-      <List>
+      <List className="list">
         {menuItems.map(({ name, path, icon, activeIcon, isActive }) => (
-          <ListItem key={name} sx={{ mb: 1, px: 2 }}>
+          <ListItem key={name} className="listItem">
             <ListItemButton
               onClick={() => router.push(path)}
+              className="listButton"
               sx={{
-                minHeight: 48,
-                justifyContent: 'center',
-                px: 2.5,
-                borderRadius: '50px',
                 backgroundColor: isActive ? '#514EF3' : '#ffffff',
                 border: '1px solid #EAEEF4',
                 '&:hover': {
@@ -56,11 +66,9 @@ const Menu: React.FC = () => {
               aria-current={isActive ? 'page' : undefined}
             >
               <ListItemIcon
+                className="icon"
                 sx={{
-                  minWidth: 0,
-                  justifyContent: 'center',
                   color: isActive ? '#ffffff' : '#7E92A2',
-                  padding: '8px',
                 }}
               >
                 {isActive ? activeIcon : icon}

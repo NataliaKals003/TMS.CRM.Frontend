@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import TimeStamp from './date-picker';
 import '../styles/modal-style.css';
+import AlertSnackbar from './alert';
 
 interface AddNewTaskFormProps {
   open: boolean;
@@ -10,6 +11,21 @@ interface AddNewTaskFormProps {
 }
 
 const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
+
+  const handleSave = () => {
+    onClose();
+
+    setSnackbarMessage('Task Saved');
+    setSnackbarSeverity('saved');
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
   return (
     <>
       <Modal open={open}>
@@ -47,7 +63,7 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
                   variant="contained"
                   color="primary"
                   sx={{ padding: '10px 24px', fontWeight: 500, fontSize: '14px', lineHeight: '30px', borderRadius: '70px' }}
-                  onClick={() => {}}
+                  onClick={handleSave}
                 >
                   Save Task
                 </Button>
@@ -56,6 +72,7 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
           </Box>
         </Box>
       </Modal>
+      <AlertSnackbar open={snackbarOpen} message={snackbarMessage} severity={snackbarSeverity} onClose={handleSnackbarClose} />
     </>
   );
 };

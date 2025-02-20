@@ -48,7 +48,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, customerId: 
   const handleSave = () => {
     onClose();
 
-    setSnackbarMessage('Customer Saved');
+    setSnackbarMessage('Deal Saved');
     setSnackbarSeverity('saved');
     setSnackbarOpen(true);
   };
@@ -218,10 +218,6 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, customerId: 
         onClose={() => {
           setSelectedCustomersOpen(false);
         }}
-        // onCustomerSelected={(customerId: number) => {
-        //   console.log('id: ', customerId);
-        // }}
-
         onCustomerSelected={(selectedCustomerId: number) => {
           console.log('id: ', selectedCustomerId);
           setCustomerId(selectedCustomerId);

@@ -1,0 +1,107 @@
+.card {
+  background-color: #514ef3;
+  color: white;
+  position: relative;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.headerCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 24px;
+}
+
+.titleCard {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.addressCard {
+  display: flex;
+  align-items: center;
+}
+
+.appointmentCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.roomPeopleCard {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.footerCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26px;
+}
+
+.titleBody {
+  color: #d6e1e6;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.textBody {
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.seeDetail {
+  padding: 10px 32px;
+  background-color: #fff;
+  margin-left: 10px;
+}
+
+@media (max-width: 1024px) {
+  .titleCard {
+    font-size: 16px;
+  }
+
+  .seeDetail {
+    font-size: 14px;
+    padding: 10px 20px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .dote {
+    display: none;
+  }
+
+  .seeDetail {
+    margin-left: 0;
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .headerCard {
+    flex-direction: column;
+  }
+
+  .roomPeopleCard {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+    align-items: flex-start;
+  }
+
+  .footerCard {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+  }
+}

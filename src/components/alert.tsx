@@ -16,7 +16,7 @@ const AlertSnackbar: React.FC<AlertSnackbarProps> = ({ open, message, severity, 
   const Icon = severity === 'saved' ? CelebrationIcon : WhatshotIcon;
 
   return (
-    <Snackbar open={open} autoHideDuration={3000} onClose={onClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+    <Snackbar className="snackBar" open={open} autoHideDuration={3000} onClose={onClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
       <Alert
         className="alert"
         onClose={onClose}
