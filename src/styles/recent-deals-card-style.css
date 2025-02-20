@@ -1,0 +1,74 @@
+.cardRecentDeals {
+  background-color: #ffffff;
+  color: #092c4c;
+  position: relative;
+  border: 1px solid #eaeef4;
+  box-shadow: none;
+  border-radius: 12px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.titleCard {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.textButton:hover {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.bodyText {
+  margin-left: 14px;
+  font-size: 14px;
+}
+
+.bodyTextBold {
+  color: #092c4c;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.bodyTextBottom {
+  color: #7e92a2;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.bodyText:nth-of-type(2) {
+  text-align: right;
+}
+
+.dealBody {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.detailsBody {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width: 425px) {
+  .dealBody {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .detailsBody {
+    flex-direction: column;
+  }
+
+  .bodyText {
+    margin-left: 0;
+  }
+
+  .bodyText:nth-of-type(2) {
+    text-align: start;
+  }
+}
