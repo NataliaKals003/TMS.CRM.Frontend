@@ -8,6 +8,7 @@ import AddNewTask from '../../components/new-task-modal';
 import { mockTasks, Task } from '../types/task';
 import { useRouter } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
+import '../../styles/task-card-style.css';
 
 const TaskCard: React.FC = () => {
   const router = useRouter();
@@ -20,30 +21,11 @@ const TaskCard: React.FC = () => {
 
   return (
     <>
-      <Container style={{ paddingTop: '24px', backgroundColor: '#EEF6FB', flex: 1 }}>
-        <Card
-          sx={{
-            backgroundColor: '#F6FAFD',
-            border: '1px solid #EAEEF4',
-            color: '#092C4C',
-            boxShadow: 'none',
-            borderRadius: '12px',
-            display: 'flex',
-            flexDirection: 'column',
-            height: 'auto',
-            cursor: 'pointer',
-          }}
-        >
-          <CardContent
-            sx={{
-              backgroundColor: '#F6FAFD',
-              padding: '24px 24px 0',
-            }}
-          >
-            <Box display="flex" justifyContent="space-between" alignItems="center" marginBottom={3}>
-              <Typography variant="h5" component="div" sx={{ fontWeight: 700, fontSize: 18 }}>
-                Task To Do
-              </Typography>
+      <Container className="containerTask">
+        <Card className="taskCard">
+          <CardContent className="cardContentTask">
+            <Box className="headerTaskCard">
+              <Typography className="titleHeaderTaskCard">Task To Do</Typography>
               <Button
                 onClick={handleTaskClick}
                 variant="text"
@@ -73,7 +55,7 @@ const TaskCard: React.FC = () => {
                 const hasIcon = task.id < 4;
                 return (
                   <Grid key={task.id} container sx={{ marginBottom: 3, alignContent: 'center' }}>
-                    <Grid size={{ xs: 3, md: 4 }}>
+                    <Grid size={{ xs: 12, sm: 3, md: 2, lg: 4 }}>
                       <Typography
                         variant="body2"
                         sx={{
@@ -85,11 +67,11 @@ const TaskCard: React.FC = () => {
                       </Typography>
                     </Grid>
 
-                    <Grid size={{ xs: 1, md: 1 }}>
+                    <Grid size={{ xs: 12, sm: 1, md: 1, lg: 1 }}>
                       <Box>{hasIcon && <ReportIcon sx={{ color: '#FE8084', width: '16px', height: '16px' }} />}</Box>
                     </Grid>
 
-                    <Grid size={{ xs: 8, md: 7 }}>
+                    <Grid size={{ xs: 12, sm: 8, md: 9, lg: 7 }}>
                       <Typography variant="body2" color="#092C4C" fontWeight={400}>
                         {task.description}
                       </Typography>
@@ -100,21 +82,9 @@ const TaskCard: React.FC = () => {
             </Box>
           </CardContent>
 
-          <Box
-            onClick={() => setAddNewTaskOpen(true)}
-            display={'flex'}
-            alignItems={'center'}
-            justifyContent={'space-between'}
-            borderTop={'1px solid #EAEEF4'}
-            padding={'16px 24px'}
-            sx={{
-              backgroundColor: '#FFFFFF',
-              marginTop: 3,
-              cursor: 'pointer',
-            }}
-          >
-            <Button sx={{ color: '#7E92A2', fontSize: '16px', fontWeight: 400 }}>Add new task</Button>
-            <ArrowForwardOutlinedIcon sx={{ color: '#514EF3', width: 24, height: 24, cursor: 'pointer' }} />
+          <Box onClick={() => setAddNewTaskOpen(true)} className="addNewTaskBox">
+            <Button className="addNewTaskButton">Add new task</Button>
+            <ArrowForwardOutlinedIcon className="arrowTaskCard" />
           </Box>
         </Card>
       </Container>

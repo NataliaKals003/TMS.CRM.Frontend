@@ -1,0 +1,73 @@
+.containerTask {
+  background-color: #eef6fb;
+  padding: 24px;
+  flex: 1;
+}
+
+.cardContentTask {
+  background-color: #f6fafd;
+  padding: 24px 24px 0;
+}
+
+.taskCard {
+  background-color: #f6fafd;
+  border: 1px solid #eaeef4;
+  color: #092c4c;
+  box-shadow: none;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.headerTaskCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.titleHeaderTaskCard {
+  font-weight: 700;
+  font-size: 18;
+  line-height: 30px;
+}
+
+.addNewTaskBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eaeef4;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.addNewTaskButton {
+  color: #7e92a2;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.arrowTaskCard {
+  color: #514ef3;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 320px) {
+  .addNewTaskBox {
+    padding: 10px 0;
+  }
+
+  .arrowTaskCard {
+    width: 20x;
+    height: 20px;
+  }
+
+  .addNewTaskButton {
+    width: 100%;
+    font-size: 14px;
+  }
+}
