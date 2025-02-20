@@ -1,0 +1,140 @@
+.recentCard {
+  flex: 1;
+  background-color: #ffffff;
+  color: #092c4c;
+  position: relative;
+  border: 1px solid #eaeef4;
+  box-shadow: none;
+  border-radius: 12px;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eaeef4;
+}
+
+.dealProfile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.headerButton {
+  padding: 10px 16px;
+  width: 100%;
+  background-color: #ececfe;
+  color: #514ef3;
+  text-transform: uppercase;
+}
+
+.inProgressButton {
+  display: flex;
+  align-items: center;
+}
+
+.arrowIcon {
+  color: #514ef3;
+  width: 20px;
+  height: 20px;
+  margin-left: 14px;
+}
+
+.activities {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.buttonIcon {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: 2px solid #514ef3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insideButtonIcon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.activityDate {
+  color: #7e92a2;
+  font-size: 14px;
+  font-weight: 400;
+}
+.activityDetails {
+  color: #092c4c;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footerButton:hover {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+@media (max-width: 426px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .arrowIcon {
+    display: none;
+  }
+
+  .headerButton {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .inProgressButton {
+    width: 100%;
+  }
+
+  .dealDetails {
+    font-size: 14px;
+  }
+
+  .buttonIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .insideButtonIcon {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 320px) {
+  .headerButton {
+    font-size: 12px;
+  }
+
+  .dealDetails {
+    font-size: 13px;
+  }
+
+  .activityDate {
+    font-size: 13px;
+  }
+
+  .activityDetails {
+    font-size: 13px;
+  }
+
+  .footerButton {
+    font-size: 13px;
+  }
+}
