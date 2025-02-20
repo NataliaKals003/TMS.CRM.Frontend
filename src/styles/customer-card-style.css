@@ -1,0 +1,72 @@
+.customerCard {
+  background-color: #eef6fb;
+  color: #092c4c;
+  box-shadow: none;
+  border-radius: 12px;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+.headerCustomerCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.titleHeader {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.customer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-right: 8px;
+}
+
+.customerName {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.customerEmail {
+  color: #7e92a2;
+  font-weight: 400;
+  line-height: 27px;
+  font-size: 14px;
+}
+
+@media (max-width: 426px) {
+  .titleHeader {
+    font-size: 17px;
+    align-self: flex-start;
+  }
+  .editIcon {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .headerCustomerCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .titleHeader {
+    font-size: 16px;
+    align-self: flex-start;
+  }
+
+  .textButtonCounter {
+    font-size: 13px;
+  }
+
+  .customer {
+    flex-direction: column;
+    align-self: flex-start;
+  }
+}

@@ -12,9 +12,9 @@ interface CounterCardProps {
 const CounterCard: React.FC<CounterCardProps> = ({ title, count, iconCounter }) => {
   return (
     <Card className="cardCounter">
-      <Box>
+      <Box className="content">
         <Typography className="titleCounter">{title}</Typography>
-        <Typography className="bodyText">{count}</Typography>
+        <Typography className="bodyTextCount">{count}</Typography>
       </Box>
       <Image className="imageCounter" src={iconCounter} alt="Deals" width={80} height={80} style={{ borderRadius: '50%', marginTop: 20 }} />
     </Card>

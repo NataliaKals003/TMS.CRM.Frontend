@@ -5,6 +5,7 @@ import { Card, CardContent, Typography, Box, Avatar, Button } from '@mui/materia
 import { mockCustomers, Customer } from '../types/customer';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import { useRouter } from 'next/navigation';
+import '../../styles/customer-card-style.css';
 
 const EditIcon = <BorderColorOutlinedIcon style={{ color: '#7E92A2', height: '23px', width: '23px' }} />;
 
@@ -16,24 +17,12 @@ const CustomersCard = () => {
   };
 
   return (
-    <Card
-      sx={{
-        padding: 2,
-        backgroundColor: '#EEF6FB',
-        color: '#092C4C',
-        boxShadow: 'none',
-        borderRadius: 'none',
-        border: 'none',
-        margin: '0',
-        cursor: 'pointer',
-      }}
-    >
+    <Card className="customerCard">
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" marginBottom={3}>
-          <Typography variant="h5" component="div" style={{ fontWeight: 700, fontSize: 18 }}>
-            Customers
-          </Typography>
+        <Box className="headerCustomerCard">
+          <Typography className="titleHeader">Customers</Typography>
           <Button
+            className="textButtonCounter"
             onClick={handleCustomerClick}
             variant="text"
             color="primary"
@@ -50,25 +39,15 @@ const CustomersCard = () => {
 
         <Box>
           {mockCustomers.slice(0, 3).map((customer: Customer) => (
-            <Box
-              onClick={() => router.push(`customer/${customer.id}`)}
-              key={customer.id}
-              display="flex"
-              alignItems="center"
-              gap={2}
-              marginBottom={2}
-              paddingRight="8px"
-            >
+            <Box onClick={() => router.push(`customer/${customer.id}`)} key={customer.id} className="customer">
               <Avatar src={customer.avatar} alt={customer.name} />
               <Box width="100%">
-                <Typography variant="body1" style={{ fontWeight: 700, fontSize: 16 }}>
-                  {customer.name}
-                </Typography>
-                <Typography variant="body2" style={{ color: '#7E92A2', fontWeight: 400, lineHeight: '27px' }}>
-                  {customer.email}
-                </Typography>
+                <Typography className="customerName">{customer.name}</Typography>
+                <Typography className="customerEmail">{customer.email}</Typography>
               </Box>
-              <Box marginLeft={1}>{EditIcon}</Box>
+              <Box className="editIcon" marginLeft={1}>
+                {EditIcon}
+              </Box>
             </Box>
           ))}
         </Box>

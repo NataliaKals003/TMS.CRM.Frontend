@@ -11,13 +11,18 @@
   cursor: pointer;
 }
 
+.content {
+  place-items: flex-start;
+  margin-left: 0;
+}
+
 .titleCounter {
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-.bodyText {
+.bodyTextCount {
   color: #092c4c;
   font-weight: 600;
   font-size: 48px;
