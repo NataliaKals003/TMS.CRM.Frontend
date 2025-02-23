@@ -51,7 +51,7 @@ const ActivityLogCard: React.FC = () => {
               </IconButton>
             </Grid>
 
-            <Grid size={{ xs: 11, sm: 11, md: 11, lg: 11 }}>
+            <Grid className="logContent" size={{ xs: 11, sm: 11, md: 11, lg: 11 }}>
               <Typography variant="body2" color="#7E92A2" fontWeight={400}>
                 {activity.date}
               </Typography>

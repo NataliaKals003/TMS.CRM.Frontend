@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { mockDeals, Deal } from '../../types/deal';
-import { CardContent, Typography, Box, Button } from '@mui/material';
+import { CardContent, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import AddIcon from '@mui/icons-material/Add';
 import '../../../styles/customer-page-style.css';
 import { useRouter } from 'next/navigation';
+import Grid from '@mui/material/Grid2';
 
 const RecentDeals = () => {
   const router = useRouter();
@@ -21,39 +22,48 @@ const RecentDeals = () => {
 
   return (
     <CardContent className="card">
-      <Box display={'flex'} justifyContent="space-between" marginBottom={3}>
-        <Typography variant="h5" component="div" style={{ fontWeight: 700, fontSize: 18, marginTop: '24px' }}>
-          Recent Deals
-        </Typography>
-        <Button variant="contained" sx={{ padding: '10px', marginTop: '19px' }} onClick={() => {}}>
-          {<AddIcon sx={{ width: '20px', height: '20px' }} />}
-        </Button>
-      </Box>
+      <Grid container justifyContent="space-between" alignItems="center" marginBottom={3}>
+        <Grid size={{ xs: 11, md: 11 }}>
+          <Typography variant="h5" component="div" style={{ fontWeight: 700, fontSize: 18 }}>
+            Recent Deals
+          </Typography>
+        </Grid>
+        <Grid size={{ xs: 1, md: 1 }}>
+          <Button variant="contained" className="buttonAdd" onClick={() => {}}>
+            <AddIcon className="addIcon" sx={{ width: '20px', height: '20px' }} />
+          </Button>
+        </Grid>
+      </Grid>
 
       {mockDeals.slice(0, 3).map((deal: Deal) => (
-        <Box onClick={() => handleDealIdClick(`${deal.id}`)} key={deal.id} display={'flex'} marginBottom={'22px'}>
-          <Image src={deal.dealPicture} alt="Deal" width={44} height={44} style={{ borderRadius: '50%' }} />
+        <Grid container key={deal.id} className="containerDeal" alignItems="center" onClick={() => handleDealIdClick(`${deal.id}`)}>
+          <Grid size={{ xs: 12, sm: 1, md: 2, lg: 1.5 }}>
+            <Image src={deal.dealPicture} alt="Deal" width={44} height={44} style={{ borderRadius: '50%' }} />
+          </Grid>
 
-          <Box display={'flex'} flexDirection={'column'} justifyContent={'flex-start'} width={'100%'}>
-            <Box marginLeft={'16px'} fontSize={14}>
-              <Typography className="typographyDealAddress">
-                {deal.street}, {deal.city}, {deal.state}
-              </Typography>
-            </Box>
+          <Grid size={{ xs: 12, sm: 11, md: 10, lg: 10.5 }}>
+            <Grid container direction="column">
+              <Grid size={{ xs: 11, md: 12 }} className="dealAddress">
+                <Typography className="typographyDealAddress">
+                  {deal.street}, {deal.city}, {deal.state}
+                </Typography>
+              </Grid>
 
-            <Box display={'flex'} alignItems={'center'} marginLeft={'16px'} fontSize={14} width={'100%'}>
-              <Typography className="typographyDealInfo">{deal.appointmentDate}</Typography>
-              <Typography className="doteTypographyDealInfo">•</Typography>
-              <Typography className="typographyDealInfo">$ {deal.price}</Typography>
-            </Box>
-          </Box>
-        </Box>
+              <Grid size={{ xs: 11, md: 12 }} className="dealDetails" alignItems="center">
+                <Typography className="typographyDealInfo">{deal.appointmentDate}</Typography>
+                <Typography className="doteTypographyDealInfo">•</Typography>
+                <Typography className="typographyDealInfo">$ {deal.price}</Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       ))}
-      <Box display="flex" justifyContent="center">
+
+      <Grid container className="recentDealsTextButton">
         <Button onClick={handleDealClick} variant="text">
           Load More
         </Button>
-      </Box>
+      </Grid>
     </CardContent>
   );
 };

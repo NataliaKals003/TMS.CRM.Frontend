@@ -1,6 +1,10 @@
 @media (max-width: 447px) {
   .logImage {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .logContent {
+    margin: 0 24px;
   }
 }

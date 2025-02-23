@@ -1,5 +1,6 @@
 .textField .MuiOutlinedInput-input {
   color: #7e92a2;
+  border-radius: 8px;
   background-color: #eef6fb;
   border: 1px solid #eaeef4;
 }
@@ -10,6 +11,10 @@
   font-size: 16;
   line-height: 30px;
   color: #092c4c;
+}
+
+.customerContainer {
+  margin-right: 24px;
 }
 
 .editButton {
@@ -46,6 +51,22 @@
   size: 100%;
 }
 
+@media (max-width: 426px) {
+  .customerContainer {
+    margin-right: 0;
+  }
+
+  .editButton {
+    right: 0;
+  }
+
+  .deleteButton {
+    top: 0;
+    right: 0;
+    margin-right: 10px;
+  }
+}
+
 /* customer-recent-deals */
 
 .card {
@@ -65,17 +86,78 @@
 
 .typographyDealInfo {
   color: #7e92a2;
-  width: max-content;
   font-size: 14px;
   font-weight: 400;
   line-height: 27px;
 }
 
+.containerDeal {
+  display: flex;
+  margin-bottom: 22px;
+}
+
+.buttonAdd {
+  padding: 8px;
+}
+
+.dealAddress {
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.dealDetails {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
 .doteTypographyDealInfo {
   color: #7e92a2;
-  width: max-content;
   font-size: 14px;
   font-weight: 400;
   line-height: 27px;
   margin: 0 12px;
+}
+
+.recentDealsTextButton {
+  justify-content: center;
+}
+
+@media (max-width: 426px) {
+  .card {
+    margin: 0 16px;
+  }
+
+  .containerDeal {
+    flex-direction: column;
+  }
+
+  .dealAddress {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .dealDetails {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doteTypographyDealInfo {
+    display: none;
+  }
+
+  .buttonAdd {
+    padding: 8px;
+  }
+
+  .addIcon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .recentDealsTextButton {
+    justify-content: left;
+  }
 }
