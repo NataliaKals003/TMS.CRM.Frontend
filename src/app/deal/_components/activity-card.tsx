@@ -38,7 +38,6 @@ const RecordActivityCard: React.FC = () => {
             bgcolor: '#ffff',
             borderRadius: '12px',
             border: '1px solid #EAEEF4',
-            marginLeft: '24px',
             marginBottom: '24px',
           }}
         >
@@ -69,7 +68,6 @@ const RecordActivityCard: React.FC = () => {
                   variant="contained"
                   component="span"
                   sx={{
-                    width: '100%',
                     padding: '10px 20px',
                     background: (theme) => theme.palette.background.default,
                     color: '#7E92A2',

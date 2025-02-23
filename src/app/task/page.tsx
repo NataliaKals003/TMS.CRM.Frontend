@@ -2,15 +2,15 @@
 
 import React, { useEffect } from 'react';
 import { mockTasks, Task } from '../types/task';
-import Box from '@mui/material/Box';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import SectionHeader from '@/components/section-header';
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
+import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import ReportIcon from '@mui/icons-material/Report';
 import '../../styles/task-page-style.css';
 import '../../styles/table-style.css';
 import { HeaderModalType, useHeader } from '@/context/header-context';
+import Grid from '@mui/material/Grid2';
 
 const Customers: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
@@ -60,53 +60,56 @@ const Customers: React.FC = () => {
 
   return (
     <main>
-      <Box>
-        <SectionHeader title="tasks" counter={23} sortByValue={['Date Created', 'Alphabetic']} filterOptions={['Due Date', 'Task', 'Done']} />
-
-        <TableContainer component={Box} sx={{ width: '100%' }}>
-          <Table sx={{ width: '100%' }}>
-            <TableHead>
-              <TableRow className="tableRow">
-                {columnHeaders.map((header, index) => (
-                  <TableCell
-                    key={index}
-                    className="tableHead"
-                    sx={{
-                      textAlign: header.isRightAligned ? 'right' : 'left',
-                    }}
-                  >
-                    {header.icon || header.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {mockTasks.map((task: Task) => (
-                <TableRow className="tableRow" key={task.id} sx={{ cursor: 'pointer' }}>
-                  <TableCell>
-                    <Typography variant="body2">
-                      {getDateIcon(task.dueDate)}
-                      {task.done}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="body2">{task.dueDate}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="body2">{task.description}</Typography>
-                  </TableCell>
-
-                  <TableCell sx={{ textAlign: 'right' }}>
-                    <Typography variant="body2">
-                      <BorderColorOutlinedIcon className="tableCell" sx={{ width: '24px', height: '24px', cursor: 'pointer' }} />
-                    </Typography>
-                  </TableCell>
+      <Grid container>
+        <Grid size={{ xs: 12, md: 12 }}>
+          <SectionHeader title="Deals" counter={23} sortByValue={['Date Created', 'Alphabetic']} filterOptions={['Area', 'Price', 'Status']} />
+        </Grid>
+        <Grid size={{ xs: 12, md: 12 }}>
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow className="tableRow">
+                  {columnHeaders.map((header, index) => (
+                    <TableCell
+                      key={index}
+                      className="tableHead"
+                      sx={{
+                        textAlign: header.isRightAligned ? 'right' : 'left',
+                      }}
+                    >
+                      {header.icon || header.label}
+                    </TableCell>
+                  ))}
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
+              </TableHead>
+              <TableBody>
+                {mockTasks.map((task: Task) => (
+                  <TableRow className="tableRow" key={task.id} sx={{ cursor: 'pointer' }}>
+                    <TableCell>
+                      <Typography className="textBody">
+                        {getDateIcon(task.dueDate)}
+                        {task.done}
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography className="textBody">{task.dueDate}</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography className="textBody">{task.description}</Typography>
+                    </TableCell>
+
+                    <TableCell className="iconCell">
+                      <Typography variant="body2" sx={{ textAlign: 'right' }}>
+                        <DriveFileRenameOutlineOutlinedIcon className="tableCell" />
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+      </Grid>
     </main>
   );
 };

@@ -8,7 +8,7 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import bgCover from '../../../assets/Cover.jpg';
 import Image from 'next/image';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
+import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import '../../../styles/customer-page-style.css';
 import RecentDeals from '../_components/recent-deals';
 import { HeaderModalType, useHeader } from '@/context/header-context';
@@ -60,7 +60,7 @@ export default function Page() {
                 </Box>
 
                 <Button className="editButton">
-                  <BorderColorOutlinedIcon sx={{ width: '20px', height: '20px' }} />
+                  <DriveFileRenameOutlineOutlinedIcon sx={{ width: '20px', height: '20px' }} />
                 </Button>
               </Box>
 

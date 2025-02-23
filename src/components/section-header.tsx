@@ -4,6 +4,7 @@ import React from 'react';
 import { Box, Typography, Button, Menu, MenuItem } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import '../styles/section-header-style.css';
 
 interface SectionHeaderProps {
   title: string;
@@ -37,15 +38,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, counter, sortByVal
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center" padding="10px 0 18px 0" bgcolor="#f8f9fa">
-      <Typography variant="h5" marginBottom={0} fontWeight={700} fontSize={16} color={'#092C4C'}>{`Total: ${counter} ${title}`}</Typography>
+    <Box className="sectionHeaderContainer">
+      <Typography className="titleSectionHeader">{`Total: ${counter} ${title}`}</Typography>
 
-      <Box display="flex" alignItems="center" gap="16px">
+      <Box className="filters" display="flex" alignItems="center" gap="16px">
         <Button
           variant="outlined"
           onClick={handleMenuOpen}
           endIcon={<KeyboardArrowDownIcon sx={{ width: '24px', height: '24px', color: '#7E92A2' }} />}
-          sx={{ textTransform: 'none', bgcolor: '#FFFFFF', color: '#092C4C', border: '1px solid #EAEEF4', padding: '10px 24px', lineHeight: '30px' }}
+          className="filterButton"
         >
           Sort By: {selectedValue}
         </Button>
@@ -58,17 +59,10 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, counter, sortByVal
         </Menu>
 
         <Button
+          className="filterButton"
           variant="outlined"
           onClick={handleFilterMenuOpen}
           startIcon={<FilterAltOutlinedIcon sx={{ width: '24px', height: '24px', color: '#7E92A2' }} />}
-          sx={{
-            textTransform: 'none',
-            bgcolor: '#FFFFFF',
-            color: '#092C4C',
-            border: '1px solid #EAEEF4',
-            padding: '10px 24px',
-            lineHeight: '30px',
-          }}
         >
           Filter
         </Button>

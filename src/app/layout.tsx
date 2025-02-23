@@ -37,7 +37,18 @@ export default function RootLayout({
                   }}
                 >
                   <Menu />
-                  <Box sx={{ padding: ' 24px' }}>{children}</Box>
+                  <Box
+                    sx={{
+                      padding: {
+                        xs: '12px',
+                        sm: '16px',
+                        md: '20px',
+                        lg: '24px',
+                      },
+                    }}
+                  >
+                    {children}
+                  </Box>
                 </Box>
               </Box>
             </body>

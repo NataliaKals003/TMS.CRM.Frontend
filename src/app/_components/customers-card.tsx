@@ -3,11 +3,11 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box, Avatar, Button } from '@mui/material';
 import { mockCustomers, Customer } from '../types/customer';
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
+import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import { useRouter } from 'next/navigation';
 import '../../styles/customer-card-style.css';
 
-const EditIcon = <BorderColorOutlinedIcon style={{ color: '#7E92A2', height: '23px', width: '23px' }} />;
+const EditIcon = <DriveFileRenameOutlineOutlinedIcon style={{ color: '#7E92A2', height: '23px', width: '23px' }} />;
 
 const CustomersCard = () => {
   const router = useRouter();

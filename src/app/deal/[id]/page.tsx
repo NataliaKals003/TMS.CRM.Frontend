@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid2';
 import { mockCustomers, Customer } from '../../types/customer';
 import { mockDeals, Deal } from '../../types/deal';
 import { Avatar, Box, Button, Typography } from '@mui/material';
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
+import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Image from 'next/image';
 import '../../../styles/deal-page-style.css';
@@ -74,26 +74,29 @@ export default function Page() {
 
   return (
     <>
-      <Grid container padding={0}>
-        <Grid size={{ xs: 12, md: 8.5 }}>
+      <Grid container spacing={3}>
+        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 8 }}>
           <Grid container>
-            <Grid size={{ xs: 12, md: 12 }} paddingBottom={'24px'} display={'flex'} alignItems={'center'} gap={2}>
-              <Avatar src={customer.avatar} alt={customer.name} sx={{ height: '44px', width: '44px' }} />
-              <Box display={'flex'} alignItems={'center'} width="100%">
-                <Box display={'flex'} flexDirection={'column'} flex={1}>
+            <Grid className="customerDetails" size={{ xs: 12, md: 12 }} paddingBottom={'24px'} gap={2} alignItems={'center'}>
+              <Grid container spacing={3}>
+                <Grid size={{ xs: 12, sm: 12, md: 1, lg: 1 }}>
+                  <Avatar src={customer.avatar} alt={customer.name} sx={{ height: '44px', width: '44px', marginTop: '8px' }} />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 12, md: 3, lg: 3 }}>
                   <Typography className="titleTypography">Customer</Typography>
                   <Typography className="Typography">{customer.name}</Typography>
-                </Box>
-                <Box display={'flex'} flexDirection={'column'} flex={1}>
+                </Grid>
+                <Grid size={{ xs: 12, sm: 12, md: 5, lg: 5 }}>
                   <Typography className="titleTypography">Email</Typography>
                   <Typography className="Typography">{customer.email}</Typography>
-                </Box>
-                <Box display={'flex'} flexDirection={'column'} flex={1}>
+                </Grid>
+                <Grid size={{ xs: 12, sm: 12, md: 3, lg: 3 }}>
                   <Typography className="titleTypography">Phone</Typography>
                   <Typography className="Typography">{customer.phone}</Typography>
-                </Box>
-              </Box>
+                </Grid>
+              </Grid>
             </Grid>
+
             <Grid size={{ xs: 12, md: 12 }} sx={{ marginLeft: '-24px' }}>
               <Box
                 sx={{
@@ -125,7 +128,7 @@ export default function Page() {
                       marginRight: '20px',
                     }}
                   >
-                    <BorderColorOutlinedIcon sx={{ width: '23px', height: '23px', padding: '15px' }} />
+                    <DriveFileRenameOutlineOutlinedIcon sx={{ width: '23px', height: '23px', padding: '15px' }} />
                   </Button>
                   <Button
                     sx={{
@@ -144,7 +147,7 @@ export default function Page() {
 
             <Grid size={{ xs: 12, md: 12 }}>
               <Grid container width={'100%'}>
-                <Grid size={{ xs: 12, md: 8 }}>
+                <Grid size={{ xs: 12, md: 7 }}>
                   <Box display={'flex'} marginBottom={'40px'}>
                     <Box display={'flex'} flexDirection={'column'} flex={1}>
                       <Typography className="titleTypography">Progress</Typography>
@@ -184,15 +187,15 @@ export default function Page() {
                     </Box>
                   </Box>
                 </Grid>
-                <Grid size={{ xs: 12, md: 4 }}>
-                  <Image src={deal.dealPicture} alt="Deal" width={320} height={320} style={{ borderRadius: '12%' }} />
+                <Grid size={{ xs: 12, md: 5 }} padding={'25px 24px 24px 0'}>
+                  <Image className="dealImage" src={deal.dealPicture} alt="Deal" width={320} height={320} style={{ borderRadius: '12%' }} />
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
 
-        <Grid size={{ xs: 12, md: 3.5 }}>
+        <Grid size={{ xs: 12, md: 12, lg: 4 }}>
           <RecordActivityCard />
           <ActivityLogCard />
         </Grid>

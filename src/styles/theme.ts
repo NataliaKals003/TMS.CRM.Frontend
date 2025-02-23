@@ -166,6 +166,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiGrid: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+        },
+      },
+    },
   },
 });
 
