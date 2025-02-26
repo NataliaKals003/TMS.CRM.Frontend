@@ -6,17 +6,20 @@ import Grid from '@mui/material/Grid2';
 import { Search } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
-import logo from '../assets/logo.jpg';
+import logo from '../../assets/logo.jpg';
 import { HeaderModalType, useHeader } from '@/context/header-context';
-import NewCustomerModal from './new-customer-modal';
-import NewTaskModal from './new-task-modal';
-import NewDealModal from './new-deal-modal';
-import AddNewModal from './add-new-modal';
-import '../styles/header-style.css';
+import NewCustomerModal from '../new-customer-modal/new-customer-modal';
+import NewTaskModal from '../new-task-modal';
+import NewDealModal from '../new-deal-modal';
+import AddNewModal from '../add-new-modal';
+import './header-style.css';
+import SelectCustomerModal from '../select-customer-modal';
 
 const Header: React.FC = () => {
   const { title, buttonTitle, modalType } = useHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [addNewDealOpen, setAddNewDealOpen] = useState(false);
+  const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null);
 
   const [opacity, setOpacity] = useState(1);
 
@@ -33,7 +36,32 @@ const Header: React.FC = () => {
       case HeaderModalType.newTask:
         return <NewTaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
       case HeaderModalType.newDeal:
-        return <NewDealModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} customerId={null} />;
+        return (
+          <>
+            <SelectCustomerModal
+              open={!!isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              onCustomerSelected={(customerId) => {
+                setSelectedCustomerId(customerId);
+                setIsModalOpen(false);
+                setAddNewDealOpen(true);
+              }}
+            />
+            {selectedCustomerId && (
+              <NewDealModal
+                open={addNewDealOpen}
+                onClose={() => {
+                  setAddNewDealOpen(false);
+                }}
+                onChangeCustomerRequested={() => {
+                  setAddNewDealOpen(false);
+                  setIsModalOpen(true);
+                }}
+                customerId={selectedCustomerId}
+              />
+            )}
+          </>
+        );
       case HeaderModalType.generalAddNew:
         return <AddNewModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
     }

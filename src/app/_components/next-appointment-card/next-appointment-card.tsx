@@ -2,12 +2,12 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Dote from '../../assets/dote.png';
-import Background from '../../assets/background.png';
+import Dote from '../../../assets/dote.png';
+import Background from '../../../assets/background.png';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { mockNextAppointment } from '../types/next-appointment';
-import '../../styles/next-appointment-card-style.css';
+import { mockNextAppointment } from '../../types/next-appointment';
+import './next-appointment-card-style.css';
 
 const NextAppointmentCard: React.FC = () => {
   const router = useRouter();

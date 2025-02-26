@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import TimeStamp from '../../../components/date-picker';
 import '../../../styles/modal-style.css';
-import AlertSnackbar from '@/components/alert';
+import AlertSnackbar from '@/components/alert/alert';
 
 const RecordActivityCard: React.FC = () => {
   const [fileName, setFileName] = useState('');

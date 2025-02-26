@@ -8,10 +8,10 @@ import { Avatar, Box, Button, Typography } from '@mui/material';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Image from 'next/image';
-import '../../../styles/deal-page-style.css';
+import '../deal-page-style.css';
 import RecordActivityCard from '../_components/activity-card';
-import ActivityLogCard from '../_components/activity-log-card';
-import AlertSnackbar from '@/components/alert';
+import ActivityLogCard from '../_components/activity-log-card/activity-log-card';
+import AlertSnackbar from '@/components/alert/alert';
 import { useParams } from 'next/navigation';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { Box, Typography, Button, Menu, MenuItem } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
-import '../styles/section-header-style.css';
+import './section-header-style.css';
 
 interface SectionHeaderProps {
   title: string;

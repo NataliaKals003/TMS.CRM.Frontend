@@ -17,7 +17,7 @@ import {
   Checklist,
   ChecklistOutlined,
 } from '@mui/icons-material';
-import '../styles/menu-style.css';
+import './menu-style.css';
 
 const Menu: React.FC = () => {
   const pathname = usePathname();

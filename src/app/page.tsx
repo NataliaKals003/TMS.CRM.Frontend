@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import NextAppointmentCard from './_components/next-appointment-card';
-import RecentDealsCard from './_components/recent-deals-card';
-import CustomersCard from './_components/customers-card';
+import NextAppointmentCard from './_components/next-appointment-card/next-appointment-card';
+import RecentDealsCard from './_components/recent-deals-card/recent-deals-card';
+import CustomersCard from './_components/customer-card/customers-card';
 import Grid from '@mui/material/Grid2';
-import CounterCard from '@/app/_components/counter-card';
+import CounterCard from '@/app/_components/counter-card/counter-card';
 import IconCustomers from '../assets/icon-customer.png';
 import IconDeals from '../assets/icon-deals.png';
-import DealProgressCard from '@/app/_components/deal-progress-card';
-import TaskCard from '@/app/_components/task-card';
+import DealProgressCard from '@/app/_components/deal-progress-card/deal-progress-card';
+import TaskCard from '@/app/_components/task-card/task-card';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 
 const Home: React.FC = () => {

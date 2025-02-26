@@ -3,8 +3,8 @@
 import { ThemeProvider, Box } from '@mui/material';
 import React from 'react';
 import theme from '../styles/theme';
-import Header from '@/components/header';
-import Menu from '@/components/menu';
+import Header from '../components/header/header';
+import Menu from '../components/menu/menu';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { HeaderProvider } from '@/context/header-context';

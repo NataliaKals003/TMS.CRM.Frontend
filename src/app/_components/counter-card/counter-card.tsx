@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Typography, Box } from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
-import '../../styles/counter-card-style.css';
+import './counter-card-style.css';
 
 interface CounterCardProps {
   title: string;

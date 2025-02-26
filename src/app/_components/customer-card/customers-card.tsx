@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { Card, CardContent, Typography, Box, Avatar, Button } from '@mui/material';
-import { mockCustomers, Customer } from '../types/customer';
+import { mockCustomers, Customer } from '../../types/customer';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import { useRouter } from 'next/navigation';
-import '../../styles/customer-card-style.css';
+import './customer-card-style.css';
 
-const EditIcon = <DriveFileRenameOutlineOutlinedIcon style={{ color: '#7E92A2', height: '23px', width: '23px' }} />;
+const EditIcon = <DriveFileRenameOutlineOutlinedIcon style={{ color: '#7E92A2', height: '24px', width: '24px' }} />;
 
 const CustomersCard = () => {
   const router = useRouter();

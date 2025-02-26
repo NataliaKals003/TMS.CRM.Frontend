@@ -9,10 +9,10 @@ import bgCover from '../../../assets/Cover.jpg';
 import Image from 'next/image';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
-import '../../../styles/customer-page-style.css';
+import '../customer-page-style.css';
 import RecentDeals from '../_components/recent-deals';
 import { HeaderModalType, useHeader } from '@/context/header-context';
-import AlertSnackbar from '@/components/alert';
+import AlertSnackbar from '@/components/alert/alert';
 
 export default function Page() {
   const { setTitle, setButtonTitle, setModalType } = useHeader();

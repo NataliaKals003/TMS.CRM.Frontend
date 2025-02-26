@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Typography, Box, Button, Avatar, IconButton } from '@mui/material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import '../../styles/deal-progress-card-style.css';
+import './deal-progress-card-style.css';
 
 const DealProgressCard = () => {
   const deal = {

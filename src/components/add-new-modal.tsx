@@ -4,7 +4,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { BusinessCenterOutlined, PeopleAltOutlined } from '@mui/icons-material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import ModalSelectCustomer from './select-customer-modal';
-import AddNewCustomer from './new-customer-modal';
+import AddNewCustomer from './new-customer-modal/new-customer-modal';
 import AddNewDeal from './new-deal-modal';
 import '../styles/modal-style.css';
 
@@ -112,7 +112,7 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
         onClose={() => {
           setAddNewDealOpen(false);
         }}
-        customerId={selectedCustomerId}
+        customerId={selectedCustomerId ?? 0}
       />
     </>
   );

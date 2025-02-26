@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { mockCustomers, Customer } from '../types/customer';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import SectionHeader from '@/components/section-header';
+import SectionHeader from '@/components/section-header/section-header';
 import Image from 'next/image';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
@@ -75,9 +75,9 @@ const Customers: React.FC = () => {
                         {customer.street}, {customer.city}, {customer.state}, {customer.zipCode}
                       </Typography>
                     </TableCell>
-                    <TableCell className="iconCell">
+                    <TableCell>
                       <Typography variant="body2" sx={{ textAlign: 'right' }}>
-                        <DriveFileRenameOutlineOutlinedIcon className="tableCell" />
+                        <DriveFileRenameOutlineOutlinedIcon className="iconCell" />
                       </Typography>
                     </TableCell>
                   </TableRow>

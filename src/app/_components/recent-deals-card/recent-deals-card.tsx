@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { mockDeals, Deal } from '../types/deal';
+import { mockDeals, Deal } from '../../types/deal';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import '../../styles/recent-deals-card-style.css';
+import './recent-deals-card-style.css';
 
 const RecentDealsCard = () => {
   const router = useRouter();

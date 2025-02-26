@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { Card, CardContent, Typography, Box, Button, Container } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import AddNewTask from '../../components/new-task-modal';
-import { mockTasks, Task } from '../types/task';
+import AddNewTask from '../../../components/new-task-modal';
+import { mockTasks, Task } from '../../types/task';
 import { useRouter } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
-import '../../styles/task-card-style.css';
+import './task-card-style.css';
 
 const TaskCard: React.FC = () => {
   const router = useRouter();

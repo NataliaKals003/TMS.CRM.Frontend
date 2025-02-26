@@ -3,7 +3,7 @@ import { Snackbar, Alert, IconButton } from '@mui/material';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import '../styles/alert-style.css';
+import './alert-style.css';
 
 interface AlertSnackbarProps {
   open: boolean;

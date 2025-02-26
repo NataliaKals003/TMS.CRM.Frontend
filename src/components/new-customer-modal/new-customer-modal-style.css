@@ -1,0 +1,20 @@
+.titleModalBox {
+  padding: 24px 29px 24px 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleModal {
+  margin-bottom: 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: #092c4c;
+}
+
+.label {
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+  color: #092c4c;
+}

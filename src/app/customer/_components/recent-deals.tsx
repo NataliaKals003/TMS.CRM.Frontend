@@ -5,7 +5,7 @@ import { mockDeals, Deal } from '../../types/deal';
 import { CardContent, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import AddIcon from '@mui/icons-material/Add';
-import '../../../styles/customer-page-style.css';
+import '../customer-page-style.css';
 import { useRouter } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
 

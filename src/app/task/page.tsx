@@ -3,11 +3,11 @@
 import React, { useEffect } from 'react';
 import { mockTasks, Task } from '../types/task';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import SectionHeader from '@/components/section-header';
+import SectionHeader from '@/components/section-header/section-header';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import ReportIcon from '@mui/icons-material/Report';
-import '../../styles/task-page-style.css';
+import './task-page-style.css';
 import '../../styles/table-style.css';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import Grid from '@mui/material/Grid2';

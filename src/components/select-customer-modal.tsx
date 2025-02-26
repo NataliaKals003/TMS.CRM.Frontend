@@ -3,7 +3,7 @@ import { Box, Typography, Button, List, Modal, Avatar } from '@mui/material';
 import { mockCustomers, Customer } from '../app/types/customer';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import CancelIcon from '@mui/icons-material/Cancel';
-import AddNewCustomer from './new-customer-modal';
+import AddNewCustomer from './new-customer-modal/new-customer-modal';
 import '../styles/modal-style.css';
 
 interface SelectCustomerModalProps {
