@@ -35,8 +35,6 @@ interface FormValues {
   email: string;
   phone: string;
   address: Address;
-  // imageFile?: File;
-  // imageUrl?: string;
 }
 
 const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) => {
@@ -65,7 +63,6 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
       state: yup.string().required('State is required'),
       zipCode: yup.string().required('Zip code is required'),
     }),
-    // imageUrl: yup.string(),
   });
 
   const form = useForm<FormValues>({
