@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, Typography, Box, Button, Container } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import AddNewTask from '../../../components/new-task-modal';
+import AddNewTask from '../../../components/new-task-modal/new-task-modal';
 import { mockTasks, Task } from '../../../types/task';
 import { useRouter } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
