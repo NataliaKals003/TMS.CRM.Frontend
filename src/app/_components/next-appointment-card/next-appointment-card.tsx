@@ -6,7 +6,7 @@ import Dote from '../../../assets/dote.png';
 import Background from '../../../assets/background.png';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { mockNextAppointment } from '../../types/next-appointment';
+import { mockNextAppointment } from '../../../types/next-appointment';
 import './next-appointment-card-style.css';
 
 const NextAppointmentCard: React.FC = () => {

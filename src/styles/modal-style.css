@@ -14,3 +14,72 @@
 .box::-webkit-scrollbar {
   display: none;
 }
+
+.boxHeader {
+  padding: 24px 29px 24px 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleHeader {
+  margin-bottom: 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: #092c4c;
+}
+
+.closeIcon {
+  cursor: pointer;
+  color: #7e92a2;
+}
+
+.label {
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+  color: #092c4c;
+}
+
+.uploadButton {
+  padding: 10px 20px;
+  background: #f6fafd;
+  color: #7e92a2;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #eaeef4;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.uploadButton:hover {
+  border-color: #7e92a2;
+}
+
+.footerBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.cancelButton {
+  margin-right: 16px;
+  color: #092c4c;
+  border: none;
+  padding: 10px 24px;
+}
+
+.saveButton {
+  padding: 10px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  border-radius: 70px;
+}
+
+.actionsButton {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

@@ -5,7 +5,7 @@ import { Card, CardContent, Typography, Box, Button, Container } from '@mui/mate
 import ReportIcon from '@mui/icons-material/Report';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import AddNewTask from '../../../components/new-task-modal';
-import { mockTasks, Task } from '../../types/task';
+import { mockTasks, Task } from '../../../types/task';
 import { useRouter } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
 import './task-card-style.css';

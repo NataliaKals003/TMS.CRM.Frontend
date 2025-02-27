@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
-import { mockCustomers, Customer } from '../../types/customer';
+import { mockCustomers, Customer } from '../../../types/customer';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import bgCover from '../../../assets/Cover.jpg';
 import Image from 'next/image';

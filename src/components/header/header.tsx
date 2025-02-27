@@ -10,7 +10,7 @@ import logo from '../../assets/logo.jpg';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import NewCustomerModal from '../new-customer-modal/new-customer-modal';
 import NewTaskModal from '../new-task-modal';
-import NewDealModal from '../new-deal-modal';
+import NewDealModal from '../new-deal-modal/new-deal-modal';
 import AddNewModal from '../add-new-modal';
 import './header-style.css';
 import SelectCustomerModal from '../select-customer-modal';
@@ -54,6 +54,7 @@ const Header: React.FC = () => {
                   setAddNewDealOpen(false);
                 }}
                 onChangeCustomerRequested={() => {
+                  console.log('onChangeCustomerRequested');
                   setAddNewDealOpen(false);
                   setIsModalOpen(true);
                 }}

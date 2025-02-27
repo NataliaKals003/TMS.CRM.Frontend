@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { CardContent, Typography, Box, Button, IconButton } from '@mui/material';
-import { mockActivityLog, ActivityLog } from '../../types/activity-log';
+import { mockActivityLog, ActivityLog } from '../../../types/activity-log';
 import Image from 'next/image';
 
 const ActivityLogCard: React.FC = () => {

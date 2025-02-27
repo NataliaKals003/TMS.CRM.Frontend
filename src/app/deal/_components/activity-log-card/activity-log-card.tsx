@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid2';
 import { CardContent, Typography, Box, Button, IconButton } from '@mui/material';
-import { mockActivityLog, ActivityLog } from '../../../types/activity-log';
+import { mockActivityLog, ActivityLog } from '../../../../types/activity-log';
 import Image from 'next/image';
 import './activity-log-card-style.css';
 

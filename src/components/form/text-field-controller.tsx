@@ -1,28 +1,6 @@
+import { ErrorObject, TextFieldControllerProps } from '@/types/form';
 import { FormControl, FormHelperText, TextField } from '@mui/material';
-import { JSX } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-
-export interface ControllerProps {
-  name: string;
-  label?: string;
-  disabled?: boolean;
-  skeletonOnLoading?: boolean;
-  loading?: boolean;
-  onChange?: (value: object) => void;
-  placeholder?: string;
-  className?: string;
-}
-
-export interface TextFieldControllerProps extends ControllerProps {
-  type?: string;
-  startAdornment?: JSX.Element;
-  endAdornment?: JSX.Element;
-  multiline?: boolean;
-}
-
-export interface ErrorObject {
-  message: string;
-}
 
 const TextFieldController = (props: TextFieldControllerProps) => {
   const { control } = useFormContext();

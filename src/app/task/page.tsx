@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { mockTasks, Task } from '../types/task';
+import { mockTasks, Task } from '../../types/task';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import SectionHeader from '@/components/section-header/section-header';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';

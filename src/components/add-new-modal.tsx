@@ -5,7 +5,7 @@ import { BusinessCenterOutlined, PeopleAltOutlined } from '@mui/icons-material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import ModalSelectCustomer from './select-customer-modal';
 import AddNewCustomer from './new-customer-modal/new-customer-modal';
-import AddNewDeal from './new-deal-modal';
+import NewDealModal from './new-deal-modal/new-deal-modal';
 import '../styles/modal-style.css';
 
 interface AddNewFormProps {
@@ -107,13 +107,20 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
         }}
       />
 
-      <AddNewDeal
-        open={addNewDealOpen}
-        onClose={() => {
-          setAddNewDealOpen(false);
-        }}
-        customerId={selectedCustomerId ?? 0}
-      />
+      {selectedCustomerId && (
+        <NewDealModal
+          open={addNewDealOpen}
+          onClose={() => {
+            setAddNewDealOpen(false);
+          }}
+          onChangeCustomerRequested={() => {
+            setSelectedCustomersOpen(true);
+            console.log('onChangeCustomerRequested');
+            setAddNewDealOpen(false);
+          }}
+          customerId={selectedCustomerId}
+        />
+      )}
     </>
   );
 };

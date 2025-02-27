@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { mockCustomers, Customer } from '../types/customer';
+import { mockCustomers, Customer } from '../../types/customer';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import SectionHeader from '@/components/section-header/section-header';
 import Image from 'next/image';

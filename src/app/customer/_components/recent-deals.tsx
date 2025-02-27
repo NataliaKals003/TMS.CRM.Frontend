@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { mockDeals, Deal } from '../../types/deal';
+import { mockDeals, Deal } from '../../../types/deal';
 import { CardContent, Typography, Button } from '@mui/material';
 import Image from 'next/image';
 import AddIcon from '@mui/icons-material/Add';

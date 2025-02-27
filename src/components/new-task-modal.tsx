@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { Box, Button, Modal, TextField, Typography } from '@mui/material';
+import { Box, Button, Modal, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import TimeStamp from './date-picker';
 import '../styles/modal-style.css';
 import AlertSnackbar from './alert/alert';
 import * as yup from 'yup';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import TextFieldController from './form/text-field-controller';
+import DatePickerController from './form/date-picker-controller';
 
 interface AddNewTaskFormProps {
   open: boolean;
   onClose: () => void;
 }
 
-interface FormData {
+interface FormValues {
   description: string;
   dueDate: Date;
 }
@@ -22,41 +25,26 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
 
   const schema = yup.object().shape({
-    description: yup
-      .string()
-      .typeError('Task description must be a text')
-      .min(2, 'Task description must be at least 2 characters')
-      .max(100, 'Task description cannot exceed 100 characters')
-      .required('Task description is required'),
-    dueDate: yup.string().required('Due date is required'),
+    description: yup.string().required('Task description is required'),
+    dueDate: yup.date().required('Due date is required'),
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const form = useForm<FormValues>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      description: undefined,
+      dueDate: undefined,
+    },
+  });
 
-    const formData = new FormData(e.target as HTMLFormElement);
-
-    const taskData: FormData = {
-      description: formData.get('description') as string,
-      dueDate: new Date(formData.get('dueDate') as string),
-    };
-
-    console.log('Form Data Submitted:', taskData);
-
-    schema
-      .validate(taskData)
-      .then(() => {
-        onClose();
-
-        setSnackbarMessage('Task Saved');
-        setSnackbarSeverity('saved');
-        setSnackbarOpen(true);
-      })
-      .catch((errors) => {
-        console.error('Validation Failed:', errors);
-        alert(errors.errors.join('\n'));
-      });
-  };
+  const onSubmit = form.handleSubmit((formData) => {
+    console.log('Form Data:', formData);
+    form.reset();
+    onClose();
+    setSnackbarMessage('Task Saved');
+    setSnackbarSeverity('saved');
+    setSnackbarOpen(true);
+  });
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
@@ -77,15 +65,15 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
             </Typography>
             <Button sx={{ minWidth: 0, margin: 0 }} endIcon={<CancelIcon sx={{ color: '#7E92A2' }} />} onClick={onClose} />
           </Box>
-          <form onSubmit={handleSubmit}>
+          <FormProvider {...form}>
             <Box padding={'0 32px'} display={'flex'} flexDirection={'column'}>
-              <TextField name="description" type="text" variant="outlined" fullWidth multiline rows={4} placeholder="Enter task description" />
+              <TextFieldController name="description" type="text" multiline rows={4} placeholder="Enter task description" />
 
               <Box sx={{ flex: 1, marginTop: '24px' }}>
                 <Typography marginBottom={1.5} fontWeight={700} fontSize={16} lineHeight={'30px'} color={'#092C4C'}>
                   Due Date
                 </Typography>
-                <TimeStamp placeholder={'Due date'} />
+                <DatePickerController name="dueDate" />
               </Box>
 
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '16px 0 28px' }}>
@@ -98,14 +86,14 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
                     variant="contained"
                     color="primary"
                     sx={{ padding: '10px 24px', fontWeight: 500, fontSize: '14px', lineHeight: '30px', borderRadius: '70px' }}
-                    type="submit"
+                    onClick={onSubmit}
                   >
                     Save Task
                   </Button>
                 </Box>
               </Box>
             </Box>
-          </form>
+          </FormProvider>
         </Box>
       </Modal>
       <AlertSnackbar open={snackbarOpen} message={snackbarMessage} severity={snackbarSeverity} onClose={handleSnackbarClose} />

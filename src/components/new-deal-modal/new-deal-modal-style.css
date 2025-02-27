@@ -1,0 +1,62 @@
+.customerBox {
+  background-color: #f6fafd;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  gap: 2;
+}
+
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.customerLabel {
+  color: #7e92a2;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.customerName {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: #092c4c;
+}
+
+.changeCustomerButton {
+  border: 1px solid #eaeef4;
+  background-color: #ffffff;
+  border-radius: 70px;
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  color: #092c4c;
+  padding: 10px 29px;
+  font-size: 14px;
+  line-height: 30px;
+  min-width: auto;
+}
+
+.newDealForm {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dealDetailsBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.progressBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 2;
+  margin-right: 70px;
+}

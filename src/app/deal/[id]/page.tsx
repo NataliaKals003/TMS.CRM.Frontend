@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid2';
-import { mockCustomers, Customer } from '../../types/customer';
-import { mockDeals, Deal } from '../../types/deal';
+import { mockCustomers, Customer } from '../../../types/customer';
+import { mockDeals, Deal } from '../../../types/deal';
 import { Avatar, Box, Button, Typography } from '@mui/material';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';

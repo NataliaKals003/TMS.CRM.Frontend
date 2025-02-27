@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, CardContent, Typography, Box, Avatar, Button } from '@mui/material';
-import { mockCustomers, Customer } from '../../types/customer';
+import { mockCustomers, Customer } from '../../../types/customer';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import { useRouter } from 'next/navigation';
 import './customer-card-style.css';
