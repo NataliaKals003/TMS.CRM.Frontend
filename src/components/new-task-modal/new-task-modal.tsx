@@ -46,6 +46,13 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
     setSnackbarOpen(true);
   });
 
+  const handleCancel = () => {
+    form.reset();
+    if (open) {
+      onClose();
+    }
+  };
+
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
@@ -76,7 +83,7 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
 
               <Box className="footerTask">
                 <Box className="footerDetails">
-                  <Button onClick={onClose} variant="outlined" className="cancelButton">
+                  <Button onClick={handleCancel} variant="outlined" className="cancelButton">
                     Cancel
                   </Button>
 
