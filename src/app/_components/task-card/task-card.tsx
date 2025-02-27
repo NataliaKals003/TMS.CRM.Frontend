@@ -25,7 +25,7 @@ const TaskCard: React.FC = () => {
         <Card className="taskCard">
           <CardContent className="cardContentTask">
             <Box className="headerTaskCard">
-              <Typography className="titleHeaderTaskCard">Task To Do</Typography>
+              <Typography className="titleTask">Task To Do</Typography>
               <Button
                 onClick={handleTaskClick}
                 variant="text"
@@ -57,10 +57,9 @@ const TaskCard: React.FC = () => {
                   <Grid key={task.id} container sx={{ marginBottom: 3, alignContent: 'center' }}>
                     <Grid size={{ xs: 12, sm: 3, md: 2, lg: 4 }}>
                       <Typography
-                        variant="body2"
+                        className="taskText"
                         sx={{
                           color: hasIcon ? '#FE8084' : '#092C4C',
-                          fontWeight: 400,
                         }}
                       >
                         {task.dueDate}
@@ -72,7 +71,7 @@ const TaskCard: React.FC = () => {
                     </Grid>
 
                     <Grid size={{ xs: 12, sm: 8, md: 9, lg: 7 }}>
-                      <Typography variant="body2" color="#092C4C" fontWeight={400}>
+                      <Typography className="taskText" color="#092C4C">
                         {task.description}
                       </Typography>
                     </Grid>

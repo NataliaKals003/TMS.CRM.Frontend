@@ -27,10 +27,14 @@
   margin-bottom: 24px;
 }
 
-.titleHeaderTaskCard {
+.titleTask {
   font-weight: 700;
-  font-size: 18;
+  font-size: 18px;
   line-height: 30px;
+}
+
+.taskText {
+  font-size: 14px;
 }
 
 .addNewTaskBox {
