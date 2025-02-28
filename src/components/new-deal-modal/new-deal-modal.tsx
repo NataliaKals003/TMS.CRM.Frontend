@@ -118,7 +118,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
         <Box
           className="box"
           sx={{
-            width: 620,
+            width: { xs: 300, sm: 520, md: 620 },
             paddingBottom: '22px',
           }}
         >
@@ -128,16 +128,20 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
           </Box>
 
           <FormProvider {...form}>
-            <Box className="customerBox">
-              <Image src={customer?.avatar || '/placeholder-avatar.jpg'} alt="Customer picture" width={44} height={44} className="avatar" />
-              <Box width="100%">
+            <Grid container spacing={3} className="customerBox">
+              <Grid size={{ xs: 3, sm: 1.5, md: 1.5 }}>
+                <Image src={customer?.avatar || '/placeholder-avatar.jpg'} alt="Customer picture" width={44} height={44} className="dealPicture" />
+              </Grid>
+              <Grid size={{ xs: 9, sm: 6.5, md: 6.5 }}>
                 <Typography className="customerLabel">{'Customer'}</Typography>
                 <Typography className="customerName">{customer?.name}</Typography>
-              </Box>
-              <Button onClick={onChangeCustomerRequested} variant="outlined" className="changeCustomerButton">
-                Change Customer
-              </Button>
-            </Box>
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Button onClick={onChangeCustomerRequested} variant="outlined" className="changeCustomerButton">
+                  Change Customer
+                </Button>
+              </Grid>
+            </Grid>
             <Box />
 
             <Box className="newDealForm">
@@ -167,17 +171,17 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                   </Grid>
                 </Grid>
 
-                <Box className="dealDetailsBox">
-                  <Box sx={{ flex: 1 }}>
+                <Grid container spacing={3} className="dealDetailsBox">
+                  <Grid size={{ xs: 12, md: 6 }}>
                     <Typography className="label">Room Area (m2)</Typography>
                     <TextFieldController type="number" name="roomArea" />
-                  </Box>
+                  </Grid>
 
-                  <Box sx={{ flex: 1 }}>
+                  <Grid size={{ xs: 12, md: 6 }}>
                     <Typography className="label"># of People</Typography>
                     <TextFieldController type="number" name="numberOfPeople" />
-                  </Box>
-                </Box>
+                  </Grid>
+                </Grid>
                 <Typography className="label">Appointment Date</Typography>
                 <DatePickerController name="appointmentDate" />
 
@@ -186,8 +190,8 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                 </Typography>
                 <TextFieldController type="text" name="specialInstructions" />
 
-                <Box className="dealDetailsBox">
-                  <Box sx={{ flex: 1 }}>
+                <Grid container spacing={3} className="dealDetailsBox">
+                  <Grid size={{ xs: 12, md: 6 }}>
                     <Typography className="label">Room Access</Typography>
                     <SelectController
                       name="roomAccess"
@@ -197,32 +201,38 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                         { value: 'KeysWithDorman', label: 'Keys with doorman' },
                       ]}
                     />
-                  </Box>
+                  </Grid>
 
-                  <Box sx={{ flex: 1 }}>
+                  <Grid size={{ xs: 12, md: 6 }}>
                     <Typography className="label">Price ($)</Typography>
                     <TextFieldController name="price" type="number" />
-                  </Box>
-                </Box>
+                  </Grid>
+                </Grid>
               </Box>
 
-              <Box className="footerBox">
-                <Box className="progressBox">
-                  <Typography className="label">Progress</Typography>
-                  <Box flex={1}>
-                    <SelectController
-                      name="progress"
-                      skeletonOnLoading
-                      options={[
-                        { value: 'None', label: 'None' },
-                        { value: 'InProgress', label: 'In Progress' },
-                        { value: 'Closed', label: 'Closed' },
-                      ]}
-                    />
-                  </Box>
-                </Box>
+              <Grid container className="footerBox">
+                <Grid size={{ xs: 12, md: 6 }} className="progressBox">
+                  <Grid alignItems={'center'} spacing={1} container>
+                    <Grid size={{ xs: 12, md: 3.5 }}>
+                      <Typography className="label" sx={{ marginBottom: '0' }}>
+                        Progress
+                      </Typography>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 7.5 }}>
+                      <SelectController
+                        name="progress"
+                        skeletonOnLoading
+                        options={[
+                          { value: 'None', label: 'None' },
+                          { value: 'InProgress', label: 'In Progress' },
+                          { value: 'Closed', label: 'Closed' },
+                        ]}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
 
-                <Box className="actionsButton">
+                <Grid size={{ xs: 12, md: 6 }} className="actionsButton">
                   <Button onClick={handleCancel} variant="outlined" className="cancelButton">
                     Cancel
                   </Button>
@@ -230,8 +240,8 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                   <Button variant="contained" color="primary" className="saveButton" onClick={onSubmit}>
                     Save Deal
                   </Button>
-                </Box>
-              </Box>
+                </Grid>
+              </Grid>
             </Box>
           </FormProvider>
         </Box>

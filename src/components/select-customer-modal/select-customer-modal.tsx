@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Button, List, Modal, Avatar } from '@mui/material';
-import { mockCustomers, Customer } from '../types/customer';
+import { mockCustomers, Customer } from '../../types/customer';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import CancelIcon from '@mui/icons-material/Cancel';
-import AddNewCustomer from './new-customer-modal/new-customer-modal';
-import '../styles/modal-style.css';
+import AddNewCustomer from '../new-customer-modal/new-customer-modal';
+import '../../styles/modal-style.css';
+import './select-customer-modal-style.css';
 
 interface SelectCustomerModalProps {
   open: boolean;
@@ -14,6 +15,23 @@ interface SelectCustomerModalProps {
 
 const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose, onCustomerSelected }) => {
   const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [open, onClose]);
 
   return (
     <Box>
@@ -24,18 +42,15 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
         }}
       >
         <Box
+          ref={modalRef}
           className="box"
           sx={{
-            width: 400,
+            width: { xs: 300, sm: 350, md: 400 },
             maxHeight: '80vh',
-            display: 'flex',
-            flexDirection: 'column',
           }}
         >
-          <Box sx={{ padding: '24px', display: 'flex', justifyContent: 'space-between', flexShrink: 0 }}>
-            <Typography variant="h5" fontWeight={700} fontSize={18} color={'#092C4C'}>
-              Select Customer
-            </Typography>
+          <Box className="boxHeader">
+            <Typography className="titleHeader">Select Customer</Typography>
 
             <Box>
               <Button
@@ -48,25 +63,11 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
               >
                 Add New
               </Button>
-              <Button sx={{ minWidth: 0, margin: 0 }} endIcon={<CancelIcon sx={{ color: '#7E92A2' }} />} onClick={onClose} />
+              <Button endIcon={<CancelIcon className="closeIcon" />} onClick={onClose} />
             </Box>
           </Box>
 
-          <Box
-            sx={{
-              flexGrow: 1,
-              overflowY: 'auto',
-              padding: '0px 34px 0 24px',
-              scrollbarWidth: 'none',
-              '&::-webkit-scrollbar': {
-                width: '5px',
-              },
-              '&::-webkit-scrollbar-thumb': {
-                backgroundColor: '#ccc',
-                borderRadius: '10px',
-              },
-            }}
-          >
+          <Box className="selectBox">
             <List>
               {mockCustomers.map((customer: Customer) => (
                 <Box
@@ -75,22 +76,18 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
                     onCustomerSelected(customer.id);
                     onClose();
                   }}
-                  sx={{ cursor: 'pointer' }}
-                  display="flex"
-                  alignItems="center"
-                  gap={2}
-                  marginBottom={2}
+                  className="customerSelect"
                 >
                   <Avatar src={customer.avatar} alt={customer.name} />
                   <Box width="100%">
-                    <Typography variant="body1" fontWeight={700} fontSize={16}>
+                    <Typography variant="body1" className="customerName">
                       {customer.name}
                     </Typography>
-                    <Typography variant="body2" color="#7E92A2" fontWeight={400} lineHeight="27px">
+                    <Typography variant="body2" className="customerEmail">
                       {customer.email}
                     </Typography>
                   </Box>
-                  <ArrowForwardOutlinedIcon sx={{ color: '#514EF3', width: 20, height: 20, justifyContent: 'end' }} />
+                  <ArrowForwardOutlinedIcon className="arrowIcon" />
                 </Box>
               ))}
             </List>

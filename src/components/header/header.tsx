@@ -11,9 +11,9 @@ import { HeaderModalType, useHeader } from '@/context/header-context';
 import NewCustomerModal from '../new-customer-modal/new-customer-modal';
 import NewTaskModal from '../new-task-modal/new-task-modal';
 import NewDealModal from '../new-deal-modal/new-deal-modal';
-import AddNewModal from '../add-new-modal';
+import AddNewModal from '../add-new-modal/add-new-modal';
 import './header-style.css';
-import SelectCustomerModal from '../select-customer-modal';
+import SelectCustomerModal from '../select-customer-modal/select-customer-modal';
 
 const Header: React.FC = () => {
   const { title, buttonTitle, modalType } = useHeader();

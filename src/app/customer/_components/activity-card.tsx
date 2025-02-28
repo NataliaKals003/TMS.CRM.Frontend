@@ -3,7 +3,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
-import TimeStamp from '../../../components/date-picker';
+// import TimeStamp from '../../../components/date-picker';
 import '../../../styles/modal-style.css';
 
 const RecordActivityCard: React.FC = () => {
@@ -40,9 +40,7 @@ const RecordActivityCard: React.FC = () => {
             <TextField type="text" variant="outlined" fullWidth placeholder="Write your notes" />
           </Box>
 
-          <Box sx={{ marginTop: '24px' }}>
-            <TimeStamp placeholder={'Nov 14 2021, 10:00'} />
-          </Box>
+          <Box sx={{ marginTop: '24px' }}>{/* <TimeStamp placeholder={'Nov 14 2021, 10:00'} /> */}</Box>
           <Box sx={{ marginTop: '24px' }}>
             <Typography marginBottom={'12px'} fontWeight={700} fontSize={16} lineHeight={'30px'} color={'#092C4C'}>
               Images

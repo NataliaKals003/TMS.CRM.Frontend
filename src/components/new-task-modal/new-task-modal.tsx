@@ -56,13 +56,14 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
+
   return (
     <>
-      <Modal open={open}>
+      <Modal open={open} onClose={onClose}>
         <Box
           className="box"
           sx={{
-            maxWidth: '400px',
+            width: { xs: 290, sm: 350, md: 400 },
             maxHeight: 700,
           }}
         >

@@ -101,11 +101,11 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
 
   return (
     <>
-      <Modal open={open}>
+      <Modal open={open} onClose={onClose}>
         <Box
           className="box"
           sx={{
-            width: 620,
+            width: { xs: 300, sm: 520, md: 620 },
             maxHeight: 700,
           }}
         >
@@ -166,16 +166,16 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
                 </Grid>
               </Grid>
 
-              <Box marginTop={'12px'}>
-                <Box className="newCustomerFooter">
+              <Grid container marginTop={'12px'}>
+                <Grid size={{ xs: 12, md: 12 }} className="newCustomerFooter">
                   <Button variant="outlined" onClick={handleCancel} className="cancelButton">
                     Cancel
                   </Button>
                   <Button variant="contained" color="primary" onClick={onSubmit} className="saveButton">
                     Save Customer
                   </Button>
-                </Box>
-              </Box>
+                </Grid>
+              </Grid>
             </Box>
           </FormProvider>
         </Box>

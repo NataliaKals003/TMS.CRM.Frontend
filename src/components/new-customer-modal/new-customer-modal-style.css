@@ -10,3 +10,9 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+@media (max-width: 890px) {
+  .newCustomerFooter {
+    justify-content: center;
+  }
+}

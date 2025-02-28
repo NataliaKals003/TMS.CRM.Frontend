@@ -34,6 +34,7 @@ const SelectController: React.FC<SelectControllerProps> = ({ name, label, disabl
               }}
               IconComponent={KeyboardArrowDownIcon}
               disabled={disabled}
+              sx={{ width: '100%' }}
             >
               {options
                 ?.sort((a, b) => a.label?.localeCompare(b.label) ?? 0)
