@@ -1,0 +1,20 @@
+.boxRecordActivity {
+  background-color: #ffff;
+  border-radius: 12px;
+  border: 1px solid #eaeef4;
+  margin-bottom: 24px;
+}
+
+.formBox {
+  padding: 24px;
+  padding-bottom: 20px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.footerRecordActivity {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

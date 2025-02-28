@@ -9,7 +9,7 @@ import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRen
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Image from 'next/image';
 import '../deal-page-style.css';
-import RecordActivityCard from '../_components/activity-card';
+import RecordActivityCard from '../_components/record-activity-card/record-activity-card';
 import ActivityLogCard from '../_components/activity-log-card/activity-log-card';
 import AlertSnackbar from '@/components/alert/alert';
 import { useParams } from 'next/navigation';
@@ -75,7 +75,7 @@ export default function Page() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 8 }}>
+        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 9 }}>
           <Grid container>
             <Grid className="customerDetails" size={{ xs: 12, md: 12 }} paddingBottom={'24px'} gap={2} alignItems={'center'}>
               <Grid container spacing={3}>
@@ -195,7 +195,7 @@ export default function Page() {
           </Grid>
         </Grid>
 
-        <Grid size={{ xs: 12, md: 12, lg: 4 }}>
+        <Grid size={{ xs: 12, md: 12, lg: 3 }}>
           <RecordActivityCard />
           <ActivityLogCard />
         </Grid>

@@ -2,7 +2,6 @@ import { DatePickerControllerProps, ErrorObject } from '@/types/form';
 import { FormControl, FormHelperText } from '@mui/material';
 import { DatePicker, PickersActionBarAction } from '@mui/x-date-pickers';
 import { Controller, useFormContext } from 'react-hook-form';
-// import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
 function getObjectValueFromPath(obj: unknown, path: string): ErrorObject {
   return path.split('.').reduce((acc, part) => acc && (acc as Record<string, unknown>)[part], obj) as ErrorObject;
