@@ -3,11 +3,11 @@ import { Snackbar, Alert, IconButton } from '@mui/material';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import './alert-style.css';
+import './alert.css';
 
 interface AlertSnackbarProps {
   open: boolean;
-  message: string;
+  message: string | null;
   severity: 'saved' | 'deleted';
   onClose: () => void;
 }
@@ -16,7 +16,13 @@ const AlertSnackbar: React.FC<AlertSnackbarProps> = ({ open, message, severity, 
   const Icon = severity === 'saved' ? CelebrationIcon : WhatshotIcon;
 
   return (
-    <Snackbar className="snackBar" open={open} autoHideDuration={3000} onClose={onClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+    <Snackbar
+      className="snack-bar-alert"
+      open={open}
+      autoHideDuration={3000}
+      onClose={onClose}
+      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+    >
       <Alert
         className="alert"
         onClose={onClose}

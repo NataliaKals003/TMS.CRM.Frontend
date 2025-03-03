@@ -3,8 +3,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import '../../../../styles/modal-style.css';
-import './record-activity-card-style.css';
+import '../../../../styles/modal.css';
+import './record-activity-card.css';
 import AlertSnackbar from '@/components/alert/alert';
 import DatePickerController from '../../../../components/form/date-picker-controller';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -21,7 +21,7 @@ interface FormValues {
 const RecordActivityCard: React.FC = () => {
   const [fileName, setFileName] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,8 +45,7 @@ const RecordActivityCard: React.FC = () => {
     },
   });
 
-  const onSubmit = form.handleSubmit((formData) => {
-    console.log('Form Data:', formData);
+  const onSubmit = form.handleSubmit(() => {
     form.reset();
     setSnackbarMessage('Activity Recorded');
     setSnackbarSeverity('saved');
@@ -60,15 +59,15 @@ const RecordActivityCard: React.FC = () => {
   return (
     <>
       <main>
-        <Box className="boxRecordActivity">
+        <Box className="box-record-activity">
           <Box sx={{ padding: '24px', paddingBottom: '36px' }}>
-            <Typography variant="h5" className="titleHeader">
+            <Typography variant="h5" className="title-header">
               Record Activity
             </Typography>
           </Box>
 
           <FormProvider {...form}>
-            <Grid container spacing={3} className="formBox">
+            <Grid container spacing={3} className="form-box-record-activity">
               <Grid size={{ xs: 12, md: 12 }}>
                 <Typography className="label">Description</Typography>
                 <TextFieldController name="description" type="text" placeholder="Enter task description" />
@@ -81,13 +80,13 @@ const RecordActivityCard: React.FC = () => {
                 <Typography className="label">Images</Typography>
                 <label htmlFor="upload-image" style={{ cursor: 'pointer' }}>
                   <input id="upload-image" name="file" type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
-                  <Button variant="contained" component="span" className="uploadButton" sx={{ width: '100%' }}>
+                  <Button variant="contained" component="span" className="upload-button" sx={{ width: '100%' }}>
                     <span style={{ display: 'block' }}>{fileName || 'ADD'}</span>
                   </Button>
                 </label>
               </Grid>
 
-              <Grid size={{ xs: 12, md: 12 }} className="footerRecordActivity">
+              <Grid size={{ xs: 12, md: 12 }} className="footer-record-activity">
                 <Button
                   variant="contained"
                   color="primary"

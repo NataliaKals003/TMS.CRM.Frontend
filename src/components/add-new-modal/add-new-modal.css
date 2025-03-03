@@ -1,17 +1,17 @@
-.boxHeaderAddNew {
+.box-header-add-new {
   padding: 11px 15px;
   display: flex;
   justify-content: space-between;
 }
 
-.titleHeaderAddNew {
+.title-header-add-new {
   margin-bottom: 0;
   font-weight: 500;
   font-size: 14px;
   color: #7e92a2;
 }
 
-.contextBox {
+.content-box-add-new {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -21,29 +21,29 @@
   border-top: 1px solid #eaeef4;
 }
 
-.optionsBox {
+.options-box-add-new {
   padding-top: 11px;
   position: relative;
 }
 
-.textOptions {
+.text-options-add-new {
   color: #092c4c;
   justify-content: space-between;
 }
 
-.optionIcon {
+.option-icon-add-new {
   color: #7e92a2;
   margin-right: 15px;
 }
 
-.arrowIcon {
+.arrow-icon {
   color: #514ef3;
   width: 20;
   height: 20;
   justify-content: end;
 }
 
-.arowGrid {
+.arrow-grid-add-new {
   display: flex;
   justify-content: flex-end;
 }

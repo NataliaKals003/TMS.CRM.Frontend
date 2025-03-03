@@ -7,8 +7,8 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import ModalSelectCustomer from '../select-customer-modal/select-customer-modal';
 import AddNewCustomer from '../new-customer-modal/new-customer-modal';
 import NewDealModal from '../new-deal-modal/new-deal-modal';
-import '../../styles/modal-style.css';
-import './add-new-modal-style.css';
+import '../../styles/modal.css';
+import './add-new-modal.css';
 
 interface AddNewFormProps {
   open: boolean;
@@ -58,37 +58,37 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
             width: { xs: 200, sm: 220, md: 240 },
           }}
         >
-          <Grid container className="boxHeaderAddNew">
+          <Grid container className="box-header-add-new">
             <Grid size={{ xs: 10, md: 10 }}>
-              <Typography className="titleHeaderAddNew">Add New</Typography>
+              <Typography className="title-header-add-new">Add New</Typography>
             </Grid>
             <Grid size={{ xs: 2, md: 2 }}>
-              <Button endIcon={<CancelIcon className="closeIcon" />} onClick={onClose} />
+              <Button endIcon={<CancelIcon className="close-icon" />} onClick={onClose} />
             </Grid>
           </Grid>
-          <Grid container className="contextBox">
-            <Grid size={{ xs: 12, md: 12 }} onClick={openSelectCustomerModal} className="optionsBox">
+          <Grid container className="content-box-add-new">
+            <Grid size={{ xs: 12, md: 12 }} onClick={openSelectCustomerModal} className="options-box-add-new">
               <Grid container alignItems="center">
                 <Grid size={{ xs: 10, md: 11 }}>
-                  <Button variant="text" className="textOptions" startIcon={<BusinessCenterOutlined className="optionIcon" />}>
+                  <Button variant="text" className="text-options-add-new" startIcon={<BusinessCenterOutlined className="option-icon-add-new" />}>
                     Deals
                   </Button>
                 </Grid>
-                <Grid size={{ xs: 2, md: 1 }} className="arowGrid">
-                  <ArrowForwardOutlinedIcon className="arrowIcon" />
+                <Grid size={{ xs: 2, md: 1 }} className="arrow-grid-add-new">
+                  <ArrowForwardOutlinedIcon className="arrow-icon" />
                 </Grid>
               </Grid>
             </Grid>
 
-            <Grid size={{ xs: 12, md: 12 }} onClick={openAddNewCustomerModal} className="optionsBox">
+            <Grid size={{ xs: 12, md: 12 }} onClick={openAddNewCustomerModal} className="options-box-add-new">
               <Grid container alignItems="center">
                 <Grid size={{ xs: 10, md: 11 }}>
-                  <Button variant="text" className="textOptions" startIcon={<PeopleAltOutlined className="optionIcon" />}>
+                  <Button variant="text" className="text-options-add-new" startIcon={<PeopleAltOutlined className="option-icon-add-new" />}>
                     Customers
                   </Button>
                 </Grid>
-                <Grid size={{ xs: 2, md: 1 }} className="arowGrid">
-                  <ArrowForwardOutlinedIcon className="arrowIcon" />
+                <Grid size={{ xs: 2, md: 1 }} className="arrow-grid-add-new">
+                  <ArrowForwardOutlinedIcon className="arrow-icon" />
                 </Grid>
               </Grid>
             </Grid>
@@ -101,7 +101,6 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
         open={selectedCustomersOpen}
         onClose={() => setSelectedCustomersOpen(false)}
         onCustomerSelected={(customerId: number) => {
-          console.log('customerId: ', customerId);
           setSelectedCustomerId(customerId);
           setAddNewDealOpen(true);
         }}
@@ -115,7 +114,6 @@ const AddNewModal: React.FC<AddNewFormProps> = ({ open, onClose }) => {
           }}
           onChangeCustomerRequested={() => {
             setSelectedCustomersOpen(true);
-            console.log('onChangeCustomerRequested');
             setAddNewDealOpen(false);
           }}
           customerId={selectedCustomerId}

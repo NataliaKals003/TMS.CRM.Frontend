@@ -1,4 +1,4 @@
-.customerCard {
+.customer-card {
   background-color: #eef6fb;
   color: #092c4c;
   box-shadow: none;
@@ -8,14 +8,14 @@
   cursor: pointer;
 }
 
-.headerCustomerCard {
+.header-customer-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
 }
 
-.titleHeader {
+.title-header-customer-card {
   font-size: 18px;
   font-weight: 700;
 }
@@ -28,35 +28,42 @@
   padding-right: 8px;
 }
 
-.customerName {
+.customer-name-customer-card {
   font-weight: 700;
   font-size: 16px;
 }
 
-.customerEmail {
+.customer-email-customer-card {
   color: #7e92a2;
   font-weight: 400;
   line-height: 27px;
   font-size: 14px;
 }
 
+.edit-icon-customer-card {
+  color: #7e92a2;
+  height: 24px;
+  width: 24px;
+}
+
 @media (max-width: 426px) {
-  .titleHeader {
+  .title-header {
     font-size: 17px;
     align-self: flex-start;
   }
-  .editIcon {
+
+  .edit-icon-customer-card {
     display: none;
   }
 }
 
 @media (max-width: 320px) {
-  .headerCustomerCard {
+  .header-customer-card {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .titleHeader {
+  .title-header {
     font-size: 16px;
     align-self: flex-start;
   }

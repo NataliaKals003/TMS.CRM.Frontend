@@ -6,7 +6,7 @@ import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRo
 import SectionHeader from '@/components/section-header/section-header';
 import Image from 'next/image';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import '../../styles/table-style.css';
+import '../../styles/table.css';
 import { useRouter } from 'next/navigation';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import { HeaderModalType, useHeader } from '@/context/header-context';
@@ -43,7 +43,7 @@ const Deals: React.FC = () => {
           <TableContainer>
             <Table>
               <TableHead>
-                <TableRow className="tableRow">
+                <TableRow className="table-row">
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
@@ -60,7 +60,7 @@ const Deals: React.FC = () => {
               <TableBody>
                 {mockDeals.map((deal: Deal) => (
                   <TableRow
-                    className="tableRow"
+                    className="table-row"
                     key={deal.id}
                     sx={{
                       cursor: 'pointer',
@@ -73,18 +73,18 @@ const Deals: React.FC = () => {
                     </TableCell>
 
                     <TableCell>
-                      <Typography className="textBody" variant="body2" fontWeight="500">
+                      <Typography className="text-body" variant="body2" fontWeight="500">
                         {deal.street}, {deal.city}, {deal.state}, {deal.zipCode}
                       </Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="textBody">{deal.area} M&sup2;</Typography>
+                      <Typography className="text-body">{deal.area} M&sup2;</Typography>
                     </TableCell>
                     <TableCell className="tableCell">
-                      <Typography className="textBody">{deal.appointmentDate}</Typography>
+                      <Typography className="text-body">{deal.appointmentDate}</Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="textBody">${deal.price}</Typography>
+                      <Typography className="text-body">${deal.price}</Typography>
                     </TableCell>
                     <TableCell>
                       <Button

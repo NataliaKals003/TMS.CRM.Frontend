@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Typography, Box, Button, Avatar, IconButton } from '@mui/material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import './deal-progress-card-style.css';
+import './deal-progress-card.css';
 
 const DealProgressCard = () => {
   const deal = {
@@ -25,10 +25,10 @@ const DealProgressCard = () => {
   };
 
   return (
-    <Card className="recentCard">
+    <Card className="recent-card">
       <CardContent>
-        <Box className="header">
-          <Box className="dealProfile">
+        <Box className="header-progress-card">
+          <Box className="deal-profile">
             <Avatar src={deal.dealPicture} alt="Profile" />
             <Box>
               <Typography className="dealDetails" variant="subtitle1" fontWeight={700} fontSize={16}>
@@ -39,11 +39,11 @@ const DealProgressCard = () => {
               </Typography>
             </Box>
           </Box>
-          <Box className="inProgressButton">
-            <Button variant="contained" className="headerButton">
+          <Box className="in-progress-button">
+            <Button variant="contained" className="header-button">
               IN PROGRESS
             </Button>
-            <ArrowForwardOutlinedIcon className="arrowIcon" />
+            <ArrowForwardOutlinedIcon className="arrow-icon" />
           </Box>
         </Box>
 
@@ -51,29 +51,19 @@ const DealProgressCard = () => {
           <Box key={index} className="activities">
             <Box display="flex" alignItems="center" gap={1}>
               <IconButton onClick={() => toggleActivity(index)} sx={{ padding: 0 }}>
-                <Box
-                  className="buttonIcon"
-                  sx={{
-                    backgroundColor: activity.completed ? '#514EF3' : 'transparent',
-                  }}
-                >
-                  <Box
-                    className="insideButtonIcon"
-                    sx={{
-                      backgroundColor: activity.completed ? 'white' : 'transparent',
-                    }}
-                  />
+                <Box className={`button-icon ${activity.completed ? 'completed' : ''}`}>
+                  <Box className={`inside-button-icon ${activity.completed ? 'completed' : ''}`} />
                 </Box>
               </IconButton>
               <Box>
-                <Typography className="activityDate">{activity.date}</Typography>
-                <Typography className="activityDetails">{activity.details}</Typography>
+                <Typography className="activity-date">{activity.date}</Typography>
+                <Typography className="activity-details">{activity.details}</Typography>
               </Box>
             </Box>
           </Box>
         ))}
-        <Box display="flex" justifyContent="center" marginTop={4}>
-          <Button variant="text" color="primary" className="footerButton">
+        <Box className="load-more-deal-progress">
+          <Button variant="text" color="primary" className="footer-button">
             Load More
           </Button>
         </Box>

@@ -5,9 +5,9 @@ import { Card, CardContent, Typography, Box, Avatar, Button } from '@mui/materia
 import { mockCustomers, Customer } from '../../../types/customer';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import { useRouter } from 'next/navigation';
-import './customer-card-style.css';
+import './customer-card.css';
 
-const EditIcon = <DriveFileRenameOutlineOutlinedIcon style={{ color: '#7E92A2', height: '24px', width: '24px' }} />;
+const EditIcon = <DriveFileRenameOutlineOutlinedIcon className="edit-icon-customer-card" />;
 
 const CustomersCard = () => {
   const router = useRouter();
@@ -17,12 +17,11 @@ const CustomersCard = () => {
   };
 
   return (
-    <Card className="customerCard">
+    <Card className="customer-card">
       <CardContent>
-        <Box className="headerCustomerCard">
-          <Typography className="titleHeader">Customers</Typography>
+        <Box className="header-customer-card">
+          <Typography className="title-header-customer-card">Customers</Typography>
           <Button
-            className="textButtonCounter"
             onClick={handleCustomerClick}
             variant="text"
             color="primary"
@@ -42,10 +41,10 @@ const CustomersCard = () => {
             <Box onClick={() => router.push(`customer/${customer.id}`)} key={customer.id} className="customer">
               <Avatar src={customer.avatar} alt={customer.name} />
               <Box width="100%">
-                <Typography className="customerName">{customer.name}</Typography>
-                <Typography className="customerEmail">{customer.email}</Typography>
+                <Typography className="customer-name-customer-card">{customer.name}</Typography>
+                <Typography className="customer-email-customer-card">{customer.email}</Typography>
               </Box>
-              <Box className="editIcon" marginLeft={1}>
+              <Box className=".edit-icon-customer-card" marginLeft={1}>
                 {EditIcon}
               </Box>
             </Box>

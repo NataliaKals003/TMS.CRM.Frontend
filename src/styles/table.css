@@ -1,43 +1,39 @@
-.tableHead {
+.table-head {
   color: #7e92a2;
   font-size: 16px;
 }
 
-.iconCell {
+.icon-cell {
   color: #7e92a2;
   height: 24px;
   width: 24px;
 }
 
-.textBody {
+.text-body {
   font-size: 16px;
   color: #092c4c;
   font-weight: 400;
 }
 
-.tableRow {
+.table-row {
   border-bottom: 1px solid #eaeef4;
 }
 
-.tableRow:hover {
+.table-row:hover {
   background-color: #f9f9f9;
 }
 
 @media (max-width: 426px) {
-  .titleSectionHeader {
-    font-size: 14px;
-  }
-
-  .filterButton {
+  .filter-button {
     font-size: 12px;
     padding: 10px;
   }
 
-  .tableHead {
+  .table-head {
     font-size: 14px;
   }
 
-  .textBody {
+  .text-body {
     font-size: 14px;
   }
 }

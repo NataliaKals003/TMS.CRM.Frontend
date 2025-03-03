@@ -1,11 +1,11 @@
-.boxRecordActivity {
+.box-record-activity {
   background-color: #ffff;
   border-radius: 12px;
   border: 1px solid #eaeef4;
   margin-bottom: 24px;
 }
 
-.formBox {
+.form-box-record-activity {
   padding: 24px;
   padding-bottom: 20px;
   padding-top: 0;
@@ -13,7 +13,7 @@
   flex-direction: column;
 }
 
-.footerRecordActivity {
+.footer-record-activity {
   display: flex;
   justify-content: flex-end;
   align-items: center;

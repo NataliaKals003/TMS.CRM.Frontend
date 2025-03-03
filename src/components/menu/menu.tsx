@@ -17,45 +17,51 @@ import {
   Checklist,
   ChecklistOutlined,
 } from '@mui/icons-material';
-import './menu-style.css';
+import './menu.css';
 
 const Menu: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
 
   const menuItems = [
-    { name: 'Home', path: '/', icon: <DashboardOutlined className="icon" />, activeIcon: <Dashboard className="icon" />, isActive: pathname === '/' },
+    {
+      name: 'Home',
+      path: '/',
+      icon: <DashboardOutlined className="icon-menu" />,
+      activeIcon: <Dashboard className="icon-menu" />,
+      isActive: pathname === '/',
+    },
     {
       name: 'Deals',
       path: '/deal',
-      icon: <BusinessCenterOutlined className="icon" />,
-      activeIcon: <BusinessCenter className="icon" />,
+      icon: <BusinessCenterOutlined className="icon-menu" />,
+      activeIcon: <BusinessCenter className="icon-menu" />,
       isActive: pathname.startsWith('/deal'),
     },
     {
       name: 'Customers',
       path: '/customer',
-      icon: <PeopleAltOutlined className="icon" />,
-      activeIcon: <PeopleAlt className="icon" />,
+      icon: <PeopleAltOutlined className="icon-menu" />,
+      activeIcon: <PeopleAlt className="icon-menu" />,
       isActive: pathname.startsWith('/customer'),
     },
     {
       name: 'Tasks',
       path: '/task',
-      icon: <ChecklistOutlined className="icon" />,
-      activeIcon: <Checklist className="icon" />,
+      icon: <ChecklistOutlined className="icon-menu" />,
+      activeIcon: <Checklist className="icon-menu" />,
       isActive: pathname.startsWith('/task'),
     },
   ];
 
   return (
     <Drawer variant="permanent">
-      <List className="list">
+      <List className="list-menu">
         {menuItems.map(({ name, path, icon, activeIcon, isActive }) => (
-          <ListItem key={name} className="listItem">
+          <ListItem key={name} className="list-item-menu">
             <ListItemButton
               onClick={() => router.push(path)}
-              className="listButton"
+              className="list-button-menu"
               sx={{
                 backgroundColor: isActive ? '#514EF3' : '#ffffff',
                 border: '1px solid #EAEEF4',
@@ -66,7 +72,7 @@ const Menu: React.FC = () => {
               aria-current={isActive ? 'page' : undefined}
             >
               <ListItemIcon
-                className="icon"
+                className="icon-menu"
                 sx={{
                   color: isActive ? '#ffffff' : '#7E92A2',
                 }}

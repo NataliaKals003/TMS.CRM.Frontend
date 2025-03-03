@@ -7,8 +7,8 @@ import SectionHeader from '@/components/section-header/section-header';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import ReportIcon from '@mui/icons-material/Report';
-import './task-page-style.css';
-import '../../styles/table-style.css';
+import './task-page.css';
+import '../../styles/table.css';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import Grid from '@mui/material/Grid2';
 
@@ -22,7 +22,7 @@ const Customers: React.FC = () => {
   }, [setTitle, setButtonTitle, setModalType]);
 
   const columnHeaders = [
-    { label: 'Done', icon: <CheckBoxIcon className="checkBox" /> },
+    { label: 'Done', icon: <CheckBoxIcon className="check-box-task-page" /> },
     { label: 'Due Date ' },
     { label: 'Task ' },
     { label: 'Edit', isRightAligned: true },
@@ -52,10 +52,10 @@ const Customers: React.FC = () => {
     const dueDateObj = new Date(formattedDate);
 
     if (dueDateObj > currentDate) {
-      return <ReportIcon className="reportIcon" />;
+      return <ReportIcon className="report-icon-task-page" />;
     }
 
-    return <CheckBoxIcon className="checkBoxIcon" />;
+    return <CheckBoxIcon className="check-box-icon-task-page" />;
   };
 
   return (
@@ -68,7 +68,7 @@ const Customers: React.FC = () => {
           <TableContainer>
             <Table>
               <TableHead>
-                <TableRow className="tableRow">
+                <TableRow className="table-row">
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
@@ -84,18 +84,18 @@ const Customers: React.FC = () => {
               </TableHead>
               <TableBody>
                 {mockTasks.map((task: Task) => (
-                  <TableRow className="tableRow" key={task.id} sx={{ cursor: 'pointer' }}>
+                  <TableRow className="table-row" key={task.id} sx={{ cursor: 'pointer' }}>
                     <TableCell>
-                      <Typography className="textBody">
+                      <Typography className="text-body">
                         {getDateIcon(task.dueDate)}
                         {task.done}
                       </Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="textBody">{task.dueDate}</Typography>
+                      <Typography className="text-body">{task.dueDate}</Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="textBody">{task.description}</Typography>
+                      <Typography className="text-body">{task.description}</Typography>
                     </TableCell>
 
                     <TableCell className="iconCell">

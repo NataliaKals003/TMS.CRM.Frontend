@@ -1,4 +1,4 @@
-.card {
+.card-next-appointment {
   background-color: #514ef3;
   color: white;
   position: relative;
@@ -7,68 +7,75 @@
   cursor: pointer;
 }
 
-.headerCard {
+.header-card-next-appointment {
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 24px;
 }
 
-.titleCard {
+.title-card-next-appointment {
   font-size: 18px;
   font-weight: 700;
 }
 
-.addressCard {
+.address-card-next-appointment {
   display: flex;
   align-items: center;
 }
 
-.appointmentCard {
+.appointment-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 24px;
 }
 
-.roomPeopleCard {
+.room-people-card {
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
 }
 
-.footerCard {
+.footer-card-next-appointment {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 26px;
 }
 
-.titleBody {
+.title-body-next-appointment {
   color: #d6e1e6;
   font-weight: 400;
   font-size: 14px;
 }
 
-.textBody {
+.text-body-next-appointment {
   font-size: 14px;
   color: white;
   font-weight: 700;
   line-height: 30px;
 }
 
-.seeDetail {
+.see-detail-next-appointment {
   padding: 10px 32px;
   background-color: #fff;
   margin-left: 10px;
 }
 
+.bg-image-next-appointment {
+  position: absolute;
+  right: -101.13px;
+  top: 200px;
+  border-radius: 50%;
+}
+
 @media (max-width: 1024px) {
-  .titleCard {
+  .title-card-next-appointment {
     font-size: 16px;
   }
 
-  .seeDetail {
+  .see-detail-next-appointment {
     font-size: 14px;
     padding: 10px 20px;
     margin-left: 10px;
@@ -80,25 +87,25 @@
     display: none;
   }
 
-  .seeDetail {
+  .see-detail-next-appointment {
     margin-left: 0;
     padding: 5px 10px;
     font-size: 14px;
     width: 100%;
   }
 
-  .headerCard {
+  .header-card-next-appointment {
     flex-direction: column;
   }
 
-  .roomPeopleCard {
+  .room-people-card {
     flex-direction: column;
     gap: 12px;
     margin-top: 15px;
     align-items: flex-start;
   }
 
-  .footerCard {
+  .footer-card-next-appointment {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;

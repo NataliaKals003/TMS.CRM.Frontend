@@ -7,7 +7,7 @@ import SectionHeader from '@/components/section-header/section-header';
 import Image from 'next/image';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
-import '../../styles/table-style.css';
+import '../../styles/table.css';
 import { useRouter } from 'next/navigation';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import Grid from '@mui/material/Grid2';
@@ -31,6 +31,7 @@ const Customers: React.FC = () => {
     { label: 'Address' },
     { label: 'Edit', isRightAligned: true },
   ];
+
   return (
     <main>
       <Grid container>
@@ -41,7 +42,7 @@ const Customers: React.FC = () => {
           <TableContainer>
             <Table>
               <TableHead>
-                <TableRow className="tableRow">
+                <TableRow className="table-row">
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
@@ -57,21 +58,21 @@ const Customers: React.FC = () => {
               </TableHead>
               <TableBody>
                 {mockCustomers.map((customer: Customer) => (
-                  <TableRow className="tableRow" key={customer.id} sx={{ cursor: 'pointer' }} onClick={() => router.push(`customer/${customer.id}`)}>
+                  <TableRow className="table-row" key={customer.id} sx={{ cursor: 'pointer' }} onClick={() => router.push(`customer/${customer.id}`)}>
                     <TableCell>
                       <Image src={customer.avatar} alt="Profile" width={44} height={44} style={{ borderRadius: '50%' }} />
                     </TableCell>
                     <TableCell>
-                      <Typography className="textBody">{customer.name}</Typography>
+                      <Typography className="text-body">{customer.name}</Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="textBody">{customer.email}</Typography>
+                      <Typography className="text-body">{customer.email}</Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="textBody">{customer.phone}</Typography>
+                      <Typography className="text-body">{customer.phone}</Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="textBody">
+                      <Typography className="text-body">
                         {customer.street}, {customer.city}, {customer.state}, {customer.zipCode}
                       </Typography>
                     </TableCell>

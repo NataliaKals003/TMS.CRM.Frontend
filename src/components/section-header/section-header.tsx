@@ -4,7 +4,7 @@ import React from 'react';
 import { Box, Typography, Button, Menu, MenuItem } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
-import './section-header-style.css';
+import './section-header.css';
 
 interface SectionHeaderProps {
   title: string;
@@ -38,15 +38,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, counter, sortByVal
   };
 
   return (
-    <Box className="sectionHeaderContainer">
-      <Typography className="titleSectionHeader">{`Total: ${counter} ${title}`}</Typography>
+    <Box className="container-section-header">
+      <Typography className="title-section-header">{`Total: ${counter} ${title}`}</Typography>
 
-      <Box className="filters" display="flex" alignItems="center" gap="16px">
+      <Box className="filters-section-header" display="flex" alignItems="center" gap="16px">
         <Button
           variant="outlined"
           onClick={handleMenuOpen}
           endIcon={<KeyboardArrowDownIcon sx={{ width: '24px', height: '24px', color: '#7E92A2' }} />}
-          className="filterButton"
+          className="filter-button-section-header"
         >
           Sort By: {selectedValue}
         </Button>
@@ -59,7 +59,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, counter, sortByVal
         </Menu>
 
         <Button
-          className="filterButton"
+          className="filter-button-section-header"
           variant="outlined"
           onClick={handleFilterMenuOpen}
           startIcon={<FilterAltOutlinedIcon sx={{ width: '24px', height: '24px', color: '#7E92A2' }} />}
