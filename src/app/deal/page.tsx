@@ -47,7 +47,7 @@ const Deals: React.FC = () => {
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
-                      className="tableHead"
+                      className="table-head"
                       sx={{
                         textAlign: header.isRightAligned ? 'right' : 'left',
                       }}
@@ -80,7 +80,7 @@ const Deals: React.FC = () => {
                     <TableCell>
                       <Typography className="text-body">{deal.area} M&sup2;</Typography>
                     </TableCell>
-                    <TableCell className="tableCell">
+                    <TableCell className="table-cell">
                       <Typography className="text-body">{deal.appointmentDate}</Typography>
                     </TableCell>
                     <TableCell>
@@ -101,9 +101,9 @@ const Deals: React.FC = () => {
                         {deal.status}
                       </Button>
                     </TableCell>
-                    <TableCell className="iconCell">
+                    <TableCell className="icon-cell">
                       <Typography variant="body2" sx={{ textAlign: 'right' }}>
-                        <DriveFileRenameOutlineOutlinedIcon className="tableCell" />
+                        <DriveFileRenameOutlineOutlinedIcon className="table-cell" />
                       </Typography>
                     </TableCell>
                   </TableRow>

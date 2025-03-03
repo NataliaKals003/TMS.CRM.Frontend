@@ -61,7 +61,7 @@ const RecordActivityCard: React.FC = () => {
       <main>
         <Box className="box-record-activity">
           <Box sx={{ padding: '24px', paddingBottom: '36px' }}>
-            <Typography variant="h5" className="title-header">
+            <Typography variant="h5" className="title-header-record-activity">
               Record Activity
             </Typography>
           </Box>

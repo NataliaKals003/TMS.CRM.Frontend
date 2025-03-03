@@ -50,7 +50,7 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
           }}
         >
           <Box className="box-header">
-            <Typography className="title-header">Select Customer</Typography>
+            <Typography className="title-header-modal">Select Customer</Typography>
 
             <Box>
               <Button

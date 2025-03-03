@@ -31,10 +31,8 @@ const DealProgressCard = () => {
           <Box className="deal-profile">
             <Avatar src={deal.dealPicture} alt="Profile" />
             <Box>
-              <Typography className="dealDetails" variant="subtitle1" fontWeight={700} fontSize={16}>
-                {deal.street}
-              </Typography>
-              <Typography className="dealDetails" variant="body2" color="textSecondary">
+              <Typography className="deal-street-progress-card">{deal.street}</Typography>
+              <Typography className="deal-city-progress-card" variant="body2" color="textSecondary">
                 {deal.city}
               </Typography>
             </Box>

@@ -45,6 +45,17 @@
   margin-left: 14px;
 }
 
+.deal-street-progress-card {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.deal-city-progress-card {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7e92a2;
+}
+
 .activities {
   display: flex;
   align-items: center;
@@ -116,10 +127,6 @@
 
   .in-progress-button {
     width: 100%;
-  }
-
-  .dealDetails {
-    font-size: 14px;
   }
 
   .button-icon {

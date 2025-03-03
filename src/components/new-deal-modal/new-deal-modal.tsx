@@ -122,7 +122,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
           }}
         >
           <Box className="box-header">
-            <Typography className="title-header">Add New Deal</Typography>
+            <Typography className="title-header-modal">Add New Deal</Typography>
             <Button endIcon={<CancelIcon className="close-icon" />} onClick={handleCancel} />
           </Box>
 

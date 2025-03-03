@@ -109,7 +109,7 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
           }}
         >
           <Box className="box-header">
-            <Typography className="title-header">Add New Customer</Typography>
+            <Typography className="title-header-modal">Add New Customer</Typography>
             <Button endIcon={<CancelIcon className="close-icon" />} onClick={handleCancel} />{' '}
           </Box>
 

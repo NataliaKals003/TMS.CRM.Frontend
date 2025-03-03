@@ -72,7 +72,7 @@ const Customers: React.FC = () => {
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
-                      className="tableHead"
+                      className="table-head"
                       sx={{
                         textAlign: header.isRightAligned ? 'right' : 'left',
                       }}
@@ -98,9 +98,9 @@ const Customers: React.FC = () => {
                       <Typography className="text-body">{task.description}</Typography>
                     </TableCell>
 
-                    <TableCell className="iconCell">
+                    <TableCell className="icon-cell">
                       <Typography variant="body2" sx={{ textAlign: 'right' }}>
-                        <DriveFileRenameOutlineOutlinedIcon className="tableCell" />
+                        <DriveFileRenameOutlineOutlinedIcon className="table-cell" />
                       </Typography>
                     </TableCell>
                   </TableRow>

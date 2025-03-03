@@ -35,7 +35,7 @@ const ActivityLogCard: React.FC = () => {
               <Typography variant="body2" className="date-log-activity-log">
                 {activity.date}
               </Typography>
-              <Typography variant="body2" className=".text-log-activity-log">
+              <Typography variant="body2" className="text-log-activity-log">
                 {activity.details}
               </Typography>
               {activity.image && (
