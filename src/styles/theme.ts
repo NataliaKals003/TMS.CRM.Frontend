@@ -173,6 +173,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginBottom: '12px',
+        },
+      },
+    },
   },
 });
 

@@ -8,6 +8,8 @@ import Menu from '../components/menu/menu';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { HeaderProvider } from '@/context/header-context';
+// import { AuthProvider } from '@/hooks/auth';
+import { usePathname } from 'next/navigation';
 
 export default function RootLayout({
   children,
@@ -16,8 +18,12 @@ export default function RootLayout({
   title?: string;
   buttonTitle?: string;
 }>) {
+  const pathname = usePathname();
+  const isLoginPage = pathname === '/login';
+
   return (
     <ThemeProvider theme={theme}>
+      {/* <AuthProvider> */}
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <HeaderProvider>
           <html
@@ -27,34 +33,24 @@ export default function RootLayout({
               width: '100%',
             }}
           >
-            <body>
+            <body style={{ margin: 0 }}>
               <Box>
-                <Header />
+                {!isLoginPage && <Header />}
                 <Box
                   sx={{
-                    margin: '80px -8px 24px 80px',
-                    backgroundColor: '#F6FAFD',
+                    margin: isLoginPage ? '0' : '80px -8px 24px 80px',
+                    backgroundColor: isLoginPage ? 'transparent' : '#F6FAFD',
                   }}
                 >
-                  <Menu />
-                  <Box
-                    sx={{
-                      padding: {
-                        xs: '12px',
-                        sm: '16px',
-                        md: '20px',
-                        lg: '24px',
-                      },
-                    }}
-                  >
-                    {children}
-                  </Box>
+                  {!isLoginPage && <Menu />}
+                  <Box>{children}</Box>
                 </Box>
               </Box>
             </body>
           </html>
         </HeaderProvider>
       </LocalizationProvider>
+      {/* </AuthProvider> */}
     </ThemeProvider>
   );
 }
