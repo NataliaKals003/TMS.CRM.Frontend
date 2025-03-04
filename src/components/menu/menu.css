@@ -1,11 +1,11 @@
-.icon {
+.icon-menu {
   min-width: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.listButton {
+.list-button-menu {
   width: 50px;
   height: 50px;
   padding: 0;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.listItem {
+.list-item-menu {
   width: 50px;
   height: 50px;
   display: flex;
@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-.list {
+.list-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,17 +32,17 @@
 }
 
 @media (max-width: 447px) {
-  .listButton {
+  .list-button-menu {
     width: 40px;
     height: 40px;
   }
 
-  .listItem {
+  .list-item-menu {
     width: 40px;
     height: 40px;
   }
 
-  .icon {
+  .icon-menu {
     width: 20px;
     height: 20px;
   }

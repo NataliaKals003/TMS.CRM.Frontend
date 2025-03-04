@@ -13,7 +13,7 @@ import NewCustomerModal from '../new-customer-modal/new-customer-modal';
 import NewTaskModal from '../new-task-modal/new-task-modal';
 import NewDealModal from '../new-deal-modal/new-deal-modal';
 import AddNewModal from '../add-new-modal/add-new-modal';
-import './header-style.css';
+import './header.css';
 import SelectCustomerModal from '../select-customer-modal/select-customer-modal';
 import { useAuth } from '@/hooks/auth-provider';
 
@@ -63,7 +63,6 @@ const Header: React.FC = () => {
                   setAddNewDealOpen(false);
                 }}
                 onChangeCustomerRequested={() => {
-                  console.log('onChangeCustomerRequested');
                   setAddNewDealOpen(false);
                   setIsModalOpen(true);
                 }}
@@ -87,22 +86,22 @@ const Header: React.FC = () => {
     >
       <Grid container alignItems={'center'}>
         <Grid size={{ xs: 2, sm: 1, md: 1, lg: 0.5 }} sx={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '22px' }}>
-          <Image src={logo} alt="Logo" className="logoImage" />
+          <Image src={logo} alt="Logo" className="logo-image-header" />
         </Grid>
 
         <Grid size={{ xs: 0, sm: 6, md: 6, lg: 7.5 }}>
-          <Typography className="title">{title}</Typography>
+          <Typography className="title-header">{title}</Typography>
         </Grid>
 
         <Grid
           size={{ xs: 10, sm: 5, md: 5, lg: 4 }}
           sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}
         >
-          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
+          <Button className="add-new-header" variant="contained" endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
             {buttonTitle}
           </Button>
-          <Search className="search" />
-          <Avatar className="avatar" src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
+          <Search className="search-header" />
+          <Avatar className="avatar-header" src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
           <Button variant="text" onClick={handleLogout}>
             <LogoutOutlinedIcon className="logout-button" />
           </Button>

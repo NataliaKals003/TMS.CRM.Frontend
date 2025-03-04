@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Grid from '@mui/material/Grid2';
-import '../../styles/modal-style.css';
-import './new-deal-modal-style.css';
+import '../../styles/modal.css';
+import './new-deal-modal.css';
 import AlertSnackbar from '../alert/alert';
 import { mockCustomers, Customer } from '../../types/customer';
 import Image from 'next/image';
@@ -45,7 +45,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
 
   const [fileName, setFileName] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,8 +92,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
     form.setValue('customerId', customerId);
   }, [customerId, form]);
 
-  const onSubmit = form.handleSubmit((formData) => {
-    console.log('Form Data:', formData);
+  const onSubmit = form.handleSubmit(() => {
     onClose();
     setSnackbarMessage('Deal Saved');
     setSnackbarSeverity('saved');
@@ -122,34 +121,40 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
             paddingBottom: '22px',
           }}
         >
-          <Box className="boxHeader">
-            <Typography className="titleHeader">Add New Deal</Typography>
-            <Button endIcon={<CancelIcon className="closeIcon" />} onClick={handleCancel} />
+          <Box className="box-header">
+            <Typography className="title-header-modal">Add New Deal</Typography>
+            <Button endIcon={<CancelIcon className="close-icon" />} onClick={handleCancel} />
           </Box>
 
           <FormProvider {...form}>
-            <Grid container spacing={3} className="customerBox">
+            <Grid container spacing={3} className="customer-box-new-deal">
               <Grid size={{ xs: 3, sm: 1.5, md: 1.5 }}>
-                <Image src={customer?.avatar || '/placeholder-avatar.jpg'} alt="Customer picture" width={44} height={44} className="dealPicture" />
+                <Image
+                  src={customer?.avatar || '/placeholder-avatar.jpg'}
+                  alt="Customer picture"
+                  width={44}
+                  height={44}
+                  className="deal-picture-new-deal"
+                />
               </Grid>
               <Grid size={{ xs: 9, sm: 6.5, md: 6.5 }}>
-                <Typography className="customerLabel">{'Customer'}</Typography>
-                <Typography className="customerName">{customer?.name}</Typography>
+                <Typography className="customer-label-new-deal">{'Customer'}</Typography>
+                <Typography className="customer-name-new-deal">{customer?.name}</Typography>
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
-                <Button onClick={onChangeCustomerRequested} variant="outlined" className="changeCustomerButton">
+                <Button onClick={onChangeCustomerRequested} variant="outlined" className="change-customer-button-new-deal">
                   Change Customer
                 </Button>
               </Grid>
             </Grid>
             <Box />
 
-            <Box className="newDealForm">
+            <Box className="form-new-deal">
               <div>
                 <Typography className="label">Room Images</Typography>
                 <label htmlFor="upload-image" style={{ cursor: 'pointer' }}>
                   <input id="upload-image" name="file" type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
-                  <Button variant="contained" component="span" className="uploadButton">
+                  <Button variant="contained" component="span" className="upload-button">
                     <span style={{ display: 'block' }}>{fileName || 'ADD'}</span>
                   </Button>
                 </label>
@@ -171,7 +176,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                   </Grid>
                 </Grid>
 
-                <Grid container spacing={3} className="dealDetailsBox">
+                <Grid container spacing={3} className="deal-details-box-new-deal">
                   <Grid size={{ xs: 12, md: 6 }}>
                     <Typography className="label">Room Area (m2)</Typography>
                     <TextFieldController type="number" name="roomArea" />
@@ -190,7 +195,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                 </Typography>
                 <TextFieldController type="text" name="specialInstructions" />
 
-                <Grid container spacing={3} className="dealDetailsBox">
+                <Grid container spacing={3} className="deal-details-box-new-deal">
                   <Grid size={{ xs: 12, md: 6 }}>
                     <Typography className="label">Room Access</Typography>
                     <SelectController
@@ -210,8 +215,8 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                 </Grid>
               </Box>
 
-              <Grid container className="footerBox">
-                <Grid size={{ xs: 12, md: 6 }} className="progressBox">
+              <Grid container className="footer-box">
+                <Grid size={{ xs: 12, md: 6 }} className="progress-box-new-deal">
                   <Grid alignItems={'center'} spacing={1} container>
                     <Grid size={{ xs: 12, md: 3.5 }}>
                       <Typography className="label" sx={{ marginBottom: '0' }}>
@@ -232,12 +237,12 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                   </Grid>
                 </Grid>
 
-                <Grid size={{ xs: 12, md: 6 }} className="actionsButton">
-                  <Button onClick={handleCancel} variant="outlined" className="cancelButton">
+                <Grid size={{ xs: 12, md: 6 }} className="actions-button">
+                  <Button onClick={handleCancel} variant="outlined" className="cancel-button">
                     Cancel
                   </Button>
 
-                  <Button variant="contained" color="primary" className="saveButton" onClick={onSubmit}>
+                  <Button variant="contained" color="primary" className="save-button" onClick={onSubmit}>
                     Save Deal
                   </Button>
                 </Grid>

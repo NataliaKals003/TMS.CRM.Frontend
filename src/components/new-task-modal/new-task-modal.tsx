@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import './new-task-modal-style.css';
+import './new-task-modal.css';
 import AlertSnackbar from '../alert/alert';
 import * as yup from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -21,7 +21,7 @@ interface FormValues {
 
 const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
 
   const schema = yup.object().shape({
@@ -37,8 +37,7 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
     },
   });
 
-  const onSubmit = form.handleSubmit((formData) => {
-    console.log('Form Data:', formData);
+  const onSubmit = form.handleSubmit(() => {
     form.reset();
     onClose();
     setSnackbarMessage('Task Saved');
@@ -67,28 +66,28 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
             maxHeight: 700,
           }}
         >
-          <Box className="boxHeader">
+          <Box className="box-header">
             <Typography variant="h5" marginBottom={0} fontWeight={700} fontSize={18} color={'#092C4C'}>
               Add New Task
             </Typography>
             <Button sx={{ minWidth: 0, margin: 0 }} endIcon={<CancelIcon sx={{ color: '#7E92A2' }} />} onClick={onClose} />
           </Box>
           <FormProvider {...form}>
-            <Box className="taskBox">
+            <Box className="task-box-new-task">
               <TextFieldController name="description" type="text" multiline rows={4} placeholder="Enter task description" />
 
-              <Box className="dueDateBox">
+              <Box className="due-date-box-new-task">
                 <Typography className="label">Due Date</Typography>
                 <DatePickerController name="dueDate" />
               </Box>
 
-              <Box className="footerTask">
-                <Box className="footerDetails">
-                  <Button onClick={handleCancel} variant="outlined" className="cancelButton">
+              <Box className="footer-new-task">
+                <Box className="footer-details-new-task">
+                  <Button onClick={handleCancel} variant="outlined" className="cancel-button">
                     Cancel
                   </Button>
 
-                  <Button variant="contained" color="primary" className="saveButton" onClick={onSubmit}>
+                  <Button variant="contained" color="primary" className="save-button" onClick={onSubmit}>
                     Save Task
                   </Button>
                 </Box>

@@ -1,11 +1,11 @@
-.textField .MuiOutlinedInput-input {
+.text-field-customer-page .MuiOutlinedInput-input {
   color: #7e92a2;
   border-radius: 8px;
   background-color: #eef6fb;
   border: 1px solid #eaeef4;
 }
 
-.typography {
+.typography-customer-page {
   margin-bottom: 12px;
   font-weight: 700;
   font-size: 16;
@@ -13,11 +13,11 @@
   color: #092c4c;
 }
 
-.customerContainer {
+.customer-container {
   margin-right: 24px;
 }
 
-.editButton {
+.edit-button-customer-page {
   position: absolute;
   bottom: -12px;
   right: -12px;
@@ -28,12 +28,12 @@
   z-index: 5;
 }
 
-.editButton:hover {
+.edit-button-customer-page:hover {
   background-color: none;
   box-shadow: none;
 }
 
-.deleteButton {
+.delete-button-customer-page {
   position: absolute;
   color: #7e92a2;
   border: 1px solid #eaeef4;
@@ -43,7 +43,7 @@
   margin-bottom: 28px;
 }
 
-.cover {
+.cover-bg-customer-page {
   width: 100%;
   height: 200px;
   border-radius: 12px;
@@ -52,15 +52,15 @@
 }
 
 @media (max-width: 426px) {
-  .customerContainer {
+  .customer-container {
     margin-right: 0;
   }
 
-  .editButton {
+  .edit-button-customer-page {
     right: 0;
   }
 
-  .deleteButton {
+  .delete-button-customer-page {
     top: 0;
     right: 0;
     margin-right: 10px;
@@ -69,7 +69,7 @@
 
 /* customer-recent-deals */
 
-.card {
+.card-recent-deals {
   background-color: #f6fafd;
   color: #092c4c;
   box-shadow: none;
@@ -78,41 +78,41 @@
   padding: 0;
 }
 
-.typographyDealAddress {
+.typography-deal-address-recent-deals-card {
   color: 092C4C;
   font-weight: 700;
   font-size: 16px;
 }
 
-.typographyDealInfo {
+.typography-deal-info-recent-deals-card {
   color: #7e92a2;
   font-size: 14px;
   font-weight: 400;
   line-height: 27px;
 }
 
-.containerDeal {
+.conatiner-recent-deals-card {
   display: flex;
   margin-bottom: 22px;
 }
 
-.buttonAdd {
+.button-add-recent-deals-card {
   padding: 8px;
 }
 
-.dealAddress {
+.deal-address-recent-deals-card {
   margin-left: 16px;
   font-size: 14px;
 }
 
-.dealDetails {
+.deal-details-recent-deals-card {
   display: flex;
   align-items: center;
   margin-left: 16px;
   font-size: 14px;
 }
 
-.doteTypographyDealInfo {
+.dote-typography-deal-info-recent-deals-card {
   color: #7e92a2;
   font-size: 14px;
   font-weight: 400;
@@ -120,44 +120,44 @@
   margin: 0 12px;
 }
 
-.recentDealsTextButton {
+.recent-deals-text-button {
   justify-content: center;
 }
 
 @media (max-width: 426px) {
-  .card {
+  .card-recent-deals {
     margin: 0 16px;
   }
 
-  .containerDeal {
+  .conatiner-recent-deals-card {
     flex-direction: column;
   }
 
-  .dealAddress {
+  .deal-address-recent-deals-card {
     margin-left: 0;
     margin-top: 8px;
   }
 
-  .dealDetails {
+  .deal-details-recent-deals-card {
     margin-left: 0;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .doteTypographyDealInfo {
+  .dote-typography-deal-info-recent-deals-card {
     display: none;
   }
 
-  .buttonAdd {
+  .button-add-recent-deals-card {
     padding: 8px;
   }
 
-  .addIcon {
+  .add-icon-recent-deals-card {
     width: 15px;
     height: 15px;
   }
 
-  .recentDealsTextButton {
+  .recent-deals-text-button {
     justify-content: left;
   }
 }

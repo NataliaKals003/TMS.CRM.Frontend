@@ -15,20 +15,20 @@
   display: none;
 }
 
-.boxHeader {
+.box-header {
   padding: 24px 29px 24px 32px;
   display: flex;
   justify-content: space-between;
 }
 
-.titleHeader {
+.title-header-modal {
   margin-bottom: 0;
   font-weight: 700;
   font-size: 18px;
   color: #092c4c;
 }
 
-.closeIcon {
+.close-icon {
   cursor: pointer;
   color: #7e92a2;
 }
@@ -41,7 +41,7 @@
   color: #092c4c;
 }
 
-.uploadButton {
+.upload-button {
   padding: 10px 20px;
   background: #f6fafd;
   color: #7e92a2;
@@ -52,25 +52,25 @@
   cursor: pointer;
 }
 
-.uploadButton:hover {
+.upload-button:hover {
   border-color: #7e92a2;
 }
 
-.footerBox {
+.footer-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px 0;
 }
 
-.cancelButton {
+.cancel-button {
   margin-right: 16px;
   color: #092c4c;
   border: none;
   padding: 10px 24px;
 }
 
-.saveButton {
+.save-button {
   padding: 10px 24px;
   font-weight: 500;
   font-size: 14px;
@@ -78,28 +78,28 @@
   border-radius: 70px;
 }
 
-.actionsButton {
+.actions-button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
 @media (max-width: 890px) {
-  .boxHeader {
+  .box-header {
     padding: 24px 18px 24px 18px;
   }
 
-  .actionsButton {
+  .actions-button {
     justify-content: center;
     margin-top: 30px;
   }
 
-  .saveButton {
+  .save-button {
     padding: 10px 20px;
     justify-content: center;
   }
 
-  .cancelButton {
+  .cancel-button {
     padding: 10px;
   }
 }

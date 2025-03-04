@@ -4,8 +4,8 @@ import { mockCustomers, Customer } from '../../types/customer';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import CancelIcon from '@mui/icons-material/Cancel';
 import AddNewCustomer from '../new-customer-modal/new-customer-modal';
-import '../../styles/modal-style.css';
-import './select-customer-modal-style.css';
+import '../../styles/modal.css';
+import './select-customer-modal.css';
 
 interface SelectCustomerModalProps {
   open: boolean;
@@ -49,8 +49,8 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
             maxHeight: '80vh',
           }}
         >
-          <Box className="boxHeader">
-            <Typography className="titleHeader">Select Customer</Typography>
+          <Box className="box-header">
+            <Typography className="title-header-modal">Select Customer</Typography>
 
             <Box>
               <Button
@@ -63,11 +63,11 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
               >
                 Add New
               </Button>
-              <Button endIcon={<CancelIcon className="closeIcon" />} onClick={onClose} />
+              <Button endIcon={<CancelIcon className="close-icon" />} onClick={onClose} />
             </Box>
           </Box>
 
-          <Box className="selectBox">
+          <Box className="select-box-select-customer">
             <List>
               {mockCustomers.map((customer: Customer) => (
                 <Box
@@ -76,18 +76,18 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
                     onCustomerSelected(customer.id);
                     onClose();
                   }}
-                  className="customerSelect"
+                  className="customer-selected-select-customer"
                 >
                   <Avatar src={customer.avatar} alt={customer.name} />
                   <Box width="100%">
-                    <Typography variant="body1" className="customerName">
+                    <Typography variant="body1" className="customer-name-select-customer">
                       {customer.name}
                     </Typography>
-                    <Typography variant="body2" className="customerEmail">
+                    <Typography variant="body2" className="customer-email-select-customer">
                       {customer.email}
                     </Typography>
                   </Box>
-                  <ArrowForwardOutlinedIcon className="arrowIcon" />
+                  <ArrowForwardOutlinedIcon className="arrow-icon" />
                 </Box>
               ))}
             </List>

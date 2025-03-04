@@ -6,9 +6,9 @@ import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CancelIcon from '@mui/icons-material/Cancel';
-import '../../styles/modal-style.css';
+import './new-customer-modal.css';
+import '../../styles/modal.css';
 import AlertSnackbar from '../alert/alert';
-import './new-customer-modal-style.css';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TextFieldController from '../form/text-field-controller';
@@ -40,7 +40,7 @@ interface FormValues {
 const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) => {
   const [fileName, setFileName] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,8 +78,7 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
     },
   });
 
-  const onSubmit = form.handleSubmit((formData) => {
-    console.log('Form Data:', formData);
+  const onSubmit = form.handleSubmit(() => {
     onClose();
     setSnackbarMessage('Deal Saved');
     setSnackbarSeverity('saved');
@@ -109,18 +108,18 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
             maxHeight: 700,
           }}
         >
-          <Box className="boxHeader">
-            <Typography className="titleHeader">Add New Customer</Typography>
-            <Button endIcon={<CancelIcon className="closeIcon" />} onClick={handleCancel} />{' '}
+          <Box className="box-header">
+            <Typography className="title-header-modal">Add New Customer</Typography>
+            <Button endIcon={<CancelIcon className="close-icon" />} onClick={handleCancel} />{' '}
           </Box>
 
           <FormProvider {...form}>
-            <Box className="newCustomerForm">
+            <Box className="new-customer-form">
               <div>
                 <Typography className="label">Avatar</Typography>
                 <label htmlFor="upload-image" style={{ cursor: 'pointer' }}>
                   <input id="upload-image" name="file" type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
-                  <Button variant="contained" component="span" className="uploadButton">
+                  <Button variant="contained" component="span" className="upload-button">
                     <span style={{ display: 'block' }}>{fileName || 'ADD'}</span>
                   </Button>
                 </label>
@@ -167,11 +166,11 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
               </Grid>
 
               <Grid container marginTop={'12px'}>
-                <Grid size={{ xs: 12, md: 12 }} className="newCustomerFooter">
-                  <Button variant="outlined" onClick={handleCancel} className="cancelButton">
+                <Grid size={{ xs: 12, md: 12 }} className="new-customer-footer">
+                  <Button variant="outlined" onClick={handleCancel} className="cancel-button">
                     Cancel
                   </Button>
-                  <Button variant="contained" color="primary" onClick={onSubmit} className="saveButton">
+                  <Button variant="contained" color="primary" onClick={onSubmit} className="save-button">
                     Save Customer
                   </Button>
                 </Grid>

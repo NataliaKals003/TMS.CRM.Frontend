@@ -1,4 +1,4 @@
-.cardRecentDeals {
+.card-recent-deals {
   background-color: #ffffff;
   color: #092c4c;
   position: relative;
@@ -9,66 +9,66 @@
   cursor: pointer;
 }
 
-.titleCard {
+.title-recent-deal-card {
   font-weight: 700;
   font-size: 18px;
 }
 
-.textButton:hover {
+.text-button-recent-deal:hover {
   background-color: transparent;
   box-shadow: none;
 }
 
-.bodyText {
+.body-text-recent-deal {
   margin-left: 14px;
   font-size: 14px;
 }
 
-.bodyTextBold {
+.body-text-bold-recent-deal {
   color: #092c4c;
   font-weight: 700;
   font-size: 16px;
 }
 
-.bodyTextBottom {
+.body-text-bottom-recent-deal {
   color: #7e92a2;
   font-size: 14px;
   font-weight: 400;
   line-height: 27px;
 }
 
-.bodyText:nth-of-type(2) {
+.body-text-recent-deal:nth-of-type(2) {
   text-align: right;
 }
 
-.dealBody {
+.deal-body-recent-deal {
   display: flex;
   margin-bottom: 16px;
 }
 
-.detailsBody {
+.details-body-recent-deal {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
 @media (max-width: 425px) {
-  .dealBody {
+  .deal-body-recent-deal {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
   }
 
-  .detailsBody {
+  .details-body-recent-deal {
     flex-direction: column;
   }
 
-  .bodyText {
+  .body-text-recent-deal {
     margin-left: 0;
   }
 
-  .bodyText:nth-of-type(2) {
+  .body-text-recent-deal:nth-of-type(2) {
     text-align: start;
   }
 }

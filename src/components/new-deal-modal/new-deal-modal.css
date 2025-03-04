@@ -1,30 +1,30 @@
-.customerBox {
+.customer-box-new-deal {
   background-color: #f6fafd;
   padding: 16px 32px;
   display: flex;
   align-items: center;
 }
 
-.dealPicture {
+.deal-picture-new-deal {
   object-fit: cover;
   border-radius: 50%;
   margin-right: 16px;
 }
 
-.customerLabel {
+.customer-label-new-deal {
   color: #7e92a2;
   font-weight: 400;
   line-height: 27px;
 }
 
-.customerName {
+.customer-name-new-deal {
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
   color: #092c4c;
 }
 
-.changeCustomerButton {
+.change-customer-button-new-deal {
   border: 1px solid #eaeef4;
   background-color: #ffffff;
   border-radius: 70px;
@@ -38,30 +38,29 @@
   min-width: auto;
 }
 
-.newDealForm {
+.form-new-deal {
   padding: 24px;
   display: flex;
   flex-direction: column;
 }
 
-.dealDetailsBox {
+.deal-details-box-new-deal {
   display: flex;
   flex-wrap: wrap;
   padding: 20px 0;
   width: 100%;
 }
 
-.progressBox {
-  /* display: flex; */
+.progress-box-new-deal {
   align-items: center;
 }
 
 @media (max-width: 426px) {
-  .customerBox {
+  .customer-box-new-deal {
     padding: 16px;
   }
 
-  .changeCustomerButton {
+  .change-customer-button-new-deal {
     justify-content: flex-start;
     padding: 10px 20px;
   }

@@ -1,4 +1,4 @@
-.recentCard {
+.recent-card {
   flex: 1;
   background-color: #ffffff;
   color: #092c4c;
@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.header {
+.header-progress-card {
   display: flex;
   align-items: center;
   margin-bottom: 24px;
@@ -19,13 +19,13 @@
   border-bottom: 1px solid #eaeef4;
 }
 
-.dealProfile {
+.deal-profile {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.headerButton {
+.header-button {
   padding: 10px 16px;
   width: 100%;
   background-color: #ececfe;
@@ -33,16 +33,27 @@
   text-transform: uppercase;
 }
 
-.inProgressButton {
+.in-progress-button {
   display: flex;
   align-items: center;
 }
 
-.arrowIcon {
+.arrow-icon {
   color: #514ef3;
   width: 20px;
   height: 20px;
   margin-left: 14px;
+}
+
+.deal-street-progress-card {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.deal-city-progress-card {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7e92a2;
 }
 
 .activities {
@@ -51,7 +62,7 @@
   margin-bottom: 24px;
 }
 
-.buttonIcon {
+.button-icon {
   width: 27px;
   height: 27px;
   border-radius: 50%;
@@ -59,28 +70,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
 }
 
-.insideButtonIcon {
+.button-icon.completed {
+  background-color: #514ef3;
+}
+
+.inside-button-icon {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  background-color: transparent;
 }
 
-.activityDate {
+.inside-button-icon.completed {
+  background-color: white;
+}
+
+.activity-date {
   color: #7e92a2;
   font-size: 14px;
   font-weight: 400;
 }
-.activityDetails {
+.activity-details {
   color: #092c4c;
   font-size: 14px;
   font-weight: 500;
 }
 
-.footerButton:hover {
+.footer-button:hover {
   border-color: transparent;
   box-shadow: none;
+}
+
+.load-more-deal-progress {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
 }
 
 @media (max-width: 426px) {
@@ -89,36 +116,32 @@
     gap: 16px;
   }
 
-  .arrowIcon {
+  .arrow-icon {
     display: none;
   }
 
-  .headerButton {
+  .header-button {
     padding: 8px 12px;
     font-size: 14px;
   }
 
-  .inProgressButton {
+  .in-progress-button {
     width: 100%;
   }
 
-  .dealDetails {
-    font-size: 14px;
-  }
-
-  .buttonIcon {
+  .button-icon {
     width: 20px;
     height: 20px;
   }
 
-  .insideButtonIcon {
+  .inside-button-icon {
     width: 7px;
     height: 7px;
   }
 }
 
 @media (max-width: 320px) {
-  .headerButton {
+  .header-button {
     font-size: 12px;
   }
 
@@ -126,15 +149,15 @@
     font-size: 13px;
   }
 
-  .activityDate {
+  .activity-date {
     font-size: 13px;
   }
 
-  .activityDetails {
+  .activity-details {
     font-size: 13px;
   }
 
-  .footerButton {
+  .footer-button {
     font-size: 13px;
   }
 }

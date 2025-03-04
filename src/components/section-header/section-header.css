@@ -1,4 +1,4 @@
-.sectionHeaderContainer {
+.container-section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,14 +6,14 @@
   background-color: #f8f9fa;
 }
 
-.titleSectionHeader {
+.title-section-header {
   margin-bottom: 0;
   font-weight: 700;
   font-size: 16px;
   color: #092c4c;
 }
 
-.filterButton {
+.filter-button-section-header {
   text-transform: none;
   background-color: #ffffff;
   color: #092c4c;
@@ -22,39 +22,39 @@
   line-height: 30px;
 }
 
-.filterButton:nth-of-type(1) {
+.filter-button-section-header:nth-of-type(1) {
   width: 100%;
 }
 
 @media (max-width: 426px) {
-  .titleSectionHeader {
+  .title-section-header {
     font-size: 14px;
   }
 
-  .sectionHeaderContainer {
+  .container-section-header {
     flex-direction: column;
   }
 
-  .filters {
+  .filters-section-header {
     margin-top: 10px;
   }
 
-  .filterButton {
+  .filter-button-section-header {
     font-size: 12px;
     padding: 10px;
   }
 
-  .filterButton:nth-of-type(1) {
+  .filter-button-section-header:nth-of-type(1) {
     width: 100%;
   }
 }
 
 @media (max-width: 321px) {
-  .filters {
+  .filters-section-header {
     flex-direction: column;
   }
 
-  .filterButton:nth-of-type(1) {
+  .filter-button-section-header:nth-of-type(1) {
     width: 100%;
   }
 }
