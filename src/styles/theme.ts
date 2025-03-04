@@ -85,6 +85,7 @@ const theme = createTheme({
           padding: '0',
           margin: '0',
           zIndex: 1,
+          minWidth: 0,
           '&:hover': {
             backgroundColor: 'none',
             boxShadow: 'none',
@@ -108,7 +109,7 @@ const theme = createTheme({
                 color: 'primary',
 
                 '&:hover': {
-                  backgroundColor: 'transparent',
+                  backgroundColor: 'none',
                   boxShadow: 'none',
                 },
               },
@@ -154,6 +155,21 @@ const theme = createTheme({
         },
         select: {
           padding: '0px 12px 0 0 !important',
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+          margin: 0,
+        },
+      },
+    },
+    MuiGrid: {
+      styleOverrides: {
+        root: {
+          padding: 0,
         },
       },
     },

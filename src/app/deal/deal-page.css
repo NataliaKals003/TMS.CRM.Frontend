@@ -1,0 +1,24 @@
+.title-typography-deal-page {
+  line-height: 30px;
+  color: #7e92a2;
+  line-height: 30px;
+}
+
+.typography-deal-page {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+  color: #526477;
+  display: block !important;
+}
+
+@media (max-width: 447px) {
+  .customer-details-deal-page {
+    flex-direction: column;
+  }
+
+  .deal-image-deal-page {
+    width: 100%;
+    height: 100%;
+  }
+}

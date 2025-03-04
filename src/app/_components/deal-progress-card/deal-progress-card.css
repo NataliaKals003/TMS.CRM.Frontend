@@ -1,0 +1,163 @@
+.recent-card {
+  flex: 1;
+  background-color: #ffffff;
+  color: #092c4c;
+  position: relative;
+  border: 1px solid #eaeef4;
+  box-shadow: none;
+  border-radius: 12px;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.header-progress-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eaeef4;
+}
+
+.deal-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-button {
+  padding: 10px 16px;
+  width: 100%;
+  background-color: #ececfe;
+  color: #514ef3;
+  text-transform: uppercase;
+}
+
+.in-progress-button {
+  display: flex;
+  align-items: center;
+}
+
+.arrow-icon {
+  color: #514ef3;
+  width: 20px;
+  height: 20px;
+  margin-left: 14px;
+}
+
+.deal-street-progress-card {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.deal-city-progress-card {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7e92a2;
+}
+
+.activities {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.button-icon {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: 2px solid #514ef3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.button-icon.completed {
+  background-color: #514ef3;
+}
+
+.inside-button-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.inside-button-icon.completed {
+  background-color: white;
+}
+
+.activity-date {
+  color: #7e92a2;
+  font-size: 14px;
+  font-weight: 400;
+}
+.activity-details {
+  color: #092c4c;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-button:hover {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.load-more-deal-progress {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+@media (max-width: 426px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .arrow-icon {
+    display: none;
+  }
+
+  .header-button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .in-progress-button {
+    width: 100%;
+  }
+
+  .button-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .inside-button-icon {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header-button {
+    font-size: 12px;
+  }
+
+  .dealDetails {
+    font-size: 13px;
+  }
+
+  .activity-date {
+    font-size: 13px;
+  }
+
+  .activity-details {
+    font-size: 13px;
+  }
+
+  .footer-button {
+    font-size: 13px;
+  }
+}

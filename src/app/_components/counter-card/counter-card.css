@@ -1,0 +1,48 @@
+.card-counter {
+  color: #7e92a2;
+  background-color: #ffffff;
+  box-shadow: none;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.content {
+  place-items: flex-start;
+  margin-left: 0;
+}
+
+.title-counter {
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.body-text-counter {
+  color: #092c4c;
+  font-weight: 600;
+  font-size: 48px;
+  font-family: sans-serif;
+  font-style: normal;
+}
+
+@media (max-width: 376px) {
+  .card-counter {
+    justify-content: start;
+    margin-left: 0;
+  }
+
+  .image-counter {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 900px) {
+  .card-counter {
+    margin-left: 20px;
+  }
+}

@@ -1,0 +1,39 @@
+.table-head {
+  color: #7e92a2;
+  font-size: 16px;
+}
+
+.icon-cell {
+  color: #7e92a2;
+  height: 24px;
+  width: 24px;
+}
+
+.text-body {
+  font-size: 16px;
+  color: #092c4c;
+  font-weight: 400;
+}
+
+.table-row {
+  border-bottom: 1px solid #eaeef4;
+}
+
+.table-row:hover {
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 426px) {
+  .filter-button {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .table-head {
+    font-size: 14px;
+  }
+
+  .text-body {
+    font-size: 14px;
+  }
+}

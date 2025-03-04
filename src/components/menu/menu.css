@@ -1,0 +1,49 @@
+.icon-menu {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-button-menu {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.list-item-menu {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 447px) {
+  .list-button-menu {
+    width: 40px;
+    height: 40px;
+  }
+
+  .list-item-menu {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon-menu {
+    width: 20px;
+    height: 20px;
+  }
+}

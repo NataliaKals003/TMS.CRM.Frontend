@@ -1,47 +1,59 @@
 'use client';
 
 import { ThemeProvider, Box } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import theme from '../styles/theme';
-import Header from '@/components/header';
-import Menu from '@/components/menu';
-import ModalAddNew from '../components/add-new-modal';
+import Header from '../components/header/header';
+import Menu from '../components/menu/menu';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { HeaderProvider } from '@/context/header-context';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
+  title?: string;
+  buttonTitle?: string;
 }>) {
-  const [open, setOpen] = useState(false);
-
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <html
-          lang="en"
-          style={{
-            height: '100vh',
-            width: '100%',
-          }}
-        >
-          <body>
-            <Box>
-              <Header onAddNewClick={() => setOpen(true)} />
-              <Box
-                sx={{
-                  margin: '80px -8px 24px 80px',
-                  backgroundColor: '#F6FAFD',
-                }}
-              >
-                <Menu />
-                <Box sx={{ padding: ' 24px' }}>{children}</Box>
+        <HeaderProvider>
+          <html
+            lang="en"
+            style={{
+              height: '100vh',
+              width: '100%',
+            }}
+          >
+            <body>
+              <Box>
+                <Header />
+                <Box
+                  sx={{
+                    margin: '80px -8px 24px 80px',
+                    backgroundColor: '#F6FAFD',
+                  }}
+                >
+                  <Menu />
+                  <Box
+                    sx={{
+                      padding: {
+                        xs: '12px',
+                        sm: '16px',
+                        md: '20px',
+                        lg: '24px',
+                      },
+                    }}
+                  >
+                    {children}
+                  </Box>
+                </Box>
               </Box>
-              <ModalAddNew open={open} onClose={() => setOpen(false)} />
-            </Box>
-          </body>
-        </html>
+            </body>
+          </html>
+        </HeaderProvider>
       </LocalizationProvider>
     </ThemeProvider>
   );

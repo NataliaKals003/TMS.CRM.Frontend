@@ -1,0 +1,114 @@
+.card-next-appointment {
+  background-color: #514ef3;
+  color: white;
+  position: relative;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.header-card-next-appointment {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 24px;
+}
+
+.title-card-next-appointment {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.address-card-next-appointment {
+  display: flex;
+  align-items: center;
+}
+
+.appointment-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.room-people-card {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.footer-card-next-appointment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26px;
+}
+
+.title-body-next-appointment {
+  color: #d6e1e6;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.text-body-next-appointment {
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.see-detail-next-appointment {
+  padding: 10px 32px;
+  background-color: #fff;
+  margin-left: 10px;
+}
+
+.bg-image-next-appointment {
+  position: absolute;
+  right: -101.13px;
+  top: 200px;
+  border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+  .title-card-next-appointment {
+    font-size: 16px;
+  }
+
+  .see-detail-next-appointment {
+    font-size: 14px;
+    padding: 10px 20px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .dote {
+    display: none;
+  }
+
+  .see-detail-next-appointment {
+    margin-left: 0;
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .header-card-next-appointment {
+    flex-direction: column;
+  }
+
+  .room-people-card {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+    align-items: flex-start;
+  }
+
+  .footer-card-next-appointment {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+  }
+}
