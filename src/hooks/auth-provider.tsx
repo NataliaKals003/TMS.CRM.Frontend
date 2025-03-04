@@ -1,7 +1,8 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 interface User {
   id: string;
@@ -22,22 +23,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const tokenKey = 'token';
 
   useEffect(() => {
-    const token = localStorage.getItem('@foodexplorer:token');
-    const storedUser = localStorage.getItem('@foodexplorer:user');
-
-    if (token && storedUser) {
-      setUser(JSON.parse(storedUser));
-    } else {
-      setUser(null);
-      router.push('/login');
-    }
-
-    setLoading(false);
+    // const token = localStorage.getItem('@tms.CRM:token');
+    // const storedUser = localStorage.getItem('@tms.CRM:user');
+    // if (token && storedUser) {
+    //   setUser(JSON.parse(storedUser));
+    // } else {
+    //   setUser(null);
+    //   // router.push('/login');
+    // }
+    // setLoading(false);
   }, [router]);
 
-  function signIn({ email, password }: { email: string; password: string }) {
+  async function signIn({ email, password }: { email: string; password: string }) {
+    setLoading(true);
+
     const validEmail = 'test@gmail.com';
     const validPassword = 'password';
 
@@ -48,16 +50,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const dummyUser: User = { id: '1', name: 'Usuário Teste', email };
 
-    localStorage.setItem('@tms.CRM:user', JSON.stringify(dummyUser));
-    localStorage.setItem('@tms.CRM:token', 'fake-token');
+    Cookies.set(tokenKey, 'your-secret-token', { expires: 7, secure: true });
 
     setUser(dummyUser);
     router.push('/');
   }
 
   async function signOut() {
-    localStorage.removeItem('@tms.CRM:token');
-    localStorage.removeItem('@tms.CRM:user');
+    Cookies.remove(tokenKey);
 
     setUser(null);
     router.push('/login');

@@ -24,8 +24,8 @@ export default function RootLayout({
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <HeaderProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <HeaderProvider>
             <html
               lang="en"
               style={{
@@ -63,8 +63,8 @@ export default function RootLayout({
                 </Box>
               </body>
             </html>
-          </AuthProvider>
-        </HeaderProvider>
+          </HeaderProvider>
+        </AuthProvider>
       </LocalizationProvider>
     </ThemeProvider>
   );
