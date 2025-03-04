@@ -8,7 +8,7 @@ import TextFieldController from '@/components/form/text-field-controller';
 import { Alert, Button, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { useEffect, useState } from 'react';
-import './login-style.css';
+import './login.css';
 
 type FormValues = {
   email: string;
@@ -45,25 +45,25 @@ export default function Login() {
   useEffect(() => {
     if (errorMessage) {
       const timer = setTimeout(() => setErrorMessage(null), 3000);
-      return () => clearTimeout(timer); // Limpa o timer ao desmontar
+      return () => clearTimeout(timer);
     }
   }, [errorMessage]);
 
   return (
     <>
       {errorMessage && (
-        <Alert severity="error" className="errorAlert">
+        <Alert severity="error" className="error-alert-login">
           {errorMessage}
         </Alert>
       )}
-      <Grid className="gridContainer" container>
+      <Grid className="grid-container-login" container>
         <FormProvider {...form}>
-          <Typography className="titleLogin">Login</Typography>
+          <Typography className="title-login">Login</Typography>
 
           <TextFieldController name="email" label="Email" type="email" />
 
           <TextFieldController name="password" label="Password" type="password" />
-          <Button variant="text" className="submitButton" onClick={onSubmit}>
+          <Button variant="text" className="submit-button-login " onClick={onSubmit}>
             Login
           </Button>
         </FormProvider>

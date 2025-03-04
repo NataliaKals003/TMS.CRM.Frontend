@@ -7,6 +7,7 @@ import { Search } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
 import logo from '../../assets/logo.jpg';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import NewCustomerModal from '../new-customer-modal/new-customer-modal';
 import NewTaskModal from '../new-task-modal/new-task-modal';
@@ -14,14 +15,22 @@ import NewDealModal from '../new-deal-modal/new-deal-modal';
 import AddNewModal from '../add-new-modal/add-new-modal';
 import './header-style.css';
 import SelectCustomerModal from '../select-customer-modal/select-customer-modal';
+import { useAuth } from '@/hooks/auth-provider';
 
 const Header: React.FC = () => {
   const { title, buttonTitle, modalType } = useHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addNewDealOpen, setAddNewDealOpen] = useState(false);
   const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null);
+  const { signOut } = useAuth();
 
   const [opacity, setOpacity] = useState(1);
+
+  const handleLogout = () => {
+    if (window.confirm('Do you want to log out?')) {
+      signOut();
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setOpacity(window.scrollY > 50 ? 0.7 : 1);
@@ -89,11 +98,14 @@ const Header: React.FC = () => {
           size={{ xs: 10, sm: 5, md: 5, lg: 4 }}
           sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}
         >
-          <Button className="addNew" variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
+          <Button variant="contained" sx={{ padding: '10px 16px' }} endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
             {buttonTitle}
           </Button>
           <Search className="search" />
           <Avatar className="avatar" src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
+          <Button variant="text" onClick={handleLogout}>
+            <LogoutOutlinedIcon className="logout-button" />
+          </Button>
         </Grid>
       </Grid>
       {renderModal()}

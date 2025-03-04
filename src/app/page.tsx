@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react';
 import NextAppointmentCard from './_components/next-appointment-card/next-appointment-card';
 import RecentDealsCard from './_components/recent-deals-card/recent-deals-card';
 import CustomersCard from './_components/customer-card/customers-card';
@@ -14,9 +13,6 @@ import TaskCard from '@/app/_components/task-card/task-card';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 
 const Home: React.FC = () => {
-  const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const { setTitle, setButtonTitle, setModalType } = useHeader();
 
   useEffect(() => {
@@ -24,20 +20,6 @@ const Home: React.FC = () => {
     setButtonTitle('Add New');
     setModalType(HeaderModalType.generalAddNew);
   }, [setTitle, setButtonTitle, setModalType]);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      router.replace('/login');
-    } else {
-      setIsAuthenticated(true);
-    }
-    setLoading(false);
-  }, [router]);
-
-  if (loading) return <p>Loading...</p>;
-
-  if (!isAuthenticated) return null;
 
   return (
     <Grid container>
