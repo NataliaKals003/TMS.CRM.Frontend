@@ -50,7 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const dummyUser: User = { id: '1', name: 'Usuário Teste', email };
 
-    Cookies.set(tokenKey, 'your-secret-token', { expires: 7, secure: true });
+    Cookies.set(tokenKey, 'your-secret-token', { expires: 1, secure: true });
 
     setUser(dummyUser);
     router.push('/');

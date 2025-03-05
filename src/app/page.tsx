@@ -23,7 +23,7 @@ const Home: React.FC = () => {
 
   return (
     <Grid container>
-      <Grid size={{ xs: 12, md: 4, lg: 2.5 }} padding={'0 24px 24px 0'}>
+      <Grid size={{ xs: 12, md: 4, lg: 2.5 }} padding={'24px'}>
         <Grid container>
           <Grid size={{ xs: 12, sm: 6, md: 12, lg: 12 }}>
             <NextAppointmentCard />
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
         </Grid>
       </Grid>
 
-      <Grid size={{ xs: 12, md: 8, lg: 6 }} padding={'0 24px 24px 0'}>
+      <Grid size={{ xs: 12, md: 8, lg: 6 }} sx={{ padding: { xs: '12px, 12px, 12px, 0', sm: '16px 16px 16px 0', md: '24px 24px 24px 0' } }}>
         <RecentDealsCard />
         <DealProgressCard />
       </Grid>

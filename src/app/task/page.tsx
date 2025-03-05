@@ -60,7 +60,7 @@ const Customers: React.FC = () => {
 
   return (
     <main>
-      <Grid container>
+      <Grid container sx={{ padding: { xs: '12px', sm: '16px', md: '24px ' } }}>
         <Grid size={{ xs: 12, md: 12 }}>
           <SectionHeader title="Deals" counter={23} sortByValue={['Date Created', 'Alphabetic']} filterOptions={['Area', 'Price', 'Status']} />
         </Grid>

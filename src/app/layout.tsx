@@ -38,27 +38,13 @@ export default function RootLayout({
                   {!isLoginPage && <Header />}
                   <Box
                     sx={{
-                      margin: isLoginPage ? '0' : '80px -8px 24px 80px',
+                      margin: isLoginPage ? '0' : '90px 0px 0px 90px',
                       backgroundColor: isLoginPage ? 'transparent' : '#F6FAFD',
                     }}
                   >
                     {!isLoginPage && <Menu />}
-                    <Box
-                      sx={
-                        !isLoginPage
-                          ? {
-                              padding: {
-                                xs: '12px',
-                                sm: '16px',
-                                md: '20px',
-                                lg: '24px',
-                              },
-                            }
-                          : undefined
-                      }
-                    >
-                      {children}
-                    </Box>
+                    {children}
+                    {/* </Box> */}
                   </Box>
                 </Box>
               </body>

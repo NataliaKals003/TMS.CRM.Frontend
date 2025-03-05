@@ -48,7 +48,7 @@ export default function Page() {
 
   return (
     <>
-      <Grid container padding={0}>
+      <Grid container padding={0} sx={{ padding: { xs: '12px', sm: '16px', md: '24px ' } }}>
         <Grid size={{ xs: 12, md: 8.5 }}>
           <Grid container className="customer-container">
             <Grid container size={{ xs: 12, md: 12 }} paddingBottom={'24px'} position="relative" alignItems={'end'}>

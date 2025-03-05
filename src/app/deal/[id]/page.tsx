@@ -74,7 +74,7 @@ export default function Page() {
 
   return (
     <>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ padding: { xs: '12px', sm: '16px', md: '24px ' } }}>
         <Grid size={{ xs: 12, sm: 12, md: 12, lg: 9 }}>
           <Grid container>
             <Grid className="customer-details-deal-page" size={{ xs: 12, md: 12 }} paddingBottom={'24px'} gap={2} alignItems={'center'}>
