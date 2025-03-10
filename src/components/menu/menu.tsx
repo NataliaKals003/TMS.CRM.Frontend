@@ -72,8 +72,11 @@ const Menu: React.FC = () => {
               aria-current={isActive ? 'page' : undefined}
             >
               <ListItemIcon
-                className="icon-menu"
                 sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  minWidth: 0,
                   color: isActive ? '#ffffff' : '#7E92A2',
                 }}
               >

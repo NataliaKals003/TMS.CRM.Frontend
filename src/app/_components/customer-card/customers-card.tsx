@@ -39,9 +39,11 @@ const CustomersCard = () => {
         <Box>
           {mockCustomers.slice(0, 3).map((customer: Customer) => (
             <Box onClick={() => router.push(`customer/${customer.id}`)} key={customer.id} className="customer">
-              <Avatar src={customer.avatar} alt={customer.name} />
+              <Avatar src={customer.avatar} alt={`${customer.firstName} ${customer.lastName}`} />
               <Box width="100%">
-                <Typography className="customer-name-customer-card">{customer.name}</Typography>
+                <Typography className="customer-name-customer-card">
+                  {customer.firstName} {customer.lastName}
+                </Typography>
                 <Typography className="customer-email-customer-card">{customer.email}</Typography>
               </Box>
               <Box className=".edit-icon-customer-card" marginLeft={1}>

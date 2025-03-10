@@ -13,16 +13,16 @@ export default function LoginLayout({ children }: { children: React.ReactNode })
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Grid container spacing={4} className="layoutGrid">
-          <Grid size={{ xs: 12, sm: 12, md: 8 }} container direction="column" className="textGrid">
-            <Grid container alignItems="center" className="crmContainer">
-              <Image src={logo} alt="Logo" className="logoLeaf" />
-              <Typography className="textCRM">CRM</Typography>
+        <Grid container spacing={4} className="layout-grid">
+          <Grid size={{ xs: 12, sm: 12, md: 8 }} container direction="column" className="text-grid">
+            <Grid container alignItems="center" className="crm-container">
+              <Image src={logo} alt="Logo" className="logo-leaf" />
+              <Typography className="text-CRM">CRM</Typography>
             </Grid>
 
             <Divider className="divider" />
 
-            <Typography className="textDescription">Create and manage customers, deals, activities and tasks</Typography>
+            <Typography className="text-description">Create and manage customers, deals, activities and tasks</Typography>
           </Grid>
 
           <Grid size={{ xs: 12, sm: 12, md: 4 }}>{children}</Grid>

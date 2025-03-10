@@ -47,7 +47,6 @@ const Deals: React.FC = () => {
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
-                      className="table-head"
                       sx={{
                         textAlign: header.isRightAligned ? 'right' : 'left',
                       }}
@@ -78,10 +77,18 @@ const Deals: React.FC = () => {
                       </Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="text-body">{deal.area} M&sup2;</Typography>
+                      <Typography className="text-body">{deal.roomArea} M&sup2;</Typography>
                     </TableCell>
-                    <TableCell className="table-cell">
-                      <Typography className="text-body">{deal.appointmentDate}</Typography>
+                    <TableCell>
+                      <Typography className="text-body">
+                        {new Date(deal.appointmentDate).toLocaleString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography className="text-body">${deal.price}</Typography>
@@ -98,12 +105,12 @@ const Deals: React.FC = () => {
                           width: 120,
                         }}
                       >
-                        {deal.status}
+                        {deal.progress === 'inProgress' ? 'IN PROGRESS' : 'CLOSED'}
                       </Button>
                     </TableCell>
-                    <TableCell className="icon-cell">
+                    <TableCell>
                       <Typography variant="body2" sx={{ textAlign: 'right' }}>
-                        <DriveFileRenameOutlineOutlinedIcon className="table-cell" />
+                        <DriveFileRenameOutlineOutlinedIcon />
                       </Typography>
                     </TableCell>
                   </TableRow>

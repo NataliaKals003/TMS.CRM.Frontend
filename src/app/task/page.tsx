@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { mockTasks, Task } from '../../types/task';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import SectionHeader from '@/components/section-header/section-header';
@@ -11,9 +11,11 @@ import './task-page.css';
 import '../../styles/table.css';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import Grid from '@mui/material/Grid2';
+import TaskModal from '@/components/task-form-modal/task-form-modal';
 
 const Customers: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setTitle('Tasks');
@@ -72,7 +74,6 @@ const Customers: React.FC = () => {
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
-                      className="table-head"
                       sx={{
                         textAlign: header.isRightAligned ? 'right' : 'left',
                       }}
@@ -84,7 +85,7 @@ const Customers: React.FC = () => {
               </TableHead>
               <TableBody>
                 {mockTasks.map((task: Task) => (
-                  <TableRow className="table-row" key={task.id} sx={{ cursor: 'pointer' }}>
+                  <TableRow onClick={() => setIsModalOpen(true)} className="table-row" key={task.id} sx={{ cursor: 'pointer' }}>
                     <TableCell>
                       <Typography className="text-body">
                         {getDateIcon(task.dueDate)}
@@ -92,13 +93,21 @@ const Customers: React.FC = () => {
                       </Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="text-body">{task.dueDate}</Typography>
+                      <Typography className="text-body">
+                        {new Date(task.dueDate).toLocaleString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography className="text-body">{task.description}</Typography>
                     </TableCell>
 
-                    <TableCell className="icon-cell">
+                    <TableCell>
                       <Typography variant="body2" sx={{ textAlign: 'right' }}>
                         <DriveFileRenameOutlineOutlinedIcon className="table-cell" />
                       </Typography>
@@ -110,6 +119,7 @@ const Customers: React.FC = () => {
           </TableContainer>
         </Grid>
       </Grid>
+      <TaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />
     </main>
   );
 };

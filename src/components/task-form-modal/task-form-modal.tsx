@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import './new-task-modal.css';
-import AlertSnackbar from '../alert/alert';
+import './task-form-modal.css';
+import AlertSnackbar from '../alert-snackbar/alert-snackbar';
 import * as yup from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -19,7 +19,7 @@ interface FormValues {
   dueDate: Date;
 }
 
-const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
+const TaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
@@ -101,4 +101,4 @@ const NewTaskModal: React.FC<AddNewTaskFormProps> = ({ open, onClose }) => {
   );
 };
 
-export default NewTaskModal;
+export default TaskModal;

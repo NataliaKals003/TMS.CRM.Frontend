@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, Typography, Box, Button, Container } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import AddNewTask from '../../../components/new-task-modal/new-task-modal';
+import AddNewTask from '../../../components/task-form-modal/task-form-modal';
 import { mockTasks, Task } from '../../../types/task';
 import { useRouter } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
@@ -57,7 +57,13 @@ const TaskCard: React.FC = () => {
                   <Grid key={task.id} container sx={{ marginBottom: 3, alignContent: 'center' }}>
                     <Grid size={{ xs: 12, sm: 3, md: 2, lg: 4 }}>
                       <Typography className="text-task" data-has-icon={hasIcon}>
-                        {task.dueDate}
+                        {new Date(task.dueDate).toLocaleString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
                       </Typography>
                     </Grid>
 

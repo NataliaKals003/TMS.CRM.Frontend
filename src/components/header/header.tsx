@@ -9,15 +9,17 @@ import Image from 'next/image';
 import logo from '../../assets/logo.jpg';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { HeaderModalType, useHeader } from '@/context/header-context';
-import NewCustomerModal from '../new-customer-modal/new-customer-modal';
-import NewTaskModal from '../new-task-modal/new-task-modal';
-import NewDealModal from '../new-deal-modal/new-deal-modal';
+import CustomerFormModal from '../customer-form-modal/customer-form-modal';
+import TaskModal from '../task-form-modal/task-form-modal';
+import DealFormModal from '../deal-form-modal/deal-form-modal';
 import AddNewModal from '../add-new-modal/add-new-modal';
 import './header.css';
 import SelectCustomerModal from '../select-customer-modal/select-customer-modal';
 import { useAuth } from '@/hooks/auth-provider';
+import { useRouter } from 'next/navigation';
 
 const Header: React.FC = () => {
+  const router = useRouter();
   const { title, buttonTitle, modalType } = useHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addNewDealOpen, setAddNewDealOpen] = useState(false);
@@ -27,9 +29,7 @@ const Header: React.FC = () => {
   const [opacity, setOpacity] = useState(1);
 
   const handleLogout = () => {
-    if (window.confirm('Do you want to log out?')) {
-      signOut();
-    }
+    signOut();
   };
 
   useEffect(() => {
@@ -41,9 +41,9 @@ const Header: React.FC = () => {
   const renderModal = () => {
     switch (modalType) {
       case HeaderModalType.newCustomer:
-        return <NewCustomerModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+        return <CustomerFormModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
       case HeaderModalType.newTask:
-        return <NewTaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+        return <TaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
       case HeaderModalType.newDeal:
         return (
           <>
@@ -57,7 +57,7 @@ const Header: React.FC = () => {
               }}
             />
             {selectedCustomerId && (
-              <NewDealModal
+              <DealFormModal
                 open={addNewDealOpen}
                 onClose={() => {
                   setAddNewDealOpen(false);
@@ -76,6 +76,10 @@ const Header: React.FC = () => {
     }
   };
 
+  const handleIconClick = () => {
+    router.push('/');
+  };
+
   return (
     <AppBar
       sx={{
@@ -86,7 +90,7 @@ const Header: React.FC = () => {
     >
       <Grid container alignItems={'center'}>
         <Grid size={{ xs: 2, sm: 1, md: 1, lg: 0.5 }} sx={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '22px' }}>
-          <Image src={logo} alt="Logo" className="logo-image-header" />
+          <Image onClick={handleIconClick} src={logo} alt="Logo" className="logo-image-header" />
         </Grid>
 
         <Grid size={{ xs: 0, sm: 6, md: 6, lg: 7.5 }}>

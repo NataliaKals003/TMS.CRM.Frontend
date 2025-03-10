@@ -6,7 +6,7 @@
   background-color: #ffffff;
   box-shadow: 24px;
   overflow-y: auto;
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
   max-height: 650px;
   border-radius: 12px;
 }

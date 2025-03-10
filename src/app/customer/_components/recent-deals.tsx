@@ -16,7 +16,7 @@ const RecentDeals = () => {
     router.push('/deal');
   };
 
-  const handleDealIdClick = (dealId: string) => {
+  const handleDealIdClick = (dealId: number) => {
     router.push(`/deal/${dealId}`);
   };
 
@@ -36,7 +36,7 @@ const RecentDeals = () => {
       </Grid>
 
       {mockDeals.slice(0, 3).map((deal: Deal) => (
-        <Grid container key={deal.id} className="conatiner-recent-deals-card" alignItems="center" onClick={() => handleDealIdClick(`${deal.id}`)}>
+        <Grid container key={deal.id} className="conatiner-recent-deals-card" alignItems="center" onClick={() => handleDealIdClick(deal.id)}>
           <Grid size={{ xs: 12, sm: 1, md: 2, lg: 1.5 }}>
             <Image src={deal.dealPicture} alt="Deal" width={44} height={44} style={{ borderRadius: '50%' }} />
           </Grid>
@@ -50,7 +50,15 @@ const RecentDeals = () => {
               </Grid>
 
               <Grid size={{ xs: 11, md: 12 }} className="deal-details-recent-deals-card" alignItems="center">
-                <Typography className="typography-deal-info-recent-deals-card">{deal.appointmentDate}</Typography>
+                <Typography className="typography-deal-info-recent-deals-card">
+                  {new Date(deal.appointmentDate).toLocaleString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
+                </Typography>
                 <Typography className="dote-typography-deal-info-recent-deals-card">•</Typography>
                 <Typography className="typography-deal-info-recent-deals-card">$ {deal.price}</Typography>
               </Grid>

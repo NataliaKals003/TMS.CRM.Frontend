@@ -31,6 +31,7 @@ export default function RootLayout({
               style={{
                 height: '100vh',
                 width: '100%',
+                scrollbarWidth: 'none',
               }}
             >
               <body style={{ margin: 0 }}>

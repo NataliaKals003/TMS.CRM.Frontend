@@ -3,9 +3,9 @@ import { Box, Typography, Button, List, Modal, Avatar } from '@mui/material';
 import { mockCustomers, Customer } from '../../types/customer';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import CancelIcon from '@mui/icons-material/Cancel';
-import AddNewCustomer from '../new-customer-modal/new-customer-modal';
 import '../../styles/modal.css';
 import './select-customer-modal.css';
+import CustomerFormModal from '../customer-form-modal/customer-form-modal';
 
 interface SelectCustomerModalProps {
   open: boolean;
@@ -78,10 +78,10 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
                   }}
                   className="customer-selected-select-customer"
                 >
-                  <Avatar src={customer.avatar} alt={customer.name} />
+                  <Avatar src={customer.avatar} alt={customer.firstName} />
                   <Box width="100%">
                     <Typography variant="body1" className="customer-name-select-customer">
-                      {customer.name}
+                      {customer.firstName} {customer.lastName}
                     </Typography>
                     <Typography variant="body2" className="customer-email-select-customer">
                       {customer.email}
@@ -98,7 +98,7 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
           </Box>
         </Box>
       </Modal>
-      <AddNewCustomer
+      <CustomerFormModal
         open={addNewCustomerOpen}
         onClose={() => {
           setAddNewCustomerOpen(false);

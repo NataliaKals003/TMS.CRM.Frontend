@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import '../../../../styles/modal.css';
 import './record-activity-card.css';
-import AlertSnackbar from '@/components/alert/alert';
+import AlertSnackbar from '@/components/alert-snackbar/alert-snackbar';
 import DatePickerController from '../../../../components/form/date-picker-controller';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';

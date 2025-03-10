@@ -1,18 +1,32 @@
+export const DealProgress = {
+  none: { id: 'none', label: 'None' },
+  inProgress: { id: 'inProgress', label: 'In Progress' },
+  closed: { id: 'closed', label: 'Closed' },
+} as const;
+
+export const DealRoomAccess = {
+  none: { id: 'none', label: 'None' },
+  keysWithDoorman: { id: 'keysWithDoorman', label: 'Keys with doorman' },
+};
+
+export type DealProgressType = keyof typeof DealProgress;
+export type DealRoomAccessType = keyof typeof DealRoomAccess;
+
 export type Deal = {
   id: number;
   dealPicture: string;
   street: string;
   city: string;
   state: string;
-  zipCode: string;
-  area: string;
-  price: string;
-  people: number;
+  zipCode: number;
+  roomArea: number;
+  price: number;
+  numberOfPeople: number;
   appointmentDate: string;
-  status: 'CLOSE' | 'IN PROGRESS';
-  details: string;
+  progress: DealProgressType;
+  specialInstructions: string;
   customerId: number;
-  roomAccess: string;
+  roomAccess: DealRoomAccessType;
 };
 
 export const mockDeals: Deal[] = [
@@ -22,15 +36,15 @@ export const mockDeals: Deal[] = [
     street: '319 Haul Road',
     city: 'Glenrock',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 14, 07:00 AM',
-    status: 'IN PROGRESS',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'inProgress',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 3,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 2,
@@ -38,15 +52,15 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'IN PROGRESS',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'closed',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 2,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 3,
@@ -54,15 +68,15 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'IN PROGRESS',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'inProgress',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 3,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 4,
@@ -70,15 +84,15 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'IN PROGRESS',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'closed',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 4,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 5,
@@ -86,15 +100,15 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'CLOSE',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'closed',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 5,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 6,
@@ -102,15 +116,15 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'CLOSE',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'inProgress',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 6,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 7,
@@ -118,15 +132,15 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'CLOSE',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'inProgress',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 7,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 8,
@@ -134,15 +148,15 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'CLOSE',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'inProgress',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 8,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 9,
@@ -150,15 +164,15 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'CLOSE',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'inProgress',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 9,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
   {
     id: 10,
@@ -166,14 +180,14 @@ export const mockDeals: Deal[] = [
     street: '47 Spruce Drive',
     city: 'Quantico',
     state: 'PA',
-    zipCode: '1234',
-    area: '100',
-    price: '5750',
-    people: 10,
-    appointmentDate: 'Nov 15, 08:00 AM',
-    status: 'CLOSE',
-    details: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
+    zipCode: 1234,
+    roomArea: 100,
+    price: 5750,
+    numberOfPeople: 10,
+    appointmentDate: '2021-11-14T10:30:00.000Z',
+    progress: 'inProgress',
+    specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 1,
-    roomAccess: 'Keys with doorman',
+    roomAccess: 'keysWithDoorman',
   },
 ];

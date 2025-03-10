@@ -1,6 +1,6 @@
 import { DatePickerControllerProps, ErrorObject } from '@/types/form';
 import { FormControl, FormHelperText } from '@mui/material';
-import { DatePicker, PickersActionBarAction } from '@mui/x-date-pickers';
+import { DateTimePicker, PickersActionBarAction } from '@mui/x-date-pickers';
 import { Controller, useFormContext } from 'react-hook-form';
 
 function getObjectValueFromPath(obj: unknown, path: string): ErrorObject {
@@ -9,7 +9,7 @@ function getObjectValueFromPath(obj: unknown, path: string): ErrorObject {
 
 const DatePickerController = (props: DatePickerControllerProps) => {
   const { control } = useFormContext();
-  const defaultFormat = 'dd/MM/yyyy';
+  const defaultFormat = 'MMM dd yyyy, HH:mm';
 
   return (
     <>
@@ -26,9 +26,9 @@ const DatePickerController = (props: DatePickerControllerProps) => {
 
           return (
             <FormControl fullWidth>
-              <DatePicker
+              <DateTimePicker
                 label={props.label}
-                value={field.value || null}
+                value={field.value}
                 minDate={props.minDate}
                 maxDate={props.maxDate}
                 onChange={(val) => field.onChange(val)}

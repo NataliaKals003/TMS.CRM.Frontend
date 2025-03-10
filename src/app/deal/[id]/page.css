@@ -1,0 +1,43 @@
+.grid-address-id-page {
+  margin-left: -24px;
+}
+
+.box-address-id-page {
+  padding: 24px 0 24px 24px;
+  padding-left: 48px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: -24px;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.button-actions-address-id-page {
+  color: #7e92a2;
+  border: 1px solid #eaeef4;
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin-right: 24px;
+}
+
+.actions-button-addres-id-page {
+  width: 23px;
+  height: 23px;
+  padding: 15px;
+}
+
+.grid-image-deal-id-page {
+  padding: 25px 24px 24px 0;
+}
+
+.deal-image-deal-id-page {
+  border-radius: 12%;
+}
+
+@media (max-width: 447px) {
+  .deal-image-deal-page {
+    width: 100%;
+    height: 100%;
+  }
+}

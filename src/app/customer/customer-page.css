@@ -1,18 +1,3 @@
-.text-field-customer-page .MuiOutlinedInput-input {
-  color: #7e92a2;
-  border-radius: 8px;
-  background-color: #eef6fb;
-  border: 1px solid #eaeef4;
-}
-
-.typography-customer-page {
-  margin-bottom: 12px;
-  font-weight: 700;
-  font-size: 16;
-  line-height: 30px;
-  color: #092c4c;
-}
-
 .customer-container {
   margin-right: 24px;
 }
@@ -79,7 +64,7 @@
 }
 
 .typography-deal-address-recent-deals-card {
-  color: 092C4C;
+  color: #092c4c;
   font-weight: 700;
   font-size: 16px;
 }

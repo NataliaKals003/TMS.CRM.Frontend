@@ -24,7 +24,6 @@ const AlertSnackbar: React.FC<AlertSnackbarProps> = ({ open, message, severity, 
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
     >
       <Alert
-        className="alert"
         onClose={onClose}
         severity={severity === 'saved' ? 'success' : 'error'}
         icon={<Icon className={`icon-${severity}`} />}
@@ -33,7 +32,17 @@ const AlertSnackbar: React.FC<AlertSnackbarProps> = ({ open, message, severity, 
             <HighlightOffIcon />
           </IconButton>
         }
-        sx={{ width: '100%' }}
+        sx={{
+          backgroundColor: '#000000',
+          color: '#ffffff',
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'row',
+          padding: '13px 20px 13px 22px',
+          gap: '12px',
+          borderRadius: '8px',
+          boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.25)',
+        }}
       >
         {message}
       </Alert>

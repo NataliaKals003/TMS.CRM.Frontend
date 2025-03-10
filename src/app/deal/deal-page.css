@@ -16,9 +16,4 @@
   .customer-details-deal-page {
     flex-direction: column;
   }
-
-  .deal-image-deal-page {
-    width: 100%;
-    height: 100%;
-  }
 }

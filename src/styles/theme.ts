@@ -186,6 +186,33 @@ const theme = createTheme({
         },
       },
     },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: {
+          color: '#092C4C',
+          '&::placeholder': {
+            color: '#7E92A2',
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          color: '#7e92a2',
+          fontSize: '16px',
+        },
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          left: 0,
+          right: 0,
+          top: 0,
+        },
+      },
+    },
   },
 });
 

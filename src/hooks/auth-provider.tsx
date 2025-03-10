@@ -12,16 +12,19 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
-  signIn: (credentials: { email: string; password: string }) => void;
+  signIn: (credentials: UserCredentials) => Promise<boolean>;
   signOut: () => void;
-  loading: boolean;
+}
+
+interface UserCredentials {
+  email: string;
+  password: string;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const tokenKey = 'token';
 
@@ -37,24 +40,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // setLoading(false);
   }, [router]);
 
-  async function signIn({ email, password }: { email: string; password: string }) {
-    setLoading(true);
-
-    const validEmail = 'test@gmail.com';
-    const validPassword = 'password';
-
-    if (email !== validEmail || password !== validPassword) {
-      alert('Invalid email or password');
-      return;
+  const signIn = async (credentials: UserCredentials): Promise<boolean> => {
+    // TODO(Nat): call api, passing the email and pass, expecting to get the token
+    if (credentials.email !== 'test@gmail.com' || credentials.password !== 'password') {
+      return false;
     }
 
-    const dummyUser: User = { id: '1', name: 'Usuário Teste', email };
+    const token = 'your-secret-token';
+    const dummyUser: User = { id: '1', name: 'Usuário Teste', email: credentials.email };
 
-    Cookies.set(tokenKey, 'your-secret-token', { expires: 1, secure: true });
-
+    Cookies.set(tokenKey, token, { expires: 1, secure: true });
     setUser(dummyUser);
-    router.push('/');
-  }
+
+    return true;
+  };
 
   async function signOut() {
     Cookies.remove(tokenKey);
@@ -69,7 +68,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         signIn,
         signOut,
-        loading,
       }}
     >
       {children}

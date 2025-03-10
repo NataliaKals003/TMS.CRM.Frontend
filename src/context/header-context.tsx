@@ -11,10 +11,10 @@ export enum HeaderModalType {
 
 interface HeaderContextType {
   title: string;
-  buttonTitle: string;
-  modalType: HeaderModalType;
   setTitle: (title: string) => void;
-  setButtonTitle: (buttonTitle: string) => void;
+  modalType: HeaderModalType;
+  buttonTitle?: string;
+  setButtonTitle?: (buttonTitle: string) => void;
   setModalType: (type: HeaderModalType) => void;
   onOpenModalClick: () => void;
   isModalOpen: boolean;
@@ -37,7 +37,7 @@ export const HeaderProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [isModalOpen, setModalOpen] = useState(false);
 
   const onOpenModalClick = () => {
-    setModalOpen(!isModalOpen); // Toggle modal state
+    setModalOpen(!isModalOpen);
   };
 
   return (

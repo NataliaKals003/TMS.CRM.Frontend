@@ -9,6 +9,7 @@
 .logo-image-header {
   width: 46;
   height: 46;
+  cursor: pointer;
 }
 
 .search-header {

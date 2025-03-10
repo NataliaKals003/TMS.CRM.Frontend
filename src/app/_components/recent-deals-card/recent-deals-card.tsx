@@ -38,7 +38,15 @@ const RecentDealsCard = () => {
 
               <Box className="body-text-recent-deal">
                 <Typography className="body-text-bold-recent-deal">{deal.price}</Typography>
-                <Typography className="body-text-bottom-recent-deal">{deal.appointmentDate}</Typography>
+                <Typography className="body-text-bottom-recent-deal">
+                  {new Date(deal.appointmentDate).toLocaleString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
+                </Typography>
               </Box>
             </Box>
           </Box>

@@ -17,7 +17,7 @@ const Customers: React.FC = () => {
 
   useEffect(() => {
     setTitle('Customers');
-    setButtonTitle('Add New Customer');
+    setButtonTitle?.('Add New Customer');
     setModalType(HeaderModalType.newCustomer);
   }, [setTitle, setButtonTitle, setModalType]);
 
@@ -46,7 +46,6 @@ const Customers: React.FC = () => {
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
-                      className="table-head"
                       sx={{
                         textAlign: header.isRightAligned ? 'right' : 'left',
                       }}
@@ -63,7 +62,9 @@ const Customers: React.FC = () => {
                       <Image src={customer.avatar} alt="Profile" width={44} height={44} style={{ borderRadius: '50%' }} />
                     </TableCell>
                     <TableCell>
-                      <Typography className="text-body">{customer.name}</Typography>
+                      <Typography className="text-body">
+                        {customer.firstName} {customer.lastName}
+                      </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography className="text-body">{customer.email}</Typography>
