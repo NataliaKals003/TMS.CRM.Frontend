@@ -19,6 +19,13 @@ export interface TextFieldControllerProps extends ControllerProps {
   multiline?: boolean;
 }
 
+export interface CheckboxControllerProps {
+  name: string;
+  complete?: boolean;
+  onChange?: (value: object) => void;
+  className?: string;
+}
+
 export interface SelectControllerProps extends ControllerProps {
   options: SelectOption[] | null;
   forceShrink?: boolean;

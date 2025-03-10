@@ -15,8 +15,19 @@ import ActivityLogCard from '../_components/activity-log-card/activity-log-card'
 import AlertSnackbar from '@/components/alert-snackbar/alert-snackbar';
 import { useParams } from 'next/navigation';
 import DealModal from '@/components/deal-form-modal/deal-form-modal';
+import { useHeader } from '@/context/header-context';
 
 export default function Page() {
+  const { setTitle, setButtonTitle } = useHeader();
+
+  useEffect(() => {
+    setTitle('Deal Details');
+
+    if (setButtonTitle) {
+      setButtonTitle(undefined);
+    }
+  }, [setTitle, setButtonTitle]);
+
   const { id } = useParams();
 
   const [deal, setDeal] = useState<Deal | undefined>(undefined);

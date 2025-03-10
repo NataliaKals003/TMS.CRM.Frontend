@@ -13,13 +13,14 @@ import { HeaderModalType, useHeader } from '@/context/header-context';
 import Grid from '@mui/material/Grid2';
 import TaskModal from '@/components/task-form-modal/task-form-modal';
 
-const Customers: React.FC = () => {
+const Tasks: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [taskId, setTaskId] = useState<number | null>(null);
+  const [editTaskOpen, setEditTaskOpen] = useState(false);
 
   useEffect(() => {
     setTitle('Tasks');
-    setButtonTitle('Add New Task');
+    setButtonTitle?.('Add New Task');
     setModalType(HeaderModalType.newTask);
   }, [setTitle, setButtonTitle, setModalType]);
 
@@ -30,34 +31,16 @@ const Customers: React.FC = () => {
     { label: 'Edit', isRightAligned: true },
   ];
 
-  const getDateIcon = (dueDate: string) => {
-    const monthMap: { [key: string]: string } = {
-      Jan: 'Jan',
-      Fev: 'Feb',
-      Mar: 'Mar',
-      Abr: 'Apr',
-      Mai: 'May',
-      Jun: 'Jun',
-      Jul: 'Jul',
-      Ago: 'Aug',
-      Sep: 'Sep',
-      Oct: 'Oct',
-      Nov: 'Nov',
-      Dec: 'Dec',
-    };
-
-    const [day, month, year] = dueDate.split(' ');
-
-    const formattedDate = `${year}-${monthMap[month]}-${day.padStart(2, '0')}`;
-
+  const getStatusIcon = (task: Task) => {
     const currentDate = new Date();
-    const dueDateObj = new Date(formattedDate);
+    const dueDate = new Date(task.dueDate);
 
-    if (dueDateObj > currentDate) {
+    if (task.complete) {
+      return <CheckBoxIcon className="check-box-icon-task-page" />;
+    } else if (dueDate < currentDate) {
       return <ReportIcon className="report-icon-task-page" />;
     }
-
-    return <CheckBoxIcon className="check-box-icon-task-page" />;
+    return null;
   };
 
   return (
@@ -85,12 +68,17 @@ const Customers: React.FC = () => {
               </TableHead>
               <TableBody>
                 {mockTasks.map((task: Task) => (
-                  <TableRow onClick={() => setIsModalOpen(true)} className="table-row" key={task.id} sx={{ cursor: 'pointer' }}>
+                  <TableRow
+                    onClick={() => {
+                      setEditTaskOpen(true);
+                      setTaskId(task.id);
+                    }}
+                    className="table-row"
+                    key={task.id}
+                    sx={{ cursor: 'pointer' }}
+                  >
                     <TableCell>
-                      <Typography className="text-body">
-                        {getDateIcon(task.dueDate)}
-                        {task.done}
-                      </Typography>
+                      <Typography className="text-body">{getStatusIcon(task)}</Typography>
                     </TableCell>
                     <TableCell>
                       <Typography className="text-body">
@@ -119,9 +107,15 @@ const Customers: React.FC = () => {
           </TableContainer>
         </Grid>
       </Grid>
-      <TaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <TaskModal
+        open={editTaskOpen}
+        onClose={() => {
+          setEditTaskOpen(false);
+        }}
+        taskId={Number(taskId)}
+      />
     </main>
   );
 };
 
-export default Customers;
+export default Tasks;

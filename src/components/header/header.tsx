@@ -101,9 +101,11 @@ const Header: React.FC = () => {
           size={{ xs: 10, sm: 5, md: 5, lg: 4 }}
           sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}
         >
-          <Button className="add-new-header" variant="contained" endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
-            {buttonTitle}
-          </Button>
+          {buttonTitle && (
+            <Button className="add-new-header" variant="contained" endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
+              {buttonTitle}
+            </Button>
+          )}
           <Search className="search-header" />
           <Avatar className="avatar-header" src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
           <Button variant="text" onClick={handleLogout}>

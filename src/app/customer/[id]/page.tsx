@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid2';
 import { mockCustomers, Customer } from '../../../types/customer';
 import { Box, Button, Typography } from '@mui/material';
 import * as yup from 'yup';
-import bgCover from '../../../assets/Cover.jpg';
+import bgCover from '@/assets/cover.jpg';
 import defaultAvatar from '../../../assets/default-avatar.png';
 import Image from 'next/image';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -18,6 +18,7 @@ import AlertSnackbar from '@/components/alert-snackbar/alert-snackbar';
 import { FormProvider, useForm } from 'react-hook-form';
 import TextFieldController from '@/components/form/text-field-controller';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useHeader } from '@/context/header-context';
 
 interface Address {
   street: string;
@@ -36,6 +37,16 @@ interface FormValues {
 }
 
 export default function Page() {
+  const { setTitle, setButtonTitle } = useHeader();
+
+  useEffect(() => {
+    setTitle('Customer Details');
+
+    if (setButtonTitle) {
+      setButtonTitle(undefined);
+    }
+  }, [setTitle, setButtonTitle]);
+
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
@@ -187,7 +198,7 @@ export default function Page() {
           </Grid>
         </Grid>
 
-        <Grid size={{ xs: 12, md: 3.5 }}>
+        <Grid size={{ xs: 12, md: 3.5 }} padding={'24px'}>
           <RecentDeals />
         </Grid>
       </Grid>

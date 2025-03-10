@@ -17,7 +17,9 @@ const Customers: React.FC = () => {
 
   useEffect(() => {
     setTitle('Customers');
-    setButtonTitle?.('Add New Customer');
+    if (setButtonTitle) {
+      setButtonTitle('Add New Customer');
+    }
     setModalType(HeaderModalType.newCustomer);
   }, [setTitle, setButtonTitle, setModalType]);
 

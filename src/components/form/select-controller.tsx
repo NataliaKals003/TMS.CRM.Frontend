@@ -16,7 +16,7 @@ const SelectController: React.FC<SelectControllerProps> = (props: SelectControll
       control={control}
       render={({ field, formState: { errors } }) => {
         const error = getObjectValueFromPath(errors, props.name);
-        const labelId = `${name}-label`;
+        const labelId = `${props.name}-label`;
 
         return (
           <FormControl fullWidth error={!!error}>
@@ -33,7 +33,6 @@ const SelectController: React.FC<SelectControllerProps> = (props: SelectControll
                 props.onChange?.(event);
               }}
               IconComponent={KeyboardArrowDownIcon}
-              // disabled={props.disabled}
               sx={{ width: '100%' }}
             >
               {props.options

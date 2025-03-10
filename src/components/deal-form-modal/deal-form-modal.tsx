@@ -15,7 +15,7 @@ import TextFieldController from '../form/text-field-controller';
 import SelectController from '../form/select-controller';
 import DatePickerController from '../form/date-picker-controller';
 
-interface NewDealModalProps {
+interface DealModalProps {
   open: boolean;
   onClose: () => void;
   onChangeCustomerRequested?: () => void;
@@ -42,7 +42,7 @@ interface FormValues {
   progress: DealProgressType;
 }
 
-const DealModal: React.FC<NewDealModalProps> = (props: NewDealModalProps) => {
+const DealModal: React.FC<DealModalProps> = (props: DealModalProps) => {
   const customer: Customer | undefined = mockCustomers.find((cust) => cust.id === props.customerId);
 
   const [fileName, setFileName] = useState('');

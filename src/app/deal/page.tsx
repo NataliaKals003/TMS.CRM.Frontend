@@ -17,7 +17,7 @@ const Deals: React.FC = () => {
 
   useEffect(() => {
     setTitle('Deals');
-    setButtonTitle('Add New Deal');
+    setButtonTitle?.('Add New Deal');
     setModalType(HeaderModalType.newDeal);
   }, [setTitle, setButtonTitle, setModalType]);
 
