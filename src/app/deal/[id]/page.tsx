@@ -10,12 +10,14 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import Image from 'next/image';
 import '../deal-page.css';
 import './page.css';
-import RecordActivityCard from '../_components/record-activity-card/record-activity-card';
-import ActivityLogCard from '../_components/activity-log-card/activity-log-card';
+import ActivityFormCard from '../_components/activity-form-card/activity-form-card';
+import ActivityLogCard from '../_components/activity-log-card/activity-card';
 import AlertSnackbar from '@/components/alert-snackbar/alert-snackbar';
 import { useParams } from 'next/navigation';
 import DealModal from '@/components/deal-form-modal/deal-form-modal';
 import { useHeader } from '@/context/header-context';
+import '@/types/activity-log';
+import { ActivityLog } from '@/types/activity-log';
 
 export default function Page() {
   const { setTitle, setButtonTitle } = useHeader();
@@ -66,6 +68,10 @@ export default function Page() {
       </div>
     );
   }
+
+  // const handleAddActivity = (newActivity: ActivityLog) => {
+  //   setActivities((prevActivities) => [newActivity, ...prevActivities]);
+  // };
 
   const handleDelete = () => {
     setSnackbarMessage('Deal Deleted');
@@ -191,7 +197,7 @@ export default function Page() {
         </Grid>
 
         <Grid size={{ xs: 12, md: 12, lg: 3 }}>
-          <RecordActivityCard />
+          <ActivityFormCard />
           <ActivityLogCard />
         </Grid>
       </Grid>

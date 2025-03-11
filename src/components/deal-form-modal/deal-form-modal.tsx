@@ -69,9 +69,12 @@ const DealModal: React.FC<DealModalProps> = (props: DealModalProps) => {
     numberOfPeople: yup.number().required('Number of people is required'),
     appointmentDate: yup.date().required('Appointment date is required'),
     specialInstructions: yup.string().required('Special instructions are required'),
-    roomAccess: yup.mixed<DealRoomAccessType>().oneOf(['none', 'keysWithDoorman'], 'Invalid room access option').required('Room access is required'),
+    roomAccess: yup
+      .mixed<DealRoomAccessType>()
+      .oneOf(['keysObtained', 'keysNotRequired', 'keysWithDoorman'], 'Invalid room access option')
+      .required('Room access is required'),
     price: yup.number().required('Price is required'),
-    progress: yup.mixed<DealProgressType>().oneOf(['none', 'inProgress', 'closed'], 'Invalid progress option').required('Progress is required'),
+    progress: yup.mixed<DealProgressType>().oneOf(['pending', 'inProgress', 'closed'], 'Invalid progress option').required('Progress is required'),
     // imageUrl: yup.string(),
   });
 
@@ -240,7 +243,8 @@ const DealModal: React.FC<DealModalProps> = (props: DealModalProps) => {
                       skeletonOnLoading
                       options={[
                         { value: DealRoomAccess.keysWithDoorman.id, label: DealRoomAccess.keysWithDoorman.label },
-                        { value: DealRoomAccess.none.id, label: DealRoomAccess.none.label },
+                        { value: DealRoomAccess.keysObtained.id, label: DealRoomAccess.keysObtained.label },
+                        { value: DealRoomAccess.keysNotRequired.id, label: DealRoomAccess.keysNotRequired.label },
                       ]}
                     />
                   </Grid>
@@ -265,9 +269,9 @@ const DealModal: React.FC<DealModalProps> = (props: DealModalProps) => {
                         name="progress"
                         skeletonOnLoading
                         options={[
-                          { value: DealProgress.none.id, label: DealProgress.none.label },
                           { value: DealProgress.closed.id, label: DealProgress.closed.label },
                           { value: DealProgress.inProgress.id, label: DealProgress.inProgress.label },
+                          { value: DealProgress.pending.id, label: DealProgress.pending.label },
                         ]}
                       />
                     </Grid>

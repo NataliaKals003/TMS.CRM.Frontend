@@ -12,3 +12,13 @@
   line-height: 30px;
   color: #092c4c;
 }
+
+.save-button-customer-page {
+  align-self: flex-end;
+}
+
+@media (max-width: 447px) {
+  .text-field-customer-page {
+    padding: 10px;
+  }
+}

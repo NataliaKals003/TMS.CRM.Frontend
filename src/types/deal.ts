@@ -1,12 +1,13 @@
 export const DealProgress = {
-  none: { id: 'none', label: 'None' },
-  inProgress: { id: 'inProgress', label: 'In Progress' },
+  inProgress: { id: 'inProgress', label: 'In progress' },
+  pending: { id: 'pending', label: 'Pending' },
   closed: { id: 'closed', label: 'Closed' },
 } as const;
 
 export const DealRoomAccess = {
-  none: { id: 'none', label: 'None' },
   keysWithDoorman: { id: 'keysWithDoorman', label: 'Keys with doorman' },
+  keysObtained: { id: 'keysObtained', label: 'Keys obtained' },
+  keysNotRequired: { id: 'keysNotRequired', label: 'Keys not required(customer present)' },
 };
 
 export type DealProgressType = keyof typeof DealProgress;
@@ -41,10 +42,10 @@ export const mockDeals: Deal[] = [
     price: 5750,
     numberOfPeople: 10,
     appointmentDate: '2021-11-14T10:30:00.000Z',
-    progress: 'inProgress',
+    progress: 'pending',
     specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 3,
-    roomAccess: 'keysWithDoorman',
+    roomAccess: 'keysNotRequired',
   },
   {
     id: 2,
@@ -60,7 +61,7 @@ export const mockDeals: Deal[] = [
     progress: 'closed',
     specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 2,
-    roomAccess: 'keysWithDoorman',
+    roomAccess: 'keysNotRequired',
   },
   {
     id: 3,
@@ -73,10 +74,10 @@ export const mockDeals: Deal[] = [
     price: 5750,
     numberOfPeople: 10,
     appointmentDate: '2021-11-14T10:30:00.000Z',
-    progress: 'inProgress',
+    progress: 'pending',
     specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 3,
-    roomAccess: 'keysWithDoorman',
+    roomAccess: 'keysNotRequired',
   },
   {
     id: 4,
@@ -89,7 +90,7 @@ export const mockDeals: Deal[] = [
     price: 5750,
     numberOfPeople: 10,
     appointmentDate: '2021-11-14T10:30:00.000Z',
-    progress: 'closed',
+    progress: 'pending',
     specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 4,
     roomAccess: 'keysWithDoorman',
@@ -108,7 +109,7 @@ export const mockDeals: Deal[] = [
     progress: 'closed',
     specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 5,
-    roomAccess: 'keysWithDoorman',
+    roomAccess: 'keysObtained',
   },
   {
     id: 6,
@@ -140,7 +141,7 @@ export const mockDeals: Deal[] = [
     progress: 'inProgress',
     specialInstructions: 'At risus viverra adipiscing at in tellus. Blandit massa enim nec dui nunc mattis. Lacus vel facilisis volutpat est velit.',
     customerId: 7,
-    roomAccess: 'keysWithDoorman',
+    roomAccess: 'keysObtained',
   },
   {
     id: 8,

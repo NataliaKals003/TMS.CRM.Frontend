@@ -37,7 +37,23 @@ const Deals: React.FC = () => {
     <main>
       <Grid container sx={{ padding: { xs: '12px', sm: '16px', md: '24px ' } }}>
         <Grid size={{ xs: 12, md: 12 }}>
-          <SectionHeader title="Deals" counter={23} sortByValue={['Date Created', 'Alphabetic']} filterOptions={['Area', 'Price', 'Status']} />
+          <SectionHeader
+            title="Deals"
+            counter={23}
+            sortByValue={[
+              'Date Created (Newest First)',
+              'Date Created (Oldest First)',
+              'Alphabetic (A-Z)',
+              'Alphabetic (Z-A)',
+              'Price (High to Low)',
+              'Price (Low to High)',
+              'Area (Largest First)',
+              'Area (Smallest First)',
+              'Status',
+              'Appointment Date',
+            ]}
+            filterOptions={['Status', 'Date Range', 'Price Range', 'Area']}
+          />
         </Grid>
         <Grid size={{ xs: 12, md: 12 }}>
           <TableContainer>

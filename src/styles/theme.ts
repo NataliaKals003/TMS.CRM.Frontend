@@ -96,6 +96,7 @@ const theme = createTheme({
             backgroundColor: 'none',
             boxShadow: 'none',
           },
+
           variants: [
             {
               props: { variant: 'contained', color: 'primary' },
@@ -192,6 +193,10 @@ const theme = createTheme({
           color: '#092C4C',
           '&::placeholder': {
             color: '#7E92A2',
+          },
+          '@media (max-width:600px)': {
+            padding: '10px',
+            fontSize: '13px',
           },
         },
       },

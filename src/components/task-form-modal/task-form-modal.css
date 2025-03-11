@@ -23,14 +23,34 @@
 
 .footer-new-task {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 16px 0 28px;
+  width: 100%;
 }
 
-.footer-details-new-task {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 22px;
+.save-button-task {
+  padding: 10px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  border-radius: 70px;
+  width: 100%;
+}
+
+.delete-button-task {
+  background-color: #ffffff;
+  color: #fe8084;
+  border: none;
+  padding: 10px 24px;
+  margin-right: 16px;
+  width: 100%;
+}
+
+.cancel-button-task {
+  margin-right: 16px;
+  color: #092c4c;
+  border: none;
+  padding: 10px 24px;
+  width: 100%;
 }

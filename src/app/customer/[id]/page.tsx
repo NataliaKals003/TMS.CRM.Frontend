@@ -188,7 +188,7 @@ export default function Page() {
                         <TextFieldController className="text-field-customer-page" name="address.zipCode" placeholder="Zip Code" type="text" />
                       </Grid>
                     </Grid>
-                    <Button variant="contained" color="primary" onClick={onSubmit} className="save-button">
+                    <Button variant="contained" color="primary" onClick={onSubmit} className="save-button" sx={{ float: 'inline-end' }}>
                       Save Customer
                     </Button>
                   </Grid>

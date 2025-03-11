@@ -3,12 +3,12 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid2';
 import { CardContent, Typography, Box, Button, IconButton } from '@mui/material';
-import { mockActivityLog, ActivityLog } from '../../../../types/activity-log';
 import Image from 'next/image';
-import './activity-log-card.css';
+import './activity-card.css';
+import { Activity, mockActivity } from '@/types/activity-log';
 
 const ActivityLogCard: React.FC = () => {
-  const [activities, setActivities] = useState<ActivityLog[]>(mockActivityLog);
+  const [activities, setActivities] = useState<Activity[]>(mockActivity);
 
   const toggleActivity = (id: number) => {
     setActivities((prev) => prev.map((activity) => (activity.id === id ? { ...activity, completed: !activity.completed } : activity)));

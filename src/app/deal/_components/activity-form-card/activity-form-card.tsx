@@ -4,7 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import '../../../../styles/modal.css';
-import './record-activity-card.css';
+import './activity-form-card.css';
 import AlertSnackbar from '@/components/alert-snackbar/alert-snackbar';
 import DatePickerController from '../../../../components/form/date-picker-controller';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -18,7 +18,11 @@ interface FormValues {
   activityDate: Date;
 }
 
-const RecordActivityCard: React.FC = () => {
+// interface ActivityFormCardProps {
+//   onAddActivity: (activity: ActivityLog) => void;
+// }
+
+const ActivityFormCard: React.FC<ActivityFormCardProps> = ({ onAddActivity }) => {
   const [fileName, setFileName] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
@@ -34,7 +38,6 @@ const RecordActivityCard: React.FC = () => {
   const schema = yup.object().shape({
     description: yup.string().required('Record activity description is required'),
     activityDate: yup.date().required('Due date is required'),
-    // imageUrl: yup.string(),
   });
 
   const form = useForm<FormValues>({
@@ -45,8 +48,22 @@ const RecordActivityCard: React.FC = () => {
     },
   });
 
-  const onSubmit = form.handleSubmit(() => {
-    form.reset();
+  const onSubmit = form.handleSubmit((data) => {
+    const newActivity: ActivityLog = {
+      id: Date.now(), // Use a unique ID (e.g., timestamp)
+      date: data.activityDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+      details: data.description,
+      completed: false,
+      image: fileName ? `https://example.com/${fileName}` : undefined, // Replace with actual image URL logic
+    };
+
+    onAddActivity(newActivity);
+
+    form.reset({
+      description: undefined,
+      activityDate: undefined,
+    });
+    setFileName('');
     setSnackbarMessage('Activity Recorded');
     setSnackbarSeverity('saved');
     setSnackbarOpen(true);
@@ -106,4 +123,4 @@ const RecordActivityCard: React.FC = () => {
   );
 };
 
-export default RecordActivityCard;
+export default ActivityFormCard;

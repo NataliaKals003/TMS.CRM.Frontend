@@ -35,6 +35,13 @@
   padding: 10px 16px;
 }
 
+@media (max-width: 768px) {
+  .add-new-header {
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+
 @media (max-width: 447px) {
   .title-header {
     display: none;
@@ -49,8 +56,21 @@
     padding: 9px 12px;
   }
 
+  .search-header {
+    width: 15px;
+    height: 15px;
+    padding: 10px;
+  }
+
   .logo-image-header {
-    width: 36;
-    height: 36;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 321px) {
+  .add-new-header {
+    font-size: 12px;
+    padding: 5px;
   }
 }

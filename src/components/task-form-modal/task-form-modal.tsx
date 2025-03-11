@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import './task-form-modal.css';
+import '../../styles/modal.css';
 import AlertSnackbar from '../alert-snackbar/alert-snackbar';
 import * as yup from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -75,6 +76,13 @@ const TaskModal: React.FC<TaskFormProps> = (props: TaskFormProps) => {
     }
   };
 
+  const handleDelete = () => {
+    props.onClose();
+    setSnackbarMessage('Task Deleted');
+    setSnackbarSeverity('deleted');
+    setSnackbarOpen(true);
+  };
+
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
@@ -86,7 +94,7 @@ const TaskModal: React.FC<TaskFormProps> = (props: TaskFormProps) => {
           className="box"
           sx={{
             width: { xs: 290, sm: 350, md: 400 },
-            maxHeight: 700,
+            maxHeight: '700',
           }}
         >
           <Box className="box-header">
@@ -112,15 +120,20 @@ const TaskModal: React.FC<TaskFormProps> = (props: TaskFormProps) => {
               </Box>
 
               <Box className="footer-new-task">
-                <Box className="footer-details-new-task">
-                  <Button aria-label="Cancel" onClick={handleCancel} variant="outlined" className="cancel-button">
+                {!props.taskId && (
+                  <Button aria-label="Cancel" onClick={handleCancel} variant="outlined" className="cancel-button-task">
                     Cancel
                   </Button>
-
-                  <Button variant="contained" color="primary" className="save-button" onClick={onSubmit}>
-                    Save Task
+                )}
+                {props.taskId && (
+                  <Button aria-label="Cancel" onClick={handleDelete} className="delete-button-task">
+                    Delete
                   </Button>
-                </Box>
+                )}
+
+                <Button variant="contained" color="primary" className="save-button-task" onClick={onSubmit}>
+                  Save Task
+                </Button>
               </Box>
             </Box>
           </FormProvider>

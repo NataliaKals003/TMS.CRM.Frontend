@@ -55,7 +55,7 @@ const TaskCard: React.FC = () => {
                 const hasIcon = task.id < 4;
                 return (
                   <Grid key={task.id} container sx={{ marginBottom: 3, alignContent: 'center' }}>
-                    <Grid size={{ xs: 12, sm: 3, md: 2, lg: 4 }}>
+                    <Grid size={{ xs: 8, sm: 4, md: 3, lg: 5.5 }}>
                       <Typography className="text-task" data-has-icon={hasIcon}>
                         {new Date(task.dueDate).toLocaleString('en-US', {
                           month: 'short',
@@ -67,11 +67,11 @@ const TaskCard: React.FC = () => {
                       </Typography>
                     </Grid>
 
-                    <Grid size={{ xs: 12, sm: 1, md: 1, lg: 1 }}>
+                    <Grid size={{ xs: 4, sm: 1, md: 1, lg: 1 }}>
                       <Box>{hasIcon && <ReportIcon className="report-icon" />}</Box>
                     </Grid>
 
-                    <Grid size={{ xs: 12, sm: 8, md: 9, lg: 7 }}>
+                    <Grid size={{ xs: 12, sm: 7, md: 8, lg: 5.5 }}>
                       <Typography className="text-task">{task.description}</Typography>
                     </Grid>
                   </Grid>

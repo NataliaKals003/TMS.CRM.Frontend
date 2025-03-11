@@ -6,7 +6,7 @@
   background-color: #ffffff;
   box-shadow: 24px;
   overflow-y: auto;
-  /* scrollbar-width: thin; */
+  scrollbar-width: thin;
   max-height: 650px;
   border-radius: 12px;
 }
@@ -60,7 +60,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
 }
 
 .cancel-button {
@@ -101,5 +100,11 @@
 
   .cancel-button {
     padding: 10px;
+  }
+}
+
+@media (max-width: 321px) {
+  .box-header {
+    padding: 22px;
   }
 }
