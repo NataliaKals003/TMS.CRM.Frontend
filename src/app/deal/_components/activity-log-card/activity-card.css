@@ -21,39 +21,8 @@
   align-items: flex-start;
   margin-bottom: 18px;
   gap: 18px;
-  padding-right: 24px;
   cursor: pointer;
-}
-
-.icon-button-activity-log {
-  padding: 0;
-  padding-top: 11px;
-}
-
-.pin-icon-button-activity-log {
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  border: 2px solid #514ef3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-}
-
-.pin-icon-button-activity-log.completed {
-  background-color: #514ef3;
-}
-
-.inside-pin-icon {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: transparent;
-}
-
-.inside-pin-icon.completed {
-  background-color: white;
+  width: 100%;
 }
 
 .date-log-activity-log {

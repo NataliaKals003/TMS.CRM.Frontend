@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Grid from '@mui/material/Grid2';
 import { mockCustomers, Customer } from '../../../types/customer';
 import { mockDeals, Deal } from '../../../types/deal';
@@ -11,13 +11,12 @@ import Image from 'next/image';
 import '../deal-page.css';
 import './page.css';
 import ActivityFormCard from '../_components/activity-form-card/activity-form-card';
-import ActivityLogCard from '../_components/activity-log-card/activity-card';
+import ActivityCard from '../_components/activity-log-card/activity-card';
 import AlertSnackbar from '@/components/alert-snackbar/alert-snackbar';
 import { useParams } from 'next/navigation';
 import DealModal from '@/components/deal-form-modal/deal-form-modal';
 import { useHeader } from '@/context/header-context';
-import '@/types/activity-log';
-import { ActivityLog } from '@/types/activity-log';
+import '@/types/activity';
 
 export default function Page() {
   const { setTitle, setButtonTitle } = useHeader();
@@ -38,6 +37,7 @@ export default function Page() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
+  const reloadActivitiesRef = useRef(() => {});
 
   useEffect(() => {
     const fetchDealAndCustomer = async () => {
@@ -68,10 +68,6 @@ export default function Page() {
       </div>
     );
   }
-
-  // const handleAddActivity = (newActivity: ActivityLog) => {
-  //   setActivities((prevActivities) => [newActivity, ...prevActivities]);
-  // };
 
   const handleDelete = () => {
     setSnackbarMessage('Deal Deleted');
@@ -197,8 +193,8 @@ export default function Page() {
         </Grid>
 
         <Grid size={{ xs: 12, md: 12, lg: 3 }}>
-          <ActivityFormCard />
-          <ActivityLogCard />
+          <ActivityFormCard onActivityCreated={() => reloadActivitiesRef.current?.()} />
+          <ActivityCard ref={reloadActivitiesRef} />
         </Grid>
       </Grid>
       <DealModal

@@ -16,13 +16,14 @@ import TextFieldController from '@/components/form/text-field-controller';
 interface FormValues {
   description: string;
   activityDate: Date;
+  image?: string;
 }
 
-// interface ActivityFormCardProps {
-//   onAddActivity: (activity: ActivityLog) => void;
-// }
+interface ActivityFormCardProps {
+  onActivityCreated: () => void;
+}
 
-const ActivityFormCard: React.FC<ActivityFormCardProps> = ({ onAddActivity }) => {
+const ActivityFormCard: React.FC<ActivityFormCardProps> = ({ onActivityCreated }) => {
   const [fileName, setFileName] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
@@ -36,8 +37,9 @@ const ActivityFormCard: React.FC<ActivityFormCardProps> = ({ onAddActivity }) =>
   };
 
   const schema = yup.object().shape({
-    description: yup.string().required('Record activity description is required'),
+    description: yup.string().required('Task description is required'),
     activityDate: yup.date().required('Due date is required'),
+    image: yup.string(),
   });
 
   const form = useForm<FormValues>({
@@ -45,29 +47,22 @@ const ActivityFormCard: React.FC<ActivityFormCardProps> = ({ onAddActivity }) =>
     defaultValues: {
       description: undefined,
       activityDate: undefined,
+      image: undefined,
     },
   });
 
   const onSubmit = form.handleSubmit((data) => {
-    const newActivity: ActivityLog = {
-      id: Date.now(), // Use a unique ID (e.g., timestamp)
-      date: data.activityDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
-      details: data.description,
-      completed: false,
-      image: fileName ? `https://example.com/${fileName}` : undefined, // Replace with actual image URL logic
-    };
-
-    onAddActivity(newActivity);
-
-    form.reset({
-      description: undefined,
-      activityDate: undefined,
-    });
-    setFileName('');
-    setSnackbarMessage('Activity Recorded');
+    console.log('Form submitted:', data);
+    form.reset();
+    setSnackbarMessage('Activity Saved');
     setSnackbarSeverity('saved');
     setSnackbarOpen(true);
+    onActivityCreated();
   });
+
+  const handleCancel = () => {
+    form.reset();
+  };
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
@@ -87,7 +82,7 @@ const ActivityFormCard: React.FC<ActivityFormCardProps> = ({ onAddActivity }) =>
             <Grid container spacing={3} className="form-box-record-activity">
               <Grid size={{ xs: 12, md: 12 }}>
                 <Typography className="label">Description</Typography>
-                <TextFieldController name="description" type="text" placeholder="Enter task description" />
+                <TextFieldController name="description" type="text" multiline rows={2} placeholder="Enter task description" />
               </Grid>
               <Grid size={{ xs: 12, md: 12 }}>
                 <DatePickerController name="activityDate" />
@@ -104,12 +99,10 @@ const ActivityFormCard: React.FC<ActivityFormCardProps> = ({ onAddActivity }) =>
               </Grid>
 
               <Grid size={{ xs: 12, md: 12 }} className="footer-record-activity">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ padding: '10px 33px', fontWeight: 500, fontSize: '14px', lineHeight: '30px', borderRadius: '70px' }}
-                  onClick={onSubmit}
-                >
+                <Button aria-label="Cancel" onClick={handleCancel} variant="text" className="cancel-button-record-activity">
+                  Cancel
+                </Button>
+                <Button variant="contained" color="primary" className="save-button-record-activity" onClick={onSubmit}>
                   Save
                 </Button>
               </Grid>

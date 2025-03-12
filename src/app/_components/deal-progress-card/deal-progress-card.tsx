@@ -5,7 +5,7 @@ import { Card, CardContent, Typography, Box, Button, Avatar } from '@mui/materia
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import './deal-progress-card.css';
 import { useRouter } from 'next/navigation';
-import { Activity, mockActivity } from '@/types/activity-log';
+import { Activity, mockActivity } from '@/types/activity';
 import RadioIcon from '@/components/radio-icon/radio-icon';
 import { mockDeals, Deal } from '@/types/deal';
 
@@ -67,8 +67,8 @@ const DealProgressCard = () => {
               <Box display="flex" alignItems="center" gap={1}>
                 <RadioIcon />
                 <Box>
-                  <Typography className="activity-date">{act.date}</Typography>
-                  <Typography className="activity-details">{act.details}</Typography>
+                  <Typography className="activity-date">{act.activityDate}</Typography>
+                  <Typography className="activity-details">{act.description}</Typography>
                 </Box>
               </Box>
             </Box>

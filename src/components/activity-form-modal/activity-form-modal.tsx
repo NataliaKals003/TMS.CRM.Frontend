@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Modal, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import './task-form-modal.css';
+import './activity-form-modal.css';
 import '../../styles/modal.css';
 import AlertSnackbar from '../alert-snackbar/alert-snackbar';
 import * as yup from 'yup';
@@ -9,64 +9,73 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TextFieldController from '../form/text-field-controller';
 import DatePickerController from '../form/date-picker-controller';
-import { mockTasks, Task } from '../../types/task';
-import CheckboxController from '../form/check-box-controller';
+import Grid from '@mui/material/Grid2';
+import { Activity, mockActivity } from '@/types/activity';
 
-interface TaskFormProps {
+interface ActivityFormModalProps {
   open: boolean;
   onClose: () => void;
-  taskId?: number;
+  activityId?: number;
+  onActivityEdited: () => void;
 }
 
 interface FormValues {
-  complete?: boolean;
   description: string;
-  dueDate: Date;
+  activityDate: Date;
+  image?: string;
 }
 
-const TaskModal: React.FC<TaskFormProps> = (props: TaskFormProps) => {
+const ActivityModal: React.FC<ActivityFormModalProps> = (props: ActivityFormModalProps) => {
+  const [fileName, setFileName] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
   const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
 
   const schema = yup.object().shape({
-    complete: yup.boolean(),
     description: yup.string().required('Task description is required'),
-    dueDate: yup.date().required('Due date is required'),
+    activityDate: yup.date().required('Due date is required'),
+    image: yup.string(),
   });
 
   const form = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
-      complete: false,
       description: undefined,
-      dueDate: undefined,
+      activityDate: undefined,
+      image: undefined,
     },
   });
 
   useEffect(() => {
-    if (props.taskId) {
-      const task: Task | undefined = mockTasks.find((task) => task.id === props.taskId);
+    if (props.activityId) {
+      const activity: Activity | undefined = mockActivity.find((act) => act.id === props.activityId);
 
-      if (!task) {
+      if (!activity) {
         return;
       }
 
       form.reset({
-        complete: task.complete,
-        description: task.description,
-        dueDate: new Date(task.dueDate),
+        description: activity.description,
+        activityDate: new Date(activity.activityDate),
       });
     }
-  }, [props.taskId, form]);
+  }, [props.activityId, form]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFileName(file.name);
+    }
+  };
 
   const onSubmit = form.handleSubmit((data) => {
     console.log('Form submitted:', data);
     form.reset();
     props.onClose();
-    setSnackbarMessage('Task Saved');
+    setSnackbarMessage('Activity Saved');
     setSnackbarSeverity('saved');
     setSnackbarOpen(true);
+    props.onActivityEdited();
   });
 
   const handleCancel = () => {
@@ -79,7 +88,7 @@ const TaskModal: React.FC<TaskFormProps> = (props: TaskFormProps) => {
   const handleDelete = () => {
     props.onClose();
     form.reset();
-    setSnackbarMessage('Task Deleted');
+    setSnackbarMessage('Activity Deleted');
     setSnackbarSeverity('deleted');
     setSnackbarOpen(true);
   };
@@ -100,33 +109,39 @@ const TaskModal: React.FC<TaskFormProps> = (props: TaskFormProps) => {
         >
           <Box className="box-header">
             <Typography variant="h5" marginBottom={0} fontWeight={700} fontSize={18} color={'#092C4C'}>
-              {props.taskId ? 'Edit Task' : ' Add New Task'}
+              {props.activityId ? 'Edit Activity' : ' Add New Activity'}
             </Typography>
             <Button sx={{ minWidth: 0, margin: 0 }} endIcon={<CancelIcon sx={{ color: '#7E92A2' }} />} onClick={props.onClose} />
           </Box>
+
           <FormProvider {...form}>
-            <Box className="task-box-new-task">
-              {props.taskId && (
-                <Box className="check-box-container">
-                  <Typography className="label">Complete?</Typography>
-                  <CheckboxController name="complete" className="checkBox-icon" />
-                </Box>
-              )}
+            <Grid container spacing={3} className="form-box-record-activity">
+              <Grid size={{ xs: 12, md: 12 }}>
+                <Typography className="label">Description</Typography>
+                <TextFieldController name="description" multiline rows={3} type="text" placeholder="Enter activity description" />
+              </Grid>
+              <Grid size={{ xs: 12, md: 12 }}>
+                <Typography className="label">Activity Date</Typography>
+                <DatePickerController name="activityDate" />
+              </Grid>
 
-              <TextFieldController name="description" type="text" multiline rows={4} placeholder="Enter task description" />
+              <Grid size={{ xs: 12, md: 12 }}>
+                <Typography className="label">Images</Typography>
+                <label htmlFor="upload-image" style={{ cursor: 'pointer' }}>
+                  <input id="upload-image" name="file" type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
+                  <Button variant="contained" component="span" className="upload-button" sx={{ width: '100%' }}>
+                    <span style={{ display: 'block' }}>{fileName || 'ADD'}</span>
+                  </Button>
+                </label>
+              </Grid>
 
-              <Box className="due-date-box-new-task">
-                <Typography className="label">Due Date</Typography>
-                <DatePickerController name="dueDate" />
-              </Box>
-
-              <Box className="footer-new-task">
-                {!props.taskId && (
+              <Grid size={{ xs: 12, md: 12 }} className="footer-record-activity">
+                {!props.activityId && (
                   <Button aria-label="Cancel" onClick={handleCancel} variant="outlined" className="cancel-button-task">
                     Cancel
                   </Button>
                 )}
-                {props.taskId && (
+                {props.activityId && (
                   <Button aria-label="Cancel" onClick={handleDelete} className="delete-button-task">
                     Delete
                   </Button>
@@ -135,14 +150,15 @@ const TaskModal: React.FC<TaskFormProps> = (props: TaskFormProps) => {
                 <Button variant="contained" color="primary" className="save-button-task" onClick={onSubmit}>
                   Save Task
                 </Button>
-              </Box>
-            </Box>
+              </Grid>
+            </Grid>
           </FormProvider>
         </Box>
       </Modal>
+
       <AlertSnackbar open={snackbarOpen} message={snackbarMessage} severity={snackbarSeverity} onClose={handleSnackbarClose} />
     </>
   );
 };
 
-export default TaskModal;
+export default ActivityModal;
