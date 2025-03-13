@@ -26,9 +26,15 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        body: {
-          margin: '0',
-          minHeight: '100vh',
+        styleOverrides: {
+          html: {
+            height: '100vh',
+            width: '100%',
+          },
+          body: {
+            margin: 0,
+            overflowX: 'hidden',
+          },
         },
       },
     },
@@ -90,6 +96,7 @@ const theme = createTheme({
             backgroundColor: 'none',
             boxShadow: 'none',
           },
+
           variants: [
             {
               props: { variant: 'contained', color: 'primary' },
@@ -170,6 +177,44 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           padding: 0,
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginBottom: '12px',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: {
+          color: '#092C4C',
+          '&::placeholder': {
+            color: '#7E92A2',
+          },
+          '@media (max-width:600px)': {
+            padding: '10px',
+            fontSize: '13px',
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          color: '#7e92a2',
+          fontSize: '16px',
+        },
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          left: 0,
+          right: 0,
+          top: 0,
         },
       },
     },

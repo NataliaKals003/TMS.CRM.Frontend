@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NextAppointmentCard from './_components/next-appointment-card/next-appointment-card';
 import RecentDealsCard from './_components/recent-deals-card/recent-deals-card';
 import CustomersCard from './_components/customer-card/customers-card';
@@ -11,31 +11,48 @@ import IconDeals from '../assets/icon-deals.png';
 import DealProgressCard from '@/app/_components/deal-progress-card/deal-progress-card';
 import TaskCard from '@/app/_components/task-card/task-card';
 import { HeaderModalType, useHeader } from '@/context/header-context';
+import { mockCustomers } from '@/types/customer';
+import { mockDeals } from '@/types/deal';
 
 const Home: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
+  const [customerCount, setCustomerCount] = useState<number>(0);
+  const [dealCount, setDealCount] = useState<number>(0);
+
+  useEffect(() => {
+    setCustomerCount(mockCustomers.length);
+    setDealCount(mockDeals.length);
+
+    // If using an API, you can fetch the counts here:
+    // fetch('/api/customers')
+    //   .then((response) => response.json())
+    //   .then((data) => setCustomerCount(data.length));
+    // fetch('/api/deals')
+    //   .then((response) => response.json())
+    //   .then((data) => setDealCount(data.length));
+  }, []);
 
   useEffect(() => {
     setTitle('Dashboard');
-    setButtonTitle('Add New');
+    setButtonTitle?.('Add New');
     setModalType(HeaderModalType.generalAddNew);
   }, [setTitle, setButtonTitle, setModalType]);
 
   return (
     <Grid container>
-      <Grid size={{ xs: 12, md: 4, lg: 2.5 }} padding={'0 24px 24px 0'}>
+      <Grid size={{ xs: 12, md: 4, lg: 2.5 }} padding={'24px'}>
         <Grid container>
           <Grid size={{ xs: 12, sm: 6, md: 12, lg: 12 }}>
             <NextAppointmentCard />
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 12, lg: 12 }}>
-            <CounterCard title="Customers" count="78" iconCounter={IconCustomers} />
-            <CounterCard title="Deals" count="136" iconCounter={IconDeals} />
+            <CounterCard title="Customers" count={customerCount} iconCounter={IconCustomers} />
+            <CounterCard title="Deals" count={dealCount} iconCounter={IconDeals} />
           </Grid>
         </Grid>
       </Grid>
 
-      <Grid size={{ xs: 12, md: 8, lg: 6 }} padding={'0 24px 24px 0'}>
+      <Grid size={{ xs: 12, md: 8, lg: 6 }} sx={{ padding: { xs: '12px, 12px, 12px, 0', sm: '16px 16px 16px 0', md: '24px 24px 24px 0' } }}>
         <RecentDealsCard />
         <DealProgressCard />
       </Grid>

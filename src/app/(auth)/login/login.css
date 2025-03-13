@@ -1,0 +1,46 @@
+.grid-container-login {
+  background-color: #ffffff;
+  max-width: 450px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 3;
+}
+
+.title-login {
+  font-size: 32px;
+  font-weight: 400;
+  color: #092c4c;
+  margin-bottom: 36px;
+}
+
+.submit-button-login {
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #514ef3;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.submit-button-login :hover {
+  background-color: #413ecb;
+}
+
+.submit-button-login :active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.error-alert-login {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  z-index: 1000;
+}

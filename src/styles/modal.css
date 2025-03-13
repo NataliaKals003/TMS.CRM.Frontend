@@ -60,7 +60,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
 }
 
 .cancel-button {
@@ -101,5 +100,11 @@
 
   .cancel-button {
     padding: 10px;
+  }
+}
+
+@media (max-width: 321px) {
+  .box-header {
+    padding: 22px;
   }
 }

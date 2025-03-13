@@ -2,26 +2,40 @@
 
 import React, { useEffect } from 'react';
 import { mockCustomers, Customer } from '../../types/customer';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import SectionHeader from '@/components/section-header/section-header';
 import Image from 'next/image';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import '../../styles/table.css';
+import './customer-page.css';
 import { useRouter } from 'next/navigation';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import Grid from '@mui/material/Grid2';
+import { PeopleAltOutlined } from '@mui/icons-material';
 
 const Customers: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
+  const router = useRouter();
+
+  const hasCustomer = mockCustomers.length > 0;
 
   useEffect(() => {
     setTitle('Customers');
-    setButtonTitle('Add New Customer');
+    if (setButtonTitle) {
+      setButtonTitle('Add New Customer');
+    }
     setModalType(HeaderModalType.newCustomer);
   }, [setTitle, setButtonTitle, setModalType]);
 
-  const router = useRouter();
+  if (!hasCustomer) {
+    return (
+      <Box className="not-found-customer-page">
+        <PeopleAltOutlined className="icon-not-found-page" />
+        <Typography>No customer found.</Typography>
+      </Box>
+    );
+  }
 
   const columnHeaders = [
     { label: 'Profile', icon: <AccountBoxIcon /> },
@@ -34,7 +48,7 @@ const Customers: React.FC = () => {
 
   return (
     <main>
-      <Grid container>
+      <Grid container sx={{ padding: { xs: '12px', sm: '16px', md: '24px ' } }}>
         <Grid size={{ xs: 12, md: 12 }}>
           <SectionHeader title="Deals" counter={23} sortByValue={['Date Created', 'Alphabetic']} filterOptions={['Area', 'Price', 'Status']} />
         </Grid>
@@ -46,7 +60,6 @@ const Customers: React.FC = () => {
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
-                      className="table-head"
                       sx={{
                         textAlign: header.isRightAligned ? 'right' : 'left',
                       }}
@@ -63,7 +76,9 @@ const Customers: React.FC = () => {
                       <Image src={customer.avatar} alt="Profile" width={44} height={44} style={{ borderRadius: '50%' }} />
                     </TableCell>
                     <TableCell>
-                      <Typography className="text-body">{customer.name}</Typography>
+                      <Typography className="text-body">
+                        {customer.firstName} {customer.lastName}
+                      </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography className="text-body">{customer.email}</Typography>

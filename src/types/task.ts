@@ -2,50 +2,68 @@ export type Task = {
   id: number;
   dueDate: string;
   description: string;
-  done: boolean;
+  complete: boolean;
 };
 
 export const mockTasks: Task[] = [
   {
     id: 1,
-    dueDate: '20 Fev 2025',
+    dueDate: '2025-02-20T10:30:00.000Z',
     description: 'Description goes here',
-    done: false,
+    complete: false,
   },
   {
     id: 2,
-    dueDate: '19 Fev 2025',
+    dueDate: '2025-02-19T10:30:00.000Z',
     description: 'Web conference agenda (overdue)',
-    done: true,
+    complete: true,
   },
   {
     id: 3,
-    dueDate: '24 Fev 2025',
+    dueDate: '2026-02-24T10:30:00.000Z',
     description: 'Meeting with partners',
-    done: false,
+    complete: false,
   },
   {
     id: 4,
-    dueDate: '19 Fev 2025',
+    dueDate: '2025-02-19T10:30:00.000Z',
     description: 'Add new services',
-    done: true,
+    complete: true,
   },
   {
     id: 5,
-    dueDate: '24 Nov 2022',
+    dueDate: '2022-11-24T10:30:00.000Z',
     description: 'Upload new legals (terms & conditions)',
-    done: false,
+    complete: false,
   },
   {
     id: 6,
-    dueDate: '24 Nov 2022',
+    dueDate: '2026-11-24T10:30:00.000Z',
     description: 'Description goes here',
-    done: true,
+    complete: true,
   },
   {
     id: 7,
-    dueDate: '24 Fev 2025',
+    dueDate: '2026-02-24T10:30:00.000Z',
     description: 'Sales report due',
-    done: false,
+    complete: false,
+  },
+  {
+    id: 8,
+    dueDate: '2026-02-24T10:30:00.000Z',
+    description: 'Sales report due',
+    complete: false,
+  },
+  {
+    id: 9,
+    dueDate: '2026-02-24T10:30:00.000Z',
+    description: 'Sales report due',
+    complete: false,
+  },
+  {
+    id: 10,
+    dueDate: '2026-02-24T10:30:00.000Z',
+    description: 'Sales report due',
+    complete: true,
   },
 ];

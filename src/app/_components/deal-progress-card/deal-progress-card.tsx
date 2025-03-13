@@ -1,34 +1,73 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Card, CardContent, Typography, Box, Button, Avatar, IconButton } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Card, CardContent, Typography, Box, Button, Avatar } from '@mui/material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
+import Grid from '@mui/material/Grid2';
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import './deal-progress-card.css';
+import { useRouter } from 'next/navigation';
+import { Activity, mockActivity } from '@/types/activity';
+import RadioIcon from '@/components/radio-icon/radio-icon';
+import { mockDeals, Deal } from '@/types/deal';
 
 const DealProgressCard = () => {
-  const deal = {
-    dealPicture: 'https://randomuser.me/api/portraits/men/1.jpg',
-    street: '319 Haul Road',
-    price: '$5750',
-    city: 'Glenrock, WY',
-  };
+  const router = useRouter();
+  const [deal, setDeal] = useState<Deal | null>(null);
+  const [activity, setActivity] = useState<Activity[] | null>(null);
 
-  const initialActivities = [
-    { date: '17 Nov 2021', details: 'Installation of the new air conditioning system', completed: false },
-    { date: '17 Nov 2021', details: 'Installation of the new air conditioning system', completed: false },
-  ];
+  useEffect(() => {
+    const fetchDealAndActivity = async () => {
+      const mostRecentDeal = mockDeals.reduce((prev, current) =>
+        new Date(prev.appointmentDate) > new Date(current.appointmentDate) ? prev : current
+      );
 
-  const [activities, setActivities] = useState(initialActivities);
+      setDeal(mostRecentDeal);
 
-  const toggleActivity = (index: number) => {
-    setActivities((prev) => prev.map((activity, i) => (i === index ? { ...activity, completed: !activity.completed } : activity)));
+      if (mostRecentDeal) {
+        const associatedActivity = mockActivity.filter((act) => act.dealId === mostRecentDeal.id);
+        setActivity(associatedActivity);
+      }
+    };
+
+    fetchDealAndActivity();
+  }, []);
+
+  if (!deal) {
+    return (
+      <Card
+        className="recent-card"
+        sx={{
+          height: { xs: 290, sm: 350, md: 400 },
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <CardContent
+          sx={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <Box className="deal-progress-not-found-card">
+            <BusinessCenterOutlinedIcon className="icon-not-found-card" />
+            <Typography>No deals in progress.</Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  const handleDealIdClick = () => {
+    router.push(`deal/${deal.id}`);
   };
 
   return (
-    <Card className="recent-card">
+    <Card className="recent-card" onClick={handleDealIdClick}>
       <CardContent>
-        <Box className="header-progress-card">
-          <Box className="deal-profile">
+        <Grid container className="header-progress-card">
+          <Grid size={{ xs: 12, md: 8 }} className="deal-profile">
             <Avatar src={deal.dealPicture} alt="Profile" />
             <Box>
               <Typography className="deal-street-progress-card">{deal.street}</Typography>
@@ -36,30 +75,28 @@ const DealProgressCard = () => {
                 {deal.city}
               </Typography>
             </Box>
-          </Box>
-          <Box className="in-progress-button">
+          </Grid>
+          <Grid size={{ xs: 12, md: 4 }} className="in-progress-button">
             <Button variant="contained" className="header-button">
-              IN PROGRESS
+              {deal.progress === 'inProgress' ? 'IN PROGRESS' : 'CLOSED'}
             </Button>
             <ArrowForwardOutlinedIcon className="arrow-icon" />
-          </Box>
-        </Box>
+          </Grid>
+        </Grid>
 
-        {activities.map((activity, index) => (
-          <Box key={index} className="activities">
-            <Box display="flex" alignItems="center" gap={1}>
-              <IconButton onClick={() => toggleActivity(index)} sx={{ padding: 0 }}>
-                <Box className={`button-icon ${activity.completed ? 'completed' : ''}`}>
-                  <Box className={`inside-button-icon ${activity.completed ? 'completed' : ''}`} />
+        {activity &&
+          activity.slice(0, 4).map((act) => (
+            <Box key={act.id} className="activities">
+              <Box display="flex" alignItems="center" gap={1}>
+                <RadioIcon />
+                <Box>
+                  <Typography className="activity-date">{act.activityDate}</Typography>
+                  <Typography className="activity-details">{act.description}</Typography>
                 </Box>
-              </IconButton>
-              <Box>
-                <Typography className="activity-date">{activity.date}</Typography>
-                <Typography className="activity-details">{activity.details}</Typography>
               </Box>
             </Box>
-          </Box>
-        ))}
+          ))}
+
         <Box className="load-more-deal-progress">
           <Button variant="text" color="primary" className="footer-button">
             Load More

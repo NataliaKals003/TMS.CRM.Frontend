@@ -1,16 +1,18 @@
-.text-field-customer-page .MuiOutlinedInput-input {
+.not-found-customer-page {
+  display: flex;
+  align-items: center;
+  justify-content: centerS;
   color: #7e92a2;
-  border-radius: 8px;
-  background-color: #eef6fb;
-  border: 1px solid #eaeef4;
+  background-color: white;
+  padding: 24px;
+  margin-top: 34px;
+  align-items: start;
+  flex: 1;
 }
 
-.typography-customer-page {
-  margin-bottom: 12px;
-  font-weight: 700;
-  font-size: 16;
-  line-height: 30px;
-  color: #092c4c;
+.icon-not-found-page {
+  color: #7e92a2;
+  margin-right: 13px;
 }
 
 .customer-container {
@@ -79,7 +81,7 @@
 }
 
 .typography-deal-address-recent-deals-card {
-  color: 092C4C;
+  color: #092c4c;
   font-weight: 700;
   font-size: 16px;
 }

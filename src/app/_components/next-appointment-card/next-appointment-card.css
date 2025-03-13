@@ -1,3 +1,22 @@
+.add-new-deal-not-found-next-appointment {
+  padding: 10px 32px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.box-content-not-found-next-appointment {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.icon-not-found-next-appointment {
+  color: #ffffff;
+}
+
 .card-next-appointment {
   background-color: #514ef3;
   color: white;

@@ -3,9 +3,10 @@ import { Box, Button, Modal, Typography } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Grid from '@mui/material/Grid2';
 import '../../styles/modal.css';
-import './new-deal-modal.css';
-import AlertSnackbar from '../alert/alert';
-import { mockCustomers, Customer } from '../../types/customer';
+import './deal-form-modal.css';
+import AlertSnackbar from '../alert-snackbar/alert-snackbar';
+import { mockCustomers, Customer } from '@/types/customer';
+import { mockDeals, Deal, DealProgressType, DealRoomAccessType, DealRoomAccess, DealProgress } from '@/types/deal';
 import Image from 'next/image';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -14,18 +15,19 @@ import TextFieldController from '../form/text-field-controller';
 import SelectController from '../form/select-controller';
 import DatePickerController from '../form/date-picker-controller';
 
-interface NewDealModalProps {
+interface DealModalProps {
   open: boolean;
   onClose: () => void;
   onChangeCustomerRequested?: () => void;
-  customerId: number;
+  customerId?: number; // Used when creating a new deal
+  dealId?: number; // Used when editing an existing deal
 }
 
 interface Address {
   street: string;
   city: string;
   state: string;
-  zipCode: string;
+  zipCode: number;
 }
 
 interface FormValues {
@@ -35,13 +37,13 @@ interface FormValues {
   numberOfPeople: number;
   appointmentDate: Date;
   specialInstructions: string;
-  roomAccess: string;
+  roomAccess: DealRoomAccessType;
   price: number;
-  progress: string;
+  progress: DealProgressType;
 }
 
-const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCustomerRequested, customerId }) => {
-  const customer: Customer | undefined = mockCustomers.find((cust) => cust.id === customerId);
+const DealModal: React.FC<DealModalProps> = (props: DealModalProps) => {
+  const customer: Customer | undefined = mockCustomers.find((cust) => cust.id === props.customerId);
 
   const [fileName, setFileName] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -61,39 +63,73 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
       street: yup.string().required('Street is required'),
       city: yup.string().required('City is required'),
       state: yup.string().required('State is required'),
-      zipCode: yup.string().required('Zip code is required'),
+      zipCode: yup.number().required('Zip code is required'),
     }),
     roomArea: yup.number().required('Room area is required'),
     numberOfPeople: yup.number().required('Number of people is required'),
-    appointmentDate: yup.date().required('Due date is required'),
+    appointmentDate: yup.date().required('Appointment date is required'),
     specialInstructions: yup.string().required('Special instructions are required'),
-    roomAccess: yup.string().required('Room access is required'),
+    roomAccess: yup
+      .mixed<DealRoomAccessType>()
+      .oneOf(['keysObtained', 'keysNotRequired', 'keysWithDoorman'], 'Invalid room access option')
+      .required('Room access is required'),
     price: yup.number().required('Price is required'),
-    progress: yup.string().required('Progress is required'),
+    progress: yup.mixed<DealProgressType>().oneOf(['pending', 'inProgress', 'closed'], 'Invalid progress option').required('Progress is required'),
     // imageUrl: yup.string(),
   });
 
   const form = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
-      customerId: customerId ?? undefined,
+      customerId: props.customerId ?? undefined,
       address: { street: undefined, city: undefined, state: undefined, zipCode: undefined },
       roomArea: undefined,
       numberOfPeople: undefined,
       appointmentDate: undefined,
       specialInstructions: undefined,
-      roomAccess: 'KeysWithDorman',
+      roomAccess: 'keysWithDoorman',
       price: undefined,
-      progress: 'InProgress',
+      progress: 'inProgress',
     },
   });
 
   useEffect(() => {
-    form.setValue('customerId', customerId);
-  }, [customerId, form]);
+    console.log('dealId', props.dealId);
+
+    if (props.dealId) {
+      const deal: Deal | undefined = mockDeals.find((deal) => deal.id === props.dealId);
+      console.log(deal?.appointmentDate);
+
+      if (!deal) {
+        return;
+      }
+
+      form.reset({
+        address: {
+          street: deal.street,
+          city: deal.city,
+          state: deal.state,
+          zipCode: deal.zipCode,
+        },
+        roomArea: deal.roomArea,
+        numberOfPeople: deal.numberOfPeople,
+        appointmentDate: new Date(deal.appointmentDate),
+        specialInstructions: deal.specialInstructions,
+        roomAccess: deal.roomAccess,
+        price: deal.price,
+        progress: deal.progress,
+      });
+    }
+  }, [props.customerId, props.dealId, form]);
+
+  // useEffect(() => {
+  //   if (props.customerId) {
+  //     form.setValue('customerId', props.customerId);
+  //   }
+  // }, [props.customerId, form]);
 
   const onSubmit = form.handleSubmit(() => {
-    onClose();
+    props.onClose();
     setSnackbarMessage('Deal Saved');
     setSnackbarSeverity('saved');
     setSnackbarOpen(true);
@@ -102,8 +138,8 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
   const handleCancel = () => {
     setFileName('');
     form.reset();
-    if (open) {
-      onClose();
+    if (props.open) {
+      props.onClose();
     }
   };
 
@@ -113,7 +149,7 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
 
   return (
     <>
-      <Modal open={open} onClose={onClose}>
+      <Modal open={props.open} onClose={props.onClose}>
         <Box
           className="box"
           sx={{
@@ -122,31 +158,35 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
           }}
         >
           <Box className="box-header">
-            <Typography className="title-header-modal">Add New Deal</Typography>
+            <Typography className="title-header-modal">{props.dealId ? 'Edit Deal' : 'Add New Deal'}</Typography>
             <Button endIcon={<CancelIcon className="close-icon" />} onClick={handleCancel} />
           </Box>
 
           <FormProvider {...form}>
-            <Grid container spacing={3} className="customer-box-new-deal">
-              <Grid size={{ xs: 3, sm: 1.5, md: 1.5 }}>
-                <Image
-                  src={customer?.avatar || '/placeholder-avatar.jpg'}
-                  alt="Customer picture"
-                  width={44}
-                  height={44}
-                  className="deal-picture-new-deal"
-                />
+            {!props.dealId && (
+              <Grid container spacing={3} className="customer-box-new-deal">
+                <Grid size={{ xs: 3, sm: 1.5, md: 1.5 }}>
+                  <Image
+                    src={customer?.avatar || '/placeholder-avatar.jpg'}
+                    alt="Customer picture"
+                    width={44}
+                    height={44}
+                    className="deal-picture-new-deal"
+                  />
+                </Grid>
+                <Grid size={{ xs: 9, sm: 6.5, md: 6.5 }}>
+                  <Typography className="customer-label-new-deal">{'Customer'}</Typography>
+                  <Typography className="customer-name-new-deal">
+                    {customer?.firstName} {customer?.lastName}
+                  </Typography>
+                </Grid>
+                <Grid size={{ xs: 12, md: 4 }}>
+                  <Button onClick={props.onChangeCustomerRequested} variant="outlined" className="change-customer-button-new-deal">
+                    Change Customer
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid size={{ xs: 9, sm: 6.5, md: 6.5 }}>
-                <Typography className="customer-label-new-deal">{'Customer'}</Typography>
-                <Typography className="customer-name-new-deal">{customer?.name}</Typography>
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <Button onClick={onChangeCustomerRequested} variant="outlined" className="change-customer-button-new-deal">
-                  Change Customer
-                </Button>
-              </Grid>
-            </Grid>
+            )}
             <Box />
 
             <Box className="form-new-deal">
@@ -202,8 +242,9 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                       name="roomAccess"
                       skeletonOnLoading
                       options={[
-                        { value: 'None', label: 'None' },
-                        { value: 'KeysWithDorman', label: 'Keys with doorman' },
+                        { value: DealRoomAccess.keysWithDoorman.id, label: DealRoomAccess.keysWithDoorman.label },
+                        { value: DealRoomAccess.keysObtained.id, label: DealRoomAccess.keysObtained.label },
+                        { value: DealRoomAccess.keysNotRequired.id, label: DealRoomAccess.keysNotRequired.label },
                       ]}
                     />
                   </Grid>
@@ -228,9 +269,9 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                         name="progress"
                         skeletonOnLoading
                         options={[
-                          { value: 'None', label: 'None' },
-                          { value: 'InProgress', label: 'In Progress' },
-                          { value: 'Closed', label: 'Closed' },
+                          { value: DealProgress.closed.id, label: DealProgress.closed.label },
+                          { value: DealProgress.inProgress.id, label: DealProgress.inProgress.label },
+                          { value: DealProgress.pending.id, label: DealProgress.pending.label },
                         ]}
                       />
                     </Grid>
@@ -238,12 +279,14 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 6 }} className="actions-button">
-                  <Button onClick={handleCancel} variant="outlined" className="cancel-button">
-                    Cancel
-                  </Button>
+                  {!props.dealId && (
+                    <Button onClick={handleCancel} variant="outlined" className="cancel-button">
+                      Cancel
+                    </Button>
+                  )}
 
                   <Button variant="contained" color="primary" className="save-button" onClick={onSubmit}>
-                    Save Deal
+                    {props.dealId ? 'Done' : 'Save Deal'}
                   </Button>
                 </Grid>
               </Grid>
@@ -256,4 +299,4 @@ const NewDealModal: React.FC<NewDealModalProps> = ({ open, onClose, onChangeCust
   );
 };
 
-export default NewDealModal;
+export default DealModal;

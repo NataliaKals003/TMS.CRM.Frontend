@@ -1,3 +1,15 @@
+.deal-progress-not-found-card {
+  color: #7e92a2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.icon-not-found-card {
+  color: #7e92a2;
+}
+
 .recent-card {
   flex: 1;
   background-color: #ffffff;
@@ -60,32 +72,6 @@
   display: flex;
   align-items: center;
   margin-bottom: 24px;
-}
-
-.button-icon {
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  border: 2px solid #514ef3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-}
-
-.button-icon.completed {
-  background-color: #514ef3;
-}
-
-.inside-button-icon {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: transparent;
-}
-
-.inside-button-icon.completed {
-  background-color: white;
 }
 
 .activity-date {

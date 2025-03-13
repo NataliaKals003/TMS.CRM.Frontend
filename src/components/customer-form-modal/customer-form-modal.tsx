@@ -6,14 +6,14 @@ import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CancelIcon from '@mui/icons-material/Cancel';
-import './new-customer-modal.css';
+import './customer-form-modal.css';
 import '../../styles/modal.css';
-import AlertSnackbar from '../alert/alert';
+import AlertSnackbar from '../alert-snackbar/alert-snackbar';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TextFieldController from '../form/text-field-controller';
 
-interface NewCustomerModalProps {
+interface CustomerModalProps {
   open: boolean;
   onClose: () => void;
 }
@@ -25,19 +25,15 @@ interface Address {
   zipCode: string;
 }
 
-interface Name {
+interface FormValues {
   firstName: string;
   lastName: string;
-}
-
-interface FormValues {
-  name: Name;
   email: string;
   phone: string;
   address: Address;
 }
 
-const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) => {
+const CustomerFormModal: React.FC<CustomerModalProps> = ({ open, onClose }) => {
   const [fileName, setFileName] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
@@ -51,10 +47,8 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
   };
 
   const schema = yup.object().shape({
-    name: yup.object().shape({
-      firstName: yup.string().required('First name is required'),
-      lastName: yup.string().required('Last name is required'),
-    }),
+    firstName: yup.string().required('First name is required'),
+    lastName: yup.string().required('Last name is required'),
     email: yup.string().required('Email is required'),
     phone: yup.string().required('Phone is required'),
     address: yup.object().shape({
@@ -68,10 +62,8 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
   const form = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: {
-        firstName: undefined,
-        lastName: undefined,
-      },
+      firstName: undefined,
+      lastName: undefined,
       email: undefined,
       phone: undefined,
       address: { street: undefined, city: undefined, state: undefined, zipCode: undefined },
@@ -80,7 +72,7 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
 
   const onSubmit = form.handleSubmit(() => {
     onClose();
-    setSnackbarMessage('Deal Saved');
+    setSnackbarMessage('Customer Saved');
     setSnackbarSeverity('saved');
     setSnackbarOpen(true);
   });
@@ -130,11 +122,11 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
                   <Grid container spacing={2}>
                     <Grid size={{ xs: 12, md: 6 }}>
                       <Typography className="label">First Name</Typography>
-                      <TextFieldController name="name.firstName" type="text" />
+                      <TextFieldController name="firstName" type="text" />
                     </Grid>
                     <Grid size={{ xs: 12, md: 6 }}>
                       <Typography className="label">Last Name</Typography>
-                      <TextFieldController name="name.lastName" type="text" />
+                      <TextFieldController name="lastName" type="text" />
                     </Grid>
                   </Grid>
                   <Grid container spacing={2} marginTop={'24px'}>
@@ -185,4 +177,4 @@ const NewCustomerModal: React.FC<NewCustomerModalProps> = ({ open, onClose }) =>
   );
 };
 
-export default NewCustomerModal;
+export default CustomerFormModal;

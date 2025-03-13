@@ -7,36 +7,35 @@ function getObjectValueFromPath(obj: unknown, path: string): ErrorObject {
   return path.split('.').reduce((acc, part) => acc && (acc as Record<string, unknown>)[part], obj) as ErrorObject;
 }
 
-const SelectController: React.FC<SelectControllerProps> = ({ name, label, disabled, forceShrink, onChange, options }) => {
+const SelectController: React.FC<SelectControllerProps> = (props: SelectControllerProps) => {
   const { control } = useFormContext();
 
   return (
     <Controller
-      name={name}
+      name={props.name}
       control={control}
       render={({ field, formState: { errors } }) => {
-        const error = getObjectValueFromPath(errors, name);
-        const labelId = `${name}-label`;
+        const error = getObjectValueFromPath(errors, props.name);
+        const labelId = `${props.name}-label`;
 
         return (
           <FormControl fullWidth error={!!error}>
-            <InputLabel id={labelId} disabled={disabled} shrink={forceShrink}>
-              {label}
+            <InputLabel id={labelId} disabled={props.disabled} shrink={props.forceShrink}>
+              {props.label}
             </InputLabel>
             <Select
-              id={name}
-              label={label}
+              id={props.name}
+              label={props.label}
               labelId={labelId}
               value={field.value ?? ''}
               onChange={(event) => {
                 field.onChange(event);
-                onChange?.(event);
+                props.onChange?.(event);
               }}
               IconComponent={KeyboardArrowDownIcon}
-              disabled={disabled}
               sx={{ width: '100%' }}
             >
-              {options
+              {props.options
                 ?.sort((a, b) => a.label?.localeCompare(b.label) ?? 0)
                 .map(({ value, label, customLabel, disabled }) => (
                   <MenuItem key={value} value={value} disabled={disabled}>

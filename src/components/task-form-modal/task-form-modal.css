@@ -1,0 +1,56 @@
+.task-box-new-task {
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.check-box-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkBox-icon {
+  align-self: flex-end;
+  height: 40px;
+  width: 30px;
+}
+
+.due-date-box-new-task {
+  flex: 1;
+  margin-top: 24px;
+}
+
+.footer-new-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0 28px;
+  width: 100%;
+}
+
+.save-button-task {
+  padding: 10px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  border-radius: 70px;
+  width: 100%;
+}
+
+.delete-button-task {
+  background-color: #ffffff;
+  color: #fe8084;
+  border: none;
+  padding: 10px 24px;
+  margin-right: 16px;
+  width: 100%;
+}
+
+.cancel-button-task {
+  margin-right: 16px;
+  color: #092c4c;
+  border: none;
+  padding: 10px 24px;
+  width: 100%;
+}

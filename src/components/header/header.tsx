@@ -7,21 +7,30 @@ import { Search } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
 import logo from '../../assets/logo.jpg';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { HeaderModalType, useHeader } from '@/context/header-context';
-import NewCustomerModal from '../new-customer-modal/new-customer-modal';
-import NewTaskModal from '../new-task-modal/new-task-modal';
-import NewDealModal from '../new-deal-modal/new-deal-modal';
+import CustomerFormModal from '../customer-form-modal/customer-form-modal';
+import TaskModal from '../task-form-modal/task-form-modal';
+import DealFormModal from '../deal-form-modal/deal-form-modal';
 import AddNewModal from '../add-new-modal/add-new-modal';
 import './header.css';
 import SelectCustomerModal from '../select-customer-modal/select-customer-modal';
+import { useAuth } from '@/hooks/auth-provider';
+import { useRouter } from 'next/navigation';
 
 const Header: React.FC = () => {
+  const router = useRouter();
   const { title, buttonTitle, modalType } = useHeader();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addNewDealOpen, setAddNewDealOpen] = useState(false);
   const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null);
+  const { signOut } = useAuth();
 
   const [opacity, setOpacity] = useState(1);
+
+  const handleLogout = () => {
+    signOut();
+  };
 
   useEffect(() => {
     const handleScroll = () => setOpacity(window.scrollY > 50 ? 0.7 : 1);
@@ -32,9 +41,9 @@ const Header: React.FC = () => {
   const renderModal = () => {
     switch (modalType) {
       case HeaderModalType.newCustomer:
-        return <NewCustomerModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+        return <CustomerFormModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
       case HeaderModalType.newTask:
-        return <NewTaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
+        return <TaskModal open={!!isModalOpen} onClose={() => setIsModalOpen(false)} />;
       case HeaderModalType.newDeal:
         return (
           <>
@@ -48,7 +57,7 @@ const Header: React.FC = () => {
               }}
             />
             {selectedCustomerId && (
-              <NewDealModal
+              <DealFormModal
                 open={addNewDealOpen}
                 onClose={() => {
                   setAddNewDealOpen(false);
@@ -67,6 +76,10 @@ const Header: React.FC = () => {
     }
   };
 
+  const handleIconClick = () => {
+    router.push('/');
+  };
+
   return (
     <AppBar
       sx={{
@@ -77,7 +90,7 @@ const Header: React.FC = () => {
     >
       <Grid container alignItems={'center'}>
         <Grid size={{ xs: 2, sm: 1, md: 1, lg: 0.5 }} sx={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '22px' }}>
-          <Image src={logo} alt="Logo" className="logo-image-header" />
+          <Image onClick={handleIconClick} src={logo} alt="Logo" className="logo-image-header" />
         </Grid>
 
         <Grid size={{ xs: 0, sm: 6, md: 6, lg: 7.5 }}>
@@ -86,13 +99,24 @@ const Header: React.FC = () => {
 
         <Grid
           size={{ xs: 10, sm: 5, md: 5, lg: 4 }}
-          sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2, paddingRight: '24px' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            gap: { md: 2 },
+            paddingRight: '24px',
+          }}
         >
-          <Button className="add-new-header" variant="contained" endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
-            {buttonTitle}
-          </Button>
+          {buttonTitle && (
+            <Button className="add-new-header" variant="contained" endIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
+              {buttonTitle}
+            </Button>
+          )}
           <Search className="search-header" />
           <Avatar className="avatar-header" src={'https://randomuser.me/api/portraits/women/1.jpg'} alt="User" />
+          <Button className="logout-button" variant="text" onClick={handleLogout}>
+            <LogoutOutlinedIcon />
+          </Button>
         </Grid>
       </Grid>
       {renderModal()}

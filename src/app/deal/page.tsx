@@ -2,11 +2,13 @@
 
 import React, { useEffect } from 'react';
 import { mockDeals, Deal } from '../../types/deal';
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import SectionHeader from '@/components/section-header/section-header';
 import Image from 'next/image';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import '../../styles/table.css';
+import './deal-page.css';
 import { useRouter } from 'next/navigation';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import { HeaderModalType, useHeader } from '@/context/header-context';
@@ -14,14 +16,24 @@ import Grid from '@mui/material/Grid2';
 
 const Deals: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
+  const router = useRouter();
 
   useEffect(() => {
     setTitle('Deals');
-    setButtonTitle('Add New Deal');
+    setButtonTitle?.('Add New Deal');
     setModalType(HeaderModalType.newDeal);
   }, [setTitle, setButtonTitle, setModalType]);
 
-  const router = useRouter();
+  const hasDeal = mockDeals.length > 0;
+
+  if (!hasDeal) {
+    return (
+      <Box className="not-found-deal-page">
+        <BusinessCenterOutlinedIcon className="icon-not-found-page" />
+        <Typography>No deals found.</Typography>
+      </Box>
+    );
+  }
 
   const columnHeaders = [
     { label: 'Profile', icon: <InsertPhotoIcon /> },
@@ -35,9 +47,25 @@ const Deals: React.FC = () => {
 
   return (
     <main>
-      <Grid container>
+      <Grid container sx={{ padding: { xs: '12px', sm: '16px', md: '24px ' } }}>
         <Grid size={{ xs: 12, md: 12 }}>
-          <SectionHeader title="Deals" counter={23} sortByValue={['Date Created', 'Alphabetic']} filterOptions={['Area', 'Price', 'Status']} />
+          <SectionHeader
+            title="Deals"
+            counter={23}
+            sortByValue={[
+              'Date Created (Newest First)',
+              'Date Created (Oldest First)',
+              'Alphabetic (A-Z)',
+              'Alphabetic (Z-A)',
+              'Price (High to Low)',
+              'Price (Low to High)',
+              'Area (Largest First)',
+              'Area (Smallest First)',
+              'Status',
+              'Appointment Date',
+            ]}
+            filterOptions={['Status', 'Date Range', 'Price Range', 'Area']}
+          />
         </Grid>
         <Grid size={{ xs: 12, md: 12 }}>
           <TableContainer>
@@ -47,7 +75,6 @@ const Deals: React.FC = () => {
                   {columnHeaders.map((header, index) => (
                     <TableCell
                       key={index}
-                      className="table-head"
                       sx={{
                         textAlign: header.isRightAligned ? 'right' : 'left',
                       }}
@@ -78,10 +105,18 @@ const Deals: React.FC = () => {
                       </Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography className="text-body">{deal.area} M&sup2;</Typography>
+                      <Typography className="text-body">{deal.roomArea} M&sup2;</Typography>
                     </TableCell>
-                    <TableCell className="table-cell">
-                      <Typography className="text-body">{deal.appointmentDate}</Typography>
+                    <TableCell>
+                      <Typography className="text-body">
+                        {new Date(deal.appointmentDate).toLocaleString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography className="text-body">${deal.price}</Typography>
@@ -98,12 +133,12 @@ const Deals: React.FC = () => {
                           width: 120,
                         }}
                       >
-                        {deal.status}
+                        {deal.progress === 'inProgress' ? 'IN PROGRESS' : 'CLOSED'}
                       </Button>
                     </TableCell>
-                    <TableCell className="icon-cell">
+                    <TableCell>
                       <Typography variant="body2" sx={{ textAlign: 'right' }}>
-                        <DriveFileRenameOutlineOutlinedIcon className="table-cell" />
+                        <DriveFileRenameOutlineOutlinedIcon />
                       </Typography>
                     </TableCell>
                   </TableRow>
