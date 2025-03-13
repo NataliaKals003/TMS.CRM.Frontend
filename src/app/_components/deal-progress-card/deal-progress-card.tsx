@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Box, Button, Avatar } from '@mui/material';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
+import Grid from '@mui/material/Grid2';
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import './deal-progress-card.css';
 import { useRouter } from 'next/navigation';
 import { Activity, mockActivity } from '@/types/activity';
@@ -31,9 +33,30 @@ const DealProgressCard = () => {
     fetchDealAndActivity();
   }, []);
 
-  //!!!change it
   if (!deal) {
-    return <div>Loading...</div>;
+    return (
+      <Card
+        className="recent-card"
+        sx={{
+          height: { xs: 290, sm: 350, md: 400 },
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <CardContent
+          sx={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <Box className="deal-progress-not-found-card">
+            <BusinessCenterOutlinedIcon className="icon-not-found-card" />
+            <Typography>No deals in progress.</Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    );
   }
 
   const handleDealIdClick = () => {
@@ -43,8 +66,8 @@ const DealProgressCard = () => {
   return (
     <Card className="recent-card" onClick={handleDealIdClick}>
       <CardContent>
-        <Box className="header-progress-card">
-          <Box className="deal-profile">
+        <Grid container className="header-progress-card">
+          <Grid size={{ xs: 12, md: 8 }} className="deal-profile">
             <Avatar src={deal.dealPicture} alt="Profile" />
             <Box>
               <Typography className="deal-street-progress-card">{deal.street}</Typography>
@@ -52,14 +75,14 @@ const DealProgressCard = () => {
                 {deal.city}
               </Typography>
             </Box>
-          </Box>
-          <Box className="in-progress-button">
+          </Grid>
+          <Grid size={{ xs: 12, md: 4 }} className="in-progress-button">
             <Button variant="contained" className="header-button">
-              IN PROGRESS
+              {deal.progress === 'inProgress' ? 'IN PROGRESS' : 'CLOSED'}
             </Button>
             <ArrowForwardOutlinedIcon className="arrow-icon" />
-          </Box>
-        </Box>
+          </Grid>
+        </Grid>
 
         {activity &&
           activity.slice(0, 4).map((act) => (

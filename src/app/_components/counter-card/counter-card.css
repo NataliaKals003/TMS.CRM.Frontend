@@ -30,6 +30,10 @@
   font-style: normal;
 }
 
+.zero-count {
+  color: #7e92a2;
+}
+
 @media (max-width: 376px) {
   .card-counter {
     justify-content: start;

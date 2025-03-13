@@ -1,3 +1,15 @@
+.recent-deals-not-found-card {
+  display: flex;
+  align-items: center;
+  color: #7e92a2;
+  align-items: start;
+}
+
+.icon-not-found-card {
+  color: #7e92a2;
+  margin-right: 13px;
+}
+
 .card-recent-deals {
   background-color: #ffffff;
   color: #092c4c;

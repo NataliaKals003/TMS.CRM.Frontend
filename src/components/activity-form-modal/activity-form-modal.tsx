@@ -111,7 +111,7 @@ const ActivityModal: React.FC<ActivityFormModalProps> = (props: ActivityFormModa
             <Typography variant="h5" marginBottom={0} fontWeight={700} fontSize={18} color={'#092C4C'}>
               {props.activityId ? 'Edit Activity' : ' Add New Activity'}
             </Typography>
-            <Button sx={{ minWidth: 0, margin: 0 }} endIcon={<CancelIcon sx={{ color: '#7E92A2' }} />} onClick={props.onClose} />
+            <Button sx={{ minWidth: 0, margin: 0 }} endIcon={<CancelIcon sx={{ color: '#7E92A2' }} />} onClick={handleCancel} />
           </Box>
 
           <FormProvider {...form}>

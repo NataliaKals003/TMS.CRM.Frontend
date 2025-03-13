@@ -16,6 +16,21 @@ interface SelectCustomerModalProps {
 const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose, onCustomerSelected }) => {
   const [addNewCustomerOpen, setAddNewCustomerOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const customersPerPage = 6;
+
+  const totalPages = Math.ceil(mockCustomers.length / customersPerPage);
+  const currentPage = Math.floor(currentIndex / customersPerPage) + 1;
+
+  const loadMore = () => {
+    setCurrentIndex((prevIndex) => prevIndex + customersPerPage);
+  };
+
+  const goBack = () => {
+    setCurrentIndex((prevIndex) => Math.max(0, prevIndex - customersPerPage));
+  };
+
+  const visibleCustomers = mockCustomers.slice(currentIndex, currentIndex + customersPerPage);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -35,23 +50,10 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
 
   return (
     <Box>
-      <Modal
-        open={open}
-        onClose={() => {
-          onClose();
-        }}
-      >
-        <Box
-          ref={modalRef}
-          className="box"
-          sx={{
-            width: { xs: 300, sm: 350, md: 400 },
-            maxHeight: '80vh',
-          }}
-        >
+      <Modal open={open} onClose={onClose}>
+        <Box ref={modalRef} className="box" sx={{ width: { xs: 300, sm: 350, md: 400 }, maxHeight: '80vh' }}>
           <Box className="box-header">
             <Typography className="title-header-modal">Select Customer</Typography>
-
             <Box>
               <Button
                 onClick={() => {
@@ -69,7 +71,7 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
 
           <Box className="select-box-select-customer">
             <List>
-              {mockCustomers.map((customer: Customer) => (
+              {visibleCustomers.map((customer: Customer) => (
                 <Box
                   key={customer.id}
                   onClick={() => {
@@ -93,8 +95,16 @@ const SelectCustomerModal: React.FC<SelectCustomerModalProps> = ({ open, onClose
             </List>
           </Box>
 
-          <Box display="flex" justifyContent="center" padding={1.5}>
-            <Button variant="text">Load More</Button>
+          <Box display="flex" justifyContent="center" alignItems="center" padding={1.5} gap={2}>
+            <Button variant="text" onClick={goBack} disabled={currentIndex === 0}>
+              Back
+            </Button>
+            <Typography variant="body2" color="textSecondary">
+              {currentPage} of {totalPages}
+            </Typography>
+            <Button variant="text" onClick={loadMore} disabled={currentIndex + customersPerPage >= mockCustomers.length}>
+              Load More
+            </Button>
           </Box>
         </Box>
       </Modal>

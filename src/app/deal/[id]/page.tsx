@@ -8,6 +8,7 @@ import { Avatar, Box, Button, Typography } from '@mui/material';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Image from 'next/image';
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import '../deal-page.css';
 import './page.css';
 import ActivityFormCard from '../_components/activity-form-card/activity-form-card';
@@ -55,9 +56,10 @@ export default function Page() {
 
   if (!deal) {
     return (
-      <main>
-        <Typography variant="h6">Deal not found</Typography>
-      </main>
+      <Box className="not-found-deal-page">
+        <BusinessCenterOutlinedIcon className="icon-not-found-page" />
+        <Typography>No deals found.</Typography>
+      </Box>
     );
   }
 

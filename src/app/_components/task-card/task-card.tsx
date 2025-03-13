@@ -9,15 +9,53 @@ import { mockTasks, Task } from '../../../types/task';
 import { useRouter } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
 import './task-card.css';
+import { ChecklistOutlined } from '@mui/icons-material';
 
 const TaskCard: React.FC = () => {
   const router = useRouter();
+  const [addNewTaskOpen, setAddNewTaskOpen] = useState(false);
+
+  const hasTask = mockTasks.length > 0;
+
+  if (!hasTask) {
+    return (
+      <>
+        <Card
+          className="task-card"
+          sx={{
+            height: { xs: 290, sm: 350, md: 400 },
+          }}
+        >
+          <CardContent
+            className="card-content-task"
+            sx={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <Box className="header-task-card">
+              <Typography className="title-task">Task To Do</Typography>
+            </Box>
+
+            <Box className="not-found-task-card">
+              <ChecklistOutlined className="icon-not-found-card" />
+              <Typography>No upcoming tasks found.</Typography>
+            </Box>
+          </CardContent>
+          <Box onClick={() => setAddNewTaskOpen(true)} className="add-new-task-box">
+            <Button className="add-new-task-button">Add new task</Button>
+            <ArrowForwardOutlinedIcon className="arrow-task-card" />
+          </Box>
+        </Card>
+        <AddNewTask open={addNewTaskOpen} onClose={() => setAddNewTaskOpen(false)} />
+      </>
+    );
+  }
 
   const handleTaskClick = () => {
     router.push('/task');
   };
-
-  const [addNewTaskOpen, setAddNewTaskOpen] = useState(false);
 
   return (
     <>

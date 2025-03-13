@@ -10,6 +10,7 @@ import bgCover from '@/assets/cover.jpg';
 import defaultAvatar from '../../../assets/default-avatar.png';
 import Image from 'next/image';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { PeopleAltOutlined } from '@mui/icons-material';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import '../customer-page.css';
 import './page.css';
@@ -38,6 +39,10 @@ interface FormValues {
 
 export default function Page() {
   const { setTitle, setButtonTitle } = useHeader();
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
+  const { id: customerId } = useParams();
 
   useEffect(() => {
     setTitle('Customer Details');
@@ -46,11 +51,6 @@ export default function Page() {
       setButtonTitle(undefined);
     }
   }, [setTitle, setButtonTitle]);
-
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
-  const [snackbarSeverity, setSnackbarSeverity] = useState<'saved' | 'deleted'>('saved');
-  const { id: customerId } = useParams();
 
   const schema = yup.object().shape({
     avatar: yup.string(),
@@ -119,6 +119,17 @@ export default function Page() {
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
+
+  const hasCustomer = mockCustomers.length > 0;
+
+  if (!hasCustomer) {
+    return (
+      <Box className="not-found-customer-page">
+        <PeopleAltOutlined className="icon-not-found-page" />
+        <Typography>No customer found.</Typography>
+      </Box>
+    );
+  }
 
   return (
     <>

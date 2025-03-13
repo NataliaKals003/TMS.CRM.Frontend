@@ -2,11 +2,13 @@
 
 import React, { useEffect } from 'react';
 import { mockDeals, Deal } from '../../types/deal';
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import SectionHeader from '@/components/section-header/section-header';
 import Image from 'next/image';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import '../../styles/table.css';
+import './deal-page.css';
 import { useRouter } from 'next/navigation';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import { HeaderModalType, useHeader } from '@/context/header-context';
@@ -14,6 +16,7 @@ import Grid from '@mui/material/Grid2';
 
 const Deals: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
+  const router = useRouter();
 
   useEffect(() => {
     setTitle('Deals');
@@ -21,7 +24,16 @@ const Deals: React.FC = () => {
     setModalType(HeaderModalType.newDeal);
   }, [setTitle, setButtonTitle, setModalType]);
 
-  const router = useRouter();
+  const hasDeal = mockDeals.length > 0;
+
+  if (!hasDeal) {
+    return (
+      <Box className="not-found-deal-page">
+        <BusinessCenterOutlinedIcon className="icon-not-found-page" />
+        <Typography>No deals found.</Typography>
+      </Box>
+    );
+  }
 
   const columnHeaders = [
     { label: 'Profile', icon: <InsertPhotoIcon /> },

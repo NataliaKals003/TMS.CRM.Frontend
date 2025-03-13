@@ -1,3 +1,10 @@
+.not-found-task-card {
+  display: flex;
+  align-items: center;
+  color: #7e92a2;
+  align-items: start;
+}
+
 .container-task {
   background-color: #eef6fb;
   padding: 24px;

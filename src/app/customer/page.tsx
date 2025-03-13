@@ -2,18 +2,23 @@
 
 import React, { useEffect } from 'react';
 import { mockCustomers, Customer } from '../../types/customer';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import SectionHeader from '@/components/section-header/section-header';
 import Image from 'next/image';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import '../../styles/table.css';
+import './customer-page.css';
 import { useRouter } from 'next/navigation';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import Grid from '@mui/material/Grid2';
+import { PeopleAltOutlined } from '@mui/icons-material';
 
 const Customers: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
+  const router = useRouter();
+
+  const hasCustomer = mockCustomers.length > 0;
 
   useEffect(() => {
     setTitle('Customers');
@@ -23,7 +28,14 @@ const Customers: React.FC = () => {
     setModalType(HeaderModalType.newCustomer);
   }, [setTitle, setButtonTitle, setModalType]);
 
-  const router = useRouter();
+  if (!hasCustomer) {
+    return (
+      <Box className="not-found-customer-page">
+        <PeopleAltOutlined className="icon-not-found-page" />
+        <Typography>No customer found.</Typography>
+      </Box>
+    );
+  }
 
   const columnHeaders = [
     { label: 'Profile', icon: <AccountBoxIcon /> },

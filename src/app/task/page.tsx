@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { mockTasks, Task } from '../../types/task';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import SectionHeader from '@/components/section-header/section-header';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -12,6 +12,7 @@ import '../../styles/table.css';
 import { HeaderModalType, useHeader } from '@/context/header-context';
 import Grid from '@mui/material/Grid2';
 import TaskModal from '@/components/task-form-modal/task-form-modal';
+import { ChecklistOutlined } from '@mui/icons-material';
 
 const Tasks: React.FC = () => {
   const { setTitle, setButtonTitle, setModalType } = useHeader();
@@ -42,6 +43,17 @@ const Tasks: React.FC = () => {
     }
     return null;
   };
+
+  const hasTask = mockTasks.length > 0;
+
+  if (!hasTask) {
+    return (
+      <Box className="not-found-task-page">
+        <ChecklistOutlined className="icon-not-found-page" />
+        <Typography>No tasks found.</Typography>
+      </Box>
+    );
+  }
 
   return (
     <main>
